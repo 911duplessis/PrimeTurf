@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 214 100"
+     role="img" aria-label="PrimeTurf" preserveAspectRatio="xMidYMid meet">
+  <title>PrimeTurf</title>
+  <!-- P -->
+  <text x="0" y="88"
+        font-family="Cinzel,'Cormorant Garamond',Georgia,'Times New Roman',serif"
+        font-size="120" font-weight="600"
+        fill="#D4A940">P</text>
+  <!-- Left grass blade (shorter, leans left) -->
+  <path d="M 79,90 C 76,70 73,48 76,24  Q 82,10  88,24  C 91,48  92,70  91,90 Z"
+        fill="#B8922A"/>
+  <!-- Centre grass blade (tallest, straight) -->
+  <path d="M 92,90 C 90,62 89,32 92,6   Q 98,0  104,6  C 107,32 108,62 105,90 Z"
+        fill="#D4A940"/>
+  <!-- Right grass blade (shorter, leans right) -->
+  <path d="M 108,90 C 111,70 113,48 109,24 Q 115,10 121,24 C 123,48 121,70 118,90 Z"
+        fill="#B8922A"/>
+  <!-- T -->
+  <text x="126" y="88"
+        font-family="Cinzel,'Cormorant Garamond',Georgia,'Times New Roman',serif"
+        font-size="120" font-weight="600"
+        fill="#D4A940">T</text>
+</svg>
