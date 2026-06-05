@@ -1,23 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 214 100"
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 160 90"
      role="img" aria-label="PrimeTurf" preserveAspectRatio="xMidYMid meet">
   <title>PrimeTurf</title>
   <!-- P -->
-  <text x="0" y="88"
-        font-family="Cinzel,'Cormorant Garamond',Georgia,'Times New Roman',serif"
-        font-size="120" font-weight="600"
+  <text x="0" y="74"
+        font-family="Cinzel,'Cormorant Garamond',Georgia,'Times New Roman',serif" font-size="86" font-weight="700"
         fill="#D4A940">P</text>
-  <!-- Left grass blade (shorter, leans left) -->
-  <path d="M 79,90 C 76,70 73,48 76,24  Q 82,10  88,24  C 91,48  92,70  91,90 Z"
-        fill="#B8922A"/>
-  <!-- Centre grass blade (tallest, straight) -->
-  <path d="M 92,90 C 90,62 89,32 92,6   Q 98,0  104,6  C 107,32 108,62 105,90 Z"
-        fill="#D4A940"/>
-  <!-- Right grass blade (shorter, leans right) -->
-  <path d="M 108,90 C 111,70 113,48 109,24 Q 115,10 121,24 C 123,48 121,70 118,90 Z"
-        fill="#B8922A"/>
   <!-- T -->
-  <text x="126" y="88"
-        font-family="Cinzel,'Cormorant Garamond',Georgia,'Times New Roman',serif"
-        font-size="120" font-weight="600"
+  <text x="88" y="74"
+        font-family="Cinzel,'Cormorant Garamond',Georgia,'Times New Roman',serif" font-size="86" font-weight="700"
         fill="#D4A940">T</text>
+  <!-- Grass blades -->
+  <path d="M 59.0,76 C 59.0,52.9 57.2,38.0 58.0,34.0 C 58.8,38.0 65.0,52.9 65.0,76 Z" fill="#B8922A"/>
+  <path d="M 65.0,76 C 65.0,47.4 65.2,28.0 66.0,24.0 C 66.8,28.0 73.0,47.4 73.0,76 Z" fill="#B8922A"/>
+  <path d="M 71.0,76 C 71.0,40.8 75.2,16.0 76.0,12.0 C 76.8,16.0 81.0,40.8 81.0,76 Z" fill="#B8922A"/>
+  <path d="M 79.0,76 C 79.0,47.4 85.2,28.0 86.0,24.0 C 86.8,28.0 87.0,47.4 87.0,76 Z" fill="#B8922A"/>
+  <path d="M 87.0,76 C 87.0,52.9 93.2,38.0 94.0,34.0 C 94.8,38.0 93.0,52.9 93.0,76 Z" fill="#B8922A"/>
 </svg>
