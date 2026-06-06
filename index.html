@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PrimeTurf | Professional Artificial Grass Solutions · Gauteng</title>
-<meta name="description" content="PrimeTurf — Gauteng's professional authority in luxury artificial grass design. Precision-engineered surfaces for distinguished estates across Pretoria, Sandton, Centurion and beyond.">
+<meta name="description" content="PrimeTurf — Premium artificial grass solutions across Gauteng. Professional installation with an 8 year manufacturer's warranty and 24 month installation guarantee.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="128x128" href="/assets/logo/pt-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -509,6 +509,49 @@ a { text-decoration:none; }
   text-transform:uppercase; color:var(--emerald);
   line-height:1.2;
 }
+/* Trust block replacing old credentials */
+.bs-trust { display:flex; flex-direction:column; gap:32px; }
+.bs-trust-lead {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(16px,1.8vw,20px); font-weight:400; font-style:italic;
+  color:var(--text-mid); line-height:1.7;
+}
+.bs-warranty-block { display:flex; flex-direction:column; gap:20px; }
+.bs-warranty-item {
+  display:flex; align-items:flex-start; gap:18px;
+  padding:18px 20px;
+  background:rgba(245,242,236,.55);
+  border:1px solid rgba(184,146,42,.18);
+  border-left:3px solid var(--gold);
+  border-radius:2px;
+}
+.bs-warranty-num {
+  font-family:'Cormorant Garamond', serif;
+  font-size:42px; font-weight:600; line-height:1;
+  color:var(--gold); flex-shrink:0;
+}
+.bs-warranty-item strong {
+  display:block;
+  font-family:'Lato',sans-serif;
+  font-size:11px; font-weight:700; letter-spacing:1.8px;
+  text-transform:uppercase; color:var(--emerald);
+  margin-bottom:4px;
+}
+.bs-warranty-item span {
+  font-family:'Lato',sans-serif;
+  font-size:12px; color:var(--text-mid); line-height:1.6;
+}
+.bs-legacy {
+  display:flex; align-items:center; gap:16px;
+  padding-top:8px;
+}
+.bs-legacy-rule { flex:1; height:1px; background:rgba(184,146,42,.25); }
+.bs-legacy-text {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(14px,1.5vw,17px); font-weight:500; font-style:italic;
+  color:var(--gold); white-space:nowrap; letter-spacing:.5px;
+}
+
 .bs-credentials { display:flex; flex-direction:column; gap:16px; }
 .credential-item {
   display:flex; align-items:flex-start; gap:16px;
@@ -1266,41 +1309,28 @@ footer {
     </div>
 
     <div class="bs-right reveal reveal-d2">
-      <div class="bs-credentials">
-        <div class="credential-item">
-          <span class="credential-num">01</span>
-          <div>
-            <strong class="credential-text">Professional Turf Systems</strong>
-            <span class="credential-text">We install signature turf systems that reflect excellence and durability.</span>
+      <div class="bs-trust">
+        <p class="bs-trust-lead">We install signature turf systems that reflect excellence and durability.</p>
+        <div class="bs-warranty-block">
+          <div class="bs-warranty-item">
+            <span class="bs-warranty-num">8</span>
+            <div>
+              <strong>Year Manufacturer's Warranty</strong>
+              <span>Every product backed by the full manufacturer guarantee.</span>
+            </div>
+          </div>
+          <div class="bs-warranty-item">
+            <span class="bs-warranty-num">24</span>
+            <div>
+              <strong>Month Installation Guarantee</strong>
+              <span>Our workmanship is covered from day one.</span>
+            </div>
           </div>
         </div>
-        <div class="credential-item">
-          <span class="credential-num">02</span>
-          <div>
-            <strong class="credential-text">Engineered for Longevity</strong>
-            <span class="credential-text">UV-stable, pet-safe, drain-optimised surfaces built to maintain visual perfection under South Africa's demanding climate for 15+ years.</span>
-          </div>
-        </div>
-        <div class="credential-item">
-          <span class="credential-num">03</span>
-          <div>
-            <strong class="credential-text">Distinguished Portfolio</strong>
-            <span class="credential-text">From Waterkloof Ridge to Sandton — PrimeTurf's installations set the benchmark for outdoor luxury across Gauteng's most esteemed estates.</span>
-          </div>
-        </div>
-        <div class="credential-item">
-          <span class="credential-num">04</span>
-          <div>
-            <strong class="credential-text">Legacy of Excellence</strong>
-            <span class="credential-text">Decades of outdoor craftsmanship, refined into a singular standard that defines the PrimeTurf reputation across the province.</span>
-          </div>
-        </div>
-        <div class="credential-item">
-          <span class="credential-num">05</span>
-          <div>
-            <strong class="credential-text">Drainage Systems</strong>
-            <span class="credential-text">Engineered sub-surface drainage installed beneath every turf system for optimal performance and longevity.</span>
-          </div>
+        <div class="bs-legacy">
+          <div class="bs-legacy-rule"></div>
+          <p class="bs-legacy-text">Your Outdoor Legacy Begins.</p>
+          <div class="bs-legacy-rule"></div>
         </div>
       </div>
     </div>
@@ -1572,7 +1602,7 @@ footer {
         </div>
         <div class="contact-detail">
           
-          <a href="mailto:leon@primeturf.co.za" class="cd-link">leon@primeturf.co.za</a>
+          <a href="mailto:info@primeturf.co.za" class="cd-link">info@primeturf.co.za</a>
         </div>
         <div class="contact-detail">
           
@@ -1672,7 +1702,7 @@ footer {
         <span class="footer-col-title">Contact</span>
         <ul class="footer-nav-list">
           <li><a href="tel:+27768048868">+27 76 804 8868</a></li>
-          <li><a href="mailto:leon@primeturf.co.za">leon@primeturf.co.za</a></li>
+          <li><a href="mailto:info@primeturf.co.za">info@primeturf.co.za</a></li>
           <li><a href="https://www.primeturf.co.za" target="_blank">www.primeturf.co.za</a></li>
           <li style="color:rgba(245,237,216,.2);font-size:13px;padding:2px 0;">Serving All of Gauteng</li>
         </ul>
