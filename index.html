@@ -370,6 +370,22 @@ a { text-decoration:none; }
   line-height:1.8;
 }
 
+/* Hero application chips */
+.hero-list {
+  list-style:none; padding:0; margin:18px 0 52px;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:8px 10px;
+}
+.hero-list li {
+  font-family:'Lato',sans-serif;
+  font-size:9.5px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--emerald);
+  padding:6px 16px;
+  border:1px solid rgba(27,58,42,.18);
+  background:rgba(245,242,236,.55);
+  border-radius:2px;
+  white-space:nowrap;
+}
+
 .hero-ctas {
   display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
   margin-bottom:72px;
@@ -471,6 +487,28 @@ a { text-decoration:none; }
 .bs-gold-rule { width:48px; height:1px; background:var(--gold); margin:28px 0; opacity:.5; }
 .bs-body { font-size:15px; line-height:1.9; color:var(--text-mid); }
 .bs-body p+p { margin-top:16px; }
+
+/* Premium feature grid */
+.feature-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:10px; margin-top:20px;
+}
+.feature-item {
+  display:flex; align-items:center; gap:11px;
+  padding:11px 14px 11px 16px;
+  background:rgba(245,242,236,.55);
+  border:1px solid rgba(184,146,42,.18);
+  border-left:2px solid var(--gold);
+  border-radius:2px;
+}
+.feature-item svg { flex-shrink:0; color:var(--gold); }
+.feature-label {
+  font-family:'Lato',sans-serif;
+  font-size:10.5px; font-weight:700; letter-spacing:1.6px;
+  text-transform:uppercase; color:var(--emerald);
+  line-height:1.2;
+}
 .bs-credentials { display:flex; flex-direction:column; gap:16px; }
 .credential-item {
   display:flex; align-items:flex-start; gap:16px;
@@ -1126,6 +1164,7 @@ footer {
 
     <span class="hero-sup">Architects of Outdoor Perfection</span>
     <h1 class="hero-title">Premium Artificial Grass Solutions</h1>
+    <p class="hero-subtitle">Your Outdoor Legacy Begins.</p>
     <ul class="hero-list">
       <li>Estate Lawns</li>
       <li>School Grounds</li>
@@ -1160,7 +1199,7 @@ footer {
       </div>
       <div class="proof-line"></div>
       <div class="proof-item">
-        <p class="proof-text">Defining Outdoor Luxury Across Gauteng</p>
+        <p class="proof-text">24 Month Installation Guarantee</p>
       </div>
     </div>
   </div>
@@ -1197,14 +1236,28 @@ footer {
       <h2 class="bs-headline">Premium Artificial Grass For Every Space</h2>
       <div class="bs-gold-rule"></div>
       <div class="bs-body">
-        <p><strong>Benefits:</strong></p>
-        <ul class="bs-list">
-          <li>Low Maintenance</li>
-          <li>Water Saving</li>
-          <li>Pet Friendly</li>
-          <li>Non-Toxic</li>
-          <li>Built To Last</li>
-        </ul>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a9 9 0 0 1 9 9c0 3.9-4 7.5-9 11-5-3.5-9-7.1-9-11a9 9 0 0 1 9-9z"/><circle cx="12" cy="11" r="3"/></svg>
+            <span class="feature-label">Low Maintenance</span>
+          </div>
+          <div class="feature-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L19.5 13 A7.5 7.5 0 0 1 4.5 13 Z"/></svg>
+            <span class="feature-label">Water Saving</span>
+          </div>
+          <div class="feature-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span class="feature-label">Pet Friendly</span>
+          </div>
+          <div class="feature-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <span class="feature-label">Non-Toxic</span>
+          </div>
+          <div class="feature-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <span class="feature-label">Built To Last</span>
+          </div>
+        </div>
       </div>
       <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;">
         <a href="#contact" class="btn btn-gold-fill">Book Free Consultation</a>
