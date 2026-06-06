@@ -158,14 +158,14 @@ a { text-decoration:none; }
 .navbar {
   position:fixed; top:0; left:0; right:0; z-index:1000;
   height:80px;
-  background:rgba(250,246,237,.97);
+  background:rgba(255,255,255,.97);
   backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border-gold);
   display:flex; align-items:center;
   transition:box-shadow .3s, background .3s;
 }
 .navbar.scrolled {
-  background:rgba(250,246,237,.99);
+  background:rgba(255,255,255,.99);
   box-shadow:0 4px 32px rgba(27,67,50,.08), 0 1px 0 var(--border-gold);
 }
 .navbar-inner {
@@ -180,13 +180,13 @@ a { text-decoration:none; }
   text-decoration:none;
 }
 .logo-img-wrap {
-  height:56px; width:auto;
-  overflow:hidden;
-  display:flex; align-items:flex-start;
+  height:68px; width:68px;
+  overflow:visible;
+  display:flex; align-items:center;
   justify-content:center;
 }
 .logo-img-wrap img {
-  height:auto;
+  height:68px; width:auto;
   display:block;
 }
 
@@ -308,17 +308,16 @@ a { text-decoration:none; }
 /* Logo mark in hero */
 .hero-logo-wrap {
   display:flex; justify-content:center;
-  margin-bottom:32px;
+  margin-bottom:44px;
 }
 .hero-logo-img {
-  width:200px; height:130px;
-  overflow:hidden;
-  display:flex; align-items:flex-start; justify-content:center;
+  width:260px; height:auto;
+  overflow:visible;
+  display:flex; align-items:center; justify-content:center;
 }
 .hero-logo-img img {
-  width:200px; height:auto;
+  width:260px; height:auto;
   display:block;
-  margin-top:-44%;
 }
 
 /* Eyebrow */
@@ -936,12 +935,11 @@ footer {
 }
 .footer-brand { display:flex; flex-direction:column; gap:16px; text-decoration:none; }
 .footer-logo-wrap {
-  width:160px; height:105px; overflow:hidden;
-  display:flex; align-items:flex-start; justify-content:center;
+  width:180px; height:auto; overflow:visible;
+  display:flex; align-items:center; justify-content:center;
 }
 .footer-logo-wrap img {
-  width:160px; height:auto; display:block;
-  /* Show top logo (dark green variant) */
+  width:180px; height:auto; display:block;
 }
 .footer-about {
   font-size:13px; line-height:1.9;
@@ -1061,8 +1059,8 @@ footer {
 <nav class="navbar" id="mainNav">
   <div class="navbar-inner">
     <a href="#home" class="logo-lockup">
-      <div class="logo-img-wrap" style="width:140px;height:56px;overflow:hidden;display:flex;align-items:flex-start;justify-content:center;">
-        <img src="/assets/logo/pt-monogram.png" alt="PrimeTurf" style="width:140px;height:auto;display:block;" />
+      <div class="logo-img-wrap">
+        <img src="/assets/logo/pt-monogram.png" alt="PrimeTurf" />
       </div>
     </a>
 
@@ -1106,7 +1104,7 @@ footer {
 
     <div class="hero-logo-wrap">
       <div class="hero-logo-img">
-        <img src="/assets/logo/pt-monogram.png" alt="PrimeTurf" />
+        <img src="/assets/logo/pt-monogram-transparent.png" alt="PrimeTurf" />
       </div>
     </div>
 
@@ -1572,7 +1570,7 @@ footer {
       <div>
         <a href="#home" class="footer-brand">
           <div class="footer-logo-wrap">
-            <img src="/assets/logo/pt-monogram-transparent.png" alt="PrimeTurf" />
+            <img src="/assets/logo/pt-logo-transparent.png" alt="PrimeTurf" />
           </div>
         </a>
         <p class="footer-about">Gauteng's professional authority in luxury artificial grass design. Precision-engineered outdoor environments that define the standard of premium living — from Pretoria to Sandton.</p>
