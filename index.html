@@ -726,26 +726,50 @@ a { text-decoration:none; }
 .gmosaic-item.span2 { grid-column:span 2; }
 .gmosaic-item { aspect-ratio:4/3; }
 .gmosaic-item.span2 { aspect-ratio:16/8; }
-.gmosaic-fill {
+
+/* Actual photo background */
+.gmosaic-photo {
+  position:absolute; inset:0;
   width:100%; height:100%;
-  display:flex; align-items:center; justify-content:center;
-  flex-direction:column; gap:10px;
-  transition:transform .6s ease;
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic; text-align:center; padding:20px;
+  object-fit:cover; object-position:center 20%;
+  transition:transform .7s ease;
+  display:block;
 }
-.gmosaic-item:hover .gmosaic-fill { transform:scale(1.04); }
-.gmosaic-label { font-size:14px; color:rgba(201,161,85,.5); }
-.gmosaic-sub { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(201,161,85,.25); }
+.gmosaic-item:hover .gmosaic-photo { transform:scale(1.06); }
+
+/* Text overlay pinned to bottom */
+.gmosaic-fill {
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(to top, rgba(10,30,18,.85) 0%, rgba(10,30,18,.4) 60%, transparent 100%);
+  padding:32px 22px 20px;
+  display:flex; flex-direction:column; gap:6px;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; text-align:left;
+  z-index:1;
+  transition:padding .3s;
+}
+.gmosaic-item:hover .gmosaic-fill { padding-bottom:26px; }
+.gmosaic-label {
+  font-size:clamp(13px,1.4vw,17px); font-weight:600;
+  color:rgba(255,255,255,.95); letter-spacing:.3px;
+}
+.gmosaic-sub {
+  font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  color:rgba(201,161,85,.85); font-style:normal;
+  font-family:'Lato',sans-serif;
+}
 .gmosaic-overlay {
   position:absolute; inset:0;
   background:rgba(15,43,30,0);
   display:flex; align-items:center; justify-content:center;
   transition:background .3s;
+  z-index:2;
 }
-.gmosaic-item:hover .gmosaic-overlay { background:rgba(15,43,30,.55); }
+.gmosaic-item:hover .gmosaic-overlay { background:rgba(15,43,30,.3); }
 .gmosaic-plus { color:var(--gold); font-size:28px; opacity:0; transform:scale(.7); transition:all .3s; }
 .gmosaic-item:hover .gmosaic-plus { opacity:1; transform:scale(1); }
+
+/* Gradient fallback when no photo loaded */
 .gmosaic-item:nth-child(1) { background:linear-gradient(140deg,#1a4a28,#204D30); }
 .gmosaic-item:nth-child(2) { background:linear-gradient(140deg,#153320,#1e4a2a); }
 .gmosaic-item:nth-child(3) { background:linear-gradient(140deg,#204D30,#2d6a4f); }
@@ -1445,13 +1469,15 @@ footer {
 
     <div class="gallery-mosaic reveal">
       <div class="gmosaic-item span2">
+        <img class="gmosaic-photo" src="images/image(14).jpg" alt="Mooikloof Country Estate" loading="lazy">
         <div class="gmosaic-fill">
-          <span class="gmosaic-label">Waterkloof Ridge Estate</span>
-          <span class="gmosaic-sub">Professional Lawn · 680m²</span>
+          <span class="gmosaic-label">Mooikloof Country Estate</span>
+          <span class="gmosaic-sub">Premier Installation · Artificial Grass</span>
         </div>
         <div class="gmosaic-overlay"><span class="gmosaic-plus">+</span></div>
       </div>
       <div class="gmosaic-item">
+        <img class="gmosaic-photo" src="images/image(17).jpg" alt="Sandton Villa" loading="lazy">
         <div class="gmosaic-fill">
           <span class="gmosaic-label">Sandton Villa</span>
           <span class="gmosaic-sub">Pool Surround · 240m²</span>
@@ -1459,6 +1485,7 @@ footer {
         <div class="gmosaic-overlay"><span class="gmosaic-plus">+</span></div>
       </div>
       <div class="gmosaic-item">
+        <img class="gmosaic-photo" src="images/image(12).jpg" alt="Mooikloof Estate" loading="lazy">
         <div class="gmosaic-fill">
           <span class="gmosaic-label">Mooikloof Estate</span>
           <span class="gmosaic-sub">Garden & Terrace · 420m²</span>
@@ -1466,6 +1493,7 @@ footer {
         <div class="gmosaic-overlay"><span class="gmosaic-plus">+</span></div>
       </div>
       <div class="gmosaic-item">
+        <img class="gmosaic-photo" src="images/image(11).jpg" alt="Steyn City" loading="lazy">
         <div class="gmosaic-fill">
           <span class="gmosaic-label">Steyn City</span>
           <span class="gmosaic-sub">Common Area · 1,200m²</span>
@@ -1473,9 +1501,10 @@ footer {
         <div class="gmosaic-overlay"><span class="gmosaic-plus">+</span></div>
       </div>
       <div class="gmosaic-item span2">
+        <img class="gmosaic-photo" src="images/image(10).jpg" alt="Centurion Golf Estate" loading="lazy">
         <div class="gmosaic-fill">
           <span class="gmosaic-label">Centurion Golf Estate</span>
-          <span class="gmosaic-sub">Full Greenscape · 890m²</span>
+          <span class="gmosaic-sub">Full Greenscape · 899m²</span>
         </div>
         <div class="gmosaic-overlay"><span class="gmosaic-plus">+</span></div>
       </div>
