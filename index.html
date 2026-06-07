@@ -1648,9 +1648,10 @@ footer {
         <h3 class="form-head">Request a Free Quote</h3>
         <p class="form-sub">Complete the form and our team will respond within 2 hours.</p>
         <form id="contactForm">
-        <input type="hidden" name="_subject" value="New PrimeTurf Enquiry — Website Lead">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="access_key" value="eac6884a-ccc0-4b95-a1fc-8e486f1ea0d0">
+        <input type="hidden" name="subject" value="New PrimeTurf Enquiry — Website Lead">
+        <input type="hidden" name="from_name" value="PrimeTurf Website">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
         <div class="form-group">
           <label>Full Name *</label>
           <input type="text" name="full_name" placeholder="Your full name" required>
@@ -1813,10 +1814,10 @@ window.addEventListener('touchmove',  e => { if (dragging) moveSlider(e.touches[
 window.addEventListener('mouseup',   () => dragging = false);
 window.addEventListener('touchend',  () => dragging = false);
 
-// Sends enquiries straight to leonve33@gmail.com via FormSubmit.co — no backend setup required.
-// First-ever submission triggers a one-time "confirm this form" email to that inbox; click the
-// link inside it once, and every submission after that is delivered automatically.
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/leonve33@gmail.com';
+// Sends enquiries straight to leonve33@gmail.com via Web3Forms — no activation step,
+// no link to confirm; the access_key (in the hidden field above) routes submissions
+// directly to the configured inbox.
+const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
 
 async function handleSubmit(btn) {
   const form = document.getElementById('contactForm');
@@ -1841,7 +1842,7 @@ async function handleSubmit(btn) {
       body: new FormData(form)
     });
     const data = await res.json();
-    if (!res.ok || data.success === 'false' || data.success === false) {
+    if (!res.ok || !data.success) {
       throw new Error(data.message || 'Submission failed');
     }
 
