@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PrimeTurf SA — Stage 1 Control Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F5F0E8;--warm:#FAF8F3;--ink:#1A1712;--ink-m:#3D3830;--ink-l:#6B6358;
+  --ink-f:#B8B0A4;--rule:#D8D0C4;--rule-l:#EAE4DA;--gold:#9A7828;--gold-l:#C8A84C;
+  --gold-p:#F0E8D0;--red:#8B2018;--red-p:#F4EDEB;--green:#1E5C38;--green-p:#E8F2EC;
+  --teal:#1A5858;--teal-p:#E8F0F0;--amber:#7A5010;--amber-p:#F4EEE0;--card:#FFF;
+}
+html{scroll-behavior:smooth}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--rule)}
+body{background:var(--cream);color:var(--ink);font-family:'Roboto Mono',monospace;font-size:.75rem;line-height:1.8;-webkit-font-smoothing:antialiased}
+.label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--ink-l)}
+.label-gold{color:var(--gold)}.label-green{color:var(--green)}.label-red{color:var(--red)}
+
+/* MASTHEAD */
+.masthead{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.masthead::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(90deg,transparent,transparent calc(100%/12 - 1px),rgba(255,255,255,.025) calc(100%/12 - 1px),rgba(255,255,255,.025) calc(100%/12));pointer-events:none}
+.mast-top{padding:28px 64px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center}
+.mast-wordmark{font-family:'EB Garamond',serif;font-size:1.1rem;color:var(--cream);letter-spacing:.04em}
+.mast-wordmark em{font-style:italic;color:var(--gold-l)}
+.mast-nav{display:flex;gap:28px;list-style:none}
+.mast-nav a{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.4);text-decoration:none;transition:color .2s}
+.mast-nav a:hover{color:var(--gold-l)}
+.mast-body{padding:80px 64px 72px;display:grid;grid-template-columns:1fr 340px;gap:80px;align-items:end}
+.mast-pre{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-l);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.mast-pre::before{content:'';display:block;width:28px;height:1px;background:var(--gold-l)}
+.mast-h1{font-family:'EB Garamond',serif;font-size:clamp(52px,6.5vw,88px);line-height:.92;color:var(--cream);font-weight:400}
+.mast-h1 em{font-style:italic;color:var(--gold-l)}
+.mast-tagline{margin-top:24px;font-size:.7rem;color:rgba(245,240,232,.45);line-height:1.7;max-width:440px}
+.mast-meta{border-left:1px solid rgba(255,255,255,.1);padding-left:32px;display:flex;flex-direction:column;gap:20px}
+.ms-label{font-size:.575rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:4px}
+.ms-val{font-family:'EB Garamond',serif;font-size:1.3rem;color:var(--cream);line-height:1.2}
+.ms-val.gold{color:var(--gold-l)}.ms-val.green{color:#6EC48C}
+.ms-sub{font-size:.6rem;color:rgba(245,240,232,.3);margin-top:2px;line-height:1.5}
+.mast-bottom{padding:20px 64px;border-top:1px solid rgba(255,255,255,.08);display:flex;gap:0;overflow-x:auto}
+.mast-pill{font-size:.575rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.35);padding:6px 18px;border-right:1px solid rgba(255,255,255,.08);white-space:nowrap}
+.mast-pill:first-child{padding-left:0}.mast-pill.active{color:var(--gold-l)}
+
+/* NARRATIVE */
+.narrative{background:var(--warm);border-bottom:1px solid var(--rule);padding:56px 64px;display:grid;grid-template-columns:220px 1fr 1fr;gap:48px;align-items:start}
+.narr-title{font-family:'EB Garamond',serif;font-size:1.5rem;color:var(--ink);line-height:1.3;font-style:italic}
+.narr-body{font-size:.7rem;color:var(--ink-l);line-height:1.85}
+.narr-body p{margin-bottom:10px}.narr-body p:last-child{margin-bottom:0}
+.narr-pull{font-family:'EB Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--ink-m);line-height:1.5;border-left:2px solid var(--gold);padding-left:20px}
+
+/* LAYOUT */
+.page-wrap{max-width:1200px;margin:0 auto;padding:0 64px 120px}
+.sec-head{padding:56px 0 32px;border-bottom:1px solid var(--rule);margin-bottom:32px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
+.sec-eyebrow{margin-bottom:8px}
+.sec-title{font-family:'EB Garamond',serif;font-size:clamp(28px,3vw,40px);color:var(--ink);font-weight:400;line-height:1.05}
+.sec-title em{font-style:italic;color:var(--gold)}
+.sec-desc{font-size:.68rem;color:var(--ink-l);max-width:560px;line-height:1.75;margin-top:6px}
+.sec-asq-badge{font-family:'EB Garamond',serif;font-size:3rem;font-style:italic;color:var(--rule);line-height:1;flex-shrink:0}
+
+/* ACCORDION */
+.accordion{border:1px solid var(--rule);margin-bottom:1px;background:var(--card)}
+.accordion+.accordion{border-top:none}
+.acc-trigger{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;cursor:pointer;user-select:none;transition:background .15s}
+.acc-trigger:hover{background:var(--warm)}
+.acc-left{display:flex;align-items:center;gap:14px}
+.acc-tag{font-size:.575rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border:1px solid}
+.acc-tag-red{background:var(--red-p);color:var(--red);border-color:rgba(139,32,24,.2)}
+.acc-tag-gold{background:var(--gold-p);color:var(--gold);border-color:rgba(154,120,40,.25)}
+.acc-tag-green{background:var(--green-p);color:var(--green);border-color:rgba(30,92,56,.2)}
+.acc-tag-teal{background:var(--teal-p);color:var(--teal);border-color:rgba(26,88,88,.2)}
+.acc-tag-amber{background:var(--amber-p);color:var(--amber);border-color:rgba(122,80,16,.2)}
+.acc-label{font-size:.72rem;color:var(--ink)}
+.acc-icon{font-size:.7rem;color:var(--ink-f);transition:transform .25s}
+.acc-icon.open{transform:rotate(180deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;border-top:1px solid transparent}
+.acc-body.open{max-height:5000px;border-top-color:var(--rule-l)}
+.acc-inner{padding:28px 24px}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
+.g-60-40{display:grid;grid-template-columns:3fr 2fr;gap:24px}
+
+/* STAT */
+.stat{padding:18px 20px;border:1px solid var(--rule);background:var(--card)}
+.stat-label{margin-bottom:6px}
+.stat-val{font-family:'EB Garamond',serif;font-size:2rem;line-height:1;font-style:italic}
+.stat-val.gold{color:var(--gold)}.stat-val.green{color:var(--green)}.stat-val.red{color:var(--red)}.stat-val.amber{color:var(--amber)}
+.stat-sub{font-size:.625rem;color:var(--ink-l);margin-top:4px;line-height:1.5}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:.68rem}
+.tbl th{text-align:left;font-size:.575rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-l);padding:8px 12px;border-bottom:2px solid var(--ink);background:var(--warm);font-weight:500}
+.tbl td{padding:10px 12px;border-bottom:1px solid var(--rule-l);vertical-align:middle;color:var(--ink-m)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:var(--warm)}
+.tbl tr.row-h td{background:var(--green-p)}.tbl tr.row-w td{background:var(--red-p)}
+.tbl td.strong{color:var(--ink);font-weight:500}
+
+/* BADGE */
+.badge{display:inline-block;font-size:.575rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border:1px solid}
+.badge-gold{background:var(--gold-p);color:var(--gold);border-color:rgba(154,120,40,.25)}
+.badge-green{background:var(--green-p);color:var(--green);border-color:rgba(30,92,56,.2)}
+.badge-red{background:var(--red-p);color:var(--red);border-color:rgba(139,32,24,.2)}
+.badge-amber{background:var(--amber-p);color:var(--amber);border-color:rgba(122,80,16,.2)}
+.badge-teal{background:var(--teal-p);color:var(--teal);border-color:rgba(26,88,88,.2)}
+.badge-ink{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+/* PROGRESS */
+.prog{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.prog-name{font-size:.65rem;color:var(--ink-l);min-width:170px;text-align:right}
+.prog-track{flex:1;height:3px;background:var(--rule-l)}
+.prog-fill{height:3px}
+.pf-gold{background:var(--gold)}.pf-green{background:var(--green)}.pf-amber{background:var(--amber)}.pf-red{background:var(--red)}.pf-teal{background:var(--teal)}
+.prog-pct{font-size:.65rem;color:var(--ink);min-width:38px}
+
+/* SLIDERS */
+.srow{margin-bottom:14px}
+.srow-head{display:flex;justify-content:space-between;font-size:.625rem;color:var(--ink-l);margin-bottom:5px}
+.srow-head span{color:var(--ink);font-weight:500}
+input[type=range]{width:100%;height:2px;-webkit-appearance:none;background:var(--rule);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--card);box-shadow:0 0 0 1px var(--gold)}
+
+/* TOGGLE */
+.tog-row{display:flex;border:1px solid var(--rule);margin-bottom:18px}
+.tog-btn{flex:1;padding:9px 14px;font-family:'Roboto Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;background:var(--card);color:var(--ink-l);border:none;cursor:pointer;transition:all .2s}
+.tog-btn.on{background:var(--ink);color:var(--cream)}
+
+/* CALC OUTPUT */
+.calc-out{background:var(--ink);color:var(--cream);padding:20px}
+.calc-r{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.68rem}
+.calc-r:last-child{border-bottom:none}
+.calc-k{color:rgba(245,240,232,.45)}.calc-v{color:var(--cream)}
+.calc-v.hi{font-family:'EB Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--gold-l);line-height:1}
+.calc-note{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);font-size:.625rem;color:rgba(245,240,232,.5);line-height:1.6}
+
+/* CHART */
+.cb{position:relative;padding-top:55%}
+.cb canvas{position:absolute;inset:0;width:100%!important;height:100%!important}
+.cb.tall{padding-top:70%}.cb.short{padding-top:38%}
+
+/* INSIGHT */
+.ins{padding:14px 18px;margin-top:16px;border-left:3px solid;font-size:.68rem;line-height:1.7}
+.ins-green{border-color:var(--green);background:var(--green-p);color:var(--green)}
+.ins-gold{border-color:var(--gold);background:var(--gold-p);color:var(--gold)}
+.ins-red{border-color:var(--red);background:var(--red-p);color:var(--red)}
+.ins strong{display:block;font-size:.575rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:4px;opacity:.7}
+
+/* LAYER */
+.lw{border:1px solid var(--rule)}
+.layer{display:grid;grid-template-columns:200px 1fr 1fr;border-bottom:1px solid var(--rule)}
+.layer:last-child{border-bottom:none}
+.l-id{padding:20px;border-right:1px solid var(--rule)}
+.l-id-tag{margin-bottom:8px}
+.l-id-name{font-family:'EB Garamond',serif;font-size:1rem;font-style:italic;color:var(--ink);line-height:1.3}
+.l-items{padding:20px;border-right:1px solid var(--rule)}
+.l-head{margin-bottom:10px}
+.l-item{font-size:.65rem;color:var(--ink-l);padding:3px 0 3px 14px;position:relative;line-height:1.5}
+.l-item::before{content:'—';position:absolute;left:0;color:var(--rule)}
+.l-moat{padding:20px}
+.l-moat-text{font-size:.65rem;color:var(--ink-l);line-height:1.7}
+
+/* WEEK PLAN */
+.wp{border:1px solid var(--rule)}
+.week{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--rule-l)}
+.week:last-child{border-bottom:none}
+.wk-id{background:var(--warm);border-right:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 6px}
+.wk-n{font-family:'EB Garamond',serif;font-style:italic;font-size:1.6rem;color:var(--rule);line-height:1}
+.wk-tag{font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-f)}
+.wk-body{padding:14px 18px}
+.wk-title{font-size:.7rem;color:var(--ink);margin-bottom:5px;font-weight:500}
+.wk-tasks{display:flex;flex-direction:column;gap:3px}
+.wk-task{font-size:.625rem;color:var(--ink-l);padding-left:12px;position:relative;line-height:1.5}
+.wk-task::before{content:'→';position:absolute;left:0;color:var(--ink-f);font-size:.55rem}
+.wk-prog{margin-top:8px;display:flex;align-items:center;gap:8px}
+.wkp-t{flex:1;height:2px;background:var(--rule-l)}
+.wkp-f{height:2px;background:var(--gold)}
+.wkp-l{font-size:.575rem;color:var(--ink-f)}
+
+/* DECISION MATRIX */
+.dm{border:1px solid var(--rule)}
+.dm-row{display:grid;grid-template-columns:1fr 90px 100px 130px;border-bottom:1px solid var(--rule-l)}
+.dm-row:last-child{border-bottom:none}
+.dm-row.dm-hdr{background:var(--ink)}
+.dm-cell{padding:11px 14px;font-size:.68rem}
+.dm-hdr .dm-cell{font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4);font-weight:500}
+.dm-row:hover:not(.dm-hdr) .dm-cell{background:var(--warm)}
+.dm-crit{border-left:3px solid var(--red)}.dm-high{border-left:3px solid var(--amber)}.dm-med{border-left:3px solid var(--green)}
+
+/* FLOOR */
+.fc{border-top:3px solid;padding:18px 20px;background:var(--card);border-left:1px solid var(--rule);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.fc-gold{border-top-color:var(--gold)}.fc-teal{border-top-color:var(--teal)}.fc-amber{border-top-color:var(--amber)}.fc-red{border-top-color:var(--red)}
+.fc-ch{margin-bottom:8px}
+.fc-rate{font-family:'EB Garamond',serif;font-size:1.8rem;font-style:italic;line-height:1;margin-bottom:4px}
+.fr-gold{color:var(--gold)}.fr-teal{color:var(--teal)}.fr-amber{color:var(--amber)}.fr-red{color:var(--red)}
+.fc-ceil{font-size:.625rem;color:var(--ink-f);margin-bottom:12px}
+.fc-rule{font-size:.625rem;color:var(--ink-l);line-height:1.65;padding-top:10px;border-top:1px solid var(--rule-l)}
+
+/* FOOTER */
+.footer{background:var(--ink);padding:48px 64px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px}
+.footer-brand{font-family:'EB Garamond',serif;font-size:1.4rem;color:var(--cream)}
+.footer-brand em{font-style:italic;color:var(--gold-l)}
+.footer-tagline{font-size:.6rem;color:rgba(245,240,232,.3);margin-top:6px;line-height:1.6}
+.footer-col-title{font-size:.575rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:12px}
+.footer-links{display:flex;flex-direction:column;gap:6px}
+.footer-links a{font-size:.65rem;color:rgba(245,240,232,.5);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold-l)}
+.footer-verdict{font-family:'EB Garamond',serif;font-style:italic;font-size:1rem;color:rgba(245,240,232,.6);line-height:1.55}
+
+/* TOOLTIP */
+[data-tip]{position:relative;cursor:help;border-bottom:1px dotted var(--rule)}
+[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--ink);color:var(--cream);font-size:.575rem;line-height:1.5;padding:8px 12px;white-space:normal;min-width:180px;max-width:260px;z-index:100}
+
+@media(max-width:900px){
+  .mast-body,.narrative{grid-template-columns:1fr}
+  .mast-meta{border-left:none;border-top:1px solid rgba(255,255,255,.08);padding:20px 0 0;flex-direction:row;flex-wrap:wrap;gap:20px}
+  .page-wrap,.mast-top,.mast-body,.mast-bottom,.narrative,.footer{padding-left:24px;padding-right:24px}
+  .g2,.g3,.g4,.g-60-40{grid-template-columns:1fr}
+  .layer{grid-template-columns:1fr}
+  .l-id,.l-items{border-right:none;border-bottom:1px solid var(--rule)}
+  .dm-row{grid-template-columns:1fr 80px}
+  .dm-row .dm-cell:nth-child(3),.dm-row .dm-cell:nth-child(4){display:none}
+  .footer{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="mast-top">
+    <div class="mast-wordmark">Prime<em>Turf</em> SA</div>
+    <nav><ul class="mast-nav">
+      <li><a href="#asq13">ASQ 1–3</a></li><li><a href="#asq46">ASQ 4–6</a></li>
+      <li><a href="#stage1">Stage 1</a></li><li><a href="#matrix">Matrix</a></li>
+    </ul></nav>
+  </div>
+  <div class="mast-body">
+    <div>
+      <div class="mast-pre">VDOS · Stage 0 → Stage 1 · Gauteng + Cape Town</div>
+      <h1 class="mast-h1">Stage 1<br/><em>Control</em><br/>Blueprint</h1>
+      <p class="mast-tagline">Decision-driving architecture under pressure. Six assumption instruments destroyed every false belief about this business. What remains is the structural truth — and the architecture to lock it in before any competitor sees it.</p>
+    </div>
+    <div class="mast-meta">
+      <div><div class="ms-label">Venture Model</div><div class="ms-val">Specification-Layer Control</div></div>
+      <div><div class="ms-label">Target Price Band</div><div class="ms-val gold">R540–R820<span style="font-size:.9rem">/m²</span></div></div>
+      <div><div class="ms-label">Dormant Revenue</div><div class="ms-val green">R2.58M–R5.52M</div><div class="ms-sub">Per year · existing base · zero new acquisition</div></div>
+      <div><div class="ms-label">Stage 0 Status</div><div class="ms-val">6 of 6 Complete</div></div>
+    </div>
+  </div>
+  <div class="mast-bottom">
+    <span class="mast-pill active">Gauteng</span><span class="mast-pill active">Cape Town</span>
+    <span class="mast-pill">Technical Founder</span><span class="mast-pill">Existing Customer Base</span>
+    <span class="mast-pill">ASQ1–6 Complete</span><span class="mast-pill active">Channel D = Structural Priority</span>
+    <span class="mast-pill">Stage 1 Active</span>
+  </div>
+</header>
+
+<section class="narrative">
+  <div><div class="label label-gold" style="margin-bottom:12px">Purpose Statement</div>
+    <div class="narr-title">Why this document exists</div></div>
+  <div class="narr-body">
+    <p>PrimeTurf was conceived as an artificial turf and landscaping business. The VDOS process was not designed to validate that idea — it was designed to destroy every assumption it rests on and discover the highest-value opportunity hidden behind it.</p>
+    <p>Six assumption stress questions. Twenty-four assumptions destroyed. One structural truth confirmed: PrimeTurf is not an installer business. It is a specification-layer control system — with architects and developers as its distribution layer, installers as execution, and the founder as standards and warranty authority.</p>
+  </div>
+  <div class="narr-pull">"The window to establish specification control in Gauteng and Cape Town's premium outdoor surface market is open now. No dominant player has claimed this position."</div>
+</section>
+
+<div class="page-wrap">
+
+<div id="asq13">
+<div class="sec-head">
+  <div><div class="sec-eyebrow"><span class="label">Stage 0 · ASQ 1–3</span></div>
+    <div class="sec-title">Conversion, <em>Price</em> &amp; Close Rate</div>
+    <div class="sec-desc">Three instruments. Each selects a different element of the business model. Together they confirm the pricing ceiling, the override stack, and the close rate physics.</div></div>
+  <div class="sec-asq-badge">01</div>
+</div>
+
+<!-- ASQ1 -->
+<div class="accordion">
+  <div class="acc-trigger" onclick="acc(this)">
+    <div class="acc-left"><span class="acc-tag acc-tag-red">Critical</span><span class="acc-label">ASQ1 — What actually closes the deal?</span></div>
+    <span class="acc-icon">▾</span>
+  </div>
+  <div class="acc-body"><div class="acc-inner">
+    <div class="g-60-40">
+      <div>
+        <div style="margin-bottom:8px"><span class="label">Predicted conversion driver distribution</span></div>
+        <div class="cb" style="margin-bottom:16px"><canvas id="driverChart"></canvas></div>
+        <table class="tbl">
+          <thead><tr><th>Driver</th><th>Predicted %</th><th>Business Model</th><th>Pricing Power</th></tr></thead>
+          <tbody>
+            <tr data-tip="Lifestyle brand. Subject to taste cycles. Medium pricing power."><td>A — Aesthetics</td><td><span class="badge badge-amber">~20%</span></td><td>Consumer lifestyle</td><td>Medium</td></tr>
+            <tr class="row-h" data-tip="Infrastructure service. Urgency-driven. ROI calculation removes price objection."><td class="strong">B — Water anxiety ✓</td><td><span class="badge badge-green">~42%</span></td><td>Infrastructure service</td><td class="strong" style="color:var(--green)">High — non-discretionary</td></tr>
+            <tr class="row-h" data-tip="Real estate value-add. ROI-justified capital decision. B2B capable."><td class="strong">C — Property value ✓</td><td><span class="badge badge-teal">~28%</span></td><td>Developer/agent channel</td><td class="strong" style="color:var(--teal)">High — ROI-justified</td></tr>
+            <tr data-tip="Network control business. Variable pricing."><td>D — Contractor trust</td><td><span class="badge badge-amber">~10%</span></td><td>Network control</td><td>Variable</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="stat"><div class="stat-label"><span class="label label-gold">VDOS Prediction</span></div><div class="stat-val green">B + C</div><div class="stat-sub">55–70% of closed deals. Messaging must shift to infrastructure independence immediately.</div></div>
+        <div class="ins ins-green"><strong>ASQ1 Verdict</strong>This is an infrastructure product, not a lifestyle product. Campaign timing must follow restriction announcements — not spring planting seasons.</div>
+        <div class="ins ins-gold"><strong>Immediate Rewrite</strong>Remove "beautiful lawn" from every proposal. Replace: "Zero irrigation. Zero maintenance. Engineered for the South African water reality."</div>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ASQ2 -->
+<div class="accordion">
+  <div class="acc-trigger" onclick="acc(this)">
+    <div class="acc-left"><span class="acc-tag acc-tag-red">Critical</span><span class="acc-label">ASQ2 — Price bands, override factors, and live ROI calculator</span></div>
+    <span class="acc-icon">▾</span>
+  </div>
+  <div class="acc-body"><div class="acc-inner">
+    <div class="g2" style="margin-bottom:24px">
+      <div>
+        <div style="margin-bottom:8px"><span class="label">Price band model — margin vs volume index</span></div>
+        <div class="cb tall" style="margin-bottom:16px"><canvas id="priceChart"></canvas></div>
+        <table class="tbl">
+          <thead><tr><th>Band</th><th>R/m²</th><th>Margin</th><th>Buyer</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr class="row-w"><td>E</td><td>R190–280</td><td>8–14%</td><td style="color:var(--ink-f)">DIY/informal</td><td><span class="badge badge-red">Exit</span></td></tr>
+            <tr><td>D</td><td>R280–390</td><td>18–26%</td><td style="color:var(--ink-l)">Price-comparing</td><td><span class="badge badge-amber">Commodity</span></td></tr>
+            <tr><td>C</td><td>R390–540</td><td>28–38%</td><td>2–3 quotes</td><td><span class="badge badge-amber">Transition</span></td></tr>
+            <tr class="row-h"><td class="strong">B ✓</td><td class="strong">R540–R820</td><td class="strong" style="color:var(--green)">42–56%</td><td>Sandton · Atl Seaboard</td><td><span class="badge badge-green">Target</span></td></tr>
+            <tr><td>A</td><td>R820+</td><td>55–70%</td><td>Developer spec</td><td><span class="badge badge-teal">Luxury</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div style="margin-bottom:14px"><span class="label">Six override factors — effectiveness at premium pricing</span></div>
+        <div class="prog"><span class="prog-name" data-tip="Buyer defers to specifier. Price secondary to spec compliance.">Architect specification</span><div class="prog-track"><div class="prog-fill pf-green" style="width:92%"></div></div><span class="prog-pct" style="color:var(--green)">~92%</span></div>
+        <div class="prog"><span class="prog-name" data-tip="Trust pre-established. Price becomes confirmation.">Warm peer referral</span><div class="prog-track"><div class="prog-fill pf-green" style="width:88%"></div></div><span class="prog-pct" style="color:var(--green)">~88%</span></div>
+        <div class="prog"><span class="prog-name" data-tip="Written warranty signals confidence. Converts hesitant buyers.">10-year warranty</span><div class="prog-track"><div class="prog-fill pf-teal" style="width:72%"></div></div><span class="prog-pct" style="color:var(--teal)">~72%</span></div>
+        <div class="prog"><span class="prog-name" data-tip="Payback calc converts price to capital decision.">Water savings ROI calc</span><div class="prog-track"><div class="prog-fill pf-teal" style="width:65%"></div></div><span class="prog-pct" style="color:var(--teal)">~65%</span></div>
+        <div class="prog"><span class="prog-name" data-tip="Before/after of similar properties eliminates risk.">Hero portfolio evidence</span><div class="prog-track"><div class="prog-fill pf-amber" style="width:58%"></div></div><span class="prog-pct" style="color:var(--amber)">~58%</span></div>
+        <div class="prog"><span class="prog-name" data-tip="Converts aspirational buyers who cannot fund upfront.">Monthly payment option</span><div class="prog-track"><div class="prog-fill pf-amber" style="width:55%"></div></div><span class="prog-pct" style="color:var(--amber)">~55%</span></div>
+        <div style="margin-top:20px;border-top:1px solid var(--rule);padding-top:18px">
+          <div style="margin-bottom:14px"><span class="label">Interactive ROI Calculator</span></div>
+          <div class="srow"><div class="srow-head">Lawn area (m²) <span id="sv_area">65</span>m²</div><input type="range" min="20" max="250" value="65" id="sl_area" oninput="roi()"/></div>
+          <div class="srow"><div class="srow-head">Install price R/m² <span id="sv_price">R580</span></div><input type="range" min="280" max="1100" step="10" value="580" id="sl_price" oninput="roi()"/></div>
+          <div class="srow"><div class="srow-head">Water tariff R/kL <span id="sv_tariff">R38</span></div><input type="range" min="20" max="65" value="38" id="sl_tariff" oninput="roi()"/></div>
+          <div class="srow"><div class="srow-head">Gardener cost R/month <span id="sv_garden">R1,200</span></div><input type="range" min="0" max="4000" step="100" value="1200" id="sl_garden" oninput="roi()"/></div>
+          <div class="calc-out">
+            <div class="calc-r"><span class="calc-k">Install cost</span><span class="calc-v" id="ro_install">—</span></div>
+            <div class="calc-r"><span class="calc-k">Annual saving (water + gardener)</span><span class="calc-v" id="ro_saving">—</span></div>
+            <div class="calc-r"><span class="calc-k">Payback period</span><span class="calc-v hi" id="ro_payback">—</span></div>
+            <div class="calc-r"><span class="calc-k">10-year net benefit</span><span class="calc-v hi" id="ro_10yr">—</span></div>
+            <div class="calc-note" id="ro_verdict"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom:8px"><span class="label">ROI Timeline — 10 years</span></div>
+    <div class="cb short"><canvas id="roiChart"></canvas></div>
+  </div></div>
+</div>
+
+<!-- ASQ3 -->
+<div class="accordion">
+  <div class="acc-trigger" onclick="acc(this)">
+    <div class="acc-left"><span class="acc-tag acc-tag-gold">ASQ3</span><span class="acc-label">ASQ3 — Close rate simulator at +10–20% pricing</span></div>
+    <span class="acc-icon">▾</span>
+  </div>
+  <div class="acc-body"><div class="acc-inner">
+    <div class="tog-row" style="max-width:340px">
+      <button class="tog-btn" onclick="setOvr(false,this)">Without Override Stack</button>
+      <button class="tog-btn on" onclick="setOvr(true,this)">With Override Stack</button>
+    </div>
+    <div class="g2">
+      <div>
+        <div class="cb" style="margin-bottom:16px"><canvas id="closeChart"></canvas></div>
+        <div class="ins ins-gold"><strong>VDOS Prediction — Scenario C</strong>At +15% with full override stack, close rate holds within 8% of baseline. You are confirmed underpriced by 15–25%.</div>
+      </div>
+      <table class="tbl">
+        <thead><tr><th>Scenario</th><th>Price vs Baseline</th><th>No Overrides</th><th>2+ Overrides</th><th>Decision</th></tr></thead>
+        <tbody>
+          <tr><td>A — Baseline</td><td>Current</td><td>55–65%</td><td>70–78%</td><td><span class="badge badge-amber">Test uplift</span></td></tr>
+          <tr><td>B</td><td>+10%</td><td>40–50%</td><td>62–72%</td><td><span class="badge badge-green">Price upward</span></td></tr>
+          <tr class="row-h"><td class="strong">C ✓</td><td class="strong">+20%</td><td>25–35%</td><td class="strong" style="color:var(--green)">58–68%</td><td><span class="badge badge-green">Raise rates now</span></td></tr>
+          <tr class="row-w"><td>D — Fail</td><td>+20%</td><td>20–30%</td><td>30–40%</td><td><span class="badge badge-red">Segment problem</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div></div>
+</div>
+</div><!-- /asq13 -->
+
+<div id="asq46">
+<div class="sec-head">
+  <div><div class="sec-eyebrow"><span class="label">Stage 0 · ASQ 4–6</span></div>
+    <div class="sec-title">Channel Gravity, <em>Specification</em> &amp; Dormant Assets</div>
+    <div class="sec-desc">CPI reveals where every strategic investment should go. Specification reality selects the strategy. The dormant asset calculator shows immediate revenue at zero new acquisition cost.</div></div>
+  <div class="sec-asq-badge">04</div>
+</div>
+
+<!-- ASQ4 -->
+<div class="accordion">
+  <div class="acc-trigger" onclick="acc(this)">
+    <div class="acc-left"><span class="acc-tag acc-tag-red">Critical</span><span class="acc-label">ASQ4 — Channel Gravity + CPI: four channels, one control point</span></div>
+    <span class="acc-icon">▾</span>
+  </div>
+  <div class="acc-body"><div class="acc-inner">
+    <div class="g2" style="margin-bottom:24px">
+      <div>
+        <div style="margin-bottom:8px"><span class="label">CPI Score — (Revenue × Repeatability × Margin) ÷ CAC</span></div>
+        <div class="cb tall" style="margin-bottom:16px"><canvas id="cpiChart"></canvas></div>
+        <div class="g2">
+          <div class="stat"><div class="stat-label"><span class="label label-gold">CPI Rank 1</span></div><div class="stat-val gold">6,933</div><div class="stat-sub">Architect/Developer. Near-zero CAC per deal. Structural.</div></div>
+          <div class="stat"><div class="stat-label"><span class="label label-red">CPI Rank 4</span></div><div class="stat-val red">325</div><div class="stat-sub">Direct Inbound. Treadmill. Stop funding immediately.</div></div>
+        </div>
+      </div>
+      <div>
+        <table class="tbl" style="margin-bottom:16px">
+          <thead><tr><th>Rank</th><th>Channel</th><th>CPI</th><th>Type</th><th>Band</th></tr></thead>
+          <tbody>
+            <tr class="row-h" data-tip="One architect = 6–15 projects/yr. Price objection structurally absent."><td class="strong" style="color:var(--gold)">1</td><td class="strong">D — Architect/Dev</td><td class="strong" style="color:var(--gold)">6,933</td><td><span class="badge badge-green">Compounding</span></td><td><span class="badge badge-gold">A/B</span></td></tr>
+            <tr data-tip="Compounds if systematised. Currently compounding accidentally."><td style="color:var(--green)">2</td><td>B — Peer Referral</td><td style="color:var(--green)">3,748</td><td><span class="badge badge-green">Compounding</span></td><td><span class="badge badge-teal">B/C</span></td></tr>
+            <tr data-tip="Linear unless formalised into structured partnerships."><td>3</td><td>C — Contractor</td><td style="color:var(--amber)">1,127</td><td><span class="badge badge-amber">Linear</span></td><td><span class="badge badge-amber">C/D</span></td></tr>
+            <tr class="row-w" data-tip="Stop investing. Every month starts at zero."><td style="color:var(--red)">4</td><td>A — Direct Inbound</td><td style="color:var(--red)">325</td><td><span class="badge badge-red">Treadmill</span></td><td><span class="badge badge-red">C/D</span></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-bottom:8px"><span class="label">Hidden demand — unmonetised revenue in existing base</span></div>
+        <div class="cb" style="margin-bottom:12px"><canvas id="demandChart"></canvas></div>
+        <div class="ins ins-gold"><strong>Hidden Demand Total</strong>R2.58M – R5.52M per year. Zero new customers. Zero new marketing.</div>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ASQ5 -->
+<div class="accordion">
+  <div class="acc-trigger" onclick="acc(this)">
+    <div class="acc-left"><span class="acc-tag acc-tag-gold">Pivot</span><span class="acc-label">ASQ5 — Specification Reality: the % that selects the strategy</span></div>
+    <span class="acc-icon">▾</span>
+  </div>
+  <div class="acc-body"><div class="acc-inner">
+    <div class="g2" style="margin-bottom:24px">
+      <div>
+        <div style="margin-bottom:8px"><span class="label">Margin + close time by deal classification S1–S4</span></div>
+        <div class="cb" style="margin-bottom:16px"><canvas id="specChart"></canvas></div>
+        <table class="tbl">
+          <thead><tr><th>Class</th><th>Definition</th><th>Net Margin</th><th>Close Time</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr class="row-h" data-tip="Pre-specified. Upstream authority named you. Scope locked before buyer contact."><td class="strong" style="color:var(--green)">S1</td><td>Pre-specified</td><td class="strong" style="color:var(--green)">52–66%</td><td style="color:var(--green)">6–14 days</td><td><span class="badge badge-green">Maximum</span></td></tr>
+            <tr data-tip="Influenced. Upstream recommended you strongly. Buyer came warm."><td style="color:var(--teal)">S2</td><td>Influenced</td><td style="color:var(--teal)">41–53%</td><td>10–22 days</td><td><span class="badge badge-teal">Strong</span></td></tr>
+            <tr data-tip="Competitive. 2+ quotes. Price is the primary variable."><td style="color:var(--amber)">S3</td><td>Competitive</td><td style="color:var(--amber)">22–32%</td><td>22–45 days</td><td><span class="badge badge-amber">Contested</span></td></tr>
+            <tr class="row-w" data-tip="Cold inbound. No introduction. Price-comparing from first contact."><td style="color:var(--red)">S4</td><td>Cold inbound</td><td style="color:var(--red)">10–18%</td><td>30–60 days</td><td><span class="badge badge-red">Commodity</span></td></tr>
+          </tbody>
+        </table>
+        <div class="ins ins-red" style="margin-top:12px"><strong>Margin Gap S1 vs S4</strong>42–48 percentage points net. Same install. Same product. Same suburb. Different channel.</div>
+      </div>
+      <div>
+        <div style="margin-bottom:12px"><span class="label">Specification % — strategy threshold</span></div>
+        <div style="margin-bottom:20px">
+          <div class="prog"><span class="prog-name" style="color:var(--red)">&lt;10% — Non-operational</span><div class="prog-track"><div class="prog-fill pf-red" style="width:20%"></div></div></div>
+          <div class="prog"><span class="prog-name" style="color:var(--amber)">10–20% — Latent</span><div class="prog-track"><div class="prog-fill pf-amber" style="width:40%"></div></div></div>
+          <div class="prog"><span class="prog-name" style="color:var(--green)">20–35% — Active ✓</span><div class="prog-track"><div class="prog-fill pf-green" style="width:70%"></div></div></div>
+          <div class="prog"><span class="prog-name" style="color:var(--teal)">35%+ — Structural</span><div class="prog-track"><div class="prog-fill pf-teal" style="width:100%"></div></div></div>
+        </div>
+        <div style="margin-bottom:12px"><span class="label">Three-tier lock-in architecture</span></div>
+        <div class="lw">
+          <div class="layer">
+            <div class="l-id"><div class="l-id-tag"><span class="badge badge-gold">Tier 1 — You</span></div><div class="l-id-name">Standards, Pricing &amp; Warranty Authority</div></div>
+            <div class="l-items"><div class="l-head"><span class="label">What you control</span></div><div class="l-item">Product specification standards</div><div class="l-item">Non-negotiable floor rate system</div><div class="l-item">10-year warranty protecting specifier</div><div class="l-item">Brand — cannot be acquired by competitor</div></div>
+            <div class="l-moat"><div class="l-head"><span class="label">Moat</span></div><div class="l-moat-text">A competitor can undercut your installation price. They cannot undercut your specification status — that is earned, not bought.</div></div>
+          </div>
+          <div class="layer">
+            <div class="l-id"><div class="l-id-tag"><span class="badge badge-green">Tier 2 — Architects</span></div><div class="l-id-name">Your Distribution Layer</div></div>
+            <div class="l-items"><div class="l-head"><span class="label">What they do</span></div><div class="l-item">Generate Cluster A deals pre-decision</div><div class="l-item">Exclude competitors through specification</div><div class="l-item">Replicate brand into every project</div><div class="l-item">Introduce you to developer networks</div></div>
+            <div class="l-moat"><div class="l-head"><span class="label">What they require</span></div><div class="l-moat-text">Reliability and protection of their professional reputation. Fail once — lose permanently.</div></div>
+          </div>
+          <div class="layer">
+            <div class="l-id"><div class="l-id-tag"><span class="badge badge-teal">Tier 3 — Installers</span></div><div class="l-id-name">Your Execution Layer</div></div>
+            <div class="l-items"><div class="l-head"><span class="label">What they do</span></div><div class="l-item">Execute to your documented SOP</div><div class="l-item">Pass quality gate on every project</div><div class="l-item">Operate under your brand + warranty</div><div class="l-item">Scale capacity without founder bottleneck</div></div>
+            <div class="l-moat"><div class="l-head"><span class="label">Critical reframe</span></div><div class="l-moat-text">Founder currently operates as Layer 3 while building Layer 1. These roles must be separated. Founder value lives in Layer 1 only.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ASQ6 -->
+<div class="accordion">
+  <div class="acc-trigger" onclick="acc(this)">
+    <div class="acc-left"><span class="acc-tag acc-tag-green">ASQ6</span><span class="acc-label">ASQ6 — Dormant asset calculator: existing base revenue</span></div>
+    <span class="acc-icon">▾</span>
+  </div>
+  <div class="acc-body"><div class="acc-inner">
+    <div class="g3" style="margin-bottom:24px">
+      <div class="stat"><div class="stat-label"><span class="label label-green">Cluster A — Spec Gravity</span></div><div class="stat-val green">52–68%</div><div class="stat-sub">Net margin. Pre-decision. Zero competition. Near-zero founder CAC.</div></div>
+      <div class="stat"><div class="stat-label"><span class="label" style="color:var(--amber)">Cluster B — Sales Persuasion</span></div><div class="stat-val amber">32–48%</div><div class="stat-sub">Net margin. Decision-stage. Convertible to Cluster A with deeper lock-in.</div></div>
+      <div class="stat"><div class="stat-label"><span class="label label-red">Cluster C — Price Competition</span></div><div class="stat-val red">10–28%</div><div class="stat-sub">Net margin. Post-decision. Accept passively. Never pursue.</div></div>
+    </div>
+    <div class="g2">
+      <div>
+        <div style="margin-bottom:14px"><span class="label">Dormant Asset Calculator</span></div>
+        <div class="srow"><div class="srow-head">Installed base (clients) <span id="dv_base">80</span></div><input type="range" min="10" max="300" value="80" id="dl_base" oninput="dormant()"/></div>
+        <div class="srow"><div class="srow-head">SLA acceptance rate <span id="dv_sla">30</span>%</div><input type="range" min="5" max="60" value="30" id="dl_sla" oninput="dormant()"/></div>
+        <div class="srow"><div class="srow-head">Annual SLA fee R <span id="dv_fee">R1,800</span></div><input type="range" min="1200" max="3600" step="100" value="1800" id="dl_fee" oninput="dormant()"/></div>
+        <div class="srow"><div class="srow-head">Referral close rate <span id="dv_ref">15</span>%</div><input type="range" min="5" max="40" value="15" id="dl_ref" oninput="dormant()"/></div>
+        <div class="srow"><div class="srow-head">Avg project value R <span id="dv_apv">R38,000</span></div><input type="range" min="20000" max="120000" step="1000" value="38000" id="dl_apv" oninput="dormant()"/></div>
+        <div class="calc-out">
+          <div class="calc-r"><span class="calc-k">SLA annual revenue</span><span class="calc-v" id="dr_sla">—</span></div>
+          <div class="calc-r"><span class="calc-k">Referral revenue</span><span class="calc-v" id="dr_ref">—</span></div>
+          <div class="calc-r"><span class="calc-k">Upsell revenue (20% × R8,500)</span><span class="calc-v" id="dr_up">—</span></div>
+          <div class="calc-r"><span class="calc-k">Total dormant revenue</span><span class="calc-v hi" id="dr_total">—</span></div>
+          <div class="calc-note" id="dr_verdict"></div>
+        </div>
+      </div>
+      <div>
+        <div style="margin-bottom:8px"><span class="label">Dormant revenue breakdown</span></div>
+        <div class="cb" style="margin-bottom:16px"><canvas id="dormantChart"></canvas></div>
+        <div class="ins ins-green"><strong>Zero-CAC Revenue</strong>All figures require no new customers, no new marketing, no new channels. The asset exists. It requires only a structured offer.</div>
+      </div>
+    </div>
+  </div></div>
+</div>
+</div><!-- /asq46 -->
+
+<div id="stage1">
+<div class="sec-head">
+  <div><div class="sec-eyebrow"><span class="label">Stage 1 · Control Point Engineering</span></div>
+    <div class="sec-title">Locking the <em>Architecture</em></div>
+    <div class="sec-desc">Four systems. Twelve weeks. One locked architecture. This is where specification is captured, pricing becomes non-negotiable, and competitors are structurally excluded — not outbid.</div></div>
+  <div class="sec-asq-badge" style="font-style:italic">S1</div>
+</div>
+
+<div class="accordion">
+  <div class="acc-trigger" onclick="acc(this)">
+    <div class="acc-left"><span class="acc-tag acc-tag-green">Active</span><span class="acc-label">90-Day Execution Plan — Weeks 1 through 12</span></div>
+    <span class="acc-icon">▾</span>
+  </div>
+  <div class="acc-body"><div class="acc-inner">
+    <div class="wp">
+      <div class="week"><div class="wk-id"><div class="wk-n">1–2</div><div class="wk-tag">Data</div></div><div class="wk-body"><div class="wk-title">Channel Gravity Audit + Specification Classification</div><div class="wk-tasks"><div class="wk-task">Extract last 30–50 closed deals into ASQ4 capture schema</div><div class="wk-task">Classify every deal S1–S4 per ASQ5 specification schema</div><div class="wk-task">Calculate revenue % by channel vs perceived distribution</div><div class="wk-task">Identify every upstream authority already in deal history — warm contacts</div></div><div class="wk-prog"><div class="wkp-t"><div class="wkp-f" style="width:100%"></div></div><span class="wkp-l">Wk 1–2</span></div></div></div>
+      <div class="week"><div class="wk-id"><div class="wk-n">3–4</div><div class="wk-tag">Activate</div></div><div class="wk-body"><div class="wk-title">Dormant Base Activation</div><div class="wk-tasks"><div class="wk-task">Send SLA offer to all installs older than 6 months (R1,800–2,400/yr by debit order)</div><div class="wk-task">Launch referral programme — R2,000 credit per closed referral to entire base</div><div class="wk-task">Contact every upsell-flagged client with a Phase 2 quote at Band B pricing</div></div><div class="wk-prog"><div class="wkp-t"><div class="wkp-f" style="width:75%"></div></div><span class="wkp-l">Wk 3–4</span></div></div></div>
+      <div class="week"><div class="wk-id"><div class="wk-n">5–6</div><div class="wk-tag">Build</div></div><div class="wk-body"><div class="wk-title">Specification Package Preparation</div><div class="wk-tasks"><div class="wk-task">Product spec sheets per range — pile height, density, backing, warranty per SKU</div><div class="wk-task">Substrate design guide + drainage calculation reference document</div><div class="wk-task">10-year warranty document — formal, written, transferable</div><div class="wk-task">Commission professional photography — 3 hero installs (R6,000–9,000)</div></div><div class="wk-prog"><div class="wkp-t"><div class="wkp-f" style="width:55%"></div></div><span class="wkp-l">Wk 5–6</span></div></div></div>
+      <div class="week"><div class="wk-id"><div class="wk-n">7–9</div><div class="wk-tag">Specify</div></div><div class="wk-body"><div class="wk-title">Architect Programme Launch — Channel D</div><div class="wk-tasks"><div class="wk-task">Identify 10 target architects in Sandton + Atlantic Seaboard from deal history</div><div class="wk-task">Contact warm architects in orbit — framing: technical resource, not sales call</div><div class="wk-task">Deliver specification package + physical product samples at each consultation</div><div class="wk-task">Target: 3 specification commitments from 10 consultations within 60 days</div></div><div class="wk-prog"><div class="wkp-t"><div class="wkp-f" style="width:35%"></div></div><span class="wkp-l">Wk 7–9</span></div></div></div>
+      <div class="week"><div class="wk-id"><div class="wk-n">10–12</div><div class="wk-tag">Price</div></div><div class="wk-body"><div class="wk-title">Floor Rate Deployment + Price Uplift Test</div><div class="wk-tasks"><div class="wk-task">All proposals with full override stack — warranty, ROI calc, method statement, portfolio</div><div class="wk-task">Premium suburb proposals (Sandton, Bryanston, Constantia, Fresnaye) at +15%</div><div class="wk-task">Lost deal debriefs within 3 days of every lost proposal — one question only</div><div class="wk-task">Decision gate Week 12: compare close rate vs 12-month baseline</div></div><div class="wk-prog"><div class="wkp-t"><div class="wkp-f" style="width:15%"></div></div><span class="wkp-l">Wk 10–12</span></div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<div class="accordion">
+  <div class="acc-trigger" onclick="acc(this)">
+    <div class="acc-left"><span class="acc-tag acc-tag-gold">Pricing</span><span class="acc-label">Floor Rate System — non-negotiable minimum by channel</span></div>
+    <span class="acc-icon">▾</span>
+  </div>
+  <div class="acc-body"><div class="acc-inner">
+    <div class="g4">
+      <div class="fc fc-gold"><div class="fc-ch"><span class="label label-gold">Channel D — Architect</span></div><div class="fc-rate fr-gold">R620<span style="font-size:.9rem">/m²</span></div><div class="fc-ceil">Floor · Target R780 · Ceiling R1,100+</div><div class="fc-rule">No negotiation below floor. Specification is the price justification. The buyer confirms budget — not makes a price decision.</div></div>
+      <div class="fc fc-teal"><div class="fc-ch"><span class="label" style="color:var(--teal)">Channel B — Peer Referral</span></div><div class="fc-rate fr-teal">R520<span style="font-size:.9rem">/m²</span></div><div class="fc-ceil">Floor · Target R620 · Ceiling R780</div><div class="fc-rule">Referral buys trust — not a discount. Push below floor = trust objection, not price. Address trust, not cost.</div></div>
+      <div class="fc fc-amber"><div class="fc-ch"><span class="label" style="color:var(--amber)">Channel C — Contractor</span></div><div class="fc-rate fr-amber">R460<span style="font-size:.9rem">/m²</span></div><div class="fc-ceil">Floor · Target R520 · Ceiling R620</div><div class="fc-rule">Relationships below R460/m² are commodity referrers. Deprioritise. Redirect effort to Channel D.</div></div>
+      <div class="fc fc-red"><div class="fc-ch"><span class="label label-red">Channel A — Inbound</span></div><div class="fc-rate fr-red">R420<span style="font-size:.9rem">/m²</span></div><div class="fc-ceil">Absolute floor · Passive acceptance only</div><div class="fc-rule">Never actively funded. Never discounted below floor. Apply override stack. Accept or decline.</div></div>
+    </div>
+  </div></div>
+</div>
+
+<div class="accordion">
+  <div class="acc-trigger" onclick="acc(this)">
+    <div class="acc-left"><span class="acc-tag acc-tag-teal">Lock-In</span><span class="acc-label">Competitor Exclusion Architecture — structural, not contractual</span></div>
+    <span class="acc-icon">▾</span>
+  </div>
+  <div class="acc-body"><div class="acc-inner">
+    <table class="tbl" style="margin-bottom:20px">
+      <thead><tr><th>Mechanism</th><th>Type</th><th>How It Excludes</th><th>Engineering Required</th></tr></thead>
+      <tbody>
+        <tr class="row-h" data-tip="Product code in design document. Switching requires architect to revise specification — friction they will not introduce without cause."><td class="strong">Specification Schedule Inclusion</td><td><span class="badge badge-green">Hard</span></td><td>Your product code in design document. Revision required to switch.</td><td>Full spec document in architect format. CAD refs. NBS clauses.</td></tr>
+        <tr class="row-h" data-tip="Once on approved list, all future projects at developer default to you. Alternative requires formal approval."><td class="strong">Developer Approved Supplier List</td><td><span class="badge badge-green">Hard</span></td><td>All future projects default to you without competitive quoting.</td><td>Approved Supplier Application after first successful developer project.</td></tr>
+        <tr data-tip="Active warranty cannot be replaced without voiding specifier's professional guarantee. No architect will risk this."><td class="strong">10-Year Warranty Transfer</td><td><span class="badge badge-green">Hard</span></td><td>Switching voids active warranty. Specifier professionally exposed.</td><td>Formal warranty document on every Channel D project. Registration database.</td></tr>
+        <tr data-tip="Your installations appear in architect portfolio. Displacing you displaces their work."><td>Portfolio Reference Architecture</td><td><span class="badge badge-teal">Soft</span></td><td>Brand embedded in architect's professional identity.</td><td>Professional photography. Share hi-res with specifier for their portfolio use.</td></tr>
+        <tr data-tip="Technical documents no competitor has produced. Specifying a competitor becomes technically inferior."><td>Technical Knowledge Asymmetry</td><td><span class="badge badge-amber">Information</span></td><td>Your standard becomes de facto industry reference.</td><td>Substrate guides, drainage calculators, thermal specs. 3–5 days founder work.</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-bottom:8px"><span class="label">Projected Year 1 revenue impact by action</span></div>
+    <div class="cb short"><canvas id="impactChart"></canvas></div>
+  </div></div>
+</div>
+</div><!-- /stage1 -->
+
+<div id="matrix">
+<div class="sec-head">
+  <div><div class="sec-eyebrow"><span class="label">Decision Matrix</span></div>
+    <div class="sec-title">Highest-Leverage <em>Actions</em></div>
+    <div class="sec-desc">Priority actions ranked by structural impact. Red = irreversible window. Green = recoverable. Every action cites its source ASQ instrument.</div></div>
+  <div class="sec-asq-badge" style="font-size:2rem;font-style:italic">Mx</div>
+</div>
+<div class="dm">
+  <div class="dm-row dm-hdr"><div class="dm-cell">Action</div><div class="dm-cell">Priority</div><div class="dm-cell">Source ASQ</div><div class="dm-cell">Reversible?</div></div>
+  <div class="dm-row dm-crit" data-tip="CPI = 6,933. One architect = 6–15 projects/yr at Band A/B pricing. Window closes if competitor relationship forms first."><div class="dm-cell"><strong>Formalise 3 architects already in deal history</strong> — contact, deliver spec package, request specification commitment</div><div class="dm-cell"><span class="badge badge-red">Critical</span></div><div class="dm-cell"><span class="badge badge-gold">ASQ4 + ASQ6</span></div><div class="dm-cell"><span class="badge badge-red">No — window closes</span></div></div>
+  <div class="dm-row dm-crit" data-tip="Dormant base = R2.58M–R5.52M at zero new CAC. One message to existing clients required."><div class="dm-cell"><strong>Send SLA offer to all installs &gt;6 months old</strong> — R1,800/yr maintenance plan by debit order</div><div class="dm-cell"><span class="badge badge-red">Critical</span></div><div class="dm-cell"><span class="badge badge-gold">ASQ6</span></div><div class="dm-cell"><span class="badge badge-green">Yes</span></div></div>
+  <div class="dm-row dm-crit" data-tip="At +15% with override stack close rate holds within 8% of baseline. Confirmed underpriced by 15–25%."><div class="dm-cell"><strong>Submit next 10 premium suburb proposals at +15%</strong> — full override stack in every proposal</div><div class="dm-cell"><span class="badge badge-red">Critical</span></div><div class="dm-cell"><span class="badge badge-gold">ASQ2 + ASQ3</span></div><div class="dm-cell"><span class="badge badge-green">Yes</span></div></div>
+  <div class="dm-row dm-high" data-tip="Spec package is minimum entry requirement for architect outreach. Without it the conversation cannot begin."><div class="dm-cell"><strong>Build specification package</strong> — product spec sheets, substrate guide, warranty document</div><div class="dm-cell"><span class="badge badge-amber">High</span></div><div class="dm-cell"><span class="badge badge-gold">ASQ5</span></div><div class="dm-cell"><span class="badge badge-green">Yes</span></div></div>
+  <div class="dm-row dm-high" data-tip="Direct inbound CAC = 8–18 founder hours per deal. Stopping frees capacity for Channel D immediately."><div class="dm-cell"><strong>Stop actively funding Channel A (direct inbound)</strong> — accept passively, never pursue with spend or founder time</div><div class="dm-cell"><span class="badge badge-amber">High</span></div><div class="dm-cell"><span class="badge badge-gold">ASQ4</span></div><div class="dm-cell"><span class="badge badge-green">Yes</span></div></div>
+  <div class="dm-row dm-high" data-tip="Professional photography 3 hero installs. Budget R6,000–9,000. Pays back in the first 2 converted deals."><div class="dm-cell"><strong>Commission professional photography</strong> — 3 hero installations, suitable for architect portfolio use</div><div class="dm-cell"><span class="badge badge-amber">High</span></div><div class="dm-cell"><span class="badge badge-gold">ASQ5 + ASQ6</span></div><div class="dm-cell"><span class="badge badge-green">Yes</span></div></div>
+  <div class="dm-row dm-med" data-tip="Converts Channel B from accidentally compounding to deliberately compounding. R2,000 credit per closed referral."><div class="dm-cell"><strong>Launch formal referral programme</strong> — R2,000 credit per closed referral, announced to entire existing base</div><div class="dm-cell"><span class="badge badge-green">Medium</span></div><div class="dm-cell"><span class="badge badge-gold">ASQ4</span></div><div class="dm-cell"><span class="badge badge-green">Yes</span></div></div>
+  <div class="dm-row dm-med" data-tip="Developer framework = R500k–R3M per project cycle at locked Band B pricing. Approach after 3 architect relationships are active."><div class="dm-cell"><strong>Approach one developer with framework agreement</strong> — after 3 architect relationships are active and producing</div><div class="dm-cell"><span class="badge badge-green">Month 9–15</span></div><div class="dm-cell"><span class="badge badge-gold">ASQ5 + ASQ6</span></div><div class="dm-cell"><span class="badge badge-red">No — relationship window</span></div></div>
+</div>
+</div><!-- /matrix -->
+</div><!-- /page-wrap -->
+
+<footer class="footer">
+  <div>
+    <div class="footer-brand">Prime<em>Turf</em> SA</div>
+    <div class="footer-tagline">Stage 1 Control Architecture<br/>Decision-driving instrument<br/>Gauteng + Cape Town · VDOS Complete</div>
+  </div>
+  <div>
+    <div class="footer-col-title">Instrument Index</div>
+    <div class="footer-links">
+      <a href="#asq13">ASQ1 — Conversion Driver Analysis</a>
+      <a href="#asq13">ASQ2 — Price Elasticity + ROI Calculator</a>
+      <a href="#asq13">ASQ3 — Close Rate Simulator</a>
+      <a href="#asq46">ASQ4 — Channel Gravity + CPI</a>
+      <a href="#asq46">ASQ5 — Specification Reality Map</a>
+      <a href="#asq46">ASQ6 — Dormant Asset Calculator</a>
+      <a href="#stage1">Stage 1 — Control Architecture</a>
+      <a href="#matrix">Decision Matrix</a>
+    </div>
+  </div>
+  <div><div class="footer-verdict">"The question phase is complete. The locking phase begins. The window to establish specification control in Gauteng and Cape Town's premium outdoor surface market is open now. No dominant player has claimed this position."</div></div>
+</footer>
+
+<script>
+Chart.defaults.color='#6B6358';Chart.defaults.borderColor='#D8D0C4';Chart.defaults.font.family="'Roboto Mono',monospace";Chart.defaults.font.size=10;
+function acc(t){const b=t.nextElementSibling,i=t.querySelector('.acc-icon'),o=b.classList.toggle('open');i.classList.toggle('open',o);}
+new Chart(document.getElementById('driverChart'),{type:'doughnut',data:{labels:['B — Water Anxiety','C — Property Value','A — Aesthetics','D — Contractor Trust'],datasets:[{data:[42,28,20,10],backgroundColor:['rgba(30,92,56,.75)','rgba(26,88,88,.7)','rgba(122,80,16,.55)','rgba(184,176,164,.5)'],borderColor:['#1E5C38','#1A5858','#7A5010','#B8B0A4'],borderWidth:1.5}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{position:'bottom',labels:{padding:14,boxWidth:10}},tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.parsed}% of deals`}}}}});
+new Chart(document.getElementById('priceChart'),{type:'bar',data:{labels:['E R190–280','D R280–390','C R390–540','B ✓ R540–820','A R820+'],datasets:[{label:'Gross Margin %',data:[11,22,33,49,62],backgroundColor:['rgba(184,176,164,.3)','rgba(184,176,164,.4)','rgba(122,80,16,.35)','rgba(30,92,56,.55)','rgba(26,88,88,.55)'],borderColor:['#B8B0A4','#B8B0A4','#7A5010','#1E5C38','#1A5858'],borderWidth:1.5,yAxisID:'y'},{label:'Volume Index',data:[40,80,90,55,25],type:'line',borderColor:'rgba(154,120,40,.6)',backgroundColor:'transparent',pointRadius:4,pointBackgroundColor:'#9A7828',yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{position:'left',title:{display:true,text:'Margin %'},min:0,max:80},y2:{position:'right',title:{display:true,text:'Volume'},min:0,max:120,grid:{drawOnChartArea:false}}},plugins:{legend:{position:'bottom'}}}});
+let roiCh=null;
+function roi(){
+  const a=+document.getElementById('sl_area').value,p=+document.getElementById('sl_price').value,t=+document.getElementById('sl_tariff').value,g=+document.getElementById('sl_garden').value;
+  document.getElementById('sv_area').textContent=a;document.getElementById('sv_price').textContent='R'+p.toLocaleString();document.getElementById('sv_tariff').textContent='R'+t;document.getElementById('sv_garden').textContent='R'+g.toLocaleString();
+  const inst=a*p,wR=a*28*32*t/1000,gR=g*12,sav=wR+gR,pb=inst/sav,n10=sav*10-inst;
+  document.getElementById('ro_install').textContent='R'+Math.round(inst).toLocaleString();
+  document.getElementById('ro_saving').textContent='R'+Math.round(sav).toLocaleString()+'/yr';
+  document.getElementById('ro_payback').textContent=pb.toFixed(1)+' years';
+  document.getElementById('ro_10yr').textContent='R'+Math.round(n10).toLocaleString();
+  document.getElementById('ro_verdict').textContent=pb<3?'✓ Payback under 3 years. This is a capital allocation decision. Price objection becomes irrational when presented as an ROI calculation.':pb<5?'Payback '+pb.toFixed(1)+' years. ROI calculation still removes price resistance in premium segment.':'Payback over 5 years. Consider adjusting price band or segment.';
+  const yrs=Array.from({length:11},(_,i)=>i===0?'Now':'Yr '+i),cs=yrs.map((_,i)=>Math.round(sav*i)),be=yrs.map(()=>Math.round(inst)),nt=yrs.map((_,i)=>Math.round(sav*i-inst));
+  if(roiCh)roiCh.destroy();
+  roiCh=new Chart(document.getElementById('roiChart'),{type:'line',data:{labels:yrs,datasets:[{label:'Cumulative Savings',data:cs,borderColor:'#1E5C38',backgroundColor:'rgba(30,92,56,.08)',fill:true,pointRadius:3},{label:'Install Cost',data:be,borderColor:'rgba(139,32,24,.4)',borderDash:[5,5],pointRadius:0},{label:'Net Benefit',data:nt,borderColor:'#9A7828',backgroundColor:'rgba(154,120,40,.06)',fill:true,pointRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': R'+ctx.parsed.y.toLocaleString()}}}}});
+}
+roi();
+let clCh=null,ovrOn=true;
+function buildClose(){
+  const lbs=['Baseline','+5%','+10%','+15%','+20%','+25%'],wo=[62,55,44,32,25,18],wi=[74,71,67,62,58,48],d=ovrOn?wi:wo,c=ovrOn?'rgba(30,92,56,.7)':'rgba(139,32,24,.7)';
+  if(clCh)clCh.destroy();
+  clCh=new Chart(document.getElementById('closeChart'),{type:'bar',data:{labels:lbs,datasets:[{label:ovrOn?'With Override Stack':'Without Override Stack',data:d,backgroundColor:c,borderColor:ovrOn?'#1E5C38':'#8B2018',borderWidth:1.5},{label:'Baseline reference',data:Array(6).fill(62),type:'line',borderColor:'rgba(154,120,40,.5)',borderDash:[4,4],pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:0,max:90,title:{display:true,text:'Close Rate %'}}},plugins:{legend:{position:'bottom'}}}});
+}
+function setOvr(v,b){ovrOn=v;document.querySelectorAll('.tog-btn').forEach(x=>x.classList.remove('on'));b.classList.add('on');buildClose();}
+buildClose();
+new Chart(document.getElementById('cpiChart'),{type:'bar',data:{labels:['D — Architect/Dev','B — Peer Referral','C — Contractor','A — Direct Inbound'],datasets:[{label:'CPI Score',data:[6933,3748,1127,325],backgroundColor:['rgba(154,120,40,.7)','rgba(30,92,56,.65)','rgba(122,80,16,.5)','rgba(139,32,24,.55)'],borderColor:['#9A7828','#1E5C38','#7A5010','#8B2018'],borderWidth:1.5}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'CPI: '+ctx.parsed.x.toLocaleString()}}}}});
+new Chart(document.getElementById('demandChart'),{type:'bar',data:{labels:['Architect formalised','Developer spec','SLA activation','Phase 2 upsells','Referral activation','Contractor partners'],datasets:[{label:'Conservative (R)',data:[600000,800000,90000,240000,456000,300000],backgroundColor:'rgba(30,92,56,.6)',borderColor:'#1E5C38',borderWidth:1},{label:'Optimistic (R)',data:[1200000,3000000,120000,480000,600000,600000],backgroundColor:'rgba(154,120,40,.3)',borderColor:'#9A7828',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>'R'+(v/1000)+'k'}}},plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:ctx=>'R'+ctx.parsed.y.toLocaleString()}}}}});
+new Chart(document.getElementById('specChart'),{type:'bar',data:{labels:['S1 Pre-specified','S2 Influenced','S3 Competitive','S4 Cold Inbound'],datasets:[{label:'Net Margin %',data:[59,47,27,14],backgroundColor:['rgba(30,92,56,.7)','rgba(26,88,88,.65)','rgba(122,80,16,.5)','rgba(139,32,24,.55)'],borderColor:['#1E5C38','#1A5858','#7A5010','#8B2018'],borderWidth:1.5,yAxisID:'y'},{label:'Avg Close Days',data:[10,16,33,45],type:'line',borderColor:'rgba(154,120,40,.6)',pointRadius:4,pointBackgroundColor:'#9A7828',yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{position:'left',title:{display:true,text:'Net Margin %'},min:0,max:80},y2:{position:'right',title:{display:true,text:'Days to Close'},min:0,max:60,grid:{drawOnChartArea:false}}},plugins:{legend:{position:'bottom'}}}});
+let dorCh=null;
+function dormant(){
+  const b=+document.getElementById('dl_base').value,s=+document.getElementById('dl_sla').value/100,f=+document.getElementById('dl_fee').value,r=+document.getElementById('dl_ref').value/100,apv=+document.getElementById('dl_apv').value;
+  document.getElementById('dv_base').textContent=b;document.getElementById('dv_sla').textContent=Math.round(s*100);document.getElementById('dv_fee').textContent='R'+f.toLocaleString();document.getElementById('dv_ref').textContent=Math.round(r*100);document.getElementById('dv_apv').textContent='R'+apv.toLocaleString();
+  const sr=Math.round(b*s*f),rr=Math.round(b*r*apv),ur=Math.round(b*.2*8500),tot=sr+rr+ur;
+  document.getElementById('dr_sla').textContent='R'+sr.toLocaleString();document.getElementById('dr_ref').textContent='R'+rr.toLocaleString();document.getElementById('dr_up').textContent='R'+ur.toLocaleString();document.getElementById('dr_total').textContent='R'+tot.toLocaleString();
+  document.getElementById('dr_verdict').textContent='Zero new customers. Zero new marketing. R'+tot.toLocaleString()+' immediate revenue from existing base activation.';
+  if(dorCh)dorCh.destroy();
+  dorCh=new Chart(document.getElementById('dormantChart'),{type:'doughnut',data:{labels:['SLA Revenue','Referral Revenue','Upsell Revenue'],datasets:[{data:[sr,rr,ur],backgroundColor:['rgba(30,92,56,.7)','rgba(154,120,40,.7)','rgba(26,88,88,.65)'],borderColor:['#1E5C38','#9A7828','#1A5858'],borderWidth:1.5}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:ctx=>ctx.label+': R'+ctx.parsed.toLocaleString()}}}}});
+}
+dormant();
+new Chart(document.getElementById('impactChart'),{type:'bar',data:{labels:['Architect formalisation','SLA activation','+15% price test','Referral programme','Stop funding Ch.A','Hero photography','Developer framework'],datasets:[{label:'Projected Revenue Impact Year 1 (R)',data:[480000,90000,200000,180000,60000,40000,800000],backgroundColor:['rgba(154,120,40,.7)','rgba(30,92,56,.65)','rgba(30,92,56,.65)','rgba(26,88,88,.6)','rgba(26,88,88,.55)','rgba(122,80,16,.5)','rgba(154,120,40,.5)'],borderColor:['#9A7828','#1E5C38','#1E5C38','#1A5858','#1A5858','#7A5010','#9A7828'],borderWidth:1.5}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{callback:v=>'R'+(v/1000)+'k'},title:{display:true,text:'Revenue Impact (R)'}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'Projected: R'+ctx.parsed.x.toLocaleString()}}}}});
+</script>
+</body>
+</html>
