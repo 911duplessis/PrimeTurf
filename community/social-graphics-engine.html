@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PrimeTurf Social Graphics Engine</title>
+    <!-- Tailwind CSS for rapid, scalable structural utility -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#0B1C13',
+                        brandDark: '#07120C',
+                        brandGold: '#D4AF37',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Helvetica Neue', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Premium Google Fonts Integration -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen p-8 flex flex-col items-center gap-12">
+
+    <!-- HEADER / CONTROLS -->
+    <div class="w-full max-w-4xl text-center">
+        <h1 class="text-2xl font-bold text-brandGreen tracking-wide uppercase">PrimeTurf Community Content Suite</h1>
+        <p class="text-gray-500 text-sm mt-1">Unified visual layouts for the 27,000-member Facebook ecosystem.</p>
+    </div>
+
+    <!-- GRAPHIC 1: THE WELCOME CARD (1200 x 1200 Square Feed Asset) -->
+    <div id="welcome-graphic" class="w-[600px] h-[600px] bg-brandGreen text-white flex flex-col justify-between p-12 relative overflow-hidden shadow-2xl border border-brandDark">
+        <!-- Subtle Premium Vignette Layer -->
+        <div class="absolute inset-0 bg-gradient-to-b from-brandGreen/20 via-brandGreen/60 to-brandDark/95 z-0"></div>
+
+        <!-- Top Branding Section -->
+        <div class="z-10 flex justify-between items-center border-b border-white/10 pb-4">
+            <span class="text-xs uppercase tracking-[0.3em] font-medium text-brandGold">Official Community Asset</span>
+            <span class="text-xs uppercase tracking-widest text-white/50">Est. 2026</span>
+        </div>
+
+        <!-- Central Bold Proposition -->
+        <div class="z-10 my-auto space-y-4">
+            <h2 class="text-4xl font-bold tracking-tight leading-tight">
+                WELCOME TO THE <br/>
+                <span class="text-brandGold tracking-wide font-extrabold">PRIMETURF</span> FAMILY.
+            </h2>
+            <p class="text-white/70 text-base max-w-md font-light leading-relaxed">
+                Gauteng's premier space for luxury artificial grass, precision landscaping, and timeless outdoor living.
+            </p>
+        </div>
+
+        <!-- Footer / Call to Action -->
+        <div class="z-10 flex justify-between items-end pt-4 border-t border-white/10">
+            <div>
+                <p class="text-[10px] uppercase tracking-widest text-white/40">Join the Conversation</p>
+                <p class="text-xs tracking-wide text-white/80 font-medium">27,000+ Members Strong</p>
+            </div>
+            <div class="text-right">
+                <span class="text-xs font-semibold tracking-widest text-brandGold uppercase">www.primeturf.co.za</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRAPHIC 2: THE COMMUNITY RULE CARD (1200 x 1200 Square Feed Asset) -->
+    <div id="rule-graphic" class="w-[600px] h-[600px] bg-brandGreen text-white flex flex-col justify-between p-12 relative overflow-hidden shadow-2xl border border-brandDark">
+        <div class="absolute inset-0 bg-gradient-to-br from-brandGreen via-brandDark to-brandGreen z-0"></div>
+
+        <!-- Top Branding Section -->
+        <div class="z-10 flex justify-between items-center border-b border-white/10 pb-4">
+            <span class="text-xs uppercase tracking-[0.3em] font-medium text-brandGold">Community Guidelines</span>
+            <span class="text-xs uppercase tracking-widest text-white/50">Rule Spotlight</span>
+        </div>
+
+        <!-- Central Rule Focus -->
+        <div class="z-10 my-auto space-y-6">
+            <div class="inline-block border border-brandGold/40 px-3 py-1 bg-brandGold/5">
+                <span class="text-xs font-bold tracking-[0.2em] text-brandGold uppercase">Core Rule 02</span>
+            </div>
+            <h2 class="text-3xl font-semibold tracking-tight leading-snug">
+                NO SPAM OR <br/>SELF-PROMOTION
+            </h2>
+            <p class="text-white/60 text-sm max-w-sm font-light leading-relaxed">
+                To maintain an executive, high-value environment, all business showcases and marketplace posts must have prior administrative approval.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="z-10 flex justify-between items-end pt-4 border-t border-white/10">
+            <div>
+                <p class="text-[10px] uppercase tracking-widest text-white/40">Protecting the space</p>
+                <p class="text-xs tracking-wide text-white/80 font-medium">PrimeTurf Moderation Team</p>
+            </div>
+            <div class="text-right">
+                <span class="text-xs font-semibold tracking-widest text-brandGold uppercase">Respect &amp; Quality</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
