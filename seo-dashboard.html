@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrimeTurf SA — SEO Intelligence Centre</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F7F4EE; }
+  #root { min-height: 100vh; }
+  #loading {
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: #0F3318; color: #D4A840; font-family: 'Inter', sans-serif;
+    font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+  }
+</style>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="loading">Loading SEO Dashboard…</div>
+<div id="root"></div>
+
+<!-- Dependencies -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/recharts@2.12.7/umd/Recharts.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+const { useState } = React;
+const { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+        ResponsiveContainer, PieChart, Pie, Cell, Legend } = Recharts;
+
+const GREEN       = "#1A5A28";
+const GOLD        = "#B8902A";
+const GREEN_LIGHT = "#2A7A3A";
+const GREEN_DARK  = "#0F3318";
+const GOLD_LIGHT  = "#D4A840";
+const CREAM       = "#F7F4EE";
+const CHARCOAL    = "#1C1C1C";
+
+const chartData = [
+  { date: "Jun 2", clicks: 0, impressions: 0, ctr: 0, position: null },
+  { date: "Jun 3", clicks: 0, impressions: 0, ctr: 0, position: null },
+  { date: "Jun 4", clicks: 0, impressions: 0, ctr: 0, position: null },
+  { date: "Jun 5", clicks: 2, impressions: 2, ctr: 100, position: 2.0 },
+  { date: "Jun 6", clicks: 2, impressions: 4, ctr: 50,  position: 1.8 },
+  { date: "Jun 7", clicks: 3, impressions: 3, ctr: 100, position: 1.7 },
+  { date: "Jun 8", clicks: 1, impressions: 3, ctr: 33.3, position: 1.3 },
+];
+
+const queryData = [
+  { query: "primeturf",   clicks: 1, impressions: 2, ctr: 50, position: 1 },
+  { query: "prime turf",  clicks: 1, impressions: 2, ctr: 50, position: 2 },
+];
+
+const deviceData = [
+  { name: "Mobile",  value: 6, ctr: 100,  position: 1.83 },
+  { name: "Desktop", value: 2, ctr: 33.3, position: 1.50 },
+];
+
+const countryData = [
+  { country: "South Africa",   clicks: 8, impressions: 10, ctr: 80, position: 1.6 },
+  { country: "Dominican Rep.", clicks: 0, impressions: 1,  ctr: 0,  position: 2.0 },
+  { country: "France",         clicks: 0, impressions: 1,  ctr: 0,  position: 2.0 },
+];
+
+const milestones = [
+  {
+    phase: "01", label: "FOUNDATION", timeline: "Week 1–2", status: "active",
+    items: [
+      "Canonicalize https vs http — redirect http://primeturf.co.za → https://",
+      "Verify Google Search Console ownership + submit sitemap.xml",
+      "Install GA4 with event tracking (form submits, CTA clicks, WhatsApp)",
+      "Conduct full technical audit: Core Web Vitals, mobile speed, schema markup",
+      "Fix any crawl errors, broken links, missing meta tags",
+    ],
+    kpi: "0 crawl errors · GSC verified · sitemap indexed",
+  },
+  {
+    phase: "02", label: "KEYWORD ARCHITECTURE", timeline: "Week 3–4", status: "upcoming",
+    items: [
+      "Expand beyond brand — target 'artificial turf installation Gauteng', 'synthetic grass Cape Town', 'astroturf installer South Africa'",
+      "Map 15–20 commercial-intent keywords to specific pages",
+      "Build keyword clusters: installation, products, price/cost, areas served",
+      "Develop content brief for each target cluster",
+      "Audit competitor domains for gap keywords",
+    ],
+    kpi: "20 target keywords mapped · content briefs approved",
+  },
+  {
+    phase: "03", label: "ON-PAGE OPTIMISATION", timeline: "Week 4–6", status: "upcoming",
+    items: [
+      "Rewrite title tags + meta descriptions across all pages (keyword-rich, <60 chars)",
+      "Add LocalBusiness + Product schema JSON-LD markup",
+      "Create dedicated landing pages per city: Johannesburg, Pretoria, Cape Town",
+      "Build FAQ sections targeting long-tail 'how much does artificial turf cost' queries",
+      "Optimise image alt tags, file names, and lazy loading for Core Web Vitals",
+    ],
+    kpi: "All pages schema-marked · 3 city pages live · avg title tag score >80",
+  },
+  {
+    phase: "04", label: "CONTENT ENGINE", timeline: "Month 2–3", status: "planned",
+    items: [
+      "Publish 2x blog posts/month targeting informational keywords",
+      "Case studies: residential + commercial projects with before/after photography",
+      "'Artificial Turf Buyer's Guide' — cornerstone SEO asset targeting developers & architects",
+      "FAQ hub targeting 'artificial turf vs real grass South Africa' comparison queries",
+      "Optimise Google Business Profile — posts, photos, Q&A, service categories",
+    ],
+    kpi: "8 published assets · 500+ organic impressions/week · GBP fully optimised",
+  },
+  {
+    phase: "05", label: "AUTHORITY & BACKLINKS", timeline: "Month 3–4", status: "planned",
+    items: [
+      "List on South African business directories: Gumtree Business, Brabys, Hotfrog ZA",
+      "Outreach to Gauteng/CT landscaping blogs + architecture publications",
+      "Submit to industry associations: SALI, landscape architect networks",
+      "Build citation consistency (NAP: Name, Address, Phone) across 20+ directories",
+      "Guest content or press release through ZA trade media",
+    ],
+    kpi: "20 quality backlinks · NAP consistent in 20+ directories",
+  },
+  {
+    phase: "06", label: "CONVERSION OPTIMISATION", timeline: "Month 4–5", status: "planned",
+    items: [
+      "A/B test CTAs: 'Get Free Quote' vs 'View Our Projects' vs 'Call Now'",
+      "Add live chat / WhatsApp widget to reduce bounce from mobile (75% of traffic)",
+      "Build quote calculator tool — interactive spec-layer decision support for developers",
+      "Deploy retargeting pixels for specification-layer audience (architects, contractors)",
+      "Track funnel: organic click → contact form → quote → installation",
+    ],
+    kpi: "Contact conversion rate >3% · quote calculator deployed",
+  },
+];
+
+const statusColor = {
+  active:   { bg: GOLD,        text: "#fff", label: "IN PROGRESS" },
+  upcoming: { bg: GREEN_LIGHT, text: "#fff", label: "NEXT UP" },
+  planned:  { bg: "#3A3A3A",   text: "#aaa", label: "PLANNED" },
+};
+
+const StatCard = ({ label, value, sub, accent }) => (
+  <div style={{
+    background: "#fff", border: `1px solid #E8E4DC`,
+    borderTop: `3px solid ${accent || GOLD}`, borderRadius: 4,
+    padding: "20px 24px", flex: 1, minWidth: 140,
+  }}>
+    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: "#888", textTransform: "uppercase", marginBottom: 8 }}>{label}</div>
+    <div style={{ fontSize: 32, fontWeight: 800, color: CHARCOAL, lineHeight: 1 }}>{value}</div>
+    {sub && <div style={{ fontSize: 12, color: "#888", marginTop: 6 }}>{sub}</div>}
+  </div>
+);
+
+function App() {
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const totalClicks      = chartData.reduce((s, d) => s + d.clicks, 0);
+  const totalImpressions = chartData.reduce((s, d) => s + d.impressions, 0);
+  const avgPosition      = (chartData.filter(d => d.position).reduce((s, d) => s + d.position, 0) / chartData.filter(d => d.position).length).toFixed(1);
+  const avgCTR           = (totalClicks / totalImpressions * 100).toFixed(0);
+
+  return (
+    <div style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif", background: CREAM, minHeight: "100vh", color: CHARCOAL }}>
+
+      {/* Header */}
+      <div style={{ background: GREEN_DARK, borderBottom: `3px solid ${GOLD}`, padding: "0 32px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 60 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <div style={{ width: 36, height: 36, background: GOLD, borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ color: GREEN_DARK, fontWeight: 900, fontSize: 14, letterSpacing: "-0.02em" }}>PT</span>
+            </div>
+            <div>
+              <div style={{ color: "#fff", fontWeight: 800, fontSize: 15, letterSpacing: "0.05em", textTransform: "uppercase" }}>PrimeTurf SA</div>
+              <div style={{ color: GOLD_LIGHT, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase" }}>SEO Intelligence Centre</div>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 4 }}>
+            {["dashboard", "rollout"].map(tab => (
+              <button key={tab} onClick={() => setActiveTab(tab)} style={{
+                padding: "8px 20px", borderRadius: 3, border: "none", cursor: "pointer",
+                fontWeight: 700, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase",
+                background: activeTab === tab ? GOLD : "transparent",
+                color: activeTab === tab ? GREEN_DARK : "#aaa",
+                transition: "all 0.15s",
+              }}>
+                {tab === "dashboard" ? "Search Data" : "Rollout Plan"}
+              </button>
+            ))}
+          </div>
+          <div style={{ fontSize: 11, color: "#666", letterSpacing: "0.05em" }}>
+            PERIOD: <span style={{ color: GOLD_LIGHT, fontWeight: 700 }}>Jun 2 – Jun 8, 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "28px 32px" }}>
+
+        {/* DASHBOARD TAB */}
+        {activeTab === "dashboard" && (
+          <>
+            <div style={{ display: "flex", gap: 16, marginBottom: 28, flexWrap: "wrap" }}>
+              <StatCard label="Total Clicks"    value={totalClicks}      sub="Last 7 days"             accent={GREEN} />
+              <StatCard label="Impressions"     value={totalImpressions} sub="Search appearances"      accent={GOLD} />
+              <StatCard label="Avg. CTR"        value={`${avgCTR}%`}     sub="Brand query dominated"   accent={GREEN} />
+              <StatCard label="Avg. Position"   value={avgPosition}      sub="Top 2 — strong signal"   accent={GOLD} />
+              <StatCard label="Active Queries"  value="2"                sub="primeturf · prime turf"  accent={GREEN} />
+              <StatCard label="Primary Market"  value="ZA"               sub="80% click share"         accent={GOLD} />
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
+              <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Clicks & Impressions</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>7-Day Performance Trend</div>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={chartData} barGap={4}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#f0ece4" />
+                    <XAxis dataKey="date" tick={{ fontSize: 10, fill: "#999" }} axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fontSize: 10, fill: "#999" }} axisLine={false} tickLine={false} />
+                    <Tooltip contentStyle={{ background: GREEN_DARK, border: "none", borderRadius: 3, color: "#fff", fontSize: 11 }} labelStyle={{ color: GOLD_LIGHT, fontWeight: 700 }} />
+                    <Bar dataKey="clicks"      name="Clicks"      fill={GREEN} radius={[2,2,0,0]} />
+                    <Bar dataKey="impressions" name="Impressions" fill={GOLD}  radius={[2,2,0,0]} />
+                    <Legend iconType="square" iconSize={8} wrapperStyle={{ fontSize: 10, color: "#888", marginTop: 8 }} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+
+              <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Average Position</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>Ranking Trajectory <span style={{ color: GREEN, fontSize: 11 }}>↗ Improving</span></div>
+                <ResponsiveContainer width="100%" height={200}>
+                  <LineChart data={chartData.filter(d => d.position)}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#f0ece4" />
+                    <XAxis dataKey="date" tick={{ fontSize: 10, fill: "#999" }} axisLine={false} tickLine={false} />
+                    <YAxis reversed domain={[1, 3]} tick={{ fontSize: 10, fill: "#999" }} axisLine={false} tickLine={false} />
+                    <Tooltip
+                      contentStyle={{ background: GREEN_DARK, border: "none", borderRadius: 3, color: "#fff", fontSize: 11 }}
+                      labelStyle={{ color: GOLD_LIGHT, fontWeight: 700 }}
+                      formatter={(v) => [`Position ${v}`, ""]}
+                    />
+                    <Line type="monotone" dataKey="position" stroke={GOLD} strokeWidth={2.5} dot={{ fill: GOLD, r: 4, strokeWidth: 0 }} name="Position" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20, marginBottom: 20 }}>
+              <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Top Queries</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>Search Terms</div>
+                {queryData.map((q, i) => (
+                  <div key={i} style={{ marginBottom: 16 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                      <span style={{ fontFamily: "monospace", fontSize: 12, color: CHARCOAL, fontWeight: 600 }}>{q.query}</span>
+                      <span style={{ fontSize: 11, color: GOLD, fontWeight: 700 }}>Pos. {q.position}</span>
+                    </div>
+                    <div style={{ display: "flex", gap: 8, fontSize: 10, color: "#888" }}>
+                      <span>{q.clicks} clicks</span><span>·</span>
+                      <span>{q.impressions} impressions</span><span>·</span>
+                      <span style={{ color: GREEN, fontWeight: 600 }}>{q.ctr}% CTR</span>
+                    </div>
+                    <div style={{ background: "#f0ece4", borderRadius: 2, height: 4, marginTop: 8 }}>
+                      <div style={{ width: `${q.ctr}%`, background: `linear-gradient(90deg, ${GREEN}, ${GOLD})`, height: "100%", borderRadius: 2 }} />
+                    </div>
+                  </div>
+                ))}
+                <div style={{ marginTop: 16, padding: "10px 14px", background: "#FFF8EE", border: `1px solid ${GOLD}20`, borderRadius: 3, fontSize: 10, color: "#888" }}>
+                  ⚠ 100% brand queries. Zero non-brand traffic captured yet.
+                </div>
+              </div>
+
+              <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Device Split</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>Traffic by Device</div>
+                <ResponsiveContainer width="100%" height={140}>
+                  <PieChart>
+                    <Pie data={deviceData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={60} innerRadius={30}>
+                      <Cell fill={GREEN} /><Cell fill={GOLD} />
+                    </Pie>
+                    <Tooltip contentStyle={{ background: GREEN_DARK, border: "none", borderRadius: 3, color: "#fff", fontSize: 11 }} />
+                  </PieChart>
+                </ResponsiveContainer>
+                {deviceData.map((d, i) => (
+                  <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 8, borderTop: "1px solid #f0ece4", marginTop: 8 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: i === 0 ? GREEN : GOLD }} />
+                      <span style={{ fontSize: 12, fontWeight: 600 }}>{d.name}</span>
+                    </div>
+                    <div style={{ fontSize: 11, color: "#888" }}>{d.value} clicks · {d.ctr.toFixed(0)}% CTR</div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Countries</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>Geographic Reach</div>
+                {countryData.map((c, i) => (
+                  <div key={i} style={{ marginBottom: 14 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                      <span style={{ fontSize: 12, fontWeight: c.clicks > 0 ? 700 : 400, color: c.clicks > 0 ? CHARCOAL : "#aaa" }}>{c.country}</span>
+                      <span style={{ fontSize: 11, color: c.clicks > 0 ? GREEN : "#ccc", fontWeight: 700 }}>{c.clicks} clicks</span>
+                    </div>
+                    <div style={{ background: "#f0ece4", borderRadius: 2, height: 3 }}>
+                      <div style={{ width: `${(c.clicks / 8) * 100}%`, background: GREEN, height: "100%", borderRadius: 2 }} />
+                    </div>
+                  </div>
+                ))}
+                <div style={{ marginTop: 16, padding: "10px 14px", background: "#F3FBF5", border: `1px solid ${GREEN}20`, borderRadius: 3, fontSize: 10, color: "#888" }}>
+                  ✓ 80% ZA click share confirms strong local signal.
+                </div>
+              </div>
+            </div>
+
+            <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Landing Pages</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>URL Performance — Canonicalisation Alert</div>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
+                <thead>
+                  <tr style={{ borderBottom: `2px solid ${GREEN}20` }}>
+                    {["URL", "Clicks", "Impressions", "CTR", "Position", "Status"].map(h => (
+                      <th key={h} style={{ textAlign: "left", padding: "8px 12px", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#888" }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { url: "https://primeturf.co.za/", clicks: 4, impressions: 7,  ctr: "57.1%", pos: "1.71", flag: "canonical",      ok: true  },
+                    { url: "http://primeturf.co.za/",  clicks: 4, impressions: 5,  ctr: "80.0%", pos: "1.60", flag: "needs redirect", ok: false },
+                  ].map((r, i) => (
+                    <tr key={i} style={{ borderBottom: "1px solid #f5f0e8", background: i % 2 ? "#FAFAF8" : "#fff" }}>
+                      <td style={{ padding: "10px 12px", fontFamily: "monospace", fontSize: 11, color: r.ok ? CHARCOAL : "#999" }}>{r.url}</td>
+                      <td style={{ padding: "10px 12px", fontWeight: 700 }}>{r.clicks}</td>
+                      <td style={{ padding: "10px 12px", color: "#666" }}>{r.impressions}</td>
+                      <td style={{ padding: "10px 12px", color: GREEN, fontWeight: 600 }}>{r.ctr}</td>
+                      <td style={{ padding: "10px 12px" }}>{r.pos}</td>
+                      <td style={{ padding: "10px 12px" }}>
+                        <span style={{
+                          padding: "3px 8px", borderRadius: 2, fontSize: 9, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase",
+                          background: r.ok ? `${GREEN}15` : `${GOLD}20`,
+                          color: r.ok ? GREEN : GOLD,
+                          border: `1px solid ${r.ok ? GREEN : GOLD}30`,
+                        }}>{r.flag}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div style={{ marginTop: 14, fontSize: 11, color: "#888", padding: "10px 12px", background: "#FFF8EE", borderRadius: 3, border: `1px solid ${GOLD}30` }}>
+                <strong style={{ color: GOLD }}>ACTION REQUIRED:</strong> http:// variant is splitting link equity. Implement 301 redirect from http → https immediately. This is Phase 1 Priority #1.
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* ROLLOUT TAB */}
+        {activeTab === "rollout" && (
+          <>
+            <div style={{ background: GREEN_DARK, borderRadius: 4, padding: "28px 32px", marginBottom: 28, position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", top: 0, right: 0, width: 200, height: "100%", background: `linear-gradient(90deg, transparent, ${GOLD}10)`, pointerEvents: "none" }} />
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD_LIGHT, marginBottom: 8 }}>PrimeTurf SA · SEO Strategy</div>
+              <div style={{ fontSize: 26, fontWeight: 800, color: "#fff", marginBottom: 10 }}>6-Phase SEO Rollout Plan</div>
+              <div style={{ fontSize: 13, color: "#aaa", maxWidth: 600 }}>
+                Built from 7-day GSC baseline. Current state: brand-only visibility, 8 clicks, avg. position 1.6.
+                Target: 500+ monthly organic clicks from non-brand commercial queries within 5 months.
+              </div>
+              <div style={{ display: "flex", gap: 24, marginTop: 20 }}>
+                {[["Baseline Clicks","8"],["Target Clicks/mo","500+"],["Timeline","5 Months"],["Priority #1","Canonicalise"]].map(([l,v]) => (
+                  <div key={l}>
+                    <div style={{ fontSize: 9, letterSpacing: "0.12em", textTransform: "uppercase", color: "#666" }}>{l}</div>
+                    <div style={{ fontSize: 20, fontWeight: 800, color: GOLD_LIGHT }}>{v}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {milestones.map((m) => {
+                const s = statusColor[m.status];
+                return (
+                  <div key={m.phase} style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, overflow: "hidden" }}>
+                    <div style={{ display: "flex", alignItems: "stretch" }}>
+                      <div style={{ background: GREEN_DARK, width: 70, minWidth: 70, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "20px 0", gap: 6 }}>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.1em" }}>PHASE</div>
+                        <div style={{ fontSize: 28, fontWeight: 900, color: "#fff", lineHeight: 1 }}>{m.phase}</div>
+                      </div>
+                      <div style={{ flex: 1, padding: "18px 24px" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
+                          <div>
+                            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
+                              <span style={{ fontSize: 15, fontWeight: 800, letterSpacing: "0.04em", color: GREEN_DARK }}>{m.label}</span>
+                              <span style={{ padding: "2px 8px", borderRadius: 2, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", background: s.bg, color: s.text }}>{s.label}</span>
+                            </div>
+                            <div style={{ fontSize: 11, color: "#888" }}>⏱ {m.timeline}</div>
+                          </div>
+                          <div style={{ textAlign: "right", fontSize: 10, color: "#aaa", maxWidth: 240 }}>
+                            <div style={{ fontWeight: 700, color: GOLD, marginBottom: 2 }}>KPI GATE</div>
+                            {m.kpi}
+                          </div>
+                        </div>
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px 20px" }}>
+                          {m.items.map((item, i) => (
+                            <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 12, color: "#444", lineHeight: 1.5 }}>
+                              <div style={{ width: 4, height: 4, borderRadius: "50%", background: GOLD, marginTop: 6, flexShrink: 0 }} />
+                              {item}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div style={{ marginTop: 24, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+              {[
+                { head: "Brand Moat is Set",              body: "Avg. position 1.6 on brand terms means you own the name. The entire growth opportunity is non-brand: category, problem, and location queries.", icon: "🎯" },
+                { head: "Mobile-First Priority",           body: "75% of clicks come from mobile with 100% CTR vs 33% on desktop. Every page optimisation must pass mobile Core Web Vitals first.", icon: "📱" },
+                { head: "Specification Channel Alignment", body: "SEO content strategy should mirror the VDOS Channel Power Hierarchy — architect/developer queries are high-value, low-competition targets.", icon: "⚙" },
+              ].map((c, i) => (
+                <div key={i} style={{ background: "#fff", border: "1px solid #E8E4DC", borderTop: `3px solid ${i === 1 ? GOLD : GREEN}`, borderRadius: 4, padding: "18px 20px" }}>
+                  <div style={{ fontSize: 20, marginBottom: 8 }}>{c.icon}</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: GREEN_DARK, marginBottom: 8 }}>{c.head}</div>
+                  <div style={{ fontSize: 11, color: "#666", lineHeight: 1.6 }}>{c.body}</div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        <div style={{ marginTop: 28, paddingTop: 16, borderTop: "1px solid #E8E4DC", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ fontSize: 10, color: "#aaa", letterSpacing: "0.08em" }}>PRIMETURF SA · SEO INTELLIGENCE CENTRE · DATA SOURCE: GOOGLE SEARCH CONSOLE</div>
+          <div style={{ fontSize: 10, color: "#aaa" }}>Generated: 10 June 2026</div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+// Remove loading screen and mount
+document.getElementById("loading").style.display = "none";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+</script>
+</body>
+</html>
