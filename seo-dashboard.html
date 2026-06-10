@@ -5,444 +5,553 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PrimeTurf SA — SEO Intelligence Centre</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #F7F4EE; }
-  #root { min-height: 100vh; }
-  #loading {
-    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
-    background: #0F3318; color: #D4A840; font-family: 'Inter', sans-serif;
-    font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
-  }
-</style>
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1A5A28;--gold:#B8902A;--green-light:#2A7A3A;--green-dark:#0F3318;
+  --gold-light:#D4A840;--cream:#F7F4EE;--charcoal:#1C1C1C;
+  --border:#E8E4DC;--warm:#FAFAF8;
+}
+html{font-family:'Inter','Helvetica Neue',sans-serif;background:var(--cream);color:var(--charcoal);-webkit-font-smoothing:antialiased}
+body{min-height:100vh}
+
+/* ── HEADER ── */
+.hdr{background:var(--green-dark);border-bottom:3px solid var(--gold);padding:0 24px}
+.hdr-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:36px;height:36px;background:var(--gold);border-radius:3px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:var(--green-dark);letter-spacing:-.02em;flex-shrink:0}
+.logo-name{color:#fff;font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase}
+.logo-sub{color:var(--gold-light);font-size:9px;letter-spacing:.15em;text-transform:uppercase}
+.tabs{display:flex;gap:3px}
+.tab-btn{padding:8px 18px;border-radius:3px;border:none;cursor:pointer;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;transition:all .15s;font-family:inherit}
+.tab-btn.active{background:var(--gold);color:var(--green-dark)}
+.tab-btn:not(.active){background:transparent;color:#aaa}
+.period{font-size:10px;color:#666;letter-spacing:.05em;white-space:nowrap}
+.period span{color:var(--gold-light);font-weight:700}
+
+/* ── CONTENT ── */
+.wrap{max-width:1200px;margin:0 auto;padding:24px}
+.tab-pane{display:none}.tab-pane.active{display:block}
+
+/* ── STAT CARDS ── */
+.stats-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+.stat{background:#fff;border:1px solid var(--border);border-radius:4px;padding:18px 20px;flex:1;min-width:130px}
+.stat-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:7px}
+.stat-value{font-size:28px;font-weight:800;color:var(--charcoal);line-height:1}
+.stat-sub{font-size:11px;color:#888;margin-top:5px}
+.stat.green{border-top:3px solid var(--green)}
+.stat.gold{border-top:3px solid var(--gold)}
+
+/* ── CARDS ── */
+.card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:20px}
+.card-eye{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#888;margin-bottom:3px}
+.card-title{font-size:13px;font-weight:700;color:var(--charcoal);margin-bottom:18px}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:18px}
+@media(max-width:900px){.g2,.g3{grid-template-columns:1fr}}
+@media(max-width:600px){.stats-row{gap:10px}.stat{min-width:calc(50% - 5px)}.stat-value{font-size:22px}}
+
+/* ── QUERIES ── */
+.query-item{margin-bottom:16px}
+.query-top{display:flex;justify-content:space-between;margin-bottom:5px}
+.query-name{font-family:monospace;font-size:12px;font-weight:600;color:var(--charcoal)}
+.query-pos{font-size:11px;color:var(--gold);font-weight:700}
+.query-meta{display:flex;gap:7px;font-size:10px;color:#888;margin-bottom:7px}
+.query-meta .ctr{color:var(--green);font-weight:600}
+.bar-track{background:#f0ece4;border-radius:2px;height:4px}
+.bar-fill{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--green),var(--gold))}
+.alert-box{margin-top:14px;padding:10px 12px;border-radius:3px;font-size:10px;color:#888}
+.alert-warn{background:#FFF8EE;border:1px solid rgba(184,144,42,.2)}
+.alert-ok{background:#F3FBF5;border:1px solid rgba(26,90,40,.2)}
+.alert-err{background:#FFF8EE;border:1px solid rgba(184,144,42,.3)}
+.alert-err strong{color:var(--gold)}
+
+/* ── DEVICE ── */
+.device-item{display:flex;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px solid #f0ece4;margin-top:8px}
+.device-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:7px}
+.device-name{font-size:12px;font-weight:600}
+.device-meta{font-size:11px;color:#888}
+
+/* ── COUNTRIES ── */
+.country-item{margin-bottom:13px}
+.country-top{display:flex;justify-content:space-between;margin-bottom:4px}
+.country-name{font-size:12px}
+.country-name.active{font-weight:700;color:var(--charcoal)}
+.country-name.inactive{color:#aaa}
+.country-clicks{font-size:11px;font-weight:700}
+.country-clicks.active{color:var(--green)}
+.country-clicks.inactive{color:#ccc}
+.country-bar{background:#f0ece4;border-radius:2px;height:3px}
+.country-fill{background:var(--green);height:3px;border-radius:2px}
+
+/* ── TABLE ── */
+.tbl-wrap{margin-bottom:18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{text-align:left;padding:8px 12px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;border-bottom:2px solid rgba(26,90,40,.15);background:var(--warm)}
+.tbl td{padding:10px 12px;border-bottom:1px solid #f5f0e8;vertical-align:middle;color:#666}
+.tbl tr:hover td{background:var(--warm)}
+.tbl td.mono{font-family:monospace;font-size:11px;color:var(--charcoal)}
+.tbl td.mono.dim{color:#999}
+.tbl td.bold{font-weight:700;color:var(--charcoal)}
+.tbl td.green{color:var(--green);font-weight:600}
+.badge{padding:2px 8px;border-radius:2px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.badge-green{background:rgba(26,90,40,.12);color:var(--green);border:1px solid rgba(26,90,40,.25)}
+.badge-gold{background:rgba(184,144,42,.12);color:var(--gold);border:1px solid rgba(184,144,42,.25)}
+
+/* ── ROLLOUT ── */
+.rollout-header{background:var(--green-dark);border-radius:4px;padding:28px 32px;margin-bottom:24px;position:relative;overflow:hidden}
+.rollout-header::after{content:'';position:absolute;top:0;right:0;width:200px;height:100%;background:linear-gradient(90deg,transparent,rgba(184,144,42,.1));pointer-events:none}
+.rh-eye{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-light);margin-bottom:8px}
+.rh-title{font-size:24px;font-weight:800;color:#fff;margin-bottom:10px}
+.rh-sub{font-size:13px;color:#aaa;max-width:600px;line-height:1.6}
+.rh-stats{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap}
+.rh-stat-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-bottom:2px}
+.rh-stat-value{font-size:18px;font-weight:800;color:var(--gold-light)}
+
+.milestone{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:14px}
+.ms-inner{display:flex;align-items:stretch}
+.ms-phase{background:var(--green-dark);width:64px;min-width:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 0;gap:4px}
+.ms-phase-lbl{font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.ms-phase-num{font-size:26px;font-weight:900;color:#fff;line-height:1}
+.ms-body{flex:1;padding:16px 22px}
+.ms-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;gap:12px}
+.ms-name-row{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}
+.ms-name{font-size:14px;font-weight:800;letter-spacing:.04em;color:var(--green-dark)}
+.ms-status{padding:2px 8px;border-radius:2px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.ms-timeline{font-size:11px;color:#888}
+.ms-kpi{text-align:right;font-size:10px;color:#aaa;max-width:220px;flex-shrink:0}
+.ms-kpi-lbl{font-weight:700;color:var(--gold);margin-bottom:2px;font-size:10px}
+.ms-items{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px}
+@media(max-width:700px){.ms-items{grid-template-columns:1fr}.ms-kpi{display:none}}
+.ms-item{display:flex;gap:8px;align-items:flex-start;font-size:11px;color:#444;line-height:1.5}
+.ms-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);margin-top:5px;flex-shrink:0}
+
+.insights{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:24px}
+@media(max-width:700px){.insights{grid-template-columns:1fr}}
+.insight{background:#fff;border:1px solid var(--border);border-radius:4px;padding:18px 20px}
+.insight.green{border-top:3px solid var(--green)}
+.insight.gold{border-top:3px solid var(--gold)}
+.insight-icon{font-size:18px;margin-bottom:8px}
+.insight-head{font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:7px}
+.insight-body{font-size:11px;color:#666;line-height:1.6}
+
+.dash-footer{margin-top:24px;padding-top:16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#aaa;flex-wrap:wrap;gap:8px}
+</style>
 </head>
 <body>
-<div id="loading">Loading SEO Dashboard…</div>
-<div id="root"></div>
 
-<!-- Dependencies -->
-<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/recharts@2.12.7/umd/Recharts.js" crossorigin></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-<script type="text/babel">
-const { useState } = React;
-const { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
-        ResponsiveContainer, PieChart, Pie, Cell, Legend } = Recharts;
-
-const GREEN       = "#1A5A28";
-const GOLD        = "#B8902A";
-const GREEN_LIGHT = "#2A7A3A";
-const GREEN_DARK  = "#0F3318";
-const GOLD_LIGHT  = "#D4A840";
-const CREAM       = "#F7F4EE";
-const CHARCOAL    = "#1C1C1C";
-
-const chartData = [
-  { date: "Jun 2", clicks: 0, impressions: 0, ctr: 0, position: null },
-  { date: "Jun 3", clicks: 0, impressions: 0, ctr: 0, position: null },
-  { date: "Jun 4", clicks: 0, impressions: 0, ctr: 0, position: null },
-  { date: "Jun 5", clicks: 2, impressions: 2, ctr: 100, position: 2.0 },
-  { date: "Jun 6", clicks: 2, impressions: 4, ctr: 50,  position: 1.8 },
-  { date: "Jun 7", clicks: 3, impressions: 3, ctr: 100, position: 1.7 },
-  { date: "Jun 8", clicks: 1, impressions: 3, ctr: 33.3, position: 1.3 },
-];
-
-const queryData = [
-  { query: "primeturf",   clicks: 1, impressions: 2, ctr: 50, position: 1 },
-  { query: "prime turf",  clicks: 1, impressions: 2, ctr: 50, position: 2 },
-];
-
-const deviceData = [
-  { name: "Mobile",  value: 6, ctr: 100,  position: 1.83 },
-  { name: "Desktop", value: 2, ctr: 33.3, position: 1.50 },
-];
-
-const countryData = [
-  { country: "South Africa",   clicks: 8, impressions: 10, ctr: 80, position: 1.6 },
-  { country: "Dominican Rep.", clicks: 0, impressions: 1,  ctr: 0,  position: 2.0 },
-  { country: "France",         clicks: 0, impressions: 1,  ctr: 0,  position: 2.0 },
-];
-
-const milestones = [
-  {
-    phase: "01", label: "FOUNDATION", timeline: "Week 1–2", status: "active",
-    items: [
-      "Canonicalize https vs http — redirect http://primeturf.co.za → https://",
-      "Verify Google Search Console ownership + submit sitemap.xml",
-      "Install GA4 with event tracking (form submits, CTA clicks, WhatsApp)",
-      "Conduct full technical audit: Core Web Vitals, mobile speed, schema markup",
-      "Fix any crawl errors, broken links, missing meta tags",
-    ],
-    kpi: "0 crawl errors · GSC verified · sitemap indexed",
-  },
-  {
-    phase: "02", label: "KEYWORD ARCHITECTURE", timeline: "Week 3–4", status: "upcoming",
-    items: [
-      "Expand beyond brand — target 'artificial turf installation Gauteng', 'synthetic grass Cape Town', 'astroturf installer South Africa'",
-      "Map 15–20 commercial-intent keywords to specific pages",
-      "Build keyword clusters: installation, products, price/cost, areas served",
-      "Develop content brief for each target cluster",
-      "Audit competitor domains for gap keywords",
-    ],
-    kpi: "20 target keywords mapped · content briefs approved",
-  },
-  {
-    phase: "03", label: "ON-PAGE OPTIMISATION", timeline: "Week 4–6", status: "upcoming",
-    items: [
-      "Rewrite title tags + meta descriptions across all pages (keyword-rich, <60 chars)",
-      "Add LocalBusiness + Product schema JSON-LD markup",
-      "Create dedicated landing pages per city: Johannesburg, Pretoria, Cape Town",
-      "Build FAQ sections targeting long-tail 'how much does artificial turf cost' queries",
-      "Optimise image alt tags, file names, and lazy loading for Core Web Vitals",
-    ],
-    kpi: "All pages schema-marked · 3 city pages live · avg title tag score >80",
-  },
-  {
-    phase: "04", label: "CONTENT ENGINE", timeline: "Month 2–3", status: "planned",
-    items: [
-      "Publish 2x blog posts/month targeting informational keywords",
-      "Case studies: residential + commercial projects with before/after photography",
-      "'Artificial Turf Buyer's Guide' — cornerstone SEO asset targeting developers & architects",
-      "FAQ hub targeting 'artificial turf vs real grass South Africa' comparison queries",
-      "Optimise Google Business Profile — posts, photos, Q&A, service categories",
-    ],
-    kpi: "8 published assets · 500+ organic impressions/week · GBP fully optimised",
-  },
-  {
-    phase: "05", label: "AUTHORITY & BACKLINKS", timeline: "Month 3–4", status: "planned",
-    items: [
-      "List on South African business directories: Gumtree Business, Brabys, Hotfrog ZA",
-      "Outreach to Gauteng/CT landscaping blogs + architecture publications",
-      "Submit to industry associations: SALI, landscape architect networks",
-      "Build citation consistency (NAP: Name, Address, Phone) across 20+ directories",
-      "Guest content or press release through ZA trade media",
-    ],
-    kpi: "20 quality backlinks · NAP consistent in 20+ directories",
-  },
-  {
-    phase: "06", label: "CONVERSION OPTIMISATION", timeline: "Month 4–5", status: "planned",
-    items: [
-      "A/B test CTAs: 'Get Free Quote' vs 'View Our Projects' vs 'Call Now'",
-      "Add live chat / WhatsApp widget to reduce bounce from mobile (75% of traffic)",
-      "Build quote calculator tool — interactive spec-layer decision support for developers",
-      "Deploy retargeting pixels for specification-layer audience (architects, contractors)",
-      "Track funnel: organic click → contact form → quote → installation",
-    ],
-    kpi: "Contact conversion rate >3% · quote calculator deployed",
-  },
-];
-
-const statusColor = {
-  active:   { bg: GOLD,        text: "#fff", label: "IN PROGRESS" },
-  upcoming: { bg: GREEN_LIGHT, text: "#fff", label: "NEXT UP" },
-  planned:  { bg: "#3A3A3A",   text: "#aaa", label: "PLANNED" },
-};
-
-const StatCard = ({ label, value, sub, accent }) => (
-  <div style={{
-    background: "#fff", border: `1px solid #E8E4DC`,
-    borderTop: `3px solid ${accent || GOLD}`, borderRadius: 4,
-    padding: "20px 24px", flex: 1, minWidth: 140,
-  }}>
-    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: "#888", textTransform: "uppercase", marginBottom: 8 }}>{label}</div>
-    <div style={{ fontSize: 32, fontWeight: 800, color: CHARCOAL, lineHeight: 1 }}>{value}</div>
-    {sub && <div style={{ fontSize: 12, color: "#888", marginTop: 6 }}>{sub}</div>}
-  </div>
-);
-
-function App() {
-  const [activeTab, setActiveTab] = useState("dashboard");
-  const totalClicks      = chartData.reduce((s, d) => s + d.clicks, 0);
-  const totalImpressions = chartData.reduce((s, d) => s + d.impressions, 0);
-  const avgPosition      = (chartData.filter(d => d.position).reduce((s, d) => s + d.position, 0) / chartData.filter(d => d.position).length).toFixed(1);
-  const avgCTR           = (totalClicks / totalImpressions * 100).toFixed(0);
-
-  return (
-    <div style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif", background: CREAM, minHeight: "100vh", color: CHARCOAL }}>
-
-      {/* Header */}
-      <div style={{ background: GREEN_DARK, borderBottom: `3px solid ${GOLD}`, padding: "0 32px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 60 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={{ width: 36, height: 36, background: GOLD, borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ color: GREEN_DARK, fontWeight: 900, fontSize: 14, letterSpacing: "-0.02em" }}>PT</span>
-            </div>
-            <div>
-              <div style={{ color: "#fff", fontWeight: 800, fontSize: 15, letterSpacing: "0.05em", textTransform: "uppercase" }}>PrimeTurf SA</div>
-              <div style={{ color: GOLD_LIGHT, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase" }}>SEO Intelligence Centre</div>
-            </div>
-          </div>
-          <div style={{ display: "flex", gap: 4 }}>
-            {["dashboard", "rollout"].map(tab => (
-              <button key={tab} onClick={() => setActiveTab(tab)} style={{
-                padding: "8px 20px", borderRadius: 3, border: "none", cursor: "pointer",
-                fontWeight: 700, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase",
-                background: activeTab === tab ? GOLD : "transparent",
-                color: activeTab === tab ? GREEN_DARK : "#aaa",
-                transition: "all 0.15s",
-              }}>
-                {tab === "dashboard" ? "Search Data" : "Rollout Plan"}
-              </button>
-            ))}
-          </div>
-          <div style={{ fontSize: 11, color: "#666", letterSpacing: "0.05em" }}>
-            PERIOD: <span style={{ color: GOLD_LIGHT, fontWeight: 700 }}>Jun 2 – Jun 8, 2026</span>
-          </div>
-        </div>
-      </div>
-
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "28px 32px" }}>
-
-        {/* DASHBOARD TAB */}
-        {activeTab === "dashboard" && (
-          <>
-            <div style={{ display: "flex", gap: 16, marginBottom: 28, flexWrap: "wrap" }}>
-              <StatCard label="Total Clicks"    value={totalClicks}      sub="Last 7 days"             accent={GREEN} />
-              <StatCard label="Impressions"     value={totalImpressions} sub="Search appearances"      accent={GOLD} />
-              <StatCard label="Avg. CTR"        value={`${avgCTR}%`}     sub="Brand query dominated"   accent={GREEN} />
-              <StatCard label="Avg. Position"   value={avgPosition}      sub="Top 2 — strong signal"   accent={GOLD} />
-              <StatCard label="Active Queries"  value="2"                sub="primeturf · prime turf"  accent={GREEN} />
-              <StatCard label="Primary Market"  value="ZA"               sub="80% click share"         accent={GOLD} />
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
-              <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Clicks & Impressions</div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>7-Day Performance Trend</div>
-                <ResponsiveContainer width="100%" height={200}>
-                  <BarChart data={chartData} barGap={4}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#f0ece4" />
-                    <XAxis dataKey="date" tick={{ fontSize: 10, fill: "#999" }} axisLine={false} tickLine={false} />
-                    <YAxis tick={{ fontSize: 10, fill: "#999" }} axisLine={false} tickLine={false} />
-                    <Tooltip contentStyle={{ background: GREEN_DARK, border: "none", borderRadius: 3, color: "#fff", fontSize: 11 }} labelStyle={{ color: GOLD_LIGHT, fontWeight: 700 }} />
-                    <Bar dataKey="clicks"      name="Clicks"      fill={GREEN} radius={[2,2,0,0]} />
-                    <Bar dataKey="impressions" name="Impressions" fill={GOLD}  radius={[2,2,0,0]} />
-                    <Legend iconType="square" iconSize={8} wrapperStyle={{ fontSize: 10, color: "#888", marginTop: 8 }} />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-
-              <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Average Position</div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>Ranking Trajectory <span style={{ color: GREEN, fontSize: 11 }}>↗ Improving</span></div>
-                <ResponsiveContainer width="100%" height={200}>
-                  <LineChart data={chartData.filter(d => d.position)}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#f0ece4" />
-                    <XAxis dataKey="date" tick={{ fontSize: 10, fill: "#999" }} axisLine={false} tickLine={false} />
-                    <YAxis reversed domain={[1, 3]} tick={{ fontSize: 10, fill: "#999" }} axisLine={false} tickLine={false} />
-                    <Tooltip
-                      contentStyle={{ background: GREEN_DARK, border: "none", borderRadius: 3, color: "#fff", fontSize: 11 }}
-                      labelStyle={{ color: GOLD_LIGHT, fontWeight: 700 }}
-                      formatter={(v) => [`Position ${v}`, ""]}
-                    />
-                    <Line type="monotone" dataKey="position" stroke={GOLD} strokeWidth={2.5} dot={{ fill: GOLD, r: 4, strokeWidth: 0 }} name="Position" />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20, marginBottom: 20 }}>
-              <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Top Queries</div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>Search Terms</div>
-                {queryData.map((q, i) => (
-                  <div key={i} style={{ marginBottom: 16 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                      <span style={{ fontFamily: "monospace", fontSize: 12, color: CHARCOAL, fontWeight: 600 }}>{q.query}</span>
-                      <span style={{ fontSize: 11, color: GOLD, fontWeight: 700 }}>Pos. {q.position}</span>
-                    </div>
-                    <div style={{ display: "flex", gap: 8, fontSize: 10, color: "#888" }}>
-                      <span>{q.clicks} clicks</span><span>·</span>
-                      <span>{q.impressions} impressions</span><span>·</span>
-                      <span style={{ color: GREEN, fontWeight: 600 }}>{q.ctr}% CTR</span>
-                    </div>
-                    <div style={{ background: "#f0ece4", borderRadius: 2, height: 4, marginTop: 8 }}>
-                      <div style={{ width: `${q.ctr}%`, background: `linear-gradient(90deg, ${GREEN}, ${GOLD})`, height: "100%", borderRadius: 2 }} />
-                    </div>
-                  </div>
-                ))}
-                <div style={{ marginTop: 16, padding: "10px 14px", background: "#FFF8EE", border: `1px solid ${GOLD}20`, borderRadius: 3, fontSize: 10, color: "#888" }}>
-                  ⚠ 100% brand queries. Zero non-brand traffic captured yet.
-                </div>
-              </div>
-
-              <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Device Split</div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>Traffic by Device</div>
-                <ResponsiveContainer width="100%" height={140}>
-                  <PieChart>
-                    <Pie data={deviceData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={60} innerRadius={30}>
-                      <Cell fill={GREEN} /><Cell fill={GOLD} />
-                    </Pie>
-                    <Tooltip contentStyle={{ background: GREEN_DARK, border: "none", borderRadius: 3, color: "#fff", fontSize: 11 }} />
-                  </PieChart>
-                </ResponsiveContainer>
-                {deviceData.map((d, i) => (
-                  <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 8, borderTop: "1px solid #f0ece4", marginTop: 8 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: i === 0 ? GREEN : GOLD }} />
-                      <span style={{ fontSize: 12, fontWeight: 600 }}>{d.name}</span>
-                    </div>
-                    <div style={{ fontSize: 11, color: "#888" }}>{d.value} clicks · {d.ctr.toFixed(0)}% CTR</div>
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Countries</div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>Geographic Reach</div>
-                {countryData.map((c, i) => (
-                  <div key={i} style={{ marginBottom: 14 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontSize: 12, fontWeight: c.clicks > 0 ? 700 : 400, color: c.clicks > 0 ? CHARCOAL : "#aaa" }}>{c.country}</span>
-                      <span style={{ fontSize: 11, color: c.clicks > 0 ? GREEN : "#ccc", fontWeight: 700 }}>{c.clicks} clicks</span>
-                    </div>
-                    <div style={{ background: "#f0ece4", borderRadius: 2, height: 3 }}>
-                      <div style={{ width: `${(c.clicks / 8) * 100}%`, background: GREEN, height: "100%", borderRadius: 2 }} />
-                    </div>
-                  </div>
-                ))}
-                <div style={{ marginTop: 16, padding: "10px 14px", background: "#F3FBF5", border: `1px solid ${GREEN}20`, borderRadius: 3, fontSize: 10, color: "#888" }}>
-                  ✓ 80% ZA click share confirms strong local signal.
-                </div>
-              </div>
-            </div>
-
-            <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: 24 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#888", marginBottom: 4 }}>Landing Pages</div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: CHARCOAL, marginBottom: 20 }}>URL Performance — Canonicalisation Alert</div>
-              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
-                <thead>
-                  <tr style={{ borderBottom: `2px solid ${GREEN}20` }}>
-                    {["URL", "Clicks", "Impressions", "CTR", "Position", "Status"].map(h => (
-                      <th key={h} style={{ textAlign: "left", padding: "8px 12px", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#888" }}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { url: "https://primeturf.co.za/", clicks: 4, impressions: 7,  ctr: "57.1%", pos: "1.71", flag: "canonical",      ok: true  },
-                    { url: "http://primeturf.co.za/",  clicks: 4, impressions: 5,  ctr: "80.0%", pos: "1.60", flag: "needs redirect", ok: false },
-                  ].map((r, i) => (
-                    <tr key={i} style={{ borderBottom: "1px solid #f5f0e8", background: i % 2 ? "#FAFAF8" : "#fff" }}>
-                      <td style={{ padding: "10px 12px", fontFamily: "monospace", fontSize: 11, color: r.ok ? CHARCOAL : "#999" }}>{r.url}</td>
-                      <td style={{ padding: "10px 12px", fontWeight: 700 }}>{r.clicks}</td>
-                      <td style={{ padding: "10px 12px", color: "#666" }}>{r.impressions}</td>
-                      <td style={{ padding: "10px 12px", color: GREEN, fontWeight: 600 }}>{r.ctr}</td>
-                      <td style={{ padding: "10px 12px" }}>{r.pos}</td>
-                      <td style={{ padding: "10px 12px" }}>
-                        <span style={{
-                          padding: "3px 8px", borderRadius: 2, fontSize: 9, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase",
-                          background: r.ok ? `${GREEN}15` : `${GOLD}20`,
-                          color: r.ok ? GREEN : GOLD,
-                          border: `1px solid ${r.ok ? GREEN : GOLD}30`,
-                        }}>{r.flag}</span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <div style={{ marginTop: 14, fontSize: 11, color: "#888", padding: "10px 12px", background: "#FFF8EE", borderRadius: 3, border: `1px solid ${GOLD}30` }}>
-                <strong style={{ color: GOLD }}>ACTION REQUIRED:</strong> http:// variant is splitting link equity. Implement 301 redirect from http → https immediately. This is Phase 1 Priority #1.
-              </div>
-            </div>
-          </>
-        )}
-
-        {/* ROLLOUT TAB */}
-        {activeTab === "rollout" && (
-          <>
-            <div style={{ background: GREEN_DARK, borderRadius: 4, padding: "28px 32px", marginBottom: 28, position: "relative", overflow: "hidden" }}>
-              <div style={{ position: "absolute", top: 0, right: 0, width: 200, height: "100%", background: `linear-gradient(90deg, transparent, ${GOLD}10)`, pointerEvents: "none" }} />
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD_LIGHT, marginBottom: 8 }}>PrimeTurf SA · SEO Strategy</div>
-              <div style={{ fontSize: 26, fontWeight: 800, color: "#fff", marginBottom: 10 }}>6-Phase SEO Rollout Plan</div>
-              <div style={{ fontSize: 13, color: "#aaa", maxWidth: 600 }}>
-                Built from 7-day GSC baseline. Current state: brand-only visibility, 8 clicks, avg. position 1.6.
-                Target: 500+ monthly organic clicks from non-brand commercial queries within 5 months.
-              </div>
-              <div style={{ display: "flex", gap: 24, marginTop: 20 }}>
-                {[["Baseline Clicks","8"],["Target Clicks/mo","500+"],["Timeline","5 Months"],["Priority #1","Canonicalise"]].map(([l,v]) => (
-                  <div key={l}>
-                    <div style={{ fontSize: 9, letterSpacing: "0.12em", textTransform: "uppercase", color: "#666" }}>{l}</div>
-                    <div style={{ fontSize: 20, fontWeight: 800, color: GOLD_LIGHT }}>{v}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              {milestones.map((m) => {
-                const s = statusColor[m.status];
-                return (
-                  <div key={m.phase} style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, overflow: "hidden" }}>
-                    <div style={{ display: "flex", alignItems: "stretch" }}>
-                      <div style={{ background: GREEN_DARK, width: 70, minWidth: 70, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "20px 0", gap: 6 }}>
-                        <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.1em" }}>PHASE</div>
-                        <div style={{ fontSize: 28, fontWeight: 900, color: "#fff", lineHeight: 1 }}>{m.phase}</div>
-                      </div>
-                      <div style={{ flex: 1, padding: "18px 24px" }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
-                          <div>
-                            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-                              <span style={{ fontSize: 15, fontWeight: 800, letterSpacing: "0.04em", color: GREEN_DARK }}>{m.label}</span>
-                              <span style={{ padding: "2px 8px", borderRadius: 2, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", background: s.bg, color: s.text }}>{s.label}</span>
-                            </div>
-                            <div style={{ fontSize: 11, color: "#888" }}>⏱ {m.timeline}</div>
-                          </div>
-                          <div style={{ textAlign: "right", fontSize: 10, color: "#aaa", maxWidth: 240 }}>
-                            <div style={{ fontWeight: 700, color: GOLD, marginBottom: 2 }}>KPI GATE</div>
-                            {m.kpi}
-                          </div>
-                        </div>
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px 20px" }}>
-                          {m.items.map((item, i) => (
-                            <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 12, color: "#444", lineHeight: 1.5 }}>
-                              <div style={{ width: 4, height: 4, borderRadius: "50%", background: GOLD, marginTop: 6, flexShrink: 0 }} />
-                              {item}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div style={{ marginTop: 24, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
-              {[
-                { head: "Brand Moat is Set",              body: "Avg. position 1.6 on brand terms means you own the name. The entire growth opportunity is non-brand: category, problem, and location queries.", icon: "🎯" },
-                { head: "Mobile-First Priority",           body: "75% of clicks come from mobile with 100% CTR vs 33% on desktop. Every page optimisation must pass mobile Core Web Vitals first.", icon: "📱" },
-                { head: "Specification Channel Alignment", body: "SEO content strategy should mirror the VDOS Channel Power Hierarchy — architect/developer queries are high-value, low-competition targets.", icon: "⚙" },
-              ].map((c, i) => (
-                <div key={i} style={{ background: "#fff", border: "1px solid #E8E4DC", borderTop: `3px solid ${i === 1 ? GOLD : GREEN}`, borderRadius: 4, padding: "18px 20px" }}>
-                  <div style={{ fontSize: 20, marginBottom: 8 }}>{c.icon}</div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: GREEN_DARK, marginBottom: 8 }}>{c.head}</div>
-                  <div style={{ fontSize: 11, color: "#666", lineHeight: 1.6 }}>{c.body}</div>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-
-        <div style={{ marginTop: 28, paddingTop: 16, borderTop: "1px solid #E8E4DC", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ fontSize: 10, color: "#aaa", letterSpacing: "0.08em" }}>PRIMETURF SA · SEO INTELLIGENCE CENTRE · DATA SOURCE: GOOGLE SEARCH CONSOLE</div>
-          <div style={{ fontSize: 10, color: "#aaa" }}>Generated: 10 June 2026</div>
-        </div>
-
+<!-- ═══ HEADER ═══ -->
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="logo">
+      <div class="logo-mark">PT</div>
+      <div>
+        <div class="logo-name">PrimeTurf SA</div>
+        <div class="logo-sub">SEO Intelligence Centre</div>
       </div>
     </div>
-  );
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('dashboard')">Search Data</button>
+      <button class="tab-btn" onclick="switchTab('rollout')">Rollout Plan</button>
+    </div>
+    <div class="period">PERIOD: <span>Jun 2 – Jun 8, 2026</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ═══ DASHBOARD TAB ═══ -->
+  <div id="tab-dashboard" class="tab-pane active">
+
+    <!-- KPI Strip -->
+    <div class="stats-row">
+      <div class="stat green"><div class="stat-label">Total Clicks</div><div class="stat-value">8</div><div class="stat-sub">Last 7 days</div></div>
+      <div class="stat gold"><div class="stat-label">Impressions</div><div class="stat-value">12</div><div class="stat-sub">Search appearances</div></div>
+      <div class="stat green"><div class="stat-label">Avg. CTR</div><div class="stat-value">67%</div><div class="stat-sub">Brand query dominated</div></div>
+      <div class="stat gold"><div class="stat-label">Avg. Position</div><div class="stat-value">1.7</div><div class="stat-sub">Top 2 — strong signal</div></div>
+      <div class="stat green"><div class="stat-label">Active Queries</div><div class="stat-value">2</div><div class="stat-sub">primeturf · prime turf</div></div>
+      <div class="stat gold"><div class="stat-label">Primary Market</div><div class="stat-value">ZA</div><div class="stat-sub">80% click share</div></div>
+    </div>
+
+    <!-- Charts Row 1 -->
+    <div class="g2">
+      <div class="card">
+        <div class="card-eye">Clicks & Impressions</div>
+        <div class="card-title">7-Day Performance Trend</div>
+        <canvas id="barChart" height="180"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-eye">Average Position</div>
+        <div class="card-title">Ranking Trajectory <span style="color:var(--green);font-size:11px;font-weight:400">↗ Improving</span></div>
+        <canvas id="lineChart" height="180"></canvas>
+      </div>
+    </div>
+
+    <!-- Charts Row 2 -->
+    <div class="g3">
+      <!-- Queries -->
+      <div class="card">
+        <div class="card-eye">Top Queries</div>
+        <div class="card-title">Search Terms</div>
+        <div class="query-item">
+          <div class="query-top"><span class="query-name">primeturf</span><span class="query-pos">Pos. 1</span></div>
+          <div class="query-meta"><span>1 click</span><span>·</span><span>2 impressions</span><span>·</span><span class="ctr">50% CTR</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:50%"></div></div>
+        </div>
+        <div class="query-item">
+          <div class="query-top"><span class="query-name">prime turf</span><span class="query-pos">Pos. 2</span></div>
+          <div class="query-meta"><span>1 click</span><span>·</span><span>2 impressions</span><span>·</span><span class="ctr">50% CTR</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:50%"></div></div>
+        </div>
+        <div class="alert-box alert-warn">⚠ 100% brand queries. Zero non-brand traffic captured yet.</div>
+      </div>
+
+      <!-- Devices -->
+      <div class="card">
+        <div class="card-eye">Device Split</div>
+        <div class="card-title">Traffic by Device</div>
+        <canvas id="pieChart" height="130"></canvas>
+        <div class="device-item"><div><span class="device-dot" style="background:var(--green)"></span><span class="device-name">Mobile</span></div><div class="device-meta">6 clicks · 100% CTR</div></div>
+        <div class="device-item"><div><span class="device-dot" style="background:var(--gold)"></span><span class="device-name">Desktop</span></div><div class="device-meta">2 clicks · 33% CTR</div></div>
+      </div>
+
+      <!-- Countries -->
+      <div class="card">
+        <div class="card-eye">Countries</div>
+        <div class="card-title">Geographic Reach</div>
+        <div class="country-item">
+          <div class="country-top"><span class="country-name active">South Africa</span><span class="country-clicks active">8 clicks</span></div>
+          <div class="country-bar"><div class="country-fill" style="width:100%"></div></div>
+        </div>
+        <div class="country-item">
+          <div class="country-top"><span class="country-name inactive">Dominican Rep.</span><span class="country-clicks inactive">0 clicks</span></div>
+          <div class="country-bar"><div class="country-fill" style="width:0%"></div></div>
+        </div>
+        <div class="country-item">
+          <div class="country-top"><span class="country-name inactive">France</span><span class="country-clicks inactive">0 clicks</span></div>
+          <div class="country-bar"><div class="country-fill" style="width:0%"></div></div>
+        </div>
+        <div class="alert-box alert-ok">✓ 80% ZA click share confirms strong local signal.</div>
+      </div>
+    </div>
+
+    <!-- Pages Table -->
+    <div class="card tbl-wrap">
+      <div class="card-eye">Landing Pages</div>
+      <div class="card-title">URL Performance — Canonicalisation Alert</div>
+      <div style="overflow-x:auto">
+        <table class="tbl">
+          <thead><tr><th>URL</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Position</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="mono">https://primeturf.co.za/</td>
+              <td class="bold">4</td><td>7</td><td class="green">57.1%</td><td>1.71</td>
+              <td><span class="badge badge-green">canonical</span></td>
+            </tr>
+            <tr>
+              <td class="mono dim">http://primeturf.co.za/</td>
+              <td class="bold">4</td><td>5</td><td class="green">80.0%</td><td>1.60</td>
+              <td><span class="badge badge-gold">needs redirect</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="alert-box alert-err"><strong>ACTION REQUIRED:</strong> http:// variant is splitting link equity. Implement 301 redirect from http → https immediately. This is Phase 1 Priority #1.</div>
+    </div>
+
+    <div class="dash-footer">
+      <span>PRIMETURF SA · SEO INTELLIGENCE CENTRE · DATA SOURCE: GOOGLE SEARCH CONSOLE</span>
+      <span>Generated: 10 June 2026</span>
+    </div>
+  </div>
+
+  <!-- ═══ ROLLOUT TAB ═══ -->
+  <div id="tab-rollout" class="tab-pane">
+
+    <div class="rollout-header">
+      <div class="rh-eye">PrimeTurf SA · SEO Strategy</div>
+      <div class="rh-title">6-Phase SEO Rollout Plan</div>
+      <div class="rh-sub">Built from 7-day GSC baseline. Current state: brand-only visibility, 8 clicks, avg. position 1.6. Target: 500+ monthly organic clicks from non-brand commercial queries within 5 months.</div>
+      <div class="rh-stats">
+        <div><div class="rh-stat-label">Baseline Clicks</div><div class="rh-stat-value">8</div></div>
+        <div><div class="rh-stat-label">Target Clicks/mo</div><div class="rh-stat-value">500+</div></div>
+        <div><div class="rh-stat-label">Timeline</div><div class="rh-stat-value">5 Months</div></div>
+        <div><div class="rh-stat-label">Priority #1</div><div class="rh-stat-value">Canonicalise</div></div>
+      </div>
+    </div>
+
+    <!-- Milestone 1 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">01</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">FOUNDATION</span><span class="ms-status" style="background:var(--gold);color:#fff">IN PROGRESS</span></div>
+              <div class="ms-timeline">⏱ Week 1–2</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">KPI GATE</div>0 crawl errors · GSC verified · sitemap indexed</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-dot"></div>Canonicalize https vs http — redirect http://primeturf.co.za → https://</div>
+            <div class="ms-item"><div class="ms-dot"></div>Verify Google Search Console ownership + submit sitemap.xml</div>
+            <div class="ms-item"><div class="ms-dot"></div>Install GA4 with event tracking (form submits, CTA clicks, WhatsApp)</div>
+            <div class="ms-item"><div class="ms-dot"></div>Conduct full technical audit: Core Web Vitals, mobile speed, schema markup</div>
+            <div class="ms-item"><div class="ms-dot"></div>Fix any crawl errors, broken links, missing meta tags</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milestone 2 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">02</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">KEYWORD ARCHITECTURE</span><span class="ms-status" style="background:var(--green-light);color:#fff">NEXT UP</span></div>
+              <div class="ms-timeline">⏱ Week 3–4</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">KPI GATE</div>20 target keywords mapped · content briefs approved</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-dot"></div>Expand beyond brand — target 'artificial turf installation Gauteng', 'synthetic grass Cape Town'</div>
+            <div class="ms-item"><div class="ms-dot"></div>Map 15–20 commercial-intent keywords to specific pages</div>
+            <div class="ms-item"><div class="ms-dot"></div>Build keyword clusters: installation, products, price/cost, areas served</div>
+            <div class="ms-item"><div class="ms-dot"></div>Develop content brief for each target cluster</div>
+            <div class="ms-item"><div class="ms-dot"></div>Audit competitor domains for gap keywords</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milestone 3 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">03</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">ON-PAGE OPTIMISATION</span><span class="ms-status" style="background:var(--green-light);color:#fff">NEXT UP</span></div>
+              <div class="ms-timeline">⏱ Week 4–6</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">KPI GATE</div>All pages schema-marked · 3 city pages live · avg title tag score &gt;80</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-dot"></div>Rewrite title tags + meta descriptions across all pages (keyword-rich, &lt;60 chars)</div>
+            <div class="ms-item"><div class="ms-dot"></div>Add LocalBusiness + Product schema JSON-LD markup</div>
+            <div class="ms-item"><div class="ms-dot"></div>Create dedicated landing pages per city: Johannesburg, Pretoria, Cape Town</div>
+            <div class="ms-item"><div class="ms-dot"></div>Build FAQ sections targeting long-tail 'how much does artificial turf cost' queries</div>
+            <div class="ms-item"><div class="ms-dot"></div>Optimise image alt tags, file names, and lazy loading for Core Web Vitals</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milestone 4 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">04</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">CONTENT ENGINE</span><span class="ms-status" style="background:#3A3A3A;color:#aaa">PLANNED</span></div>
+              <div class="ms-timeline">⏱ Month 2–3</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">KPI GATE</div>8 published assets · 500+ organic impressions/week · GBP fully optimised</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-dot"></div>Publish 2x blog posts/month targeting informational keywords</div>
+            <div class="ms-item"><div class="ms-dot"></div>Case studies: residential + commercial projects with before/after photography</div>
+            <div class="ms-item"><div class="ms-dot"></div>'Artificial Turf Buyer's Guide' — cornerstone SEO asset targeting developers &amp; architects</div>
+            <div class="ms-item"><div class="ms-dot"></div>FAQ hub targeting 'artificial turf vs real grass South Africa' comparison queries</div>
+            <div class="ms-item"><div class="ms-dot"></div>Optimise Google Business Profile — posts, photos, Q&amp;A, service categories</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milestone 5 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">05</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">AUTHORITY &amp; BACKLINKS</span><span class="ms-status" style="background:#3A3A3A;color:#aaa">PLANNED</span></div>
+              <div class="ms-timeline">⏱ Month 3–4</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">KPI GATE</div>20 quality backlinks · NAP consistent in 20+ directories</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-dot"></div>List on South African business directories: Gumtree Business, Brabys, Hotfrog ZA</div>
+            <div class="ms-item"><div class="ms-dot"></div>Outreach to Gauteng/CT landscaping blogs + architecture publications</div>
+            <div class="ms-item"><div class="ms-dot"></div>Submit to industry associations: SALI, landscape architect networks</div>
+            <div class="ms-item"><div class="ms-dot"></div>Build citation consistency (NAP: Name, Address, Phone) across 20+ directories</div>
+            <div class="ms-item"><div class="ms-dot"></div>Guest content or press release through ZA trade media</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milestone 6 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">06</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">CONVERSION OPTIMISATION</span><span class="ms-status" style="background:#3A3A3A;color:#aaa">PLANNED</span></div>
+              <div class="ms-timeline">⏱ Month 4–5</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">KPI GATE</div>Contact conversion rate &gt;3% · quote calculator deployed</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-dot"></div>A/B test CTAs: 'Get Free Quote' vs 'View Our Projects' vs 'Call Now'</div>
+            <div class="ms-item"><div class="ms-dot"></div>Add live chat / WhatsApp widget to reduce bounce from mobile (75% of traffic)</div>
+            <div class="ms-item"><div class="ms-dot"></div>Build quote calculator tool — interactive spec-layer decision support for developers</div>
+            <div class="ms-item"><div class="ms-dot"></div>Deploy retargeting pixels for specification-layer audience (architects, contractors)</div>
+            <div class="ms-item"><div class="ms-dot"></div>Track funnel: organic click → contact form → quote → installation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insights -->
+    <div class="insights">
+      <div class="insight green">
+        <div class="insight-icon">🎯</div>
+        <div class="insight-head">Brand Moat is Set</div>
+        <div class="insight-body">Avg. position 1.6 on brand terms means you own the name. The entire growth opportunity is non-brand: category, problem, and location queries.</div>
+      </div>
+      <div class="insight gold">
+        <div class="insight-icon">📱</div>
+        <div class="insight-head">Mobile-First Priority</div>
+        <div class="insight-body">75% of clicks come from mobile with 100% CTR vs 33% on desktop. Every page optimisation must pass mobile Core Web Vitals first.</div>
+      </div>
+      <div class="insight green">
+        <div class="insight-icon">⚙</div>
+        <div class="insight-head">Specification Channel Alignment</div>
+        <div class="insight-body">SEO content strategy should mirror the VDOS Channel Power Hierarchy — architect/developer queries are high-value, low-competition targets.</div>
+      </div>
+    </div>
+
+    <div class="dash-footer">
+      <span>PRIMETURF SA · SEO INTELLIGENCE CENTRE · DATA SOURCE: GOOGLE SEARCH CONSOLE</span>
+      <span>Generated: 10 June 2026</span>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+// ── TAB SWITCHING ──
+function switchTab(id) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
 }
 
-// Remove loading screen and mount
-document.getElementById("loading").style.display = "none";
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+// ── SHARED CHART OPTIONS ──
+const GREEN = '#1A5A28', GOLD = '#B8902A', GREEN_DARK = '#0F3318', GOLD_LIGHT = '#D4A840';
+const gridColor = '#f0ece4';
+const tooltipDefaults = {
+  backgroundColor: GREEN_DARK,
+  titleColor: GOLD_LIGHT,
+  bodyColor: '#fff',
+  borderColor: 'transparent',
+  padding: 10,
+  cornerRadius: 3,
+  titleFont: { size: 11 },
+  bodyFont: { size: 11 },
+};
+
+// ── BAR CHART ──
+new Chart(document.getElementById('barChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Jun 2','Jun 3','Jun 4','Jun 5','Jun 6','Jun 7','Jun 8'],
+    datasets: [
+      { label: 'Clicks',      data: [0,0,0,2,2,3,1], backgroundColor: GREEN, borderRadius: 2, barPercentage: 0.7 },
+      { label: 'Impressions', data: [0,0,0,2,4,3,3], backgroundColor: GOLD,  borderRadius: 2, barPercentage: 0.7 },
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: { legend: { labels: { boxWidth: 10, font: { size: 10 }, color: '#888' } }, tooltip: tooltipDefaults },
+    scales: {
+      x: { grid: { color: gridColor }, ticks: { font: { size: 10 }, color: '#999' } },
+      y: { grid: { color: gridColor }, ticks: { font: { size: 10 }, color: '#999' }, beginAtZero: true },
+    },
+  },
+});
+
+// ── LINE CHART (position, reversed Y) ──
+new Chart(document.getElementById('lineChart'), {
+  type: 'line',
+  data: {
+    labels: ['Jun 5','Jun 6','Jun 7','Jun 8'],
+    datasets: [{
+      label: 'Position',
+      data: [2.0, 1.8, 1.7, 1.3],
+      borderColor: GOLD,
+      backgroundColor: 'rgba(184,144,42,.08)',
+      borderWidth: 2.5,
+      pointBackgroundColor: GOLD,
+      pointRadius: 5,
+      pointBorderWidth: 0,
+      fill: true,
+      tension: 0.3,
+    }],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ` Position ${ctx.parsed.y}` } },
+    },
+    scales: {
+      x: { grid: { color: gridColor }, ticks: { font: { size: 10 }, color: '#999' } },
+      y: {
+        reverse: true,
+        min: 1, max: 3,
+        grid: { color: gridColor },
+        ticks: { font: { size: 10 }, color: '#999', callback: v => 'Pos. ' + v },
+      },
+    },
+  },
+});
+
+// ── DONUT CHART ──
+new Chart(document.getElementById('pieChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Mobile (75%)', 'Desktop (25%)'],
+    datasets: [{
+      data: [6, 2],
+      backgroundColor: [GREEN, GOLD],
+      borderWidth: 0,
+      hoverOffset: 4,
+    }],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    cutout: '55%',
+    plugins: {
+      legend: { display: false },
+      tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed} clicks` } },
+    },
+  },
+});
 </script>
 </body>
 </html>
