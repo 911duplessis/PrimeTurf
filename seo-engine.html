@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrimeTurf SA — SEO Automation Engine</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:    #1A3A2A;
+  --g2:   #1C4A2A;
+  --gd:   #0F2018;
+  --gx:   #081410;
+  --gold: #B8922A;
+  --gl:   #D4A940;
+  --gdim: #7A5F1A;
+  --ok:   #5BDB7A;
+  --err:  #FF6B6B;
+  --info: #8BB4FF;
+  --b1:   #1E1E1E;
+  --b2:   #141414;
+  --b3:   #0D0D0D;
+  --b4:   #080808;
+  --t1:   #E0E0E0;
+  --t2:   #AAAAAA;
+  --t3:   #666666;
+  --t4:   #333333;
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Inter','Helvetica Neue',sans-serif;background:var(--gx);color:var(--t1);-webkit-font-smoothing:antialiased}
+
+/* ── SCROLLBARS ── */
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--b1);border-radius:2px}
+
+/* ── HEADER ── */
+.hdr{background:var(--gd);border-bottom:2px solid var(--gold);padding:0 20px;flex-shrink:0;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-mark{width:32px;height:32px;background:var(--gold);border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark span{font-family:'Playfair Display',serif;color:var(--gd);font-weight:700;font-size:11px;letter-spacing:-.02em}
+.logo-name{font-family:'Playfair Display',serif;color:#fff;font-size:13px;font-weight:600;white-space:nowrap}
+.logo-sub{color:var(--gdim);font-size:8px;letter-spacing:.2em;text-transform:uppercase;font-family:'Inter',sans-serif}
+.progress-wrap{flex:1;max-width:320px;margin:0 24px}
+.progress-labels{display:flex;justify-content:space-between;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.progress-labels span:first-child{color:var(--t4)}
+.progress-labels span:last-child{color:var(--gold)}
+.progress-track{background:var(--b1);border-radius:2px;height:3px}
+.progress-fill{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--g),var(--gold));transition:width .5s ease}
+.autochain{display:flex;align-items:center;gap:8px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;flex-shrink:0}
+.autochain-lbl{color:var(--t4)}
+.autochain-lbl.on{color:var(--gold)}
+.toggle{width:34px;height:17px;border-radius:9px;border:1px solid var(--b1);cursor:pointer;position:relative;transition:all .2s;flex-shrink:0}
+.toggle.off{background:var(--b2)}
+.toggle.on{background:var(--gold);border-color:var(--gold)}
+.toggle-knob{width:11px;height:11px;border-radius:50%;background:#fff;position:absolute;top:2px;transition:left .2s}
+.toggle.off .toggle-knob{left:2px}
+.toggle.on .toggle-knob{left:19px}
+
+/* ── MAIN LAYOUT ── */
+.main{display:flex;height:calc(100vh - 52px)}
+
+/* ── LEFT SIDEBAR ── */
+.sidebar-l{width:268px;flex-shrink:0;background:var(--b3);border-right:1px solid var(--b1);display:flex;flex-direction:column;overflow:hidden}
+.sidebar-label{padding:14px 14px 6px;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--t4)}
+.phase-list{flex:1;overflow-y:auto;padding:0 10px 10px;display:flex;flex-direction:column;gap:7px}
+.phase-card{border-radius:3px;padding:12px 14px;cursor:pointer;transition:all .18s;position:relative;user-select:none}
+.phase-card.locked{opacity:.38;cursor:not-allowed}
+.phase-card.active{box-shadow:0 0 0 1px var(--phase-color,var(--gold)),0 0 16px rgba(184,146,42,.12)}
+.pc-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pc-left{display:flex;align-items:center;gap:9px;min-width:0}
+.pc-num{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;transition:all .2s}
+.pc-text{min-width:0}
+.pc-name{font-size:11px;font-weight:700;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .2s}
+.pc-tag{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--t4);margin-top:1px}
+.pc-badge{font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;flex-shrink:0;font-weight:700}
+.run-all-wrap{padding:10px;border-top:1px solid var(--b1);flex-shrink:0}
+.run-all{width:100%;padding:9px 0;border-radius:3px;border:1px solid var(--gold);font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.run-all:not(:disabled){background:linear-gradient(135deg,var(--gd),rgba(122,95,26,.35));color:var(--gold)}
+.run-all:not(:disabled):hover{background:rgba(184,146,42,.12)}
+.run-all:disabled{background:var(--b2);color:var(--t4);cursor:not-allowed;border-color:var(--b1)}
+
+/* ── CENTER PANE ── */
+.center{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.out-header{background:var(--b4);border-bottom:1px solid var(--b1);padding:9px 18px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.out-title{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
+.out-badges{display:flex;gap:12px;font-size:9px;letter-spacing:.08em}
+.out-scroll{flex:1;overflow-y:auto;padding:20px 22px;background:var(--gx)}
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--b1);gap:10px}
+.empty-icon{font-size:40px}
+.empty-text{font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--t4);letter-spacing:.04em}
+.empty-sub{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--t4)}
+
+/* ── PROMPT VIEW ── */
+.prompt-block{margin-bottom:32px}
+.pb-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px}
+.pb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.pb-title{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.pb-done{font-size:8px;color:var(--ok);letter-spacing:.1em;margin-left:auto}
+
+.pb-actions{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.btn{padding:7px 16px;border-radius:2px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;border:none;transition:all .15s}
+.btn-copy{background:rgba(184,146,42,.15);color:var(--gl);border:1px solid rgba(184,146,42,.25)}
+.btn-copy:hover{background:rgba(184,146,42,.25)}
+.btn-copy.copied{background:rgba(91,219,122,.15);color:var(--ok);border-color:rgba(91,219,122,.25)}
+.btn-claude{background:rgba(91,219,122,.1);color:var(--ok);border:1px solid rgba(91,219,122,.2);text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.btn-claude:hover{background:rgba(91,219,122,.18)}
+.btn-done{background:rgba(26,58,42,.4);color:var(--ok);border:1px solid rgba(91,219,122,.2)}
+.btn-done:hover{background:rgba(26,58,42,.6)}
+.btn-done.marked{background:rgba(91,219,122,.1)}
+
+.prompt-text{background:var(--b3);border:1px solid var(--b1);border-radius:3px;padding:18px 20px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t2);line-height:1.85;white-space:pre-wrap;word-break:break-word;position:relative}
+.prompt-text::before{content:'PROMPT';position:absolute;top:10px;right:14px;font-size:8px;letter-spacing:.16em;color:var(--t4)}
+
+/* ── MARKDOWN OUTPUT ── */
+.md-h1{color:#fff;font-weight:900;font-size:14px;margin-top:20px;margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.md-h2{color:var(--gold);font-weight:800;font-size:12px;margin-top:16px;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid rgba(184,146,42,.2);font-family:'JetBrains Mono',monospace}
+.md-h3{color:var(--gl);font-weight:700;font-size:11px;margin-top:12px;margin-bottom:4px;font-family:'JetBrains Mono',monospace}
+.md-code{background:#0A0A0A;border:1px solid var(--b1);border-radius:2px;padding:1px 8px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ok)}
+.md-li{color:#C8C8C8;font-size:11px;line-height:1.75;padding-left:14px;font-family:'JetBrains Mono',monospace}
+.md-li::before{content:'›';color:var(--gold);margin-right:6px;margin-left:-14px}
+.md-num{color:#C8C8C8;font-size:11px;line-height:1.75;padding-left:8px;font-family:'JetBrains Mono',monospace}
+.md-table{color:#aaa;font-size:10px;font-family:'JetBrains Mono',monospace;line-height:1.6;padding-left:6px;border-left:2px solid var(--b1)}
+.md-bold{color:var(--gl);font-weight:700;font-size:11px;font-family:'JetBrains Mono',monospace;margin-top:5px}
+.md-p{color:#D0D0D0;font-size:11px;line-height:1.75;font-family:'JetBrains Mono',monospace}
+.md-spacer{height:5px}
+.cursor{display:inline-block;width:7px;height:13px;background:var(--gold);vertical-align:middle;margin-left:2px;animation:blink .9s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── RIGHT SIDEBAR (TERMINAL) ── */
+.sidebar-r{width:268px;flex-shrink:0;background:var(--b4);border-left:1px solid var(--b1);display:flex;flex-direction:column;overflow:hidden}
+.term-header{padding:9px 12px 8px;border-bottom:1px solid var(--b1);display:flex;align-items:center;gap:8px;flex-shrink:0}
+.term-dots{display:flex;gap:4px}
+.term-dot{width:8px;height:8px;border-radius:50%}
+.term-title{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);font-family:'JetBrains Mono',monospace;margin-left:4px}
+.term-scroll{flex:1;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:1px}
+.term-line{font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.tl-prompt{color:var(--gdim)}
+.tl-cmd{color:var(--gl)}
+.tl-ok{color:var(--ok)}
+.tl-err{color:var(--err)}
+.tl-info{color:var(--info)}
+.tl-out{color:var(--t2)}
+
+.term-instructions{padding:12px;border-top:1px solid var(--b1);font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--t4);line-height:1.8;flex-shrink:0}
+.term-instructions .ti-head{color:var(--gdim);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.term-instructions ol{padding-left:14px;color:var(--t3)}
+.term-instructions li{margin-bottom:3px}
+.term-instructions a{color:var(--gl);text-decoration:none}
+.term-instructions a:hover{text-decoration:underline}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .sidebar-r{display:none}
+  .progress-wrap{display:none}
+}
+@media(max-width:640px){
+  .sidebar-l{width:220px}
+  .pc-badge{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  HEADER                                     -->
+<!-- ══════════════════════════════════════════ -->
+<div class="hdr">
+  <div class="logo">
+    <div class="logo-mark"><span>PT</span></div>
+    <div>
+      <div class="logo-name">PrimeTurf SA</div>
+      <div class="logo-sub">SEO Automation Engine</div>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-labels">
+      <span>ROLLOUT PROGRESS</span>
+      <span id="progress-label">0 / 6 PHASES</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  </div>
+
+  <div class="autochain">
+    <span class="autochain-lbl off" id="ac-lbl">Auto-chain</span>
+    <div class="toggle off" id="ac-toggle" onclick="toggleAutoChain()"><div class="toggle-knob"></div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  MAIN                                       -->
+<!-- ══════════════════════════════════════════ -->
+<div class="main">
+
+  <!-- LEFT: phase list -->
+  <div class="sidebar-l">
+    <div class="sidebar-label">Execution Phases</div>
+    <div class="phase-list" id="phase-list"></div>
+    <div class="run-all-wrap">
+      <button class="run-all" id="run-all-btn" onclick="runAll()">▶ RUN ALL PHASES</button>
+    </div>
+  </div>
+
+  <!-- CENTER: output -->
+  <div class="center">
+    <div class="out-header">
+      <div class="out-title" id="out-title" style="color:var(--t4)">OUTPUT</div>
+      <div class="out-badges">
+        <span id="out-done-count" style="color:var(--ok);display:none"></span>
+      </div>
+    </div>
+    <div class="out-scroll" id="out-scroll">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">⚡</div>
+        <div class="empty-text">Select a phase to execute</div>
+        <div class="empty-sub">or click RUN ALL PHASES to chain all six</div>
+      </div>
+      <div id="output-blocks"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT: terminal -->
+  <div class="sidebar-r">
+    <div class="term-header">
+      <div class="term-dots">
+        <div class="term-dot" style="background:#FF5F57"></div>
+        <div class="term-dot" style="background:#FFBD2E"></div>
+        <div class="term-dot" style="background:#28CA42"></div>
+      </div>
+      <span class="term-title">seo-engine.log</span>
+    </div>
+    <div class="term-scroll" id="term-scroll"></div>
+    <div class="term-instructions">
+      <div class="ti-head">How to use</div>
+      <ol>
+        <li>Click a phase card to view its prompt</li>
+        <li>Click <strong style="color:var(--gl)">Copy Prompt</strong></li>
+        <li>Paste into <a href="https://claude.ai" target="_blank">claude.ai</a></li>
+        <li>Click <strong style="color:var(--ok)">Mark Done</strong> when complete</li>
+        <li>Next phase unlocks automatically</li>
+      </ol>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+
+const PHASES = [
+  {
+    id:"Phase01", label:"HTTP → HTTPS Redirect", tag:"FOUNDATION", color:"#B8922A",
+    prompt:`You are a senior technical SEO specialist working on primeturf.co.za, a South African artificial turf installation business.
+
+TASK: Phase 01 — HTTP to HTTPS Migration & Technical Foundation
+
+Produce a complete, deployment-ready technical brief covering:
+
+1. CANONICAL REDIRECT IMPLEMENTATION
+   - Exact .htaccess rule (Apache) AND nginx config snippet for 301 redirect: http://primeturf.co.za → https://primeturf.co.za
+   - WordPress wp-config.php additions if applicable
+   - Canonical <link> tag format for all page <head> sections
+
+2. GOOGLE SEARCH CONSOLE
+   - Step-by-step: add and verify the https:// property
+   - Sitemap.xml submission checklist
+   - How to monitor crawl coverage after redirect
+
+3. GA4 TRACKING INTEGRITY
+   - Verify GA4 measurement ID is firing on https:// only
+   - Event tracking confirmation: form submits, CTA clicks, WhatsApp button
+   - Cross-domain tracking check (if using subdomains)
+
+4. POST-MIGRATION CHECKLIST
+   - 5 specific things to verify 48 hours after redirect goes live
+   - How to confirm GSC has re-indexed the canonical domain
+
+Format your response with clear section headers. Be specific — give actual code snippets and exact steps, not general advice. Flag any South Africa-specific hosting considerations (e.g. common shared hosting providers like Hetzner SA, xneelo).`
+  },
+  {
+    id:"Phase02", label:"Keyword Architecture", tag:"DISCOVERY", color:"#1C4A2A",
+    prompt:`You are a senior SEO strategist specialising in South African construction, landscaping, and luxury outdoor living markets.
+
+TASK: Phase 02 — Keyword Architecture for primeturf.co.za
+
+Context: PrimeTurf SA installs artificial turf and outdoor surfaces in Gauteng and Cape Town. The business has repositioned as a specification-layer control system — architects and developers are the structurally dominant channel, not direct homeowners.
+
+Produce a full keyword architecture covering:
+
+1. KEYWORD CLUSTERS (minimum 5 clusters, 4-6 keywords each)
+   Clusters must include:
+   - Commercial/transactional: installation, supply, pricing
+   - Location-based: Johannesburg, Pretoria, Cape Town, Sandton, Stellenbosch
+   - Specification-layer: architect spec, landscape architect, developer spec, commercial
+   - Problem-aware: water saving, maintenance-free, drought-resistant
+   - Product-specific: artificial grass, synthetic turf, astroturf, fake lawn
+
+2. LANDING PAGE MAPPING
+   For each cluster, assign: target URL slug, page title (H1), primary keyword, 3 secondary keywords, and search intent (commercial/informational/navigational)
+
+3. PRIORITY MATRIX
+   Score each cluster 1-10 on: Search Volume (ZA), Competition Level, Revenue Potential, Speed to Rank
+   Identify top 3 clusters to execute first.
+
+4. LONG-TAIL OPPORTUNITIES
+   List 10 specific long-tail queries with estimated ZA monthly search volume that PrimeTurf can realistically rank for within 90 days.
+
+Format as structured tables where appropriate. Flag keywords where Afrikaans variants are relevant ("kunsmatige gras", "sintetiese groen").`
+  },
+  {
+    id:"Phase03", label:"On-Page Optimisation", tag:"EXECUTION", color:"#1A3A2A",
+    prompt:`You are a technical SEO specialist with expertise in local business schema and South African digital markets.
+
+TASK: Phase 03 — On-Page Optimisation for primeturf.co.za
+
+Produce deployment-ready on-page SEO assets:
+
+1. SCHEMA MARKUP (JSON-LD)
+   Write complete JSON-LD blocks for:
+   - LocalBusiness schema (PrimeTurf SA, Gauteng + Cape Town service areas)
+   - Service schema for artificial turf installation
+   - FAQPage schema (5 most common customer questions)
+   - BreadcrumbList for main navigation
+
+2. META TAG TEMPLATES
+   Write optimised title tags and meta descriptions for:
+   - Homepage
+   - Johannesburg landing page
+   - Cape Town landing page
+   - Artificial Grass Products page
+   - Commercial/Architect specification page
+   Follow format: Title (50-60 chars) | Meta description (150-160 chars)
+
+3. CITY LANDING PAGE STRUCTURE
+   For both Johannesburg and Cape Town pages, provide:
+   - H1, H2 structure (full heading hierarchy)
+   - 3 key content sections with brief copy direction
+   - Local signals to include (suburbs, landmarks, project references)
+   - Internal linking strategy
+
+4. INTERNAL LINK AUDIT
+   List all internal links that must use https:// (identify any that may still reference http://)
+   Provide anchor text recommendations for top 10 internal links.
+
+All code must be valid, minified-ready JSON-LD. All copy must reflect premium positioning — PrimeTurf is not a budget installer.`
+  },
+  {
+    id:"Phase04", label:"Content Engine", tag:"AUTHORITY", color:"#B8922A",
+    prompt:`You are a content strategist and SEO writer specialising in B2B construction, luxury landscaping, and South African architecture markets.
+
+TASK: Phase 04 — Content Engine for primeturf.co.za
+
+PrimeTurf SA targets architects, developers, and high-end residential clients. Content must establish specification-layer authority, not just sell product.
+
+Produce:
+
+1. EDITORIAL CALENDAR (3 months)
+   12 blog post titles with:
+   - Target keyword
+   - Search intent
+   - Target audience (architect / developer / homeowner)
+   - Content type (guide / case study / comparison / news)
+   - Estimated word count
+   Priority-order them by traffic + conversion potential.
+
+2. TWO FULL BLOG POST BRIEFS
+   For the top 2 priority posts, write a complete content brief including:
+   - Working title + SEO title
+   - Target keyword + 5 secondaries
+   - Outline (H2/H3 structure)
+   - Key points each section must cover
+   - CTA at end of article
+   - Internal linking opportunities
+
+3. CASE STUDY TEMPLATE
+   Design a reusable case study structure for completed PrimeTurf projects:
+   - Sections: Client Brief, Challenge, Solution, Specification Used, Outcome, Client Quote
+   - SEO fields: project location, surface type, square meterage keywords
+   - Photo caption template with alt text formula
+
+4. GOOGLE BUSINESS PROFILE POST SCHEDULE
+   Write 4 ready-to-publish GBP posts (max 1500 chars each):
+   - 1 project showcase
+   - 1 educational (water-saving / maintenance)
+   - 1 offer/CTA
+   - 1 behind-the-scenes / process
+
+Tone: Premium, technical credibility. Never "cheap" or "affordable". Think: how an architect reads a material specification sheet.`
+  },
+  {
+    id:"Phase05", label:"Backlink Strategy", tag:"AUTHORITY", color:"#1C4A2A",
+    prompt:`You are a digital PR and link building specialist with deep knowledge of the South African construction, landscape architecture, and design media landscape.
+
+TASK: Phase 05 — Backlink & Authority Strategy for primeturf.co.za
+
+1. DIRECTORY SUBMISSION LIST
+   Provide 20 South African business directories with:
+   - Directory name + URL
+   - Domain Authority estimate
+   - Free vs paid
+   - Category to list under
+   - NAP format required (Name / Address / Phone consistency)
+   Prioritise: Gauteng and Cape Town regional directories, construction directories, landscape/garden trade directories.
+
+2. INDUSTRY ASSOCIATION TARGETS
+   List 8 South African professional associations where PrimeTurf should secure a listing or member profile:
+   - SALI (South African Landscaping Institute)
+   - SACLAP, ILASA, ASLA-SA equivalents
+   - Master Builders Association
+   - Green Building Council SA
+   For each: listing URL, cost, and anchor text to request.
+
+3. MEDIA & EDITORIAL OUTREACH
+   Identify 10 South African publications / blogs that cover architecture, landscape design, or luxury property where PrimeTurf could earn editorial coverage:
+   - Publication name + URL
+   - Content angle that fits their editorial calendar
+   - Contact approach (press release / guest article / project submission)
+
+4. OUTREACH EMAIL TEMPLATES
+   Write 3 outreach email templates:
+   - To a landscape architecture blog (guest post pitch)
+   - To a property developer (specification partnership)
+   - To a green building / sustainability publication (water-saving angle)
+
+5. LINK BUILDING TRACKER STRUCTURE
+   Define the columns and workflow for a link prospecting and outreach tracker spreadsheet.
+
+Focus exclusively on South African targets. Quality over quantity — 10 DA40+ links beat 50 DA10 directory links.`
+  },
+  {
+    id:"Phase06", label:"CRO & Retention", tag:"CONVERSION", color:"#1A3A2A",
+    prompt:`You are a conversion rate optimisation specialist and marketing technologist with experience in high-ticket B2B and luxury residential services in South Africa.
+
+TASK: Phase 06 — CRO, Retargeting & Conversion Architecture for primeturf.co.za
+
+PrimeTurf's average project value is high. The funnel is: organic search → landing page → quote request → site visit → installation. Optimise every conversion point.
+
+1. QUOTE CALCULATOR SPECIFICATION
+   Design a fully interactive quote calculator widget for the PrimeTurf website:
+   - Input fields: surface type (lawn / sports / pool surround / rooftop), area in m², location (Gauteng / Cape Town), grade (standard / premium / luxury)
+   - Output: estimated price range (ZAR), estimated installation time, next step CTA
+   - Provide complete HTML/JS code for the calculator widget
+   - Include disclaimer text and "Get Exact Quote" button linking to contact form
+
+2. WHATSAPP INTEGRATION
+   - Floating WhatsApp button implementation (HTML + CSS)
+   - Pre-populated message templates for: quote request, project enquiry, specification download
+   - WhatsApp Business API setup checklist for primeturf.co.za
+
+3. CONVERSION TRACKING SETUP
+   Write the complete GA4 event tracking code for:
+   - Quote calculator submission
+   - WhatsApp button click
+   - Contact form submission
+   - Phone number click
+   - Specification PDF download
+   Include both gtag.js snippets and Google Tag Manager trigger configurations.
+
+4. RETARGETING AUDIENCES
+   Define 5 retargeting audience segments for Meta Ads and Google Ads:
+   - Audience name, description, inclusion rules, exclusion rules
+   - Recommended ad creative angle for each segment
+   - Budget allocation recommendation (% of retargeting spend)
+
+5. A/B TEST ROADMAP
+   Define 4 A/B tests to run in months 4-5:
+   - Hypothesis, variant description, success metric, minimum sample size needed
+   Priority-order by expected impact on quote conversion rate.
+
+All code must be production-ready. All recommendations must account for South African consumer behaviour, POPIA compliance for data collection, and mobile-first UX (75% of PrimeTurf traffic is mobile).`
+  },
+];
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+
+let completed = new Set();
+let activePhase = null;
+let autoChain = false;
+let termLineId = 0;
+let runAllQueue = false;
+
+// ─── TERMINAL ─────────────────────────────────────────────────────────────────
+
+function addTermLine(text, type = "out") {
+  const scroll = document.getElementById("term-scroll");
+  const div = document.createElement("div");
+  div.className = "term-line";
+  let prefix = "";
+  if (type === "cmd")  { div.classList.add("tl-cmd");  prefix = `<span class="tl-prompt">$ </span>`; }
+  if (type === "ok")   { div.classList.add("tl-ok");   prefix = "✓ "; }
+  if (type === "err")  { div.classList.add("tl-err");  prefix = "✗ "; }
+  if (type === "info") { div.classList.add("tl-info"); prefix = `<span style="color:var(--ok)">› </span>`; }
+  div.innerHTML = prefix + escHtml(text);
+  scroll.appendChild(div);
+  scroll.scrollTop = scroll.scrollHeight;
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+// ─── PHASE CARDS ──────────────────────────────────────────────────────────────
+
+function isAvailable(idx) {
+  return idx === 0 || completed.has(PHASES[idx - 1].id);
+}
+
+function renderPhaseList() {
+  const list = document.getElementById("phase-list");
+  list.innerHTML = "";
+  PHASES.forEach((p, i) => {
+    const isActive    = activePhase === p.id;
+    const isComplete  = completed.has(p.id);
+    const isLocked    = !isAvailable(i) && !isComplete;
+    const card = document.createElement("div");
+    card.className = "phase-card" + (isLocked ? " locked" : "") + (isActive ? " active" : "");
+    card.style.setProperty("--phase-color", p.color);
+    card.style.border        = `1px solid ${isActive ? p.color : isComplete ? "rgba(26,58,42,.6)" : "#222"}`;
+    card.style.borderLeft    = `3px solid ${isActive ? p.color : isComplete ? "var(--g)" : "#2A2A2A"}`;
+    card.style.background    = isActive ? "var(--gx)" : isComplete ? "rgba(8,20,16,.55)" : "#111";
+    card.innerHTML = `
+      <div class="pc-row">
+        <div class="pc-left">
+          <div class="pc-num" style="background:${isComplete?"var(--g)":isActive?p.color:"#1A1A1A"};border:1.5px solid ${isComplete?"var(--g)":isActive?p.color:"#333"};color:${isComplete?"#fff":isActive?"var(--gx)":"#444"}">
+            ${isComplete ? "✓" : String(i+1).padStart(2,"0")}
+          </div>
+          <div class="pc-text">
+            <div class="pc-name" style="color:${isActive?p.color:isComplete?"#bbb":"#666"}">${escHtml(p.label)}</div>
+            <div class="pc-tag">${escHtml(p.tag)}</div>
+          </div>
+        </div>
+        <div class="pc-badge" style="background:${isComplete?"rgba(26,58,42,.4)":isActive?"rgba(184,146,42,.15)":"#181818"};color:${isComplete?"var(--ok)":isActive?p.color:"#333"};border:1px solid ${isComplete?"rgba(91,219,122,.15)":isActive?"rgba(184,146,42,.2)":"rgba(42,42,42,.5)"}">
+          ${isComplete?"DONE":isActive?"ACTIVE":isLocked?"LOCKED":"READY"}
+        </div>
+      </div>
+    `;
+    if (!isLocked) {
+      card.style.cursor = "pointer";
+      card.addEventListener("click", () => selectPhase(p.id));
+    }
+    list.appendChild(card);
+  });
+
+  // Progress
+  const pct = (completed.size / PHASES.length) * 100;
+  document.getElementById("progress-fill").style.width = pct + "%";
+  document.getElementById("progress-label").textContent = `${completed.size} / ${PHASES.length} PHASES`;
+
+  // Run all button
+  const btn = document.getElementById("run-all-btn");
+  if (completed.size === PHASES.length) {
+    btn.textContent = "✓ ALL COMPLETE"; btn.disabled = true;
+  } else {
+    btn.textContent = "▶ RUN ALL PHASES"; btn.disabled = false;
+  }
+
+  // Done count badge
+  const badge = document.getElementById("out-done-count");
+  if (completed.size > 0) { badge.style.display = ""; badge.textContent = `${completed.size} phase(s) complete`; }
+  else badge.style.display = "none";
+}
+
+// ─── SELECT / SHOW PHASE ──────────────────────────────────────────────────────
+
+function selectPhase(phaseId) {
+  activePhase = phaseId;
+  const phase = PHASES.find(p => p.id === phaseId);
+  renderPhaseList();
+
+  document.getElementById("out-title").style.color = phase.color;
+  document.getElementById("out-title").textContent  = `${phase.id} — ${phase.label.toUpperCase()}`;
+  document.getElementById("empty-state").style.display = "none";
+
+  const blocks = document.getElementById("output-blocks");
+  // check if already rendered
+  if (document.getElementById("pb-" + phaseId)) return;
+  blocks.innerHTML = "";
+
+  const block = document.createElement("div");
+  block.className = "prompt-block";
+  block.id = "pb-" + phaseId;
+
+  const isDone = completed.has(phaseId);
+  block.innerHTML = `
+    <div class="pb-header" style="border-bottom:1px solid ${phase.color}30">
+      <div class="pb-dot" style="background:${phase.color}"></div>
+      <div class="pb-title" style="color:${phase.color}">${phase.id} — ${escHtml(phase.label)}</div>
+      ${isDone ? `<div class="pb-done">✓ COMPLETE</div>` : ""}
+    </div>
+    <div class="pb-actions">
+      <button class="btn btn-copy" id="copy-btn-${phaseId}" onclick="copyPrompt('${phaseId}')">⧉ Copy Prompt</button>
+      <a class="btn btn-claude" href="https://claude.ai" target="_blank" rel="noopener">↗ Open Claude.ai</a>
+      <button class="btn btn-done ${isDone?"marked":""}" id="done-btn-${phaseId}" onclick="markDone('${phaseId}')">${isDone?"✓ Marked Done":"✓ Mark Done"}</button>
+    </div>
+    <div class="prompt-text">${escHtml(phase.prompt)}</div>
+  `;
+  blocks.appendChild(block);
+  blocks.scrollTop = 0;
+
+  addTermLine(`select ${phase.id} — "${phase.label}"`, "cmd");
+  addTermLine(`Prompt loaded — ${phase.prompt.length} characters`, "info");
+}
+
+// ─── COPY PROMPT ──────────────────────────────────────────────────────────────
+
+function copyPrompt(phaseId) {
+  const phase = PHASES.find(p => p.id === phaseId);
+  const btn = document.getElementById("copy-btn-" + phaseId);
+  navigator.clipboard.writeText(phase.prompt).then(() => {
+    btn.textContent = "✓ Copied!"; btn.classList.add("copied");
+    addTermLine(`${phaseId} prompt copied to clipboard`, "ok");
+    setTimeout(() => { btn.textContent = "⧉ Copy Prompt"; btn.classList.remove("copied"); }, 2200);
+  }).catch(() => {
+    // fallback: select text
+    btn.textContent = "Select text manually";
+    addTermLine("Clipboard unavailable — select and copy manually", "err");
+  });
+}
+
+// ─── MARK DONE ────────────────────────────────────────────────────────────────
+
+function markDone(phaseId) {
+  if (completed.has(phaseId)) return;
+  completed.add(phaseId);
+  addTermLine(`${phaseId} marked complete — ${completed.size}/${PHASES.length} phases done`, "ok");
+  renderPhaseList();
+
+  const doneBtn = document.getElementById("done-btn-" + phaseId);
+  if (doneBtn) { doneBtn.textContent = "✓ Marked Done"; doneBtn.classList.add("marked"); }
+  const pb = document.getElementById("pb-" + phaseId);
+  if (pb) {
+    const hdr = pb.querySelector(".pb-header");
+    if (hdr && !hdr.querySelector(".pb-done")) {
+      const done = document.createElement("div");
+      done.className = "pb-done"; done.textContent = "✓ COMPLETE";
+      hdr.appendChild(done);
+    }
+  }
+
+  if (autoChain) {
+    const idx = PHASES.findIndex(p => p.id === phaseId);
+    const next = PHASES[idx + 1];
+    if (next) {
+      addTermLine(`Auto-chain — queuing ${next.id} in 1.5s...`, "info");
+      setTimeout(() => selectPhase(next.id), 1500);
+    } else {
+      addTermLine("All phases complete. SEO rollout plan fully loaded.", "ok");
+      activePhase = null;
+    }
+  } else {
+    activePhase = null;
+    document.getElementById("out-title").style.color = "var(--t4)";
+    document.getElementById("out-title").textContent = "OUTPUT";
+  }
+}
+
+// ─── RUN ALL ──────────────────────────────────────────────────────────────────
+
+function runAll() {
+  const first = PHASES.find(p => !completed.has(p.id));
+  if (!first) return;
+  autoChain = true;
+  updateAutoChainUI();
+  selectPhase(first.id);
+  addTermLine(`Auto-chain enabled — running from ${first.id}`, "info");
+}
+
+// ─── AUTO-CHAIN TOGGLE ────────────────────────────────────────────────────────
+
+function toggleAutoChain() {
+  autoChain = !autoChain;
+  updateAutoChainUI();
+  addTermLine(`Auto-chain ${autoChain ? "enabled" : "disabled"}`, "info");
+}
+function updateAutoChainUI() {
+  const toggle = document.getElementById("ac-toggle");
+  const lbl    = document.getElementById("ac-lbl");
+  toggle.className = "toggle " + (autoChain ? "on" : "off");
+  lbl.className    = "autochain-lbl " + (autoChain ? "on" : "off");
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+
+renderPhaseList();
+
+addTermLine("PrimeTurf SEO Automation Engine v1.0 — ready", "ok");
+addTermLine(`Session: ${new Date().toISOString().slice(0,19).replace("T"," ")} SAST`, "info");
+addTermLine("Select a phase to load its prompt. Phases unlock sequentially.", "info");
+addTermLine("Copy each prompt → paste into claude.ai → mark done to unlock next.", "info");
+</script>
+</body>
+</html>
