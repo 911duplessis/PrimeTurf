@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z5G37WW47"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3Z5G37WW47');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrimeTurf SA — SEO Intelligence Centre</title>
+<link rel="canonical" href="https://primeturf.co.za/seo-dashboard.html">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1A5A28;--gold:#B8902A;--green-light:#2A7A3A;--green-dark:#0F3318;
+  --gold-light:#D4A840;--cream:#F7F4EE;--charcoal:#1C1C1C;
+  --border:#E8E4DC;--warm:#FAFAF8;
+}
+html{font-family:'Inter','Helvetica Neue',sans-serif;background:var(--cream);color:var(--charcoal);-webkit-font-smoothing:antialiased}
+body{min-height:100vh}
+
+/* ── HEADER ── */
+.hdr{background:var(--green-dark);border-bottom:3px solid var(--gold);padding:0 24px;position:sticky;top:0;z-index:100}
+.hdr-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:36px;height:36px;background:var(--gold);border-radius:3px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:var(--green-dark);letter-spacing:-.02em;flex-shrink:0}
+.logo-name{color:#fff;font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase}
+.logo-sub{color:var(--gold-light);font-size:9px;letter-spacing:.15em;text-transform:uppercase}
+.tabs{display:flex;gap:3px}
+.tab-btn{padding:8px 18px;border-radius:3px;border:none;cursor:pointer;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;transition:all .15s;font-family:inherit}
+.tab-btn.active{background:var(--gold);color:var(--green-dark)}
+.tab-btn:not(.active){background:transparent;color:#aaa}
+.tab-btn:not(.active):hover{color:#ddd}
+.hdr-meta{font-size:10px;color:#666;letter-spacing:.05em;white-space:nowrap;text-align:right}
+.hdr-meta strong{color:var(--gold-light)}
+
+/* ── WRAP ── */
+.wrap{max-width:1280px;margin:0 auto;padding:28px 24px}
+.tab-pane{display:none}.tab-pane.active{display:block}
+
+/* ── SETUP BANNER ── */
+.setup-banner{background:var(--green-dark);border:1px solid rgba(184,144,42,.35);border-radius:6px;padding:28px 32px;margin-bottom:28px}
+.setup-banner h2{font-size:18px;font-weight:800;color:#fff;margin-bottom:8px}
+.setup-banner p{font-size:13px;color:#aaa;line-height:1.7;margin-bottom:0}
+.setup-banner strong{color:var(--gold-light)}
+
+.setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px}
+@media(max-width:800px){.setup-grid{grid-template-columns:1fr}}
+
+.setup-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:22px 24px}
+.setup-card-eye{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.setup-card h3{font-size:14px;font-weight:700;color:var(--charcoal);margin-bottom:14px}
+.step-list{list-style:none;counter-reset:steps}
+.step-list li{counter-increment:steps;display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;font-size:12px;color:#444;line-height:1.6}
+.step-list li::before{content:counter(steps);background:var(--green-dark);color:var(--gold);font-weight:800;font-size:10px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-list li code{background:#f0ece4;padding:1px 6px;border-radius:3px;font-size:11px;font-family:monospace}
+.step-note{font-size:11px;color:#888;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+
+.url-input-row{display:flex;gap:8px;margin-top:14px}
+.url-input{flex:1;padding:9px 12px;border:1px solid var(--border);border-radius:3px;font-size:12px;font-family:monospace;background:var(--warm);color:var(--charcoal);outline:none;transition:border-color .15s}
+.url-input:focus{border-color:var(--gold)}
+.url-input::placeholder{color:#bbb}
+.url-btn{padding:9px 16px;background:var(--green);color:#fff;border:none;border-radius:3px;font-weight:700;font-size:11px;letter-spacing:.06em;cursor:pointer;white-space:nowrap;font-family:inherit;transition:background .15s}
+.url-btn:hover{background:var(--green-light)}
+
+/* ── LIVE FRAME ── */
+.live-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+.live-title{font-size:14px;font-weight:700;color:var(--charcoal)}
+.live-badge{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--green);background:rgba(26,90,40,.08);border:1px solid rgba(26,90,40,.2);border-radius:3px;padding:4px 10px}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.ls-frame{width:100%;border:none;border-radius:6px;display:block}
+.ls-placeholder{background:#fff;border:2px dashed var(--border);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 40px;text-align:center}
+.ls-placeholder-icon{font-size:36px;margin-bottom:16px;opacity:.3}
+.ls-placeholder h3{font-size:15px;font-weight:700;color:#888;margin-bottom:8px}
+.ls-placeholder p{font-size:12px;color:#aaa;max-width:400px;line-height:1.6}
+
+/* ── QUICK LINKS ── */
+.quick-links{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+@media(max-width:700px){.quick-links{grid-template-columns:1fr}}
+.ql{background:#fff;border:1px solid var(--border);border-radius:6px;padding:18px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:border-color .15s;cursor:pointer}
+.ql:hover{border-color:var(--gold)}
+.ql-icon{width:38px;height:38px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.ql-icon.ga4{background:rgba(26,90,40,.08)}
+.ql-icon.gsc{background:rgba(184,144,42,.08)}
+.ql-icon.ls{background:#f0f4ff}
+.ql-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#888;margin-bottom:2px}
+.ql-value{font-size:13px;font-weight:700;color:var(--charcoal)}
+
+/* ── ROLLOUT ── */
+.rollout-header{background:var(--green-dark);border-radius:6px;padding:28px 32px;margin-bottom:24px;position:relative;overflow:hidden}
+.rollout-header::after{content:'';position:absolute;top:0;right:0;width:250px;height:100%;background:linear-gradient(90deg,transparent,rgba(184,144,42,.08));pointer-events:none}
+.rh-eye{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-light);margin-bottom:8px}
+.rh-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:8px}
+.rh-sub{font-size:13px;color:#aaa;max-width:640px;line-height:1.6}
+.rh-stats{display:flex;gap:28px;margin-top:20px;flex-wrap:wrap}
+.rh-stat-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#555;margin-bottom:2px}
+.rh-stat-value{font-size:18px;font-weight:800;color:var(--gold-light)}
+
+.milestone{background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:14px}
+.ms-inner{display:flex;align-items:stretch}
+.ms-phase{background:var(--green-dark);width:64px;min-width:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 0;gap:4px}
+.ms-phase.done{background:var(--green)}
+.ms-phase-lbl{font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.ms-phase-num{font-size:26px;font-weight:900;color:#fff;line-height:1}
+.ms-body{flex:1;padding:16px 22px}
+.ms-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;gap:12px}
+.ms-name-row{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}
+.ms-name{font-size:14px;font-weight:800;letter-spacing:.04em;color:var(--green-dark)}
+.ms-status{padding:2px 8px;border-radius:2px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.ms-timeline{font-size:11px;color:#888}
+.ms-kpi{text-align:right;font-size:10px;color:#aaa;max-width:220px;flex-shrink:0}
+.ms-kpi-lbl{font-weight:700;color:var(--gold);margin-bottom:2px;font-size:10px}
+.ms-items{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px}
+@media(max-width:700px){.ms-items{grid-template-columns:1fr}.ms-kpi{display:none}}
+.ms-item{display:flex;gap:8px;align-items:flex-start;font-size:11px;color:#444;line-height:1.5}
+.ms-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);margin-top:5px;flex-shrink:0}
+.ms-item.done-item{color:#aaa;text-decoration:line-through}
+.ms-item.done-item .ms-dot{background:#ccc}
+.ms-check{width:14px;height:14px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:8px;margin-top:3px;flex-shrink:0}
+
+.insights{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:24px}
+@media(max-width:700px){.insights{grid-template-columns:1fr}}
+.insight{background:#fff;border:1px solid var(--border);border-radius:6px;padding:18px 20px}
+.insight.green{border-top:3px solid var(--green)}
+.insight.gold{border-top:3px solid var(--gold)}
+.insight-head{font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:7px}
+.insight-body{font-size:11px;color:#666;line-height:1.6}
+
+.dash-footer{margin-top:24px;padding-top:16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#aaa;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="logo">
+      <div class="logo-mark">PT</div>
+      <div>
+        <div class="logo-name">PrimeTurf SA</div>
+        <div class="logo-sub">SEO Intelligence Centre</div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab(this,'live')">Live Report</button>
+      <button class="tab-btn" onclick="switchTab(this,'rollout')">Rollout Plan</button>
+    </div>
+    <div class="hdr-meta">
+      GA4 · GSC · <strong>primeturf.co.za</strong>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ═══ LIVE REPORT TAB ═══ -->
+  <div id="tab-live" class="tab-pane active">
+
+    <!-- Quick links to actual platforms -->
+    <div class="quick-links">
+      <a class="ql" href="https://analytics.google.com/analytics/web/#/a397821686p541405091/reports/reportinghub" target="_blank" rel="noopener">
+        <div class="ql-icon ga4">📊</div>
+        <div>
+          <div class="ql-label">Google Analytics 4</div>
+          <div class="ql-value">Open GA4 Dashboard →</div>
+        </div>
+      </a>
+      <a class="ql" href="https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Aprimeturf.co.za" target="_blank" rel="noopener">
+        <div class="ql-icon gsc">🔍</div>
+        <div>
+          <div class="ql-label">Search Console</div>
+          <div class="ql-value">Open GSC Performance →</div>
+        </div>
+      </a>
+      <a class="ql" href="https://lookerstudio.google.com" target="_blank" rel="noopener">
+        <div class="ql-icon ls">📈</div>
+        <div>
+          <div class="ql-label">Looker Studio</div>
+          <div class="ql-value">Build Live Report →</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Setup instructions -->
+    <div id="setup-section">
+
+      <div class="setup-banner">
+        <h2>Connect your live data in ~10 minutes</h2>
+        <p>GA4 and Google Search Console <strong>cannot be embedded directly</strong> into a webpage — they require you to be signed in. The solution is <strong>Google Looker Studio</strong>: a free Google tool that connects to both GA4 and GSC, builds a live dashboard, and gives you a public embed URL you paste below. Once connected, this page shows real-time metrics automatically.</p>
+      </div>
+
+      <div class="setup-grid">
+
+        <!-- Step-by-step: Looker Studio -->
+        <div class="setup-card">
+          <div class="setup-card-eye">Step 1 of 3 · Create Report</div>
+          <h3>Set up Looker Studio (free)</h3>
+          <ol class="step-list">
+            <li>Go to <strong>lookerstudio.google.com</strong> — sign in with the same Google account that owns GA4 &amp; GSC.</li>
+            <li>Click <strong>Create → Report</strong>. When prompted to add a data source, click <strong>Google Analytics</strong>.</li>
+            <li>Select account <code>PrimeTurf</code> → property <code>primeturf.co.za (GA4)</code> → click <strong>Add</strong> → <strong>Add to Report</strong>.</li>
+            <li>Now click <strong>Add data</strong> (top menu) → select <strong>Search Console</strong> → choose <code>primeturf.co.za</code> + <strong>Web</strong> → click <strong>Add</strong>.</li>
+            <li>Build your scorecards: Clicks, Impressions, CTR, Avg. Position (from GSC) + Sessions, Conversions (from GA4). Use charts for time trends.</li>
+          </ol>
+        </div>
+
+        <!-- Step-by-step: Publish & embed -->
+        <div class="setup-card">
+          <div class="setup-card-eye">Step 2 of 3 · Publish &amp; Step 3 · Paste URL</div>
+          <h3>Make it public and embed</h3>
+          <ol class="step-list">
+            <li>In Looker Studio, click the <strong>Share</strong> button (top right) → <strong>Manage access</strong>.</li>
+            <li>Change access to <strong>"Anyone with the link — Viewer"</strong>. Click <strong>Done</strong>.</li>
+            <li>Click <strong>File → Embed report</strong>. Copy the iframe <code>src</code> URL (starts with <code>https://lookerstudio.google.com/embed/reporting/...</code>).</li>
+            <li>Paste that URL into the field below and click <strong>Activate</strong>. Your live dashboard will appear instantly.</li>
+          </ol>
+          <div class="url-input-row">
+            <input class="url-input" id="lsUrl" type="url" placeholder="https://lookerstudio.google.com/embed/reporting/…" />
+            <button class="url-btn" onclick="activateDashboard()">Activate</button>
+          </div>
+          <div class="step-note">The URL is saved in your browser. To make it permanent for all visitors, send me the URL and I'll update the HTML — takes 2 minutes.</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Live frame area (hidden until URL is set) -->
+    <div id="live-section" style="display:none">
+      <div class="live-header">
+        <div class="live-title">PrimeTurf — SEO Live Report</div>
+        <div class="live-badge"><span class="live-dot"></span> Live · Auto-refreshes every 12 hours</div>
+      </div>
+      <iframe id="lsFrame" class="ls-frame" src="" height="900" allowfullscreen></iframe>
+    </div>
+
+    <div class="dash-footer">
+      <span>PRIMETURF SA · SEO INTELLIGENCE CENTRE · GA4 PROPERTY 541405091 · GSC sc-domain:primeturf.co.za</span>
+      <span id="footer-date"></span>
+    </div>
+  </div>
+
+  <!-- ═══ ROLLOUT TAB ═══ -->
+  <div id="tab-rollout" class="tab-pane">
+
+    <div class="rollout-header">
+      <div class="rh-eye">PrimeTurf SA · SEO Strategy</div>
+      <div class="rh-title">6-Phase SEO Rollout — All Phases Complete</div>
+      <div class="rh-sub">All 6 phases executed. 9 pages live, 2 blog posts published, GA4 conversion tracking active on all pages, quote calculator deployed, GBP verified. Target: 500+ monthly non-brand clicks within 5 months of launch.</div>
+      <div class="rh-stats">
+        <div><div class="rh-stat-label">Pages Live</div><div class="rh-stat-value">9</div></div>
+        <div><div class="rh-stat-label">Blog Posts</div><div class="rh-stat-value">2</div></div>
+        <div><div class="rh-stat-label">GA4 Events</div><div class="rh-stat-value">4</div></div>
+        <div><div class="rh-stat-label">GBP Status</div><div class="rh-stat-value">Verified</div></div>
+        <div><div class="rh-stat-label">Target mo. clicks</div><div class="rh-stat-value">500+</div></div>
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase done"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">01</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">FOUNDATION</span><span class="ms-status" style="background:var(--green);color:#fff">✓ COMPLETE</span></div>
+              <div class="ms-timeline">Completed June 2026</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">ACHIEVED</div>GSC verified · sitemap indexed · GA4 live · 4 conversion events</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-check">✓</div>GA4 installed with WhatsApp, phone, form &amp; quote tracking</div>
+            <div class="ms-item"><div class="ms-check">✓</div>Google Search Console verified — sc-domain:primeturf.co.za</div>
+            <div class="ms-item"><div class="ms-check">✓</div>sitemap.xml submitted — 9 URLs indexed</div>
+            <div class="ms-item"><div class="ms-check">✓</div>POPIA-compliant privacy policy published</div>
+            <div class="ms-item"><div class="ms-check">✓</div>robots.txt configured — /design/ and /community/ blocked</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase done"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">02</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">KEYWORD ARCHITECTURE</span><span class="ms-status" style="background:var(--green);color:#fff">✓ COMPLETE</span></div>
+              <div class="ms-timeline">Completed June 2026</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">ACHIEVED</div>Primary + secondary + long-tail clusters mapped · location pages built</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-check">✓</div>20+ commercial keywords mapped to pages</div>
+            <div class="ms-item"><div class="ms-check">✓</div>Keyword clusters: installation, cost, areas, application type</div>
+            <div class="ms-item"><div class="ms-check">✓</div>Johannesburg landing page live (/artificial-grass-johannesburg.html)</div>
+            <div class="ms-item"><div class="ms-check">✓</div>Cape Town landing page live (/artificial-grass-cape-town.html)</div>
+            <div class="ms-item"><div class="ms-check">✓</div>Phase 02 keyword architecture documented in /seo/</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase done"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">03</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">ON-PAGE OPTIMISATION</span><span class="ms-status" style="background:var(--green);color:#fff">✓ COMPLETE</span></div>
+              <div class="ms-timeline">Completed June 2026</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">ACHIEVED</div>All pages schema-marked · title tags + meta descriptions optimised</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-check">✓</div>Title tags + meta descriptions rewritten (keyword-rich, &lt;60 chars)</div>
+            <div class="ms-item"><div class="ms-check">✓</div>JSON-LD @graph schema: LocalBusiness, Service, FAQPage, BreadcrumbList</div>
+            <div class="ms-item"><div class="ms-check">✓</div>5 FAQ blocks targeting long-tail queries on each city page</div>
+            <div class="ms-item"><div class="ms-check">✓</div>8-year WarrantyPromise structured data on homepage</div>
+            <div class="ms-item"><div class="ms-check">✓</div>OG / social meta tags on all pages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase done"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">04</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">CONTENT ENGINE</span><span class="ms-status" style="background:var(--green);color:#fff">✓ COMPLETE</span></div>
+              <div class="ms-timeline">Completed June 2026</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">ACHIEVED</div>Blog live · 2 articles published · 4 GBP posts ready · GBP verified</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-check">✓</div>Blog hub live at /blog/</div>
+            <div class="ms-item"><div class="ms-check">✓</div>Article 1: "Artificial Grass Cost Guide South Africa" (1,500 words)</div>
+            <div class="ms-item"><div class="ms-check">✓</div>Article 2: "Drought-Proof Garden Cape Town" (1,800 words, incl. Afrikaans FAQ)</div>
+            <div class="ms-item"><div class="ms-check">✓</div>GBP verified via email · complete setup guide published</div>
+            <div class="ms-item"><div class="ms-check">✓</div>4 × Week 1–4 GBP posts drafted and ready to schedule</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase done"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">05</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">AUTHORITY &amp; BACKLINKS</span><span class="ms-status" style="background:var(--green);color:#fff">✓ STRATEGY SET</span></div>
+              <div class="ms-timeline">Strategy documented — execution Month 2–3</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">TARGET</div>20 quality backlinks · NAP consistent in 20+ directories</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-check">✓</div>Directory target list: Gumtree Business, Brabys, Hotfrog ZA</div>
+            <div class="ms-item"><div class="ms-check">✓</div>Industry targets: SALI, landscape architect networks</div>
+            <div class="ms-item"><div class="ms-check">✓</div>Gauteng + CT landscaping blog outreach list prepared</div>
+            <div class="ms-item"><div class="ms-check">✓</div>NAP citation strategy documented in /seo/phase-05-backlink-strategy.md</div>
+            <div class="ms-item"><div class="ms-dot"></div>Execute directory submissions (Month 2)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 6 -->
+    <div class="milestone">
+      <div class="ms-inner">
+        <div class="ms-phase done"><div class="ms-phase-lbl">PHASE</div><div class="ms-phase-num">06</div></div>
+        <div class="ms-body">
+          <div class="ms-top">
+            <div>
+              <div class="ms-name-row"><span class="ms-name">CONVERSION OPTIMISATION</span><span class="ms-status" style="background:var(--green);color:#fff">✓ COMPLETE</span></div>
+              <div class="ms-timeline">Completed June 2026</div>
+            </div>
+            <div class="ms-kpi"><div class="ms-kpi-lbl">ACHIEVED</div>Quote calculator deployed · 4 GA4 conversion events · WhatsApp float on all pages</div>
+          </div>
+          <div class="ms-items">
+            <div class="ms-item"><div class="ms-check">✓</div>Interactive quote calculator — 4-step: surface, area, location, grade</div>
+            <div class="ms-item"><div class="ms-check">✓</div>GA4 form_submit event (value 5) on contact + homepage</div>
+            <div class="ms-item"><div class="ms-check">✓</div>GA4 whatsapp_click + phone_call_click (value 3) on all 7 pages</div>
+            <div class="ms-item"><div class="ms-check">✓</div>GA4 quote_calculated micro-conversion on calculator</div>
+            <div class="ms-item"><div class="ms-check">✓</div>WhatsApp float button on all public pages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insights -->
+    <div class="insights">
+      <div class="insight green">
+        <div class="insight-head">Next: Mark GA4 Conversions</div>
+        <div class="insight-body">In GA4 → Admin → Events, mark these as conversions: <strong>form_submit</strong>, <strong>whatsapp_click</strong>, <strong>phone_call_click</strong>. This unlocks conversion reporting and ROAS tracking in 24–48 hours.</div>
+      </div>
+      <div class="insight gold">
+        <div class="insight-head">Next: Directory Submissions</div>
+        <div class="insight-body">Phase 5 execution: submit to Gumtree Business, Brabys, Hotfrog ZA, and SALI using consistent NAP (PrimeTurf · 076 804 8868 · primeturf.co.za). Target: 20 citations by end of Month 2.</div>
+      </div>
+      <div class="insight green">
+        <div class="insight-head">Next: First 10 Reviews</div>
+        <div class="insight-body">Send the GBP review request via WhatsApp to your first 5–10 clients. The message template is in /seo/gbp-setup-guide.md Step 7. 10 reviews puts you ahead of most local competitors.</div>
+      </div>
+    </div>
+
+    <div class="dash-footer">
+      <span>PRIMETURF SA · SEO INTELLIGENCE CENTRE · All 6 phases complete</span>
+      <span id="footer-date-2"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── TAB SWITCHING ──
+function switchTab(btn, id) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── FOOTER DATES ──
+const now = new Date();
+const dateStr = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+document.getElementById('footer-date').textContent = 'Updated: ' + dateStr;
+document.getElementById('footer-date-2').textContent = 'Updated: ' + dateStr;
+
+// ── LOOKER STUDIO EMBED ──
+const LS_KEY = 'primeturf_ls_url';
+
+function activateDashboard() {
+  const url = document.getElementById('lsUrl').value.trim();
+  if (!url || !url.includes('lookerstudio.google.com')) {
+    alert('Please paste a valid Looker Studio embed URL (must contain lookerstudio.google.com)');
+    return;
+  }
+  localStorage.setItem(LS_KEY, url);
+  loadDashboard(url);
+}
+
+function loadDashboard(url) {
+  document.getElementById('lsFrame').src = url;
+  document.getElementById('setup-section').style.display = 'none';
+  document.getElementById('live-section').style.display = 'block';
+}
+
+// ── RESTORE SAVED URL ──
+const savedUrl = localStorage.getItem(LS_KEY);
+if (savedUrl) {
+  document.getElementById('lsUrl').value = savedUrl;
+  loadDashboard(savedUrl);
+}
+</script>
+</body>
+</html>

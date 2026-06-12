@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z5G37WW47"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3Z5G37WW47');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PrimeTurf | Request a Free Quote — Gauteng</title>
+<link rel="canonical" href="https://primeturf.co.za/contact.html">
 <meta name="description" content="Request a free site consultation from PrimeTurf — Gauteng's premium artificial grass specialists. 8-year warranty, professional installation.">
 
 <!-- ═══ FACEBOOK / OPEN GRAPH — controls the clickable preview card ═══ -->
@@ -404,6 +413,8 @@ async function handleSubmit(btn) {
     const data = await res.json();
     if (!res.ok || !data.success) throw new Error(data.message || 'Submission failed');
 
+    gtag('event', 'form_submit', { event_category: 'conversion', event_label: 'contact_form', value: 5 });
+
     btn.textContent   = '✓ Sent! We will contact you within 2 hours.';
     btn.style.background = '#1A3A2A';
     form.reset();
@@ -422,6 +433,20 @@ async function handleSubmit(btn) {
     setTimeout(() => { btn.textContent = originalText; }, 3500);
   }
 }
+
+// GA4 — WhatsApp & phone click tracking
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com"]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      gtag('event', 'whatsapp_click', { event_category: 'conversion', event_label: 'contact_page', value: 3 });
+    });
+  });
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      gtag('event', 'phone_click', { event_category: 'engagement', event_label: 'contact_page' });
+    });
+  });
+});
 </script>
 </body>
 </html>
