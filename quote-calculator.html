@@ -412,5 +412,30 @@ function calculate() {
   }
 }
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com"]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      gtag('event', 'whatsapp_click', { event_category: 'conversion', event_label: window.location.pathname, value: 3 });
+    });
+  });
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      gtag('event', 'phone_call_click', { event_category: 'conversion', event_label: window.location.pathname, value: 3 });
+    });
+  });
+  var SOCIAL = ['facebook.com', 'instagram.com', 'tiktok.com', 'linkedin.com', 'twitter.com', 'x.com'];
+  document.querySelectorAll('a[href]').forEach(function (el) {
+    var href = el.href || '';
+    SOCIAL.forEach(function (platform) {
+      if (href.indexOf(platform) !== -1) {
+        el.addEventListener('click', function () {
+          gtag('event', 'social_click', { event_category: 'engagement', event_label: platform.replace('.com', ''), page: window.location.pathname });
+        });
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
