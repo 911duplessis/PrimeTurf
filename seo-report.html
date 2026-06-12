@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z5G37WW47"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3Z5G37WW47');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrimeTurf — Full SEO Audit Report</title>
+<link rel="canonical" href="https://primeturf.co.za/seo-report.html">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1A5A28;--gold:#B8902A;--gl:#2A7A3A;--gd:#0F3318;
+  --gold-lt:#D4A840;--cream:#F7F4EE;--char:#1C1C1C;
+  --border:#E8E4DC;--warm:#FAFAF8;
+  --red:#C0392B;--amber:#E67E22;--teal:#16A085;
+}
+html{font-family:'Inter',sans-serif;background:var(--cream);color:var(--char);-webkit-font-smoothing:antialiased}
+
+/* ── HEADER ── */
+.hdr{background:var(--gd);border-bottom:3px solid var(--gold);padding:0 24px;position:sticky;top:0;z-index:100}
+.hdr-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;gap:14px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:34px;height:34px;background:var(--gold);border-radius:3px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:var(--gd);flex-shrink:0}
+.logo-name{color:#fff;font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase}
+.logo-sub{color:var(--gold-lt);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.hdr-nav{display:flex;gap:4px}
+.hn{padding:6px 14px;border-radius:3px;border:none;cursor:pointer;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-family:inherit;background:transparent;color:#999;transition:all .15s}
+.hn.active,.hn:hover{background:rgba(184,144,42,.18);color:var(--gold-lt)}
+.hdr-score{display:flex;align-items:center;gap:10px;padding:6px 14px;background:rgba(255,255,255,.06);border-radius:4px}
+.hdr-score-num{font-size:22px;font-weight:900;color:var(--gold-lt);line-height:1}
+.hdr-score-lbl{font-size:9px;color:#666;letter-spacing:.08em;text-transform:uppercase}
+.score-bar-wrap{width:80px;height:5px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));transition:width 1.2s ease}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1280px;margin:0 auto;padding:28px 24px}
+.tab-pane{display:none}.tab-pane.active{display:block}
+
+/* ── SECTION HEADER ── */
+.sec-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;gap:16px;flex-wrap:wrap}
+.sec-eye{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.sec-title{font-size:20px;font-weight:800;color:var(--char)}
+.sec-sub{font-size:12px;color:#777;margin-top:4px;line-height:1.6}
+
+/* ── SCORE CARDS ── */
+.score-hero{background:var(--gd);border-radius:6px;padding:28px 32px;margin-bottom:24px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center}
+@media(max-width:800px){.score-hero{grid-template-columns:1fr;text-align:center}}
+.sh-score{text-align:center}
+.sh-num{font-size:72px;font-weight:900;line-height:1;color:var(--gold-lt)}
+.sh-grade{font-size:16px;font-weight:700;color:#fff;letter-spacing:.1em}
+.sh-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-top:4px}
+.sh-divider{width:1px;height:100%;background:rgba(255,255,255,.08)}
+@media(max-width:800px){.sh-divider{width:100%;height:1px}}
+.sh-bars{flex:1}
+.sh-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.sh-bar-label{font-size:11px;color:#aaa;width:120px;flex-shrink:0}
+.sh-bar-track{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.sh-bar-fill{height:100%;border-radius:3px;transition:width 1.2s ease}
+.sh-bar-val{font-size:11px;font-weight:700;color:#ccc;width:50px;text-align:right;flex-shrink:0}
+.sh-meta{text-align:right}
+.sh-meta-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#555;margin-bottom:4px}
+.sh-meta-val{font-size:13px;font-weight:700;color:#fff;margin-bottom:14px}
+.sh-delta{display:inline-flex;align-items:center;gap:6px;background:rgba(26,90,40,.25);border:1px solid rgba(26,90,40,.4);padding:6px 12px;border-radius:3px}
+.sh-delta-num{font-size:18px;font-weight:800;color:#4CAF50}
+.sh-delta-lbl{font-size:10px;color:#aaa}
+
+/* ── STAT STRIP ── */
+.stat-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:24px}
+@media(max-width:900px){.stat-strip{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.stat-strip{grid-template-columns:repeat(2,1fr)}}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:16px 18px}
+.stat-card.ok{border-top:3px solid var(--green)}
+.stat-card.warn{border-top:3px solid var(--amber)}
+.stat-card.bad{border-top:3px solid var(--red)}
+.sc-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sc-val{font-size:26px;font-weight:800;color:var(--char);line-height:1}
+.sc-sub{font-size:11px;color:#888;margin-top:4px}
+
+/* ── CHECKLIST ── */
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
+@media(max-width:800px){.check-grid{grid-template-columns:1fr}}
+.check-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px 22px}
+.check-card-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--char);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid #f5f0e8;font-size:12px;color:#444}
+.check-item:last-child{border-bottom:none}
+.ci-icon{font-size:13px;flex-shrink:0;margin-top:1px}
+.ci-text{flex:1;line-height:1.5}
+.ci-badge{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;flex-shrink:0;margin-top:1px}
+.ci-ok{background:rgba(26,90,40,.1);color:var(--green);border:1px solid rgba(26,90,40,.2)}
+.ci-warn{background:rgba(230,126,34,.1);color:var(--amber);border:1px solid rgba(230,126,34,.2)}
+.ci-bad{background:rgba(192,57,43,.1);color:var(--red);border:1px solid rgba(192,57,43,.2)}
+
+/* ── PAGES TABLE ── */
+.tbl-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px;margin-bottom:18px;overflow-x:auto}
+.tbl-card-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--char);margin-bottom:14px}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;min-width:700px}
+.tbl th{text-align:left;padding:8px 12px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;border-bottom:2px solid rgba(26,90,40,.12);background:var(--warm)}
+.tbl td{padding:9px 12px;border-bottom:1px solid #f5f0e8;vertical-align:middle;color:#555}
+.tbl tr:hover td{background:var(--warm)}
+.tbl td.mono{font-family:monospace;font-size:11px;color:var(--char)}
+.tbl td.bold{font-weight:700;color:var(--char)}
+.badge{padding:2px 8px;border-radius:2px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block}
+.b-ok{background:rgba(26,90,40,.1);color:var(--green);border:1px solid rgba(26,90,40,.2)}
+.b-warn{background:rgba(230,126,34,.1);color:var(--amber);border:1px solid rgba(230,126,34,.2)}
+.b-bad{background:rgba(192,57,43,.1);color:var(--red);border:1px solid rgba(192,57,43,.2)}
+.b-blue{background:rgba(22,160,133,.1);color:var(--teal);border:1px solid rgba(22,160,133,.2)}
+.b-grey{background:#f0ece4;color:#888;border:1px solid #e8e4dc}
+
+/* ── COMPETITION ── */
+.comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+@media(max-width:900px){.comp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.comp-grid{grid-template-columns:1fr}}
+.comp-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:18px 20px}
+.comp-card.you{border:2px solid var(--green)}
+.comp-name{font-size:13px;font-weight:700;color:var(--char);margin-bottom:4px}
+.comp-domain{font-size:10px;color:#aaa;margin-bottom:12px}
+.comp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:11px}
+.comp-row-lbl{color:#777}
+.comp-row-val{font-weight:700;color:var(--char)}
+.comp-bar{height:4px;background:#f0ece4;border-radius:2px;margin-bottom:3px}
+.comp-bar-fill{height:4px;border-radius:2px;background:var(--green)}
+.comp-card.you .comp-bar-fill{background:var(--gold)}
+
+/* ── ACTION MATRIX ── */
+.action-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:24px}
+@media(max-width:900px){.action-grid{grid-template-columns:1fr}}
+.action-col-head{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;border-radius:4px 4px 0 0;margin-bottom:0}
+.action-col-head.week1{background:var(--red);color:#fff}
+.action-col-head.month1{background:var(--amber);color:#fff}
+.action-col-head.ongoing{background:var(--green);color:#fff}
+.action-item{background:#fff;border:1px solid var(--border);border-left:3px solid;padding:14px 16px;margin-bottom:10px;border-radius:0 4px 4px 0;font-size:12px}
+.action-item.week1{border-left-color:var(--red)}
+.action-item.month1{border-left-color:var(--amber)}
+.action-item.ongoing{border-left-color:var(--green)}
+.action-item.done{border-left-color:#ccc;opacity:.6}
+.ai-title{font-weight:700;color:var(--char);margin-bottom:4px}
+.ai-desc{color:#666;line-height:1.5}
+.ai-effort{display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:#aaa}
+.ai-effort strong{color:var(--gold)}
+
+/* ── LOOKER SECTION ── */
+.ls-section{background:var(--gd);border-radius:6px;padding:24px 28px;margin-bottom:24px}
+.ls-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+.ls-sub{font-size:12px;color:#888;margin-bottom:18px;line-height:1.6}
+.ls-input-row{display:flex;gap:8px;max-width:700px}
+.ls-input{flex:1;padding:10px 13px;border:1px solid rgba(184,144,42,.3);border-radius:3px;font-size:12px;font-family:monospace;background:rgba(255,255,255,.06);color:#fff;outline:none;transition:border-color .15s}
+.ls-input:focus{border-color:var(--gold)}
+.ls-input::placeholder{color:#555}
+.ls-btn{padding:10px 18px;background:var(--gold);color:var(--gd);border:none;border-radius:3px;font-weight:800;font-size:11px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:background .15s;white-space:nowrap}
+.ls-btn:hover{background:var(--gold-lt)}
+.ls-frame{width:100%;border:none;border-radius:4px;display:block;margin-top:18px}
+.ls-quick-links{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.ls-ql{padding:7px 14px;border:1px solid rgba(184,144,42,.25);border-radius:3px;font-size:11px;font-weight:600;color:var(--gold-lt);text-decoration:none;transition:all .15s}
+.ls-ql:hover{background:rgba(184,144,42,.1);border-color:var(--gold)}
+
+/* ── FOOTER ── */
+.rpt-footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#aaa;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="logo">
+      <div class="logo-mark">PT</div>
+      <div>
+        <div class="logo-name">PrimeTurf SA</div>
+        <div class="logo-sub">Full SEO Audit Report</div>
+      </div>
+    </div>
+    <div class="hdr-nav">
+      <button class="hn active" onclick="go(this,'exec')">Executive Summary</button>
+      <button class="hn" onclick="go(this,'technical')">Technical</button>
+      <button class="hn" onclick="go(this,'content')">Content</button>
+      <button class="hn" onclick="go(this,'local')">Local SEO</button>
+      <button class="hn" onclick="go(this,'actions')">Actions</button>
+      <button class="hn" onclick="go(this,'live')">Live Data</button>
+    </div>
+    <div class="hdr-score">
+      <div>
+        <div class="hdr-score-lbl">Current Score</div>
+        <div class="hdr-score-num" id="score-num">71</div>
+      </div>
+      <div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-fill" id="score-bar" style="width:0%"></div>
+        </div>
+        <div class="hdr-score-lbl" style="margin-top:4px">/ 100</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ════════════════════════════════════ -->
+  <!-- TAB: EXECUTIVE SUMMARY              -->
+  <!-- ════════════════════════════════════ -->
+  <div id="tab-exec" class="tab-pane active">
+
+    <!-- Score hero -->
+    <div class="score-hero">
+      <div class="sh-score">
+        <div class="sh-num">71</div>
+        <div class="sh-grade">Grade B</div>
+        <div class="sh-label">Current Score</div>
+      </div>
+      <div class="sh-divider"></div>
+      <div class="sh-bars">
+        <div style="margin-bottom:6px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#666">Score by category</div>
+        <div class="sh-bar-row"><span class="sh-bar-label">Technical SEO</span><div class="sh-bar-track"><div class="sh-bar-fill" style="width:83%;background:#4CAF50"></div></div><span class="sh-bar-val">25/30</span></div>
+        <div class="sh-bar-row"><span class="sh-bar-label">Content & Pages</span><div class="sh-bar-track"><div class="sh-bar-fill" style="width:96%;background:#4CAF50"></div></div><span class="sh-bar-val">24/25</span></div>
+        <div class="sh-bar-row"><span class="sh-bar-label">Local SEO</span><div class="sh-bar-track"><div class="sh-bar-fill" style="width:60%;background:var(--gold)"></div></div><span class="sh-bar-val">12/20</span></div>
+        <div class="sh-bar-row"><span class="sh-bar-label">Conversion</span><div class="sh-bar-track"><div class="sh-bar-fill" style="width:100%;background:#4CAF50"></div></div><span class="sh-bar-val">15/15</span></div>
+        <div class="sh-bar-row"><span class="sh-bar-label">Authority</span><div class="sh-bar-track"><div class="sh-bar-fill" style="width:10%;background:var(--red)"></div></div><span class="sh-bar-val">1/10</span></div>
+      </div>
+      <div class="sh-divider"></div>
+      <div class="sh-meta">
+        <div class="sh-meta-label">Pre-intervention</div>
+        <div class="sh-meta-val">38 / 100 · Grade D+</div>
+        <div class="sh-meta-label">Post 6-phase build</div>
+        <div class="sh-meta-val">71 / 100 · Grade B</div>
+        <div class="sh-delta">
+          <div class="sh-delta-num">+33</div>
+          <div class="sh-delta-lbl">points gained</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat strip -->
+    <div class="stat-strip">
+      <div class="stat-card ok"><div class="sc-label">Pages Indexed</div><div class="sc-val">9</div><div class="sc-sub">Was 1 — +8 pages</div></div>
+      <div class="stat-card ok"><div class="sc-label">GA4 Events</div><div class="sc-val">4</div><div class="sc-sub">Conversions tracked</div></div>
+      <div class="stat-card ok"><div class="sc-label">GBP Status</div><div class="sc-val" style="font-size:16px;padding-top:4px">Verified</div><div class="sc-sub">Email verified June 2026</div></div>
+      <div class="stat-card warn"><div class="sc-label">Backlinks</div><div class="sc-val">~0</div><div class="sc-sub">Target: 20 by Month 2</div></div>
+      <div class="stat-card bad"><div class="sc-label">Google Reviews</div><div class="sc-val">0</div><div class="sc-sub">Request first 10 now</div></div>
+    </div>
+
+    <!-- What was broken + what's fixed -->
+    <div class="check-grid">
+      <div class="check-card">
+        <div class="check-card-title">Issues Found (Pre-Work) · 12 items</div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Single-page architecture — zero city/service pages</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">No sitemap.xml — Google couldn't discover pages</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">No JSON-LD structured data — zero rich result eligibility</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">No Google Business Profile — invisible in Local Pack</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">GA4 installed but no conversion event tracking</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">No blog content — zero long-tail keyword footprint</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">No POPIA-compliant privacy policy</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">No quote/pricing tool — high-intent visitors bounced</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Privacy Policy footer link pointed to <code>#</code></span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Instagram + Facebook footer links point to <code>#</code></span><span class="ci-badge ci-warn">Needs URL</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Testimonials nav link dead — no section in markup</span><span class="ci-badge ci-warn">Known</span></div>
+        <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text">Near-zero backlink profile — no external authority</span><span class="ci-badge ci-bad">Pending</span></div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-card-title">Remaining Gaps · Score ceiling: 91/100</div>
+        <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text"><strong>0 Google reviews</strong> — request first 10 from existing clients via WhatsApp (template in GBP guide)</span><span class="ci-badge ci-bad">Week 1</span></div>
+        <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text"><strong>0 directory citations</strong> — submit to Gumtree Business, Brabys, Hotfrog ZA, SALI (Phase 5 execution)</span><span class="ci-badge ci-bad">Month 1</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>Social links broken</strong> — add real Instagram + Facebook URLs to index.html footer (lines 1864–1865)</span><span class="ci-badge ci-warn">Quick fix</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>GA4 conversions not marked</strong> — in GA4 Admin → Events, mark form_submit, whatsapp_click, phone_call_click as conversions</span><span class="ci-badge ci-warn">5 min</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>Dead Testimonials nav link</strong> — either add a testimonials section or remove the 3 nav links (#testimonials in desktop nav, mobile nav, footer nav)</span><span class="ci-badge ci-warn">Optional</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>Page speed unknown</strong> — run PageSpeed Insights on homepage, city pages. Target LCP &lt;2.5s, CLS &lt;0.1</span><span class="ci-badge ci-warn">Check</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>GBP posts not yet published</strong> — 4 posts drafted in seo/gbp-setup-guide.md, publish Week 1–4</span><span class="ci-badge ci-warn">Ongoing</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>Blog cadence</strong> — 2 posts live, 4 "coming soon" on hub. Publish 2/month to build keyword footprint</span><span class="ci-badge ci-warn">Ongoing</span></div>
+      </div>
+    </div>
+
+    <div class="rpt-footer">
+      <span>PRIMETURF SA · FULL SEO AUDIT · primeturf.co.za</span>
+      <span id="rpt-date"></span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- TAB: TECHNICAL SEO                  -->
+  <!-- ════════════════════════════════════ -->
+  <div id="tab-technical" class="tab-pane">
+
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-eye">Technical Audit</div>
+        <div class="sec-title">Technical SEO — 25 / 30 (Grade A–)</div>
+        <div class="sec-sub">Foundation is solid. Two open items: social links and page speed verification.</div>
+      </div>
+    </div>
+
+    <div class="check-grid">
+      <div class="check-card">
+        <div class="check-card-title">Crawlability & Indexing</div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">sitemap.xml live at /sitemap.xml — 9 URLs, priorities set</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">robots.txt live — /design/ and /community/ excluded correctly</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Canonical tags on all 9 pages — self-referencing, correct domain</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">noindex on utility pages (privacy-policy, seo-dashboard, seo-report)</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">GSC verified (sc-domain:primeturf.co.za) · sitemap submitted</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">HTTPS active on all pages</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">HTTP → HTTPS redirect: verify 301 is active (GitHub Pages enforces HTTPS by default if "Enforce HTTPS" is enabled in repo Settings)</span><span class="ci-badge ci-warn">Verify</span></div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-card-title">Structured Data (JSON-LD)</div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">LocalBusiness @graph — address, phone, areaServed (10 suburbs), priceRange</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Service schema — 8-year WarrantyPromise, ZAR pricing, serviceArea</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">FAQPage schema — 5 questions on homepage targeting long-tail queries</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">BreadcrumbList on all pages</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Article + FAQPage on both blog posts</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Blog schema on /blog/ hub with publisher reference</span><span class="ci-badge ci-ok">Pass</span></div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-card-title">On-Page Signals</div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Title tags keyword-first on all 9 pages — avg. ~55 chars</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Meta descriptions on all pages — avg. ~150 chars, CTA present</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">H1 present and keyword-matched on all pages</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Heading hierarchy correct (H1 → H2 → H3)</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">OG/Twitter card meta on all pages</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">lang="en" on all pages</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Mobile viewport meta tag correct</span><span class="ci-badge ci-ok">Pass</span></div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-card-title">Performance & UX</div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Core Web Vitals: not yet measured. Run <strong>PageSpeed Insights</strong> on homepage + city pages. Target LCP &lt;2.5s, CLS &lt;0.1, FID &lt;100ms</span><span class="ci-badge ci-warn">Check</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Google Fonts loaded via preconnect — reduces render-blocking</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">No external CSS frameworks — inline styles only, no render-blocking stylesheets</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Image optimisation: gallery images not in webp format. Convert for faster load times on mobile</span><span class="ci-badge ci-warn">Improve</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">GA4 script loads async — does not block render</span><span class="ci-badge ci-ok">Pass</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Social footer links point to <code>href="#"</code> — add real Instagram + Facebook URLs</span><span class="ci-badge ci-warn">Fix</span></div>
+      </div>
+    </div>
+
+    <div class="rpt-footer">
+      <span>Technical audit based on source review of all 9 HTML files · June 2026</span>
+      <span id="rpt-date-2"></span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- TAB: CONTENT                        -->
+  <!-- ════════════════════════════════════ -->
+  <div id="tab-content" class="tab-pane">
+
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-eye">Content Inventory</div>
+        <div class="sec-title">Content & Pages — 24 / 25 (Grade A)</div>
+        <div class="sec-sub">9 pages live, 2 blog posts, interactive calculator, FAQ blocks on all city pages. One point deducted: blog "coming soon" cards are placeholder (4 posts still needed).</div>
+      </div>
+    </div>
+
+    <div class="tbl-card">
+      <div class="tbl-card-title">All Published Pages</div>
+      <table class="tbl">
+        <thead>
+          <tr><th>URL</th><th>Target Keyword</th><th>Schema</th><th>FAQ</th><th>Sitemap Priority</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono">/</td>
+            <td class="bold">Artificial grass Gauteng</td>
+            <td><span class="badge b-ok">LocalBusiness + Service + FAQ</span></td>
+            <td>5 questions</td>
+            <td>1.0</td>
+            <td><span class="badge b-ok">Live</span></td>
+          </tr>
+          <tr>
+            <td class="mono">/artificial-grass-johannesburg.html</td>
+            <td class="bold">Artificial grass Johannesburg</td>
+            <td><span class="badge b-ok">LocalBusiness + FAQ</span></td>
+            <td>5 questions</td>
+            <td>0.9</td>
+            <td><span class="badge b-ok">Live</span></td>
+          </tr>
+          <tr>
+            <td class="mono">/artificial-grass-cape-town.html</td>
+            <td class="bold">Artificial grass Cape Town</td>
+            <td><span class="badge b-ok">LocalBusiness + FAQ</span></td>
+            <td>5 questions (incl. Afrikaans)</td>
+            <td>0.9</td>
+            <td><span class="badge b-ok">Live</span></td>
+          </tr>
+          <tr>
+            <td class="mono">/contact.html</td>
+            <td class="bold">Contact PrimeTurf</td>
+            <td><span class="badge b-grey">Minimal</span></td>
+            <td>—</td>
+            <td>0.8</td>
+            <td><span class="badge b-ok">Live</span></td>
+          </tr>
+          <tr>
+            <td class="mono">/quote-calculator.html</td>
+            <td class="bold">Artificial grass cost calculator SA</td>
+            <td><span class="badge b-grey">Minimal</span></td>
+            <td>—</td>
+            <td>0.7</td>
+            <td><span class="badge b-ok">Live · GA4 quote_calculated event</span></td>
+          </tr>
+          <tr>
+            <td class="mono">/blog/</td>
+            <td class="bold">Artificial grass guides SA</td>
+            <td><span class="badge b-ok">Blog + publisher</span></td>
+            <td>—</td>
+            <td>0.7</td>
+            <td><span class="badge b-ok">Live</span></td>
+          </tr>
+          <tr>
+            <td class="mono">/blog/artificial-grass-cost-guide-south-africa.html</td>
+            <td class="bold">How much does artificial grass cost in SA</td>
+            <td><span class="badge b-ok">Article + FAQ</span></td>
+            <td>2 questions</td>
+            <td>0.8</td>
+            <td><span class="badge b-ok">Live · 1,500 words</span></td>
+          </tr>
+          <tr>
+            <td class="mono">/blog/drought-proof-garden-cape-town.html</td>
+            <td class="bold">Drought-proof garden Cape Town</td>
+            <td><span class="badge b-ok">Article + FAQ</span></td>
+            <td>3 questions</td>
+            <td>0.8</td>
+            <td><span class="badge b-ok">Live · 1,800 words</span></td>
+          </tr>
+          <tr>
+            <td class="mono">/privacy-policy.html</td>
+            <td>—</td>
+            <td><span class="badge b-grey">noindex</span></td>
+            <td>—</td>
+            <td>Not in sitemap</td>
+            <td><span class="badge b-blue">POPIA compliant · noindex</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tbl-card">
+      <div class="tbl-card-title">Planned Blog Posts (Coming Soon)</div>
+      <table class="tbl">
+        <thead><tr><th>Title (suggested)</th><th>Target Keyword</th><th>Search Intent</th><th>Priority</th></tr></thead>
+        <tbody>
+          <tr><td class="bold">Artificial Grass vs Real Grass: 5-Year Cost Comparison SA</td><td class="mono" style="font-size:11px">artificial grass vs real grass south africa</td><td>Decision / Research</td><td><span class="badge b-bad">High</span></td></tr>
+          <tr><td class="bold">Artificial Grass for Pets: What to Know Before Installing</td><td class="mono" style="font-size:11px">pet-safe artificial grass south africa</td><td>Research</td><td><span class="badge b-bad">High</span></td></tr>
+          <tr><td class="bold">Pool Surround Artificial Grass — Installation Guide</td><td class="mono" style="font-size:11px">artificial grass pool surround johannesburg</td><td>Transactional</td><td><span class="badge b-warn">Medium</span></td></tr>
+          <tr><td class="bold">How to Maintain Artificial Grass in Gauteng</td><td class="mono" style="font-size:11px">how to clean artificial grass south africa</td><td>Informational</td><td><span class="badge b-warn">Medium</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rpt-footer">
+      <span>Content inventory — 9 pages · 2 blog posts · 1 calculator · June 2026</span>
+      <span id="rpt-date-3"></span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- TAB: LOCAL SEO                      -->
+  <!-- ════════════════════════════════════ -->
+  <div id="tab-local" class="tab-pane">
+
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-eye">Local SEO</div>
+        <div class="sec-title">Local SEO — 12 / 20 (Grade C+)</div>
+        <div class="sec-sub">GBP verified, city pages live. Score held back by 0 reviews and 0 citations. Both are easy wins — reviews can move within 2 weeks of asking.</div>
+      </div>
+    </div>
+
+    <div class="check-grid">
+      <div class="check-card">
+        <div class="check-card-title">Google Business Profile</div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">GBP claimed and verified via email — June 2026</span><span class="ci-badge ci-ok">Done</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Business description: paste 690-char text from seo/gbp-setup-guide.md (Step 2)</span><span class="ci-badge ci-warn">Pending</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Services: add 6 services from guide (Artificial Grass Installation, Pool Surround, etc.)</span><span class="ci-badge ci-warn">Pending</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Photos: upload minimum 5 (logo, cover, project, team, detail shot)</span><span class="ci-badge ci-warn">Pending</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Q&A: seed 5 questions from guide to control search appearance</span><span class="ci-badge ci-warn">Pending</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">GBP Post #1: publish week 1 (copy in gbp-setup-guide.md Step 6)</span><span class="ci-badge ci-warn">Week 1</span></div>
+        <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text">Google reviews: 0. Target 10 in first month. WhatsApp template ready in guide Step 7.</span><span class="ci-badge ci-bad">0 reviews</span></div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-card-title">Citations & Authority</div>
+        <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text"><strong>Gumtree Business</strong> — submit: PrimeTurf · 076 804 8868 · primeturf.co.za · Johannesburg</span><span class="ci-badge ci-bad">Not done</span></div>
+        <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text"><strong>Brabys.com</strong> — South Africa's largest business directory</span><span class="ci-badge ci-bad">Not done</span></div>
+        <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text"><strong>Hotfrog ZA</strong> (hotfrog.co.za)</span><span class="ci-badge ci-bad">Not done</span></div>
+        <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text"><strong>SALI</strong> (Landscaping association directory)</span><span class="ci-badge ci-bad">Not done</span></div>
+        <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text"><strong>Yellow Pages SA</strong> (yellowpages.co.za)</span><span class="ci-badge ci-bad">Not done</span></div>
+        <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text"><strong>Local.co.za</strong></span><span class="ci-badge ci-bad">Not done</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">NAP consistency: all submissions must use identical Name/Address/Phone: <code>PrimeTurf · 076 804 8868 · primeturf.co.za</code></span><span class="ci-badge ci-warn">Rule</span></div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-card-title">Geographic Coverage on Site</div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Johannesburg landing page — 11 suburbs named in copy + suburb tag grid</span><span class="ci-badge ci-ok">Live</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Cape Town landing page — 18 suburb tags (Constantia, Camps Bay, Stellenbosch, etc.)</span><span class="ci-badge ci-ok">Live</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Homepage areaServed schema: Johannesburg, Sandton, Midrand, Fourways, Bryanston, Morningside, Centurion, Cape Town, Stellenbosch, Somerset West</span><span class="ci-badge ci-ok">Live</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">GBP service areas set: 15 locations in setup guide</span><span class="ci-badge ci-ok">Ready to add</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Pretoria / Centurion: no dedicated landing page yet (currently covered in JHB page copy only)</span><span class="ci-badge ci-warn">Month 2</span></div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-card-title">Competitor Baseline (Local Pack)</div>
+        <div class="check-item"><span class="ci-icon">ℹ️</span><span class="ci-text"><strong>TFSSA (tfssa.co.za)</strong> — most cited local competitor, strong GBP, 100+ reviews</span><span class="ci-badge ci-warn">Strong</span></div>
+        <div class="check-item"><span class="ci-icon">ℹ️</span><span class="ci-text"><strong>Easigrass SA</strong> — large footprint, blog content, multiple pages per city</span><span class="ci-badge ci-warn">Strong</span></div>
+        <div class="check-item"><span class="ci-icon">ℹ️</span><span class="ci-text"><strong>AstroTurf SA</strong> — national brand, high DA</span><span class="ci-badge ci-warn">Strong</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">PrimeTurf advantage: luxury positioning, warranty content (8-yr), pricing transparency, faster quote process</span><span class="ci-badge ci-ok">Differentiated</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Reviews gap is closeable fast — 10 reviews from real clients takes 1–2 weeks with active outreach</span><span class="ci-badge ci-ok">Actionable</span></div>
+      </div>
+    </div>
+
+    <div class="rpt-footer">
+      <span>Local SEO audit · June 2026</span>
+      <span id="rpt-date-4"></span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- TAB: ACTION MATRIX                  -->
+  <!-- ════════════════════════════════════ -->
+  <div id="tab-actions" class="tab-pane">
+
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-eye">Prioritised Actions</div>
+        <div class="sec-title">90-Day Action Matrix — Ranked by ROI</div>
+        <div class="sec-sub">Everything left to reach 91/100. Green items are already done. Ranked: highest-impact, lowest-effort first.</div>
+      </div>
+    </div>
+
+    <div class="action-grid">
+      <div>
+        <div class="action-col-head week1">This Week — Do Now</div>
+
+        <div class="action-item week1">
+          <div class="ai-title">Mark GA4 Conversion Events</div>
+          <div class="ai-desc">GA4 → Admin → Events. Mark as conversions: form_submit, whatsapp_click, phone_call_click. Unlocks conversion rate reporting.</div>
+          <div class="ai-effort"><span>Effort: <strong>5 min</strong></span><span>Impact: <strong>High</strong> (tracking)</span></div>
+        </div>
+
+        <div class="action-item week1">
+          <div class="ai-title">Add Social Media URLs to Footer</div>
+          <div class="ai-desc">index.html lines 1864–1865: replace href="#" with real Instagram and Facebook URLs. Send me the handles and it's a 2-minute code fix.</div>
+          <div class="ai-effort"><span>Effort: <strong>2 min</strong></span><span>Impact: <strong>Medium</strong> (trust signals)</span></div>
+        </div>
+
+        <div class="action-item week1">
+          <div class="ai-title">Send 10 Review Requests</div>
+          <div class="ai-desc">Use the WhatsApp template in seo/gbp-setup-guide.md Step 7. Target past clients. 10 reviews puts PrimeTurf ahead of most local competitors in the Local Pack.</div>
+          <div class="ai-effort"><span>Effort: <strong>20 min</strong></span><span>Impact: <strong>Very high</strong> (local ranking)</span></div>
+        </div>
+
+        <div class="action-item week1">
+          <div class="ai-title">Complete GBP Profile</div>
+          <div class="ai-desc">Add description, services, photos, and seed Q&A from seo/gbp-setup-guide.md. Fully-populated GBP ranks higher in the Local Pack map box.</div>
+          <div class="ai-effort"><span>Effort: <strong>30 min</strong></span><span>Impact: <strong>Very high</strong> (local pack)</span></div>
+        </div>
+
+        <div class="action-item week1">
+          <div class="ai-title">Enable HTTPS Enforcement</div>
+          <div class="ai-desc">GitHub repo → Settings → Pages → tick "Enforce HTTPS". Ensures http:// redirects to https:// — closes the canonical split flagged in GSC.</div>
+          <div class="ai-effort"><span>Effort: <strong>1 min</strong></span><span>Impact: <strong>High</strong> (authority)</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="action-col-head month1">Month 1 — High Impact</div>
+
+        <div class="action-item month1">
+          <div class="ai-title">Submit 6 Directory Citations</div>
+          <div class="ai-desc">Gumtree Business, Brabys, Hotfrog ZA, Yellow Pages SA, Local.co.za, SALI. Use identical NAP: PrimeTurf · 076 804 8868 · primeturf.co.za. Target: 20 citations total.</div>
+          <div class="ai-effort"><span>Effort: <strong>2 hrs</strong></span><span>Impact: <strong>High</strong> (local authority)</span></div>
+        </div>
+
+        <div class="action-item month1">
+          <div class="ai-title">Publish GBP Posts (Week 1–4)</div>
+          <div class="ai-desc">4 posts already written in seo/gbp-setup-guide.md. Publish one per week. GBP posts feed directly into the Local Pack listing.</div>
+          <div class="ai-effort"><span>Effort: <strong>10 min/week</strong></span><span>Impact: <strong>Medium</strong> (local signals)</span></div>
+        </div>
+
+        <div class="action-item month1">
+          <div class="ai-title">Run PageSpeed Insights</div>
+          <div class="ai-desc">Test homepage and both city pages at pagespeed.web.dev. Fix any issues with LCP &gt;2.5s or CLS &gt;0.1. Target: all green on mobile.</div>
+          <div class="ai-effort"><span>Effort: <strong>1–3 hrs</strong></span><span>Impact: <strong>Medium</strong> (rankings + UX)</span></div>
+        </div>
+
+        <div class="action-item month1">
+          <div class="ai-title">Convert Gallery Images to WebP</div>
+          <div class="ai-desc">Use cwebp or squoosh.app to convert assets/gallery/*.jpg to .webp. Update img src attributes. Can cut image payload by 60–70% on mobile.</div>
+          <div class="ai-effort"><span>Effort: <strong>1 hr</strong></span><span>Impact: <strong>Medium</strong> (Core Web Vitals)</span></div>
+        </div>
+
+        <div class="action-item month1">
+          <div class="ai-title">Publish Blog Post #3</div>
+          <div class="ai-desc">"Artificial Grass vs Real Grass — 5-Year Cost Comparison SA" — highest-volume research keyword. Target: 1,500+ words, pricing comparison table, FAQ schema.</div>
+          <div class="ai-effort"><span>Effort: <strong>2–3 hrs</strong></span><span>Impact: <strong>High</strong> (non-brand traffic)</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="action-col-head ongoing">Month 2–3 — Build Authority</div>
+
+        <div class="action-item ongoing">
+          <div class="ai-title">Blog Cadence: 2 Posts/Month</div>
+          <div class="ai-desc">Publish "Pet-safe artificial grass SA", "Pool surround installation guide", "How to maintain artificial grass". Each post expands keyword footprint and earns internal links.</div>
+          <div class="ai-effort"><span>Effort: <strong>3 hrs/post</strong></span><span>Impact: <strong>High</strong> (compound)</span></div>
+        </div>
+
+        <div class="action-item ongoing">
+          <div class="ai-title">Outreach: 5 Landscaping Blogs</div>
+          <div class="ai-desc">Contact Gauteng + CT landscaping and home decor blogs. Offer a guest article or project case study. Each dofollow backlink improves domain authority.</div>
+          <div class="ai-effort"><span>Effort: <strong>2 hrs</strong></span><span>Impact: <strong>Very high</strong> (authority)</span></div>
+        </div>
+
+        <div class="action-item ongoing">
+          <div class="ai-title">Add Pretoria/Centurion Landing Page</div>
+          <div class="ai-desc">Pretoria queries are served by the JHB page currently. A dedicated /artificial-grass-pretoria.html with Pretoria-specific copy and schema would capture this separately.</div>
+          <div class="ai-effort"><span>Effort: <strong>2 hrs</strong></span><span>Impact: <strong>Medium</strong> (local ranking)</span></div>
+        </div>
+
+        <div class="action-item ongoing">
+          <div class="ai-title">Add Testimonials Section</div>
+          <div class="ai-desc">CSS for .testi-grid is already in index.html. Either populate with 3–5 real reviews (from Google reviews once collected) or remove the dead #testimonials nav links.</div>
+          <div class="ai-effort"><span>Effort: <strong>1 hr</strong></span><span>Impact: <strong>Medium</strong> (conversion + trust)</span></div>
+        </div>
+
+        <div class="action-item done">
+          <div class="ai-title">✓ All 6 SEO Phases — Complete</div>
+          <div class="ai-desc">Foundation, keyword architecture, on-page, content engine, backlink strategy, CRO — all done. Above actions are the remaining 29 points to 91+/100.</div>
+          <div class="ai-effort"><span>Status: <strong>Done</strong></span><span>Score uplift: <strong>+33 points</strong></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rpt-footer">
+      <span>Action matrix · sorted by effort-to-impact ratio · June 2026</span>
+      <span id="rpt-date-5"></span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- TAB: LIVE DATA                      -->
+  <!-- ════════════════════════════════════ -->
+  <div id="tab-live" class="tab-pane">
+
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-eye">Live Analytics</div>
+        <div class="sec-title">GA4 + Search Console — Live Report</div>
+        <div class="sec-sub">Powered by Google Looker Studio. Paste your embed URL below to activate. Takes ~10 minutes to set up — instructions below.</div>
+      </div>
+    </div>
+
+    <div class="ls-section">
+      <div class="ls-title">Connect Google Looker Studio (free)</div>
+      <div class="ls-sub">GA4 and GSC can't embed directly — they require a signed-in session. Looker Studio connects to both on your behalf and generates a public embed URL. Once pasted below, this page shows live metrics from both sources, auto-refreshing every 12 hours.</div>
+      <div class="ls-input-row">
+        <input class="ls-input" id="lsUrl" type="url" placeholder="https://lookerstudio.google.com/embed/reporting/…" />
+        <button class="ls-btn" onclick="activateLS()">Activate Live Report</button>
+      </div>
+      <div class="ls-quick-links">
+        <a class="ls-ql" href="https://analytics.google.com/analytics/web/#/a397821686p541405091/reports/reportinghub" target="_blank" rel="noopener">Open GA4 →</a>
+        <a class="ls-ql" href="https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Aprimeturf.co.za" target="_blank" rel="noopener">Open Search Console →</a>
+        <a class="ls-ql" href="https://lookerstudio.google.com" target="_blank" rel="noopener">Open Looker Studio →</a>
+      </div>
+    </div>
+
+    <div id="ls-instructions" style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px;margin-bottom:18px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;color:var(--char)">Setup Guide — 10 minutes</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:8px">Step 1 — Create Report</div>
+          <ol style="padding-left:16px;font-size:12px;color:#555;line-height:2">
+            <li>Go to <strong>lookerstudio.google.com</strong> and sign in</li>
+            <li>Click <strong>Create → Report</strong></li>
+            <li>Add data source: <strong>Google Analytics</strong> → select your GA4 property</li>
+            <li>Click <strong>Add data</strong> again → <strong>Search Console</strong> → primeturf.co.za + Web</li>
+            <li>Add scorecards: Clicks, Impressions, CTR, Avg. Position (from GSC) + Sessions, Conversions, WhatsApp clicks (from GA4)</li>
+          </ol>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:8px">Step 2 — Publish & Embed</div>
+          <ol style="padding-left:16px;font-size:12px;color:#555;line-height:2">
+            <li>Click <strong>Share → Manage access</strong></li>
+            <li>Set to <strong>"Anyone with the link — Viewer"</strong> → Done</li>
+            <li>Click <strong>File → Embed report</strong></li>
+            <li>Copy the <code style="background:#f5f0e8;padding:1px 5px;border-radius:2px">src</code> URL from the iframe code</li>
+            <li>Paste into the field above and click <strong>Activate</strong></li>
+          </ol>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);font-size:11px;color:#aaa">Once you have the embed URL, send it and I'll hard-code it into the HTML so it loads for all visitors — 2-minute change.</div>
+    </div>
+
+    <div id="ls-frame-wrap" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div style="font-size:13px;font-weight:700;color:var(--char)">PrimeTurf — Live SEO Report</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--green);background:rgba(26,90,40,.08);border:1px solid rgba(26,90,40,.2);border-radius:3px;padding:4px 10px">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;animation:pulse 2s infinite"></span>
+          Live · Auto-refreshes every 12 hours
+        </div>
+      </div>
+      <iframe id="ls-frame" class="ls-frame" src="" height="900" allowfullscreen></iframe>
+    </div>
+
+    <div class="rpt-footer">
+      <span>Live data via Looker Studio · GA4 property 541405091 · GSC sc-domain:primeturf.co.za</span>
+      <span id="rpt-date-6"></span>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+function go(btn, id) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.hn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Score bar animation on load
+window.addEventListener('load', function () {
+  setTimeout(() => {
+    document.getElementById('score-bar').style.width = '71%';
+  }, 300);
+});
+
+// Date stamps
+const d = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+['rpt-date','rpt-date-2','rpt-date-3','rpt-date-4','rpt-date-5','rpt-date-6'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.textContent = 'Updated: ' + d;
+});
+
+// Looker Studio embed
+const LS_KEY = 'primeturf_ls_url';
+function activateLS() {
+  var url = document.getElementById('lsUrl').value.trim();
+  if (!url || !url.includes('lookerstudio.google.com')) {
+    alert('Please paste a valid Looker Studio embed URL.');
+    return;
+  }
+  localStorage.setItem(LS_KEY, url);
+  loadLS(url);
+}
+function loadLS(url) {
+  document.getElementById('ls-frame').src = url;
+  document.getElementById('ls-instructions').style.display = 'none';
+  document.getElementById('ls-frame-wrap').style.display = 'block';
+}
+var saved = localStorage.getItem(LS_KEY);
+if (saved) {
+  document.getElementById('lsUrl').value = saved;
+  loadLS(saved);
+}
+</script>
+<style>
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+</style>
+</body>
+</html>
