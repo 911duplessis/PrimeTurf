@@ -242,7 +242,7 @@ html{font-family:'Inter',sans-serif;background:var(--cream);color:var(--char);-w
     <div class="stat-strip">
       <div class="stat-card ok"><div class="sc-label">Pages Indexed</div><div class="sc-val">9</div><div class="sc-sub">Was 1 — +8 pages</div></div>
       <div class="stat-card ok"><div class="sc-label">GA4 Events</div><div class="sc-val">4</div><div class="sc-sub">Conversions tracked</div></div>
-      <div class="stat-card ok"><div class="sc-label">GBP Status</div><div class="sc-val" style="font-size:16px;padding-top:4px">Verified</div><div class="sc-sub">Email verified June 2026</div></div>
+      <div class="stat-card warn"><div class="sc-label">GBP Status</div><div class="sc-val" style="font-size:16px;padding-top:4px">Pending</div><div class="sc-sub">Submitted, awaiting verification</div></div>
       <div class="stat-card warn"><div class="sc-label">Backlinks</div><div class="sc-val">~0</div><div class="sc-sub">Target: 20 by Month 2</div></div>
       <div class="stat-card bad"><div class="sc-label">Google Reviews</div><div class="sc-val">0</div><div class="sc-sub">Request first 10 now</div></div>
     </div>
@@ -260,7 +260,10 @@ html{font-family:'Inter',sans-serif;background:var(--cream);color:var(--char);-w
         <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">No POPIA-compliant privacy policy</span><span class="ci-badge ci-ok">Fixed</span></div>
         <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">No quote/pricing tool — high-intent visitors bounced</span><span class="ci-badge ci-ok">Fixed</span></div>
         <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Privacy Policy footer link pointed to <code>#</code></span><span class="ci-badge ci-ok">Fixed</span></div>
-        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Instagram + Facebook footer links point to <code>#</code></span><span class="ci-badge ci-warn">Needs URL</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Facebook footer link now points to live profile (Instagram still <code>#</code>, no handle provided yet)</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Footer social icon circles were empty/invisible — SVG icons added across all pages</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Duplicate text overlay on gallery project photos — overlay markup removed (photos already have text)</span><span class="ci-badge ci-ok">Fixed</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">3 SEO landing pages (JHB, Cape Town, Quote Calculator) had a simplified nav/footer — now match the full brand navbar + footer system</span><span class="ci-badge ci-ok">Fixed</span></div>
         <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Testimonials nav link dead — no section in markup</span><span class="ci-badge ci-warn">Known</span></div>
         <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text">Near-zero backlink profile — no external authority</span><span class="ci-badge ci-bad">Pending</span></div>
       </div>
@@ -269,11 +272,12 @@ html{font-family:'Inter',sans-serif;background:var(--cream);color:var(--char);-w
         <div class="check-card-title">Remaining Gaps · Score ceiling: 91/100</div>
         <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text"><strong>0 Google reviews</strong> — request first 10 from existing clients via WhatsApp (template in GBP guide)</span><span class="ci-badge ci-bad">Week 1</span></div>
         <div class="check-item"><span class="ci-icon">❌</span><span class="ci-text"><strong>0 directory citations</strong> — submit to Gumtree Business, Brabys, Hotfrog ZA, SALI (Phase 5 execution)</span><span class="ci-badge ci-bad">Month 1</span></div>
-        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>Social links broken</strong> — add real Instagram + Facebook URLs to index.html footer (lines 1864–1865)</span><span class="ci-badge ci-warn">Quick fix</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>Instagram link still missing</strong> — send the Instagram handle/URL and the footer link is a 2-minute fix on index.html plus the 3 SEO landing pages</span><span class="ci-badge ci-warn">Quick fix</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>GBP verification still pending</strong> — postcard/email verification submitted, awaiting Google confirmation</span><span class="ci-badge ci-warn">Pending</span></div>
         <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>GA4 conversions not marked</strong> — in GA4 Admin → Events, mark form_submit, whatsapp_click, phone_call_click as conversions</span><span class="ci-badge ci-warn">5 min</span></div>
         <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>Dead Testimonials nav link</strong> — either add a testimonials section or remove the 3 nav links (#testimonials in desktop nav, mobile nav, footer nav)</span><span class="ci-badge ci-warn">Optional</span></div>
         <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>Page speed unknown</strong> — run PageSpeed Insights on homepage, city pages. Target LCP &lt;2.5s, CLS &lt;0.1</span><span class="ci-badge ci-warn">Check</span></div>
-        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>GBP posts not yet published</strong> — 4 posts drafted in seo/gbp-setup-guide.md, publish Week 1–4</span><span class="ci-badge ci-warn">Ongoing</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>GBP posts not yet published</strong> — 4 posts drafted in seo/gbp-setup-guide.md, publish Week 1–4 once verification clears</span><span class="ci-badge ci-warn">Ongoing</span></div>
         <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text"><strong>Blog cadence</strong> — 2 posts live, 4 "coming soon" on hub. Publish 2/month to build keyword footprint</span><span class="ci-badge ci-warn">Ongoing</span></div>
       </div>
     </div>
@@ -337,7 +341,7 @@ html{font-family:'Inter',sans-serif;background:var(--cream);color:var(--char);-w
         <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">No external CSS frameworks — inline styles only, no render-blocking stylesheets</span><span class="ci-badge ci-ok">Pass</span></div>
         <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Image optimisation: gallery images not in webp format. Convert for faster load times on mobile</span><span class="ci-badge ci-warn">Improve</span></div>
         <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">GA4 script loads async — does not block render</span><span class="ci-badge ci-ok">Pass</span></div>
-        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Social footer links point to <code>href="#"</code> — add real Instagram + Facebook URLs</span><span class="ci-badge ci-warn">Fix</span></div>
+        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">Facebook footer link fixed and SVG icons added to all footer social buttons (Instagram URL still outstanding)</span><span class="ci-badge ci-ok">Fixed</span></div>
       </div>
     </div>
 
@@ -471,14 +475,14 @@ html{font-family:'Inter',sans-serif;background:var(--cream);color:var(--char);-w
       <div>
         <div class="sec-eye">Local SEO</div>
         <div class="sec-title">Local SEO — 12 / 20 (Grade C+)</div>
-        <div class="sec-sub">GBP verified, city pages live. Score held back by 0 reviews and 0 citations. Both are easy wins — reviews can move within 2 weeks of asking.</div>
+        <div class="sec-sub">GBP submitted, awaiting Google verification. City pages live. Score held back by pending verification, 0 reviews and 0 citations — all easy wins once verification clears.</div>
       </div>
     </div>
 
     <div class="check-grid">
       <div class="check-card">
         <div class="check-card-title">Google Business Profile</div>
-        <div class="check-item"><span class="ci-icon">✅</span><span class="ci-text">GBP claimed and verified via email — June 2026</span><span class="ci-badge ci-ok">Done</span></div>
+        <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">GBP claimed and submitted for verification — awaiting Google confirmation</span><span class="ci-badge ci-warn">Pending</span></div>
         <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Business description: paste 690-char text from seo/gbp-setup-guide.md (Step 2)</span><span class="ci-badge ci-warn">Pending</span></div>
         <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Services: add 6 services from guide (Artificial Grass Installation, Pool Surround, etc.)</span><span class="ci-badge ci-warn">Pending</span></div>
         <div class="check-item"><span class="ci-icon">⚠️</span><span class="ci-text">Photos: upload minimum 5 (logo, cover, project, team, detail shot)</span><span class="ci-badge ci-warn">Pending</span></div>
@@ -547,8 +551,8 @@ html{font-family:'Inter',sans-serif;background:var(--cream);color:var(--char);-w
         </div>
 
         <div class="action-item week1">
-          <div class="ai-title">Add Social Media URLs to Footer</div>
-          <div class="ai-desc">index.html lines 1864–1865: replace href="#" with real Instagram and Facebook URLs. Send me the handles and it's a 2-minute code fix.</div>
+          <div class="ai-title">Add Instagram URL to Footer</div>
+          <div class="ai-desc">Facebook footer link is now live and icon visibility is fixed across all pages. Instagram is still href="#" — send the handle and it's a 2-minute code fix.</div>
           <div class="ai-effort"><span>Effort: <strong>2 min</strong></span><span>Impact: <strong>Medium</strong> (trust signals)</span></div>
         </div>
 
