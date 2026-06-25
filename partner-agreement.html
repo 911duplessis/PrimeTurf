@@ -219,7 +219,7 @@
 </div>
 
 <footer>
-  <p>PrimeTurf &nbsp;·&nbsp; <a href="https://www.primeturf.co.za" target="_blank" rel="noopener">www.primeturf.co.za</a> &nbsp;·&nbsp; <a href="https://wa.me/27768048868" target="_blank" rel="noopener">WhatsApp</a> &nbsp;·&nbsp; <a href="/connection-network.html">Back to The Connection Network</a></p>
+  <p>PrimeTurf &nbsp;·&nbsp; <a href="https://www.primeturf.co.za" target="_blank" rel="noopener">www.primeturf.co.za</a> &nbsp;·&nbsp; <a href="https://wa.me/27768048868" target="_blank" rel="noopener" data-wa-source="agreement_footer">WhatsApp</a> &nbsp;·&nbsp; <a href="/connection-network.html">Back to The Connection Network</a></p>
 </footer>
 
 <script>
@@ -260,6 +260,17 @@ async function handleSubmit(btn) {
     setTimeout(() => { btn.textContent = originalText; }, 3500);
   }
 }
+
+document.querySelectorAll('a[href*="wa.me"]').forEach(function (el) {
+  el.addEventListener('click', function () {
+    gtag('event', 'whatsapp_click', {
+      event_category: 'conversion',
+      event_label: 'partner_agreement_' + (el.getAttribute('data-wa-source') || 'footer'),
+      source: el.getAttribute('data-wa-source') || 'footer',
+      value: 3
+    });
+  });
+});
 </script>
 
 </body>

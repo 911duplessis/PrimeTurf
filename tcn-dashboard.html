@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Referral Intelligence Dashboard — The Connection Network</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #080C14; }
+</style>
+<script src="/assets/vendor/react.production.min.js"></script>
+<script src="/assets/vendor/react-dom.production.min.js"></script>
+<script src="/assets/vendor/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect } = React;
+const STORAGE_KEY = "tcn_dashboard_data_v1";
+
+const AGREEMENT = {
+  vendor: "PrimeTurf",
+  referralPercent: 5,
+  closingFee: 500,
+  version: "1.0",
+  effectiveDate: "2026-06-25",
+};
+
+const INITIAL_DATA = {
+  connectors: [
+    { id: 1, name: "Demo: Thabo M.", area: "Sandton", type: "REFERRER", tag: "PRIORITY", joined: "2026-06-18", referrals: 2, converted: 1, revenue: 2000, lastActive: "2026-06-24", agreementSigned: true, agreementSignedDate: "2026-06-18" },
+    { id: 2, name: "Demo: Lerato K.", area: "Midrand", type: "REFERRER", tag: "ACTIVE", joined: "2026-06-19", referrals: 1, converted: 0, revenue: 0, lastActive: "2026-06-22", agreementSigned: true, agreementSignedDate: "2026-06-19" },
+    { id: 3, name: "Demo: Sipho N.", area: "Pretoria", type: "SUPPLIER", tag: "SUPPLIER", joined: "2026-06-19", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-20", agreementSigned: false, agreementSignedDate: null },
+    { id: 4, name: "Demo: Anja V.", area: "Roodepoort", type: "REFERRER", tag: "EXPLORER", joined: "2026-06-21", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-21", agreementSigned: false, agreementSignedDate: null },
+  ],
+  leads: [
+    { id: 1, need: "Artificial grass installation", area: "Sandton", size: "80m²", budget: "High", status: "CONVERTED", connectorId: 1, reward: 2000, date: "2026-06-20", notes: "Referred to PrimeTurf. Job confirmed." },
+    { id: 2, need: "Turf supply — school sports field", area: "Midrand", size: "400m²", budget: "High", status: "ACTIVE", connectorId: 2, reward: 0, date: "2026-06-23", notes: "Connector made intro. Awaiting quote." },
+    { id: 3, need: "Garden turf residential", area: "Centurion", size: "50m²", budget: "Medium", status: "OPEN", connectorId: null, reward: 0, date: "2026-06-24", notes: "Posted to PRIORITY list." },
+  ]
+};
+
+const TAG_COLORS = {
+  PRIORITY: { bg: "rgba(245,183,49,0.15)", text: "#F5B731", border: "rgba(245,183,49,0.35)" },
+  ACTIVE:   { bg: "rgba(26,111,255,0.15)", text: "#4D8FFF", border: "rgba(26,111,255,0.35)" },
+  REFERRER: { bg: "rgba(26,111,255,0.1)",  text: "#7AABFF", border: "rgba(26,111,255,0.2)" },
+  SUPPLIER: { bg: "rgba(168,85,247,0.12)", text: "#C084FC", border: "rgba(168,85,247,0.3)" },
+  EXPLORER: { bg: "rgba(200,214,229,0.08)",text: "#8899AA", border: "rgba(200,214,229,0.15)" },
+  COLD:     { bg: "rgba(239,68,68,0.1)",   text: "#F87171", border: "rgba(239,68,68,0.25)" },
+  EXITED:   { bg: "rgba(100,116,139,0.1)", text: "#64748B", border: "rgba(100,116,139,0.2)" },
+};
+
+const STATUS_COLORS = {
+  CONVERTED: { bg: "rgba(34,197,94,0.12)",  text: "#4ADE80", border: "rgba(34,197,94,0.3)" },
+  ACTIVE:    { bg: "rgba(26,111,255,0.12)", text: "#60A5FA", border: "rgba(26,111,255,0.3)" },
+  OPEN:      { bg: "rgba(245,183,49,0.12)", text: "#FCD34D", border: "rgba(245,183,49,0.3)" },
+  LOST:      { bg: "rgba(239,68,68,0.1)",   text: "#F87171", border: "rgba(239,68,68,0.25)" },
+};
+
+const TAGS = ["PRIORITY","ACTIVE","REFERRER","SUPPLIER","EXPLORER","COLD","EXITED"];
+const TYPES = ["REFERRER","SUPPLIER","EXPLORER"];
+const LEAD_STATUSES = ["OPEN","ACTIVE","CONVERTED","LOST"];
+
+function Pill({ label, colors }) {
+  const c = colors || { bg: "rgba(200,214,229,0.1)", text: "#8899AA", border: "rgba(200,214,229,0.2)" };
+  return (
+    <span style={{
+      background: c.bg, color: c.text, border: `1px solid ${c.border}`,
+      padding: "2px 10px", borderRadius: 20, fontSize: 11, fontWeight: 600,
+      letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap"
+    }}>{label}</span>
+  );
+}
+
+function StatCard({ label, value, sub, accent }) {
+  return (
+    <div style={{
+      background: "#1C2433", border: "1px solid rgba(200,214,229,0.08)",
+      borderRadius: 10, padding: "24px 22px",
+      borderTop: `2px solid ${accent || "rgba(26,111,255,0.4)"}`
+    }}>
+      <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7A94", marginBottom: 10 }}>{label}</div>
+      <div style={{ fontFamily: "monospace", fontSize: 36, fontWeight: 700, color: accent || "#EEF2F8", lineHeight: 1 }}>{value}</div>
+      {sub && <div style={{ fontSize: 12, color: "#6B7A94", marginTop: 6 }}>{sub}</div>}
+    </div>
+  );
+}
+
+function Modal({ title, onClose, children }) {
+  return (
+    <div style={{
+      position: "fixed", inset: 0, background: "rgba(8,12,20,0.85)",
+      display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100, padding: 24
+    }} onClick={onClose}>
+      <div style={{
+        background: "#111827", border: "1px solid rgba(200,214,229,0.1)",
+        borderRadius: 12, padding: 32, width: "100%", maxWidth: 520,
+        maxHeight: "85vh", overflowY: "auto"
+      }} onClick={e => e.stopPropagation()}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
+          <div style={{ fontWeight: 700, fontSize: 16, color: "#EEF2F8" }}>{title}</div>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: "#6B7A94", cursor: "pointer", fontSize: 20, lineHeight: 1 }}>✕</button>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function Field({ label, children }) {
+  return (
+    <div style={{ marginBottom: 16 }}>
+      <label style={{ display: "block", fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7A94", marginBottom: 6 }}>{label}</label>
+      {children}
+    </div>
+  );
+}
+
+const inputStyle = {
+  width: "100%", background: "#1C2433", border: "1px solid rgba(200,214,229,0.12)",
+  borderRadius: 6, padding: "10px 14px", color: "#EEF2F8", fontSize: 14, fontFamily: "inherit",
+  outline: "none"
+};
+
+const selectStyle = { ...inputStyle };
+
+function App() {
+  const [data, setData] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : INITIAL_DATA;
+    } catch (e) {
+      return INITIAL_DATA;
+    }
+  });
+
+  useEffect(() => {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+  }, [data]);
+
+  const [view, setView] = useState("dashboard");
+  const [showAddConnector, setShowAddConnector] = useState(false);
+  const [showAddLead, setShowAddLead] = useState(false);
+  const [editConnector, setEditConnector] = useState(null);
+  const [editLead, setEditLead] = useState(null);
+  const [filterTag, setFilterTag] = useState("ALL");
+  const [filterStatus, setFilterStatus] = useState("ALL");
+
+  const [newConnector, setNewConnector] = useState({ name: "", area: "", type: "REFERRER", tag: "EXPLORER" });
+  const [newLead, setNewLead] = useState({ need: "", area: "", size: "", budget: "Medium", status: "OPEN", connectorId: "", reward: 0, notes: "" });
+
+  // Metrics
+  const totalConnectors = data.connectors.length;
+  const activeConnectors = data.connectors.filter(c => ["PRIORITY","ACTIVE","REFERRER"].includes(c.tag)).length;
+  const totalLeads = data.leads.length;
+  const convertedLeads = data.leads.filter(l => l.status === "CONVERTED").length;
+  const totalRevenue = data.leads.reduce((s, l) => s + (l.reward || 0), 0);
+  const conversionRate = totalLeads > 0 ? Math.round((convertedLeads / totalLeads) * 100) : 0;
+  const pipelineValue = data.leads.filter(l => l.status === "ACTIVE").length;
+
+  function addConnector() {
+    if (!newConnector.name.trim()) return;
+    const c = { ...newConnector, id: Date.now(), referrals: 0, converted: 0, revenue: 0, joined: new Date().toISOString().slice(0,10), lastActive: new Date().toISOString().slice(0,10), agreementSigned: false, agreementSignedDate: null };
+    setData(d => ({ ...d, connectors: [...d.connectors, c] }));
+    setNewConnector({ name: "", area: "", type: "REFERRER", tag: "EXPLORER" });
+    setShowAddConnector(false);
+  }
+
+  function saveConnector() {
+    setData(d => ({ ...d, connectors: d.connectors.map(c => c.id === editConnector.id ? editConnector : c) }));
+    setEditConnector(null);
+  }
+
+  function deleteConnector(id) {
+    setData(d => ({ ...d, connectors: d.connectors.filter(c => c.id !== id) }));
+    setEditConnector(null);
+  }
+
+  function addLead() {
+    if (!newLead.need.trim()) return;
+    const l = { ...newLead, id: Date.now(), connectorId: newLead.connectorId ? parseInt(newLead.connectorId) : null, reward: parseInt(newLead.reward) || 0, date: new Date().toISOString().slice(0,10) };
+    setData(d => ({ ...d, leads: [...d.leads, l] }));
+    setNewLead({ need: "", area: "", size: "", budget: "Medium", status: "OPEN", connectorId: "", reward: 0, notes: "" });
+    setShowAddLead(false);
+  }
+
+  function saveLead() {
+    setData(d => ({ ...d, leads: d.leads.map(l => l.id === editLead.id ? { ...editLead, reward: parseInt(editLead.reward) || 0 } : l) }));
+    setEditLead(null);
+  }
+
+  function deleteLead(id) {
+    setData(d => ({ ...d, leads: d.leads.filter(l => l.id !== id) }));
+    setEditLead(null);
+  }
+
+  const filteredConnectors = data.connectors.filter(c => filterTag === "ALL" || c.tag === filterTag);
+  const filteredLeads = data.leads.filter(l => filterStatus === "ALL" || l.status === filterStatus);
+
+  const signedConnectors = data.connectors.filter(c => c.agreementSigned).length;
+
+  const navItems = [
+    { id: "dashboard", label: "Dashboard" },
+    { id: "connectors", label: `Connectors (${totalConnectors})` },
+    { id: "leads", label: `Leads (${totalLeads})` },
+    { id: "agreement", label: "Agreement" },
+    { id: "flow", label: "Flow Guide" },
+  ];
+
+  return (
+    <div style={{ background: "#080C14", minHeight: "100vh", color: "#EEF2F8", fontFamily: "Inter, sans-serif", fontSize: 14 }}>
+
+      {/* Header */}
+      <div style={{ borderBottom: "1px solid rgba(200,214,229,0.07)", padding: "18px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+        <div>
+          <div style={{ fontFamily: "monospace", fontSize: 13, fontWeight: 700, letterSpacing: "0.15em", color: "#1A6FFF", textTransform: "uppercase" }}>THE CONNECTION NETWORK</div>
+          <div style={{ fontSize: 11, color: "#6B7A94", letterSpacing: "0.08em", marginTop: 2 }}>Referral Intelligence Dashboard</div>
+        </div>
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+          {navItems.map(n => (
+            <button key={n.id} onClick={() => setView(n.id)} style={{
+              background: view === n.id ? "rgba(26,111,255,0.2)" : "transparent",
+              border: `1px solid ${view === n.id ? "rgba(26,111,255,0.4)" : "rgba(200,214,229,0.1)"}`,
+              color: view === n.id ? "#7AABFF" : "#6B7A94",
+              padding: "8px 16px", borderRadius: 20, cursor: "pointer",
+              fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", fontFamily: "inherit"
+            }}>{n.label}</button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "32px 24px 64px" }}>
+
+        {/* ── DASHBOARD ── */}
+        {view === "dashboard" && (
+          <div>
+            <div style={{ marginBottom: 32 }}>
+              <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#1A6FFF", marginBottom: 8 }}>Overview</div>
+              <h1 style={{ fontFamily: "monospace", fontSize: 28, fontWeight: 700, color: "#EEF2F8", letterSpacing: "0.02em" }}>Network Intelligence</h1>
+            </div>
+
+            {/* Stat grid */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 16, marginBottom: 40 }}>
+              <StatCard label="Total Connectors" value={totalConnectors} sub={`${activeConnectors} active`} accent="#1A6FFF" />
+              <StatCard label="Live Leads" value={totalLeads} sub={`${pipelineValue} in pipeline`} accent="#C8D6E5" />
+              <StatCard label="Converted" value={convertedLeads} sub={`${conversionRate}% conversion`} accent="#22C55E" />
+              <StatCard label="Total Rewards Paid" value={`R${totalRevenue.toLocaleString()}`} sub="Cash referral rewards" accent="#F5B731" />
+            </div>
+
+            {/* Pipeline visual */}
+            <div style={{ background: "#1C2433", border: "1px solid rgba(200,214,229,0.08)", borderRadius: 10, padding: "24px", marginBottom: 32 }}>
+              <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7A94", marginBottom: 20 }}>Referral Pipeline</div>
+              <div style={{ display: "flex", gap: 4, alignItems: "stretch" }}>
+                {["OPEN","ACTIVE","CONVERTED","LOST"].map(s => {
+                  const count = data.leads.filter(l => l.status === s).length;
+                  const pct = totalLeads > 0 ? (count / totalLeads) * 100 : 0;
+                  const sc = STATUS_COLORS[s];
+                  return (
+                    <div key={s} style={{ flex: 1, textAlign: "center" }}>
+                      <div style={{
+                        height: 8, background: sc.bg, border: `1px solid ${sc.border}`,
+                        borderRadius: 4, marginBottom: 10,
+                        position: "relative", overflow: "hidden"
+                      }}>
+                        <div style={{ position: "absolute", left: 0, top: 0, height: "100%", width: `${pct}%`, background: sc.text, borderRadius: 4 }} />
+                      </div>
+                      <div style={{ color: sc.text, fontSize: 20, fontWeight: 700, fontFamily: "monospace" }}>{count}</div>
+                      <div style={{ color: "#6B7A94", fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 4 }}>{s}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Connector breakdown */}
+            <div style={{ background: "#1C2433", border: "1px solid rgba(200,214,229,0.08)", borderRadius: 10, padding: "24px", marginBottom: 32 }}>
+              <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7A94", marginBottom: 20 }}>Connector Breakdown by Tag</div>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                {TAGS.map(tag => {
+                  const count = data.connectors.filter(c => c.tag === tag).length;
+                  if (!count) return null;
+                  return (
+                    <div key={tag} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <Pill label={tag} colors={TAG_COLORS[tag]} />
+                      <span style={{ fontFamily: "monospace", fontWeight: 700, color: "#EEF2F8" }}>{count}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Top connectors */}
+            <div style={{ background: "#1C2433", border: "1px solid rgba(200,214,229,0.08)", borderRadius: 10, overflow: "hidden" }}>
+              <div style={{ padding: "20px 24px", borderBottom: "1px solid rgba(200,214,229,0.06)" }}>
+                <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7A94" }}>Top Connectors</div>
+              </div>
+              {data.connectors.filter(c => c.referrals > 0 || c.converted > 0).sort((a,b) => b.revenue - a.revenue).slice(0,5).map(c => (
+                <div key={c.id} style={{ padding: "16px 24px", borderBottom: "1px solid rgba(200,214,229,0.04)", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+                  <div style={{ flex: 1, minWidth: 160 }}>
+                    <div style={{ fontWeight: 600, color: "#EEF2F8", marginBottom: 2 }}>{c.name}</div>
+                    <div style={{ fontSize: 12, color: "#6B7A94" }}>{c.area}</div>
+                  </div>
+                  <Pill label={c.tag} colors={TAG_COLORS[c.tag]} />
+                  <div style={{ textAlign: "center", minWidth: 60 }}>
+                    <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#EEF2F8" }}>{c.referrals}</div>
+                    <div style={{ fontSize: 10, color: "#6B7A94", letterSpacing: "0.08em" }}>REFS</div>
+                  </div>
+                  <div style={{ textAlign: "center", minWidth: 60 }}>
+                    <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#22C55E" }}>{c.converted}</div>
+                    <div style={{ fontSize: 10, color: "#6B7A94", letterSpacing: "0.08em" }}>CONVERTED</div>
+                  </div>
+                  <div style={{ textAlign: "right", minWidth: 80 }}>
+                    <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#F5B731", fontSize: 16 }}>R{c.revenue.toLocaleString()}</div>
+                    <div style={{ fontSize: 10, color: "#6B7A94", letterSpacing: "0.08em" }}>EARNED</div>
+                  </div>
+                </div>
+              ))}
+              {data.connectors.filter(c => c.referrals > 0 || c.converted > 0).length === 0 && (
+                <div style={{ padding: "32px 24px", textAlign: "center", color: "#6B7A94", fontSize: 13 }}>No active referral data yet. Add connectors and leads to see rankings.</div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* ── CONNECTORS ── */}
+        {view === "connectors" && (
+          <div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28, flexWrap: "wrap", gap: 12 }}>
+              <div>
+                <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#1A6FFF", marginBottom: 6 }}>Network</div>
+                <h2 style={{ fontFamily: "monospace", fontSize: 24, fontWeight: 700 }}>Connectors</h2>
+              </div>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+                <select value={filterTag} onChange={e => setFilterTag(e.target.value)} style={{ ...selectStyle, width: "auto", fontSize: 12 }}>
+                  <option value="ALL">All Tags</option>
+                  {TAGS.map(t => <option key={t} value={t}>{t}</option>)}
+                </select>
+                <button onClick={() => setShowAddConnector(true)} style={{ background: "#1A6FFF", border: "none", color: "#fff", padding: "10px 20px", borderRadius: 6, cursor: "pointer", fontWeight: 600, fontSize: 12, letterSpacing: "0.06em", fontFamily: "inherit" }}>+ Add Connector</button>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {filteredConnectors.map(c => (
+                <div key={c.id} onClick={() => setEditConnector({...c})} style={{
+                  background: "#1C2433", border: "1px solid rgba(200,214,229,0.08)",
+                  borderRadius: 10, padding: "18px 22px", cursor: "pointer",
+                  display: "grid", gridTemplateColumns: "1fr auto auto auto auto auto",
+                  gap: 16, alignItems: "center",
+                  transition: "border-color 0.15s"
+                }}>
+                  <div>
+                    <div style={{ fontWeight: 600, color: "#EEF2F8", marginBottom: 3 }}>{c.name}</div>
+                    <div style={{ fontSize: 12, color: "#6B7A94" }}>{c.area} · Joined {c.joined}</div>
+                  </div>
+                  <Pill label={c.tag} colors={TAG_COLORS[c.tag]} />
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#EEF2F8", fontSize: 18 }}>{c.referrals}</div>
+                    <div style={{ fontSize: 10, color: "#6B7A94", letterSpacing: "0.08em" }}>REFS</div>
+                  </div>
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#22C55E", fontSize: 18 }}>{c.converted}</div>
+                    <div style={{ fontSize: 10, color: "#6B7A94", letterSpacing: "0.08em" }}>WON</div>
+                  </div>
+                  <div style={{ textAlign: "right" }}>
+                    <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#F5B731", fontSize: 20 }}>R{c.revenue.toLocaleString()}</div>
+                    <div style={{ fontSize: 10, color: "#6B7A94", letterSpacing: "0.08em" }}>EARNED</div>
+                  </div>
+                  <div style={{ color: "#6B7A94", fontSize: 13 }}>›</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── LEADS ── */}
+        {view === "leads" && (
+          <div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28, flexWrap: "wrap", gap: 12 }}>
+              <div>
+                <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#1A6FFF", marginBottom: 6 }}>Pipeline</div>
+                <h2 style={{ fontFamily: "monospace", fontSize: 24, fontWeight: 700 }}>Leads & Opportunities</h2>
+              </div>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+                <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} style={{ ...selectStyle, width: "auto", fontSize: 12 }}>
+                  <option value="ALL">All Statuses</option>
+                  {LEAD_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
+                </select>
+                <button onClick={() => setShowAddLead(true)} style={{ background: "#1A6FFF", border: "none", color: "#fff", padding: "10px 20px", borderRadius: 6, cursor: "pointer", fontWeight: 600, fontSize: 12, letterSpacing: "0.06em", fontFamily: "inherit" }}>+ Add Lead</button>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {filteredLeads.map(l => {
+                const connector = data.connectors.find(c => c.id === l.connectorId);
+                return (
+                  <div key={l.id} onClick={() => setEditLead({...l})} style={{
+                    background: "#1C2433", border: "1px solid rgba(200,214,229,0.08)",
+                    borderRadius: 10, padding: "18px 22px", cursor: "pointer"
+                  }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10, flexWrap: "wrap" }}>
+                      <div style={{ fontWeight: 600, color: "#EEF2F8", flex: 1 }}>{l.need}</div>
+                      <Pill label={l.status} colors={STATUS_COLORS[l.status]} />
+                      {l.reward > 0 && <span style={{ fontFamily: "monospace", fontWeight: 700, color: "#F5B731", fontSize: 16 }}>R{l.reward.toLocaleString()}</span>}
+                    </div>
+                    <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+                      <div style={{ fontSize: 12, color: "#6B7A94" }}>📍 {l.area}{l.size ? ` · ${l.size}` : ""}</div>
+                      <div style={{ fontSize: 12, color: "#6B7A94" }}>Budget: {l.budget}</div>
+                      {connector && <div style={{ fontSize: 12, color: "#6B7A94" }}>Connector: <span style={{ color: "#C8D6E5" }}>{connector.name}</span></div>}
+                      <div style={{ fontSize: 12, color: "#6B7A94" }}>{l.date}</div>
+                    </div>
+                    {l.notes && <div style={{ fontSize: 12, color: "#6B7A94", marginTop: 8, fontStyle: "italic" }}>{l.notes}</div>}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* ── AGREEMENT ── */}
+        {view === "agreement" && (
+          <div style={{ maxWidth: 760 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#1A6FFF", marginBottom: 8 }}>Vendor Terms</div>
+            <h2 style={{ fontFamily: "monospace", fontSize: 24, fontWeight: 700, marginBottom: 6 }}>Partner Agreement</h2>
+            <div style={{ fontSize: 12, color: "#6B7A94", marginBottom: 28 }}>Vendor: {AGREEMENT.vendor} · v{AGREEMENT.version} · Effective {AGREEMENT.effectiveDate}</div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16, marginBottom: 32 }}>
+              <StatCard label="Referral Reward" value={`${AGREEMENT.referralPercent}%`} sub="Of confirmed job value" accent="#F5B731" />
+              <StatCard label="Closing Bonus" value={`R${AGREEMENT.closingFee}`} sub="Fixed, on job completion" accent="#F5B731" />
+              <StatCard label="Agreement Signed" value={signedConnectors} sub={`of ${totalConnectors} connectors`} accent="#22C55E" />
+            </div>
+
+            <div style={{ background: "#1C2433", border: "1px solid rgba(200,214,229,0.08)", borderRadius: 10, overflow: "hidden", marginBottom: 32 }}>
+              <div style={{ padding: "20px 24px", borderBottom: "1px solid rgba(200,214,229,0.06)" }}>
+                <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7A94" }}>Signature Status</div>
+              </div>
+              {data.connectors.map(c => (
+                <div key={c.id} style={{ padding: "14px 24px", borderBottom: "1px solid rgba(200,214,229,0.04)", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+                  <div style={{ flex: 1, minWidth: 160 }}>
+                    <div style={{ fontWeight: 600, color: "#EEF2F8" }}>{c.name}</div>
+                    <div style={{ fontSize: 12, color: "#6B7A94" }}>{c.area}</div>
+                  </div>
+                  {c.agreementSigned ? (
+                    <Pill label={`Signed ${c.agreementSignedDate || ""}`} colors={{ bg: "rgba(34,197,94,0.12)", text: "#4ADE80", border: "rgba(34,197,94,0.3)" }} />
+                  ) : (
+                    <Pill label="Not Signed" colors={{ bg: "rgba(239,68,68,0.1)", text: "#F87171", border: "rgba(239,68,68,0.25)" }} />
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div style={{ background: "rgba(26,111,255,0.06)", border: "1px solid rgba(26,111,255,0.2)", borderRadius: 8, padding: "20px" }}>
+              <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#1A6FFF", marginBottom: 12 }}>Terms Summary</div>
+              <ul style={{ paddingLeft: 18, color: "#C8D6E5", fontSize: 13, lineHeight: 1.9 }}>
+                <li>Referral reward: {AGREEMENT.referralPercent}% of total job value, paid once the client's deposit clears and the job is confirmed.</li>
+                <li>Closing bonus: R{AGREEMENT.closingFee} fixed, paid on top of the referral reward once the installation is completed and signed off.</li>
+                <li>No fees, no joining costs, no obligation to sell.</li>
+                <li>Full terms: <span style={{ color: "#F5B731" }}>primeturf.co.za/partner-agreement.html</span></li>
+              </ul>
+            </div>
+          </div>
+        )}
+
+        {/* ── FLOW GUIDE ── */}
+        {view === "flow" && (
+          <div style={{ maxWidth: 680 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#1A6FFF", marginBottom: 8 }}>Quick Reference</div>
+            <h2 style={{ fontFamily: "monospace", fontSize: 24, fontWeight: 700, marginBottom: 28 }}>Tag & Routing Guide</h2>
+
+            {[
+              { tag: "PRIORITY", desc: "Active, fast-responding, proven connectors. Send all opportunities first.", action: "First-access list · All opportunities · Immediate" },
+              { tag: "ACTIVE", desc: "Engaged, replied to flow, confirmed ready to connect.", action: "Second wave · Within 2h of opportunity drop" },
+              { tag: "REFERRER", desc: "Identified as connector type. May not have converted yet.", action: "Included in opportunity broadcasts" },
+              { tag: "SUPPLIER", desc: "Service provider or installer. Receives matched leads only.", action: "Direct matching — not broadcast" },
+              { tag: "EXPLORER", desc: "Joined but hasn't committed. Needs more nurture.", action: "Third wave · 24h delay · Day 6 re-engagement" },
+              { tag: "COLD", desc: "No reply in 72h. Send re-engagement nudge only.", action: "Day 6 nudge only · No opportunities" },
+              { tag: "EXITED", desc: "Opted out. Archive only — do not broadcast.", action: "No broadcasts · Keep in archive" },
+            ].map(item => (
+              <div key={item.tag} style={{ background: "#1C2433", border: "1px solid rgba(200,214,229,0.07)", borderRadius: 8, padding: "18px 20px", marginBottom: 10 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                  <Pill label={item.tag} colors={TAG_COLORS[item.tag]} />
+                </div>
+                <div style={{ fontSize: 13, color: "#C8D6E5", marginBottom: 6 }}>{item.desc}</div>
+                <div style={{ fontSize: 12, color: "#6B7A94", fontFamily: "monospace" }}>→ {item.action}</div>
+              </div>
+            ))}
+
+            <div style={{ background: "rgba(26,111,255,0.06)", border: "1px solid rgba(26,111,255,0.2)", borderRadius: 8, padding: "20px", marginTop: 24 }}>
+              <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#1A6FFF", marginBottom: 12 }}>Entry Keywords</div>
+              {[["CONNECT / TURF / JOIN","Entry trigger → auto-reply + segment question"],["A","Tags REFERRER → sends Referrer reply"],["B","Tags SUPPLIER → sends Supplier reply"],["C","Tags EXPLORER → sends Explorer reply"],["READY","Tags ACTIVE → priority list"],["ACTIVE","Tags PRIORITY → first-access list"],["STAY","Re-activates COLD contact"],["OUT","Tags EXITED → clean removal"]].map(([kw, action]) => (
+                <div key={kw} style={{ display: "flex", gap: 16, padding: "8px 0", borderBottom: "1px solid rgba(200,214,229,0.05)" }}>
+                  <span style={{ fontFamily: "monospace", fontSize: 12, color: "#F5B731", minWidth: 140, flexShrink: 0 }}>{kw}</span>
+                  <span style={{ fontSize: 12, color: "#6B7A94" }}>{action}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* ── ADD CONNECTOR MODAL ── */}
+      {showAddConnector && (
+        <Modal title="Add Connector" onClose={() => setShowAddConnector(false)}>
+          <Field label="Full Name *"><input style={inputStyle} value={newConnector.name} onChange={e => setNewConnector(p => ({...p, name: e.target.value}))} placeholder="e.g. Thabo Mokoena" /></Field>
+          <Field label="Area / Location"><input style={inputStyle} value={newConnector.area} onChange={e => setNewConnector(p => ({...p, area: e.target.value}))} placeholder="e.g. Sandton, Gauteng" /></Field>
+          <Field label="Type">
+            <select style={selectStyle} value={newConnector.type} onChange={e => setNewConnector(p => ({...p, type: e.target.value}))}>
+              {TYPES.map(t => <option key={t}>{t}</option>)}
+            </select>
+          </Field>
+          <Field label="Initial Tag">
+            <select style={selectStyle} value={newConnector.tag} onChange={e => setNewConnector(p => ({...p, tag: e.target.value}))}>
+              {TAGS.map(t => <option key={t}>{t}</option>)}
+            </select>
+          </Field>
+          <div style={{ display: "flex", gap: 10, marginTop: 8 }}>
+            <button onClick={addConnector} style={{ flex: 1, background: "#1A6FFF", border: "none", color: "#fff", padding: "12px", borderRadius: 6, cursor: "pointer", fontWeight: 600, fontSize: 13, fontFamily: "inherit" }}>Add to Network</button>
+            <button onClick={() => setShowAddConnector(false)} style={{ flex: 1, background: "transparent", border: "1px solid rgba(200,214,229,0.15)", color: "#6B7A94", padding: "12px", borderRadius: 6, cursor: "pointer", fontFamily: "inherit" }}>Cancel</button>
+          </div>
+        </Modal>
+      )}
+
+      {/* ── EDIT CONNECTOR MODAL ── */}
+      {editConnector && (
+        <Modal title="Edit Connector" onClose={() => setEditConnector(null)}>
+          <Field label="Full Name"><input style={inputStyle} value={editConnector.name} onChange={e => setEditConnector(p => ({...p, name: e.target.value}))} /></Field>
+          <Field label="Area"><input style={inputStyle} value={editConnector.area} onChange={e => setEditConnector(p => ({...p, area: e.target.value}))} /></Field>
+          <Field label="Tag">
+            <select style={selectStyle} value={editConnector.tag} onChange={e => setEditConnector(p => ({...p, tag: e.target.value}))}>
+              {TAGS.map(t => <option key={t}>{t}</option>)}
+            </select>
+          </Field>
+          <Field label="Referrals Made"><input style={inputStyle} type="number" value={editConnector.referrals} onChange={e => setEditConnector(p => ({...p, referrals: parseInt(e.target.value)||0}))} /></Field>
+          <Field label="Converted"><input style={inputStyle} type="number" value={editConnector.converted} onChange={e => setEditConnector(p => ({...p, converted: parseInt(e.target.value)||0}))} /></Field>
+          <Field label="Total Revenue Earned (R)"><input style={inputStyle} type="number" value={editConnector.revenue} onChange={e => setEditConnector(p => ({...p, revenue: parseInt(e.target.value)||0}))} /></Field>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+            <input type="checkbox" id="agreementSigned" checked={!!editConnector.agreementSigned} onChange={e => setEditConnector(p => ({...p, agreementSigned: e.target.checked, agreementSignedDate: e.target.checked ? (p.agreementSignedDate || new Date().toISOString().slice(0,10)) : null}))} style={{ width: 16, height: 16 }} />
+            <label htmlFor="agreementSigned" style={{ fontSize: 13, color: "#C8D6E5" }}>Partner agreement signed{editConnector.agreementSignedDate ? ` (${editConnector.agreementSignedDate})` : ""}</label>
+          </div>
+          <div style={{ display: "flex", gap: 10, marginTop: 8 }}>
+            <button onClick={saveConnector} style={{ flex: 1, background: "#1A6FFF", border: "none", color: "#fff", padding: "12px", borderRadius: 6, cursor: "pointer", fontWeight: 600, fontSize: 13, fontFamily: "inherit" }}>Save Changes</button>
+            <button onClick={() => deleteConnector(editConnector.id)} style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.25)", color: "#F87171", padding: "12px 20px", borderRadius: 6, cursor: "pointer", fontFamily: "inherit", fontSize: 13 }}>Delete</button>
+          </div>
+        </Modal>
+      )}
+
+      {/* ── ADD LEAD MODAL ── */}
+      {showAddLead && (
+        <Modal title="Add Lead / Opportunity" onClose={() => setShowAddLead(false)}>
+          <Field label="Need / Service *"><input style={inputStyle} value={newLead.need} onChange={e => setNewLead(p => ({...p, need: e.target.value}))} placeholder="e.g. Artificial grass installation" /></Field>
+          <Field label="Area"><input style={inputStyle} value={newLead.area} onChange={e => setNewLead(p => ({...p, area: e.target.value}))} placeholder="e.g. Sandton" /></Field>
+          <Field label="Size / Scope"><input style={inputStyle} value={newLead.size} onChange={e => setNewLead(p => ({...p, size: e.target.value}))} placeholder="e.g. 80m²" /></Field>
+          <Field label="Budget Signal">
+            <select style={selectStyle} value={newLead.budget} onChange={e => setNewLead(p => ({...p, budget: e.target.value}))}>
+              {["Low","Medium","High"].map(b => <option key={b}>{b}</option>)}
+            </select>
+          </Field>
+          <Field label="Status">
+            <select style={selectStyle} value={newLead.status} onChange={e => setNewLead(p => ({...p, status: e.target.value}))}>
+              {LEAD_STATUSES.map(s => <option key={s}>{s}</option>)}
+            </select>
+          </Field>
+          <Field label="Connector (who referred this)">
+            <select style={selectStyle} value={newLead.connectorId} onChange={e => setNewLead(p => ({...p, connectorId: e.target.value}))}>
+              <option value="">— None yet —</option>
+              {data.connectors.map(c => <option key={c.id} value={c.id}>{c.name} ({c.area})</option>)}
+            </select>
+          </Field>
+          <Field label="Reward Paid (R)"><input style={inputStyle} type="number" value={newLead.reward} onChange={e => setNewLead(p => ({...p, reward: e.target.value}))} placeholder="0" /></Field>
+          <Field label="Notes"><input style={inputStyle} value={newLead.notes} onChange={e => setNewLead(p => ({...p, notes: e.target.value}))} placeholder="Any context..." /></Field>
+          <div style={{ display: "flex", gap: 10, marginTop: 8 }}>
+            <button onClick={addLead} style={{ flex: 1, background: "#1A6FFF", border: "none", color: "#fff", padding: "12px", borderRadius: 6, cursor: "pointer", fontWeight: 600, fontSize: 13, fontFamily: "inherit" }}>Add Lead</button>
+            <button onClick={() => setShowAddLead(false)} style={{ flex: 1, background: "transparent", border: "1px solid rgba(200,214,229,0.15)", color: "#6B7A94", padding: "12px", borderRadius: 6, cursor: "pointer", fontFamily: "inherit" }}>Cancel</button>
+          </div>
+        </Modal>
+      )}
+
+      {/* ── EDIT LEAD MODAL ── */}
+      {editLead && (
+        <Modal title="Edit Lead" onClose={() => setEditLead(null)}>
+          <Field label="Need / Service"><input style={inputStyle} value={editLead.need} onChange={e => setEditLead(p => ({...p, need: e.target.value}))} /></Field>
+          <Field label="Area"><input style={inputStyle} value={editLead.area} onChange={e => setEditLead(p => ({...p, area: e.target.value}))} /></Field>
+          <Field label="Status">
+            <select style={selectStyle} value={editLead.status} onChange={e => setEditLead(p => ({...p, status: e.target.value}))}>
+              {LEAD_STATUSES.map(s => <option key={s}>{s}</option>)}
+            </select>
+          </Field>
+          <Field label="Connector">
+            <select style={selectStyle} value={editLead.connectorId || ""} onChange={e => setEditLead(p => ({...p, connectorId: e.target.value ? parseInt(e.target.value) : null}))}>
+              <option value="">— None —</option>
+              {data.connectors.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+          </Field>
+          <Field label="Reward Paid (R)"><input style={inputStyle} type="number" value={editLead.reward} onChange={e => setEditLead(p => ({...p, reward: e.target.value}))} /></Field>
+          <Field label="Notes"><input style={inputStyle} value={editLead.notes} onChange={e => setEditLead(p => ({...p, notes: e.target.value}))} /></Field>
+          <div style={{ display: "flex", gap: 10, marginTop: 8 }}>
+            <button onClick={saveLead} style={{ flex: 1, background: "#1A6FFF", border: "none", color: "#fff", padding: "12px", borderRadius: 6, cursor: "pointer", fontWeight: 600, fontSize: 13, fontFamily: "inherit" }}>Save Changes</button>
+            <button onClick={() => deleteLead(editLead.id)} style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.25)", color: "#F87171", padding: "12px 20px", borderRadius: 6, cursor: "pointer", fontFamily: "inherit", fontSize: 13 }}>Delete</button>
+          </div>
+        </Modal>
+      )}
+
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+</body>
+</html>

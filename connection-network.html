@@ -923,7 +923,8 @@
 <footer>
   <p class="tagline">THE CONNECTION NETWORK</p>
   <p>Find the need. Make the link. Share the value.</p>
-  <p style="margin-top:10px;">In partnership with <a href="https://www.primeturf.co.za" target="_blank" rel="noopener" style="color:var(--cobalt);">PrimeTurf</a> · <a href="https://wa.me/27768048868" target="_blank" rel="noopener" style="color:var(--cobalt);">WhatsApp</a></p>
+  <p style="margin-top:10px;">In partnership with <a href="https://www.primeturf.co.za" target="_blank" rel="noopener" style="color:var(--cobalt);">PrimeTurf</a> · <a href="https://wa.me/27768048868" target="_blank" rel="noopener" style="color:var(--cobalt);" data-wa-source="footer">WhatsApp</a></p>
+  <p style="margin-top:10px; font-size:12px;">Run a business that needs leads? <a href="/vendor-signup.html" style="color:var(--cobalt);">Become a Vendor Partner →</a></p>
 </footer>
 
 <script>
@@ -931,7 +932,7 @@
     el.addEventListener('click', function () {
       gtag('event', 'whatsapp_click', {
         event_category: 'conversion',
-        event_label: 'connection_network_page',
+        event_label: 'connection_network_' + (el.getAttribute('data-wa-source') || 'footer'),
         source: el.getAttribute('data-wa-source') || 'footer',
         value: 3
       });
