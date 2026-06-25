@@ -711,8 +711,8 @@
 
   <div class="hero-story animate-in delay-4">
     <p>I didn't think you could get paid for a Facebook referral.<br>Then it happened.</p>
-    <span class="amount">R2,000</span>
-    <span class="amount-label">Cash. For one introduction. No selling.</span>
+    <span class="amount">5% + R500</span>
+    <span class="amount-label">5% of the job — once your contract's signed — plus R500 when it closes.</span>
     <p style="margin-top: 16px;">Someone needed artificial grass. I knew someone who could help. I connected them. That's it.</p>
   </div>
 
@@ -805,7 +805,14 @@
           <div class="flow-dot"></div>
           <div class="flow-text">
             <strong>The Connection</strong>
-            I knew the right installer. I introduced them directly. No middleman system. No paperwork.
+            I knew the right installer. I introduced them directly to PrimeTurf.
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-dot"></div>
+          <div class="flow-text">
+            <strong>The Contract</strong>
+            I signed the PrimeTurf partner agreement — two minutes, no fees. That locks in my reward.
           </div>
         </div>
         <div class="flow-item">
@@ -819,7 +826,7 @@
           <div class="flow-dot" style="background: var(--gold); box-shadow: 0 0 8px rgba(245,183,49,0.5);"></div>
           <div class="flow-text">
             <strong style="color: var(--gold);">The Reward</strong>
-            R2,000 cash paid for the referral. Same day.
+            5% of the job value, paid once the deposit cleared — plus R500 when the install closed.
           </div>
         </div>
       </div>
@@ -827,8 +834,8 @@
 
     <div class="reward-box">
       <div class="reward-label">Referral Reward</div>
-      <div class="reward-amount">R2,000</div>
-      <div class="reward-sub">Cash · Same Day · One Introduction</div>
+      <div class="reward-amount" style="font-size: 56px;">5% + R500</div>
+      <div class="reward-sub">5% Of Job Value · R500 Closing Bonus · Signed Agreement Required</div>
       <div class="reward-action">"No selling. No convincing. No inventory. Just connecting the right people."</div>
     </div>
   </div>
@@ -874,7 +881,7 @@
     <div class="for-card yes">
       <div class="for-card-title">Referral Reward</div>
       <div style="font-family:'Bebas Neue', sans-serif; font-size:48px; color:var(--gold); letter-spacing:0.03em; margin-bottom:8px;">5%</div>
-      <p style="font-size:14px; color:var(--silver); line-height:1.7;">Of the total job value, paid in cash to the connector once the client's deposit is received and the job is confirmed.</p>
+      <p style="font-size:14px; color:var(--silver); line-height:1.7;">Of the total job value, paid in cash to the connector once the client's deposit is received and the job is confirmed. <strong style="color:var(--white);">Unlocked once you've signed the partner agreement below</strong> — unsigned connectors aren't eligible.</p>
     </div>
     <div class="for-card yes">
       <div class="for-card-title">Closing Bonus</div>
@@ -884,6 +891,7 @@
   </div>
 
   <p style="font-size:13px; color:var(--muted); margin-top:28px; max-width:560px;">Vendor: <strong style="color:var(--silver);">PrimeTurf</strong> · Terms reviewed as the network grows · <a href="https://www.primeturf.co.za" target="_blank" rel="noopener" style="color:var(--cobalt);">www.primeturf.co.za</a></p>
+  <a href="/partner-agreement.html" class="btn-primary" style="margin-top:24px; text-decoration:none;">Read &amp; Sign The Partner Agreement →</a>
 </section>
 
 <hr class="divider">
@@ -915,7 +923,8 @@
 <footer>
   <p class="tagline">THE CONNECTION NETWORK</p>
   <p>Find the need. Make the link. Share the value.</p>
-  <p style="margin-top:10px;">In partnership with <a href="https://www.primeturf.co.za" target="_blank" rel="noopener" style="color:var(--cobalt);">PrimeTurf</a> · <a href="https://wa.me/27768048868" target="_blank" rel="noopener" style="color:var(--cobalt);">WhatsApp</a></p>
+  <p style="margin-top:10px;">In partnership with <a href="https://www.primeturf.co.za" target="_blank" rel="noopener" style="color:var(--cobalt);">PrimeTurf</a> · <a href="https://wa.me/27768048868" target="_blank" rel="noopener" style="color:var(--cobalt);" data-wa-source="footer">WhatsApp</a></p>
+  <p style="margin-top:10px; font-size:12px;">Run a business that needs leads? <a href="/vendor-signup.html" style="color:var(--cobalt);">Become a Vendor Partner →</a></p>
 </footer>
 
 <script>
@@ -923,7 +932,7 @@
     el.addEventListener('click', function () {
       gtag('event', 'whatsapp_click', {
         event_category: 'conversion',
-        event_label: 'connection_network_page',
+        event_label: 'connection_network_' + (el.getAttribute('data-wa-source') || 'footer'),
         source: el.getAttribute('data-wa-source') || 'footer',
         value: 3
       });

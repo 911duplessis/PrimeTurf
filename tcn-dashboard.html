@@ -1,4 +1,24 @@
-import { useState, useEffect } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Referral Intelligence Dashboard — The Connection Network</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #080C14; }
+</style>
+<script src="/assets/vendor/react.production.min.js"></script>
+<script src="/assets/vendor/react-dom.production.min.js"></script>
+<script src="/assets/vendor/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect } = React;
+const STORAGE_KEY = "tcn_dashboard_data_v1";
 
 const AGREEMENT = {
   vendor: "PrimeTurf",
@@ -10,10 +30,10 @@ const AGREEMENT = {
 
 const INITIAL_DATA = {
   connectors: [
-    { id: 1, name: "Demo: Thabo M.", area: "Sandton", type: "REFERRER", tag: "PRIORITY", joined: "2026-06-18", referrals: 2, converted: 1, revenue: 2000, lastActive: "2026-06-24", agreementSigned: true, agreementSignedDate: "2026-06-18" },
-    { id: 2, name: "Demo: Lerato K.", area: "Midrand", type: "REFERRER", tag: "ACTIVE", joined: "2026-06-19", referrals: 1, converted: 0, revenue: 0, lastActive: "2026-06-22", agreementSigned: true, agreementSignedDate: "2026-06-19" },
-    { id: 3, name: "Demo: Sipho N.", area: "Pretoria", type: "SUPPLIER", tag: "SUPPLIER", joined: "2026-06-19", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-20", agreementSigned: false, agreementSignedDate: null },
-    { id: 4, name: "Demo: Anja V.", area: "Roodepoort", type: "REFERRER", tag: "EXPLORER", joined: "2026-06-21", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-21", agreementSigned: false, agreementSignedDate: null },
+    { id: 1, name: "Demo: Thabo M.", area: "Sandton", type: "REFERRER", tag: "PRIORITY", joined: "2026-06-18", referrals: 2, converted: 1, revenue: 2000, lastActive: "2026-06-24", agreementSigned: true, agreementSignedDate: "2026-06-18", link: "https://facebook.com/thabo.connects" },
+    { id: 2, name: "Demo: Lerato K.", area: "Midrand", type: "REFERRER", tag: "ACTIVE", joined: "2026-06-19", referrals: 1, converted: 0, revenue: 0, lastActive: "2026-06-22", agreementSigned: true, agreementSignedDate: "2026-06-19", link: "" },
+    { id: 3, name: "Demo: Sipho N.", area: "Pretoria", type: "SUPPLIER", tag: "SUPPLIER", joined: "2026-06-19", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-20", agreementSigned: false, agreementSignedDate: null, link: "" },
+    { id: 4, name: "Demo: Anja V.", area: "Roodepoort", type: "REFERRER", tag: "EXPLORER", joined: "2026-06-21", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-21", agreementSigned: false, agreementSignedDate: null, link: "" },
   ],
   leads: [
     { id: 1, need: "Artificial grass installation", area: "Sandton", size: "80m²", budget: "High", status: "CONVERTED", connectorId: 1, reward: 2000, date: "2026-06-20", notes: "Referred to PrimeTurf. Job confirmed." },
@@ -106,8 +126,20 @@ const inputStyle = {
 
 const selectStyle = { ...inputStyle };
 
-export default function App() {
-  const [data, setData] = useState(INITIAL_DATA);
+function App() {
+  const [data, setData] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : INITIAL_DATA;
+    } catch (e) {
+      return INITIAL_DATA;
+    }
+  });
+
+  useEffect(() => {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+  }, [data]);
+
   const [view, setView] = useState("dashboard");
   const [showAddConnector, setShowAddConnector] = useState(false);
   const [showAddLead, setShowAddLead] = useState(false);
@@ -116,7 +148,7 @@ export default function App() {
   const [filterTag, setFilterTag] = useState("ALL");
   const [filterStatus, setFilterStatus] = useState("ALL");
 
-  const [newConnector, setNewConnector] = useState({ name: "", area: "", type: "REFERRER", tag: "EXPLORER" });
+  const [newConnector, setNewConnector] = useState({ name: "", area: "", type: "REFERRER", tag: "EXPLORER", link: "" });
   const [newLead, setNewLead] = useState({ need: "", area: "", size: "", budget: "Medium", status: "OPEN", connectorId: "", reward: 0, notes: "" });
 
   // Metrics
@@ -132,7 +164,7 @@ export default function App() {
     if (!newConnector.name.trim()) return;
     const c = { ...newConnector, id: Date.now(), referrals: 0, converted: 0, revenue: 0, joined: new Date().toISOString().slice(0,10), lastActive: new Date().toISOString().slice(0,10), agreementSigned: false, agreementSignedDate: null };
     setData(d => ({ ...d, connectors: [...d.connectors, c] }));
-    setNewConnector({ name: "", area: "", type: "REFERRER", tag: "EXPLORER" });
+    setNewConnector({ name: "", area: "", type: "REFERRER", tag: "EXPLORER", link: "" });
     setShowAddConnector(false);
   }
 
@@ -320,7 +352,7 @@ export default function App() {
                 }}>
                   <div>
                     <div style={{ fontWeight: 600, color: "#EEF2F8", marginBottom: 3 }}>{c.name}</div>
-                    <div style={{ fontSize: 12, color: "#6B7A94" }}>{c.area} · Joined {c.joined}</div>
+                    <div style={{ fontSize: 12, color: "#6B7A94" }}>{c.area} · Joined {c.joined}{c.link && <> · <a href={c.link} target="_blank" rel="noopener" onClick={e => e.stopPropagation()} style={{ color: "#7AABFF" }}>Linked Profile ↗</a></>}</div>
                   </div>
                   <Pill label={c.tag} colors={TAG_COLORS[c.tag]} />
                   <div style={{ textAlign: "center" }}>
@@ -407,7 +439,7 @@ export default function App() {
                 <div key={c.id} style={{ padding: "14px 24px", borderBottom: "1px solid rgba(200,214,229,0.04)", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
                   <div style={{ flex: 1, minWidth: 160 }}>
                     <div style={{ fontWeight: 600, color: "#EEF2F8" }}>{c.name}</div>
-                    <div style={{ fontSize: 12, color: "#6B7A94" }}>{c.area}</div>
+                    <div style={{ fontSize: 12, color: "#6B7A94" }}>{c.area}{c.link && <> · <a href={c.link} target="_blank" rel="noopener" style={{ color: "#7AABFF" }}>Linked Profile ↗</a></>}</div>
                   </div>
                   {c.agreementSigned ? (
                     <Pill label={`Signed ${c.agreementSignedDate || ""}`} colors={{ bg: "rgba(34,197,94,0.12)", text: "#4ADE80", border: "rgba(34,197,94,0.3)" }} />
@@ -472,6 +504,7 @@ export default function App() {
         <Modal title="Add Connector" onClose={() => setShowAddConnector(false)}>
           <Field label="Full Name *"><input style={inputStyle} value={newConnector.name} onChange={e => setNewConnector(p => ({...p, name: e.target.value}))} placeholder="e.g. Thabo Mokoena" /></Field>
           <Field label="Area / Location"><input style={inputStyle} value={newConnector.area} onChange={e => setNewConnector(p => ({...p, area: e.target.value}))} placeholder="e.g. Sandton, Gauteng" /></Field>
+          <Field label="Website / Social Profile (Optional)"><input style={inputStyle} value={newConnector.link} onChange={e => setNewConnector(p => ({...p, link: e.target.value}))} placeholder="https://facebook.com/..." /></Field>
           <Field label="Type">
             <select style={selectStyle} value={newConnector.type} onChange={e => setNewConnector(p => ({...p, type: e.target.value}))}>
               {TYPES.map(t => <option key={t}>{t}</option>)}
@@ -494,6 +527,7 @@ export default function App() {
         <Modal title="Edit Connector" onClose={() => setEditConnector(null)}>
           <Field label="Full Name"><input style={inputStyle} value={editConnector.name} onChange={e => setEditConnector(p => ({...p, name: e.target.value}))} /></Field>
           <Field label="Area"><input style={inputStyle} value={editConnector.area} onChange={e => setEditConnector(p => ({...p, area: e.target.value}))} /></Field>
+          <Field label="Website / Social Profile"><input style={inputStyle} value={editConnector.link || ""} onChange={e => setEditConnector(p => ({...p, link: e.target.value}))} placeholder="https://facebook.com/..." /></Field>
           <Field label="Tag">
             <select style={selectStyle} value={editConnector.tag} onChange={e => setEditConnector(p => ({...p, tag: e.target.value}))}>
               {TAGS.map(t => <option key={t}>{t}</option>)}
@@ -572,3 +606,9 @@ export default function App() {
     </div>
   );
 }
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+</body>
+</html>
