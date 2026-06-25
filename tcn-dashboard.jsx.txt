@@ -1,11 +1,19 @@
 import { useState, useEffect } from "react";
 
+const AGREEMENT = {
+  vendor: "PrimeTurf",
+  referralPercent: 5,
+  closingFee: 500,
+  version: "1.0",
+  effectiveDate: "2026-06-25",
+};
+
 const INITIAL_DATA = {
   connectors: [
-    { id: 1, name: "Demo: Thabo M.", area: "Sandton", type: "REFERRER", tag: "PRIORITY", joined: "2026-06-18", referrals: 2, converted: 1, revenue: 2000, lastActive: "2026-06-24" },
-    { id: 2, name: "Demo: Lerato K.", area: "Midrand", type: "REFERRER", tag: "ACTIVE", joined: "2026-06-19", referrals: 1, converted: 0, revenue: 0, lastActive: "2026-06-22" },
-    { id: 3, name: "Demo: Sipho N.", area: "Pretoria", type: "SUPPLIER", tag: "SUPPLIER", joined: "2026-06-19", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-20" },
-    { id: 4, name: "Demo: Anja V.", area: "Roodepoort", type: "REFERRER", tag: "EXPLORER", joined: "2026-06-21", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-21" },
+    { id: 1, name: "Demo: Thabo M.", area: "Sandton", type: "REFERRER", tag: "PRIORITY", joined: "2026-06-18", referrals: 2, converted: 1, revenue: 2000, lastActive: "2026-06-24", agreementSigned: true, agreementSignedDate: "2026-06-18" },
+    { id: 2, name: "Demo: Lerato K.", area: "Midrand", type: "REFERRER", tag: "ACTIVE", joined: "2026-06-19", referrals: 1, converted: 0, revenue: 0, lastActive: "2026-06-22", agreementSigned: true, agreementSignedDate: "2026-06-19" },
+    { id: 3, name: "Demo: Sipho N.", area: "Pretoria", type: "SUPPLIER", tag: "SUPPLIER", joined: "2026-06-19", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-20", agreementSigned: false, agreementSignedDate: null },
+    { id: 4, name: "Demo: Anja V.", area: "Roodepoort", type: "REFERRER", tag: "EXPLORER", joined: "2026-06-21", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-21", agreementSigned: false, agreementSignedDate: null },
   ],
   leads: [
     { id: 1, need: "Artificial grass installation", area: "Sandton", size: "80m²", budget: "High", status: "CONVERTED", connectorId: 1, reward: 2000, date: "2026-06-20", notes: "Referred to PrimeTurf. Job confirmed." },
@@ -122,7 +130,7 @@ export default function App() {
 
   function addConnector() {
     if (!newConnector.name.trim()) return;
-    const c = { ...newConnector, id: Date.now(), referrals: 0, converted: 0, revenue: 0, joined: new Date().toISOString().slice(0,10), lastActive: new Date().toISOString().slice(0,10) };
+    const c = { ...newConnector, id: Date.now(), referrals: 0, converted: 0, revenue: 0, joined: new Date().toISOString().slice(0,10), lastActive: new Date().toISOString().slice(0,10), agreementSigned: false, agreementSignedDate: null };
     setData(d => ({ ...d, connectors: [...d.connectors, c] }));
     setNewConnector({ name: "", area: "", type: "REFERRER", tag: "EXPLORER" });
     setShowAddConnector(false);
@@ -159,10 +167,13 @@ export default function App() {
   const filteredConnectors = data.connectors.filter(c => filterTag === "ALL" || c.tag === filterTag);
   const filteredLeads = data.leads.filter(l => filterStatus === "ALL" || l.status === filterStatus);
 
+  const signedConnectors = data.connectors.filter(c => c.agreementSigned).length;
+
   const navItems = [
     { id: "dashboard", label: "Dashboard" },
     { id: "connectors", label: `Connectors (${totalConnectors})` },
     { id: "leads", label: `Leads (${totalLeads})` },
+    { id: "agreement", label: "Agreement" },
     { id: "flow", label: "Flow Guide" },
   ];
 
@@ -375,6 +386,50 @@ export default function App() {
           </div>
         )}
 
+        {/* ── AGREEMENT ── */}
+        {view === "agreement" && (
+          <div style={{ maxWidth: 760 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#1A6FFF", marginBottom: 8 }}>Vendor Terms</div>
+            <h2 style={{ fontFamily: "monospace", fontSize: 24, fontWeight: 700, marginBottom: 6 }}>Partner Agreement</h2>
+            <div style={{ fontSize: 12, color: "#6B7A94", marginBottom: 28 }}>Vendor: {AGREEMENT.vendor} · v{AGREEMENT.version} · Effective {AGREEMENT.effectiveDate}</div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16, marginBottom: 32 }}>
+              <StatCard label="Referral Reward" value={`${AGREEMENT.referralPercent}%`} sub="Of confirmed job value" accent="#F5B731" />
+              <StatCard label="Closing Bonus" value={`R${AGREEMENT.closingFee}`} sub="Fixed, on job completion" accent="#F5B731" />
+              <StatCard label="Agreement Signed" value={signedConnectors} sub={`of ${totalConnectors} connectors`} accent="#22C55E" />
+            </div>
+
+            <div style={{ background: "#1C2433", border: "1px solid rgba(200,214,229,0.08)", borderRadius: 10, overflow: "hidden", marginBottom: 32 }}>
+              <div style={{ padding: "20px 24px", borderBottom: "1px solid rgba(200,214,229,0.06)" }}>
+                <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7A94" }}>Signature Status</div>
+              </div>
+              {data.connectors.map(c => (
+                <div key={c.id} style={{ padding: "14px 24px", borderBottom: "1px solid rgba(200,214,229,0.04)", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+                  <div style={{ flex: 1, minWidth: 160 }}>
+                    <div style={{ fontWeight: 600, color: "#EEF2F8" }}>{c.name}</div>
+                    <div style={{ fontSize: 12, color: "#6B7A94" }}>{c.area}</div>
+                  </div>
+                  {c.agreementSigned ? (
+                    <Pill label={`Signed ${c.agreementSignedDate || ""}`} colors={{ bg: "rgba(34,197,94,0.12)", text: "#4ADE80", border: "rgba(34,197,94,0.3)" }} />
+                  ) : (
+                    <Pill label="Not Signed" colors={{ bg: "rgba(239,68,68,0.1)", text: "#F87171", border: "rgba(239,68,68,0.25)" }} />
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div style={{ background: "rgba(26,111,255,0.06)", border: "1px solid rgba(26,111,255,0.2)", borderRadius: 8, padding: "20px" }}>
+              <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#1A6FFF", marginBottom: 12 }}>Terms Summary</div>
+              <ul style={{ paddingLeft: 18, color: "#C8D6E5", fontSize: 13, lineHeight: 1.9 }}>
+                <li>Referral reward: {AGREEMENT.referralPercent}% of total job value, paid once the client's deposit clears and the job is confirmed.</li>
+                <li>Closing bonus: R{AGREEMENT.closingFee} fixed, paid on top of the referral reward once the installation is completed and signed off.</li>
+                <li>No fees, no joining costs, no obligation to sell.</li>
+                <li>Full terms: <span style={{ color: "#F5B731" }}>primeturf.co.za/partner-agreement.html</span></li>
+              </ul>
+            </div>
+          </div>
+        )}
+
         {/* ── FLOW GUIDE ── */}
         {view === "flow" && (
           <div style={{ maxWidth: 680 }}>
@@ -447,6 +502,10 @@ export default function App() {
           <Field label="Referrals Made"><input style={inputStyle} type="number" value={editConnector.referrals} onChange={e => setEditConnector(p => ({...p, referrals: parseInt(e.target.value)||0}))} /></Field>
           <Field label="Converted"><input style={inputStyle} type="number" value={editConnector.converted} onChange={e => setEditConnector(p => ({...p, converted: parseInt(e.target.value)||0}))} /></Field>
           <Field label="Total Revenue Earned (R)"><input style={inputStyle} type="number" value={editConnector.revenue} onChange={e => setEditConnector(p => ({...p, revenue: parseInt(e.target.value)||0}))} /></Field>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+            <input type="checkbox" id="agreementSigned" checked={!!editConnector.agreementSigned} onChange={e => setEditConnector(p => ({...p, agreementSigned: e.target.checked, agreementSignedDate: e.target.checked ? (p.agreementSignedDate || new Date().toISOString().slice(0,10)) : null}))} style={{ width: 16, height: 16 }} />
+            <label htmlFor="agreementSigned" style={{ fontSize: 13, color: "#C8D6E5" }}>Partner agreement signed{editConnector.agreementSignedDate ? ` (${editConnector.agreementSignedDate})` : ""}</label>
+          </div>
           <div style={{ display: "flex", gap: 10, marginTop: 8 }}>
             <button onClick={saveConnector} style={{ flex: 1, background: "#1A6FFF", border: "none", color: "#fff", padding: "12px", borderRadius: 6, cursor: "pointer", fontWeight: 600, fontSize: 13, fontFamily: "inherit" }}>Save Changes</button>
             <button onClick={() => deleteConnector(editConnector.id)} style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.25)", color: "#F87171", padding: "12px 20px", borderRadius: 6, cursor: "pointer", fontFamily: "inherit", fontSize: 13 }}>Delete</button>
