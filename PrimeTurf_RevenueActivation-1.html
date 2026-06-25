@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PrimeTurf SA — Revenue Activation System</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F5F0E8;--warm:#FAF8F3;--ink:#1A1712;--ink-m:#3D3830;--ink-l:#6B6358;
+  --ink-f:#B8B0A4;--rule:#D8D0C4;--rule-l:#EAE4DA;
+  --gold:#9A7828;--gold-l:#C8A84C;--gold-p:#F0E8D0;
+  --red:#8B2018;--red-p:#F4EDEB;
+  --green:#1E5C38;--green-p:#E8F2EC;
+  --teal:#1A5858;--teal-p:#E8F0F0;
+  --amber:#7A5010;--amber-p:#F4EEE0;
+  --blue:#1A3870;--blue-p:#EBF0FA;
+}
+html{scroll-behavior:smooth}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--rule)}
+body{background:var(--cream);color:var(--ink);font-family:'Roboto Mono',monospace;font-size:.75rem;line-height:1.8;-webkit-font-smoothing:antialiased}
+.label{font-size:.585rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--ink-l)}
+.lbl-gold{color:var(--gold)}.lbl-green{color:var(--green)}.lbl-red{color:var(--red)}.lbl-teal{color:var(--teal)}.lbl-amber{color:var(--amber)}
+
+/* ── MASTHEAD ── */
+.mast{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.mast::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent calc(100%/12 - 1px),rgba(255,255,255,.02) calc(100%/12 - 1px),rgba(255,255,255,.02) calc(100%/12));pointer-events:none}
+.mast-inner{padding:56px 72px 52px;display:grid;grid-template-columns:1fr 380px;gap:72px;align-items:end}
+.m-pre{font-size:.575rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-l);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.m-pre::before{content:'';width:24px;height:1px;background:var(--gold-l)}
+.mast h1{font-family:'EB Garamond',serif;font-size:clamp(44px,5.5vw,80px);line-height:.9;color:var(--cream);font-weight:400}
+.mast h1 em{font-style:italic;color:var(--gold-l)}
+.m-sub{margin-top:20px;font-size:.7rem;color:rgba(245,240,232,.45);line-height:1.75;max-width:480px}
+.mast-meta{border-left:1px solid rgba(255,255,255,.1);padding-left:32px;display:flex;flex-direction:column;gap:18px}
+.mm-item .mmk{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:3px}
+.mm-item .mmv{font-family:'EB Garamond',serif;font-size:1.2rem;color:var(--cream);line-height:1.2}
+.mm-item .mmv.gold{color:var(--gold-l)}.mm-item .mmv.green{color:#6EC48C}.mm-item .mmv.red{color:#E88070}
+.mm-item .mms{font-size:.575rem;color:rgba(245,240,232,.3);margin-top:2px;line-height:1.5}
+.mast-bottom{padding:16px 72px;border-top:1px solid rgba(255,255,255,.07);display:flex;gap:0;overflow-x:auto}
+.mpill{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.3);padding:5px 16px;border-right:1px solid rgba(255,255,255,.07);white-space:nowrap}
+.mpill:first-child{padding-left:0}.mpill.on{color:var(--gold-l)}
+
+/* ── CORRECTION BANNER ── */
+.correction{background:var(--amber-p);border-top:3px solid var(--amber);border-bottom:1px solid #DDB870;padding:20px 72px}
+.corr-inner{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;max-width:1100px}
+.corr-label{font-size:.575rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.corr-text{font-size:.7rem;color:var(--ink-m);line-height:1.75}
+
+/* ── VDOS ALIGNMENT ── */
+.alignment{background:var(--ink);padding:24px 72px}
+.align-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06)}
+.align-cell{padding:18px 20px;background:var(--ink)}
+.ac-source{font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.25);margin-bottom:5px}
+.ac-finding{font-size:.68rem;color:rgba(245,240,232,.7);line-height:1.6}
+.ac-finding strong{color:var(--gold-l)}
+
+/* ── WRAP ── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 72px 100px}
+
+/* ── SECTION ── */
+.sec{margin-top:72px}
+.sec-head{border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:28px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.sec-hed-left{}
+.sec-eye{margin-bottom:6px}
+.sec-title{font-family:'EB Garamond',serif;font-size:clamp(24px,2.8vw,36px);font-weight:400;color:var(--ink);line-height:1.05}
+.sec-title em{font-style:italic;color:var(--gold)}
+.sec-sub{font-size:.65rem;color:var(--ink-l);max-width:580px;line-height:1.7;margin-top:4px}
+.sec-num{font-family:'EB Garamond',serif;font-size:3.5rem;font-style:italic;color:var(--rule);line-height:1;flex-shrink:0}
+
+/* ── LAYER CARD ── */
+.layer-card{border:1px solid var(--rule);background:#fff;margin-bottom:16px;overflow:hidden}
+.lc-head{display:grid;grid-template-columns:64px auto 1fr auto auto;gap:0;align-items:stretch;border-bottom:1px solid var(--rule);cursor:pointer;user-select:none}
+.lc-head:hover{background:var(--warm)}
+.lc-rank{
+  background:var(--ink);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'EB Garamond',serif;font-style:italic;
+  font-size:1.8rem;line-height:1;
+  border-right:1px solid rgba(255,255,255,.1);
+  min-height:56px;
+}
+.lc-rank.gold{background:var(--gold)}.lc-rank.green{background:var(--green)}.lc-rank.teal{background:var(--teal)}.lc-rank.red{background:var(--red)}.lc-rank.amber{background:var(--amber)}.lc-rank.blue{background:var(--blue)}
+.lc-label-col{padding:14px 18px;border-right:1px solid var(--rule-l);display:flex;flex-direction:column;justify-content:center;min-width:160px}
+.lc-lbl{font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:3px}
+.lc-name{font-size:.78rem;color:var(--ink);font-weight:500}
+.lc-meta{padding:14px 20px;display:flex;flex-direction:column;justify-content:center;flex:1}
+.lc-meta-title{font-size:.72rem;color:var(--ink-m);line-height:1.4;margin-bottom:4px}
+.lc-meta-sub{font-size:.6rem;color:var(--ink-l);line-height:1.5}
+.lc-stats{display:flex;gap:0;border-left:1px solid var(--rule-l);flex-shrink:0}
+.lc-stat{padding:12px 16px;border-right:1px solid var(--rule-l);text-align:center;min-width:80px;display:flex;flex-direction:column;justify-content:center}
+.lc-stat:last-child{border-right:none}
+.lc-sv{font-family:'EB Garamond',serif;font-style:italic;font-size:1.2rem;line-height:1;margin-bottom:2px}
+.lc-sv.gold{color:var(--gold)}.lc-sv.green{color:var(--green)}.lc-sv.red{color:var(--red)}.lc-sv.amber{color:var(--amber)}
+.lc-sl{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-f)}
+.lc-toggle{padding:0 16px;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--ink-f);border-left:1px solid var(--rule-l);transition:transform .25s}
+.lc-toggle.open{transform:rotate(180deg)}
+.lc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;border-top:1px solid transparent}
+.lc-body.open{max-height:3000px;border-top-color:var(--rule-l)}
+.lc-inner{padding:24px}
+
+/* ── GRID ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
+
+/* ── CARDS ── */
+.card{background:#fff;border:1px solid var(--rule);padding:18px}
+.card-title{margin-bottom:12px}
+
+/* ── COPY BLOCK ── */
+.copy-block{background:var(--ink);color:var(--cream);padding:24px;position:relative}
+.copy-label{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.copy-text{font-size:.7rem;color:rgba(245,240,232,.8);line-height:2;white-space:pre-wrap}
+.copy-btn{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:var(--cream);padding:4px 12px;cursor:pointer;font-family:'Roboto Mono',monospace;transition:background .2s}
+.copy-btn:hover{background:rgba(255,255,255,.15)}
+.copy-btn.copied{background:var(--green);border-color:var(--green)}
+
+/* ── TABLE ── */
+.tbl{width:100%;border-collapse:collapse;font-size:.68rem}
+.tbl th{text-align:left;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-l);padding:7px 12px;border-bottom:2px solid var(--ink);background:var(--warm);font-weight:500}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--rule-l);vertical-align:middle;color:var(--ink-m)}
+.tbl tr:last-child td{border-bottom:none}.tbl tr:hover td{background:var(--warm)}
+.tbl tr.rh td{background:var(--green-p)}.tbl tr.rw td{background:var(--red-p)}
+
+/* ── BADGE ── */
+.badge{display:inline-block;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border:1px solid}
+.bg-gold{background:var(--gold-p);color:var(--gold);border-color:rgba(154,120,40,.25)}
+.bg-green{background:var(--green-p);color:var(--green);border-color:rgba(30,92,56,.2)}
+.bg-red{background:var(--red-p);color:var(--red);border-color:rgba(139,32,24,.2)}
+.bg-amber{background:var(--amber-p);color:var(--amber);border-color:rgba(122,80,16,.2)}
+.bg-teal{background:var(--teal-p);color:var(--teal);border-color:rgba(26,88,88,.2)}
+.bg-blue{background:var(--blue-p);color:var(--blue);border-color:rgba(26,56,112,.2)}
+
+/* ── INSIGHT ── */
+.ins{padding:12px 16px;border-left:3px solid;font-size:.68rem;line-height:1.7;margin-top:14px}
+.ins-green{border-color:var(--green);background:var(--green-p);color:var(--green)}
+.ins-gold{border-color:var(--gold);background:var(--gold-p);color:var(--gold)}
+.ins-red{border-color:var(--red);background:var(--red-p);color:var(--red)}
+.ins-teal{border-color:var(--teal);background:var(--teal-p);color:var(--teal)}
+.ins strong{display:block;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;opacity:.7}
+
+/* ── PROG ── */
+.prog{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.prog-lbl{font-size:.62rem;color:var(--ink-l);min-width:140px;text-align:right}
+.prog-track{flex:1;height:3px;background:var(--rule-l)}
+.pf{height:3px}.pf-gold{background:var(--gold)}.pf-green{background:var(--green)}.pf-amber{background:var(--amber)}.pf-red{background:var(--red)}.pf-teal{background:var(--teal)}
+.prog-pct{font-size:.62rem;min-width:34px}
+
+/* ── COMMISSION TABLE ── */
+.comm-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule-l);padding:10px 12px;font-size:.68rem}
+.comm-row:last-child{border-bottom:none}
+.comm-row.header{background:var(--warm);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-l)}
+
+/* ── TIMELINE ── */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:var(--rule)}
+.tl-item{position:relative;margin-bottom:18px;padding-left:20px}
+.tl-item::before{content:'';position:absolute;left:-22px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 1px var(--gold)}
+.tl-label{font-size:.575rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.tl-title{font-size:.72rem;color:var(--ink);margin-bottom:3px;font-weight:500}
+.tl-sub{font-size:.62rem;color:var(--ink-l);line-height:1.6}
+
+/* ── STAT ── */
+.stat{padding:16px 18px;border:1px solid var(--rule);background:#fff}
+.stat .sk{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-l);margin-bottom:5px}
+.stat .sv{font-family:'EB Garamond',serif;font-style:italic;font-size:1.8rem;line-height:1}
+.stat .sv.gold{color:var(--gold)}.stat .sv.green{color:var(--green)}.stat .sv.red{color:var(--red)}
+.stat .ss{font-size:.585rem;color:var(--ink-l);margin-top:3px;line-height:1.5}
+
+/* ── 30-DAY MODEL ── */
+.model-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.mg-cell{padding:14px 16px;background:#fff}
+.mg-cell.header{background:var(--warm)}
+.mg-lbl{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-l);margin-bottom:4px}
+.mg-val{font-family:'EB Garamond',serif;font-size:1.3rem;font-style:italic;line-height:1;color:var(--ink)}
+.mg-val.gold{color:var(--gold)}.mg-val.green{color:var(--green)}
+.mg-sub{font-size:.575rem;color:var(--ink-l);margin-top:3px;line-height:1.5}
+
+/* ── VDOS UPGRADE PANEL ── */
+.upgrade{background:var(--green-p);border:1px solid rgba(30,92,56,.2);border-left:3px solid var(--green);padding:18px 20px;margin-top:14px}
+.upgrade-label{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+.upgrade-text{font-size:.68rem;color:var(--ink-m);line-height:1.7}
+
+/* ── FOOTER ── */
+.footer{background:var(--ink);padding:40px 72px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-top:0}
+.fb{font-family:'EB Garamond',serif;font-size:1.3rem;color:var(--cream)}.fb em{font-style:italic;color:var(--gold-l)}
+.ft{font-size:.575rem;color:rgba(245,240,232,.3);margin-top:6px;line-height:1.6}
+.fcol-t{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:10px}
+.flinks{display:flex;flex-direction:column;gap:5px}
+.flinks a{font-size:.62rem;color:rgba(245,240,232,.45);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--gold-l)}
+.fq{font-family:'EB Garamond',serif;font-style:italic;font-size:.95rem;color:rgba(245,240,232,.55);line-height:1.55}
+
+@media(max-width:900px){
+  .mast-inner{grid-template-columns:1fr;gap:36px;padding:48px 24px 40px}
+  .mast-meta{border-left:none;border-top:1px solid rgba(255,255,255,.08);padding:20px 0 0;flex-direction:row;flex-wrap:wrap;gap:16px}
+  .mast-bottom,.correction,.alignment,.wrap,.footer{padding-left:24px;padding-right:24px}
+  .align-inner,.model-grid{grid-template-columns:1fr 1fr}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .lc-head{grid-template-columns:48px 1fr}
+  .lc-label-col,.lc-stats{display:none}
+  .lc-toggle{border-left:none}
+  .footer{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ MASTHEAD ═══ -->
+<header class="mast">
+  <div class="mast-inner">
+    <div>
+      <div class="m-pre">PrimeTurf SA · Revenue Activation System · Stage 1</div>
+      <h1>Revenue<br/><em>Activation</em><br/>System</h1>
+      <p class="m-sub">Eight revenue layers — re-engineered to reflect actual CPI rankings, VDOS specification findings, and the floor rate system. Not a lead generation playbook. A compounding revenue architecture built on what the data already confirmed.</p>
+    </div>
+    <div class="mast-meta">
+      <div class="mm-item"><div class="mmk">Integration</div><div class="mmv">VDOS ASQ1–6 + Stage 1</div></div>
+      <div class="mm-item"><div class="mmk">Original Layers</div><div class="mmv gold">8 Retained</div><div class="mms">All eight preserved — reordered and upgraded by CPI</div></div>
+      <div class="mm-item"><div class="mmk">30-Day Revenue Target</div><div class="mmv green">15+ Sales</div><div class="mms">From 100 qualified leads at 50% quote rate, 30% close</div></div>
+      <div class="mm-item"><div class="mmk">Floor Rate</div><div class="mmv">R420 – R620/m²</div><div class="mms">By channel. Non-negotiable.</div></div>
+    </div>
+  </div>
+  <div class="mast-bottom">
+    <span class="mpill on">Layer 1 — Dormant Base (Today)</span>
+    <span class="mpill on">Layer 2 — Neighbour System</span>
+    <span class="mpill on">Layer 3 — Architect/Developer</span>
+    <span class="mpill">Layer 4 — Affiliate/Partner</span>
+    <span class="mpill">Layer 5 — WhatsApp Engine</span>
+    <span class="mpill">Layer 6 — Google Business</span>
+    <span class="mpill">Layer 7 — Facebook Groups</span>
+    <span class="mpill">Layer 8 — Retargeting</span>
+  </div>
+</header>
+
+<!-- ═══ CORRECTION BANNER ═══ -->
+<div class="correction">
+  <div class="corr-inner">
+    <div><div class="corr-label">VDOS Correction</div></div>
+    <div class="corr-text">
+      The original playbook runs all 8 layers simultaneously with equal weight. <strong>The VDOS data disagrees.</strong> Channel A (direct inbound via Facebook groups, WhatsApp ads, Google) scores CPI 325. Channel D (architect/developer specification) scores CPI 6,933 — a 21× difference on the same metric. Running them at equal investment misallocates capital, founder time, and sales energy.
+      <br/>This document preserves all 8 layers. It reorders them by CPI, assigns investment weight accordingly, adds VDOS-derived floor rates, and upgrades each message to reflect the correct conversion driver: water infrastructure independence — not aesthetics.
+    </div>
+  </div>
+</div>
+
+<!-- ═══ VDOS ALIGNMENT BAR ═══ -->
+<div class="alignment">
+  <div class="align-inner">
+    <div class="align-cell"><div class="ac-source">ASQ1 Finding</div><div class="ac-finding"><strong>B + C = 70%</strong> of conversions. Water anxiety + property value. Rewrite all 8 layer messages from aesthetics to infrastructure independence.</div></div>
+    <div class="align-cell"><div class="ac-source">ASQ4 Finding</div><div class="ac-finding"><strong>Channel D CPI = 6,933</strong> vs Channel A CPI = 325. Layer ordering must reflect this. Layers 1–3 receive 70% of investment. Layers 5–8 receive 30%.</div></div>
+    <div class="align-cell"><div class="ac-source">ASQ6 Finding</div><div class="ac-finding"><strong>Dormant base = R2.58M–R5.52M/yr</strong> at zero new CAC. Layer 1 (existing customers) is the highest-probability same-day revenue source. Always activated first.</div></div>
+    <div class="align-cell"><div class="ac-source">Stage 1 Floor Rates</div><div class="ac-finding"><strong>Floor rates by channel.</strong> Architect/spec: R620/m². Referral: R520/m². Contractor partner: R460/m². Direct inbound: R420/m². Non-negotiable in all 8 layers.</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ INVESTMENT ALLOCATION ═══ -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-hed-left">
+      <div class="sec-eye"><span class="label">Before Activating Any Layer</span></div>
+      <div class="sec-title">Investment <em>Allocation</em></div>
+      <div class="sec-sub">How founder time and marketing budget should be distributed across all 8 layers based on CPI rankings. This is not equal-weight.</div>
+    </div>
+  </div>
+  <div class="g2" style="margin-bottom:16px">
+    <div>
+      <div class="card-title" style="margin-bottom:14px"><span class="label">Founder Time Allocation by Layer (per week)</span></div>
+      <div class="prog"><span class="prog-lbl">L1 — Dormant Base</span><div class="prog-track"><div class="pf pf-gold" style="width:85%"></div></div><span class="prog-pct" style="color:var(--gold)">6 hrs</span></div>
+      <div class="prog"><span class="prog-lbl">L2 — Neighbour System</span><div class="prog-track"><div class="pf pf-green" style="width:70%"></div></div><span class="prog-pct" style="color:var(--green)">5 hrs</span></div>
+      <div class="prog"><span class="prog-lbl">L3 — Architect/Developer</span><div class="prog-track"><div class="pf pf-green" style="width:85%"></div></div><span class="prog-pct" style="color:var(--green)">6 hrs</span></div>
+      <div class="prog"><span class="prog-lbl">L4 — Affiliate/Partner</span><div class="prog-track"><div class="pf pf-teal" style="width:50%"></div></div><span class="prog-pct" style="color:var(--teal)">3.5 hrs</span></div>
+      <div class="prog"><span class="prog-lbl">L5 — WhatsApp Engine</span><div class="prog-track"><div class="pf pf-amber" style="width:28%"></div></div><span class="prog-pct" style="color:var(--amber)">2 hrs</span></div>
+      <div class="prog"><span class="prog-lbl">L6 — Google Business</span><div class="prog-track"><div class="pf pf-amber" style="width:28%"></div></div><span class="prog-pct" style="color:var(--amber)">2 hrs</span></div>
+      <div class="prog"><span class="prog-lbl">L7 — Facebook Groups</span><div class="prog-track"><div class="pf pf-amber" style="width:20%"></div></div><span class="prog-pct" style="color:var(--amber)">1.5 hrs</span></div>
+      <div class="prog"><span class="prog-lbl">L8 — Retargeting</span><div class="prog-track"><div class="pf pf-amber" style="width:14%"></div></div><span class="prog-pct" style="color:var(--amber)">1 hr</span></div>
+    </div>
+    <div>
+      <div class="card-title" style="margin-bottom:14px"><span class="label">Monthly marketing budget split (R5,000 baseline)</span></div>
+      <table class="tbl">
+        <thead><tr><th>Layer</th><th>Channel Type</th><th>Budget</th><th>CPI Basis</th></tr></thead>
+        <tbody>
+          <tr class="rh"><td><strong>L1 Dormant Base</strong></td><td>Zero-cost activation</td><td style="color:var(--green)"><strong>R0</strong></td><td><span class="badge bg-gold">6,933 / 3,748</span></td></tr>
+          <tr class="rh"><td><strong>L2 Neighbour System</strong></td><td>Print + incentive</td><td style="color:var(--green)"><strong>R400</strong></td><td><span class="badge bg-green">Compounding</span></td></tr>
+          <tr class="rh"><td><strong>L3 Architect/Dev</strong></td><td>Spec package + samples</td><td style="color:var(--green)"><strong>R800</strong></td><td><span class="badge bg-gold">6,933</span></td></tr>
+          <tr><td>L4 Affiliate Partners</td><td>Partner kit print</td><td>R600</td><td><span class="badge bg-teal">1,127</span></td></tr>
+          <tr><td>L5 WhatsApp Engine</td><td>Meta ad spend</td><td>R1,200</td><td><span class="badge bg-amber">Medium</span></td></tr>
+          <tr><td>L6 Google Business</td><td>Time only</td><td>R0</td><td><span class="badge bg-amber">High local</span></td></tr>
+          <tr><td>L7 Facebook Groups</td><td>Time only</td><td>R0</td><td><span class="badge bg-amber">Medium</span></td></tr>
+          <tr class="rw"><td>L8 Retargeting</td><td>Meta/Google pixels</td><td>R600</td><td><span class="badge bg-red">325 — passive</span></td></tr>
+          <tr style="background:var(--warm)"><td><strong>Total</strong></td><td></td><td><strong>R3,600</strong></td><td>Buffer R1,400</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LAYER 1 ═══ -->
+<div class="sec" id="l1">
+  <div class="sec-head">
+    <div class="sec-hed-left">
+      <div class="sec-eye"><span class="label">Layer 1 · Highest Priority · Start Today</span></div>
+      <div class="sec-title">Dormant Base <em>Activation</em></div>
+      <div class="sec-sub">Your existing clients are the highest-probability, zero-cost revenue source in the entire system. CPI: effectively infinite — no acquisition cost. ASQ6 confirmed R2.58M–R5.52M available here annually.</div>
+    </div>
+    <div class="sec-num">1</div>
+  </div>
+
+  <div class="g3" style="margin-bottom:20px">
+    <div class="stat"><div class="sk">CPI Classification</div><div class="sv gold">Zero CAC</div><div class="ss">No acquisition cost. Buyers already trust you. Highest close rate in the system.</div></div>
+    <div class="stat"><div class="sk">Floor Rate Applied</div><div class="sv green">R520/m²</div><div class="ss">Referral floor rate. These clients already bought at your rate — they refer at the same level.</div></div>
+    <div class="stat"><div class="sk">Dormant Revenue Available</div><div class="sv green">R628k+/yr</div><div class="ss">Conservative: 80 clients × 30% SLA + 15% referral rate + 20% upsell.</div></div>
+  </div>
+
+  <div class="layer-card">
+    <div class="lc-head" onclick="lc(this)">
+      <div class="lc-rank gold">1a</div>
+      <div class="lc-label-col"><div class="lc-lbl lbl-gold">Message 1</div><div class="lc-name">Referral Reward</div></div>
+      <div class="lc-meta"><div class="lc-meta-title">Send to every client from last 24 months. One message. Today.</div><div class="lc-meta-sub">Upgraded from original — water infrastructure framing, not aesthetics. R2,000 reward (not R500).</div></div>
+      <div class="lc-stats">
+        <div class="lc-stat"><div class="lc-sv gold">R2k</div><div class="lc-sl">Reward</div></div>
+        <div class="lc-stat"><div class="lc-sv green">~65%</div><div class="lc-sl">Close Rate</div></div>
+      </div>
+      <div class="lc-toggle">▾</div>
+    </div>
+    <div class="lc-body"><div class="lc-inner">
+      <div class="copy-block">
+        <div class="copy-label">Referral Message — WhatsApp / SMS <button class="copy-btn" onclick="cp(this,'ref_msg')">Copy</button></div>
+        <div class="copy-text" id="ref_msg">Hi [Name],
+
+I hope you are still enjoying your Prime Turf installation.
+
+We are expanding our referral programme and would like to offer you a R2,000 reward.
+
+If you refer someone — a neighbour, friend, family member, business, school, or estate — who installs with Prime Turf, we pay you R2,000 cash after installation is complete. No limit on referrals.
+
+With water restrictions across Gauteng and Cape Town increasing every year, a lot of people are finally making the move. Your referral helps them solve a real problem — and rewards you for it.
+
+Do you know anyone currently dealing with irrigation costs, water restrictions, or a garden that isn't performing?
+
+Thank you for your support.
+
+Prime Turf
+076 804 8868
+www.primeturf.co.za</div>
+      </div>
+      <div class="ins ins-gold"><strong>VDOS Upgrade vs Original</strong>Original offered R500. R2,000 is the VDOS-recommended referral credit (ASQ4). Original framed around "improving your garden." VDOS framing leads with water restrictions — the actual dominant conversion driver (ASQ1, 42% of closes).</div>
+    </div></div>
+  </div>
+
+  <div class="layer-card">
+    <div class="lc-head" onclick="lc(this)">
+      <div class="lc-rank gold">1b</div>
+      <div class="lc-label-col"><div class="lc-lbl lbl-gold">Message 2</div><div class="lc-name">SLA Offer</div></div>
+      <div class="lc-meta"><div class="lc-meta-title">Annual maintenance plan. Send to all installs older than 6 months.</div><div class="lc-meta-sub">This layer does not exist in the original playbook. Zero new customers. Pure dormant asset activation.</div></div>
+      <div class="lc-stats">
+        <div class="lc-stat"><div class="lc-sv gold">R1,800</div><div class="lc-sl">Per year</div></div>
+        <div class="lc-stat"><div class="lc-sv green">Recurring</div><div class="lc-sl">Revenue</div></div>
+      </div>
+      <div class="lc-toggle">▾</div>
+    </div>
+    <div class="lc-body"><div class="lc-inner">
+      <div class="copy-block">
+        <div class="copy-label">SLA Offer Message <button class="copy-btn" onclick="cp(this,'sla_msg')">Copy</button></div>
+        <div class="copy-text" id="sla_msg">Hi [Name],
+
+It has been [X months] since your Prime Turf installation.
+
+We are offering a complimentary surface inspection this month for all our clients — to check pile condition, drainage performance, and edge finishing.
+
+We are also launching our annual Prime Care Plan at R1,800/year (R150/month), which includes:
+
+✓ Annual professional inspection
+✓ Priority scheduling for any repairs
+✓ Spot repair and edge maintenance
+✓ Replacement credit when your surface is due for renewal
+
+If you would like to take up the Prime Care Plan or book your free inspection, please reply to this message or call 076 804 8868.
+
+Prime Turf
+www.primeturf.co.za</div>
+      </div>
+      <div class="ins ins-green"><strong>New Layer — Not in Original Playbook</strong>ASQ6 identified this as the fastest path to recurring revenue. 30% acceptance on a base of 80 clients = R43,200/year from one message. Debit order conversion increases this to R52,000+ annually.</div>
+    </div></div>
+  </div>
+
+  <div class="layer-card">
+    <div class="lc-head" onclick="lc(this)">
+      <div class="lc-rank gold">1c</div>
+      <div class="lc-label-col"><div class="lc-lbl lbl-gold">Message 3</div><div class="lc-name">Phase 2 Upsell</div></div>
+      <div class="lc-meta"><div class="lc-meta-title">For every client who mentioned additional areas, pool surround, or adjacent surfaces.</div><div class="lc-meta-sub">Flag from deal notes. Send a personalised Phase 2 quote. Band B pricing applies — they already know you.</div></div>
+      <div class="lc-stats">
+        <div class="lc-stat"><div class="lc-sv gold">R520+</div><div class="lc-sl">Per m² floor</div></div>
+        <div class="lc-stat"><div class="lc-sv green">High</div><div class="lc-sl">Close Rate</div></div>
+      </div>
+      <div class="lc-toggle">▾</div>
+    </div>
+    <div class="lc-body"><div class="lc-inner">
+      <div class="copy-block">
+        <div class="copy-label">Phase 2 Upsell Message <button class="copy-btn" onclick="cp(this,'upsell_msg')">Copy</button></div>
+        <div class="copy-text" id="upsell_msg">Hi [Name],
+
+When we completed your installation, you mentioned [additional area / pool surround / side garden].
+
+We are currently scheduling Phase 2 projects and have availability from [date].
+
+Given the water situation in [suburb], completing the remaining outdoor surfaces now makes practical sense — and we can match your existing product exactly since we have your specification on file.
+
+Would you like us to put together a Phase 2 quote?
+
+Prime Turf
+076 804 8868</div>
+      </div>
+      <div class="ins ins-gold"><strong>Pricing Note</strong>Phase 2 quotes go out at Band B floor (R520/m²). The client already bought once — there is no cold trust-building required. Referral-tier pricing applies. Do not revert to Band C/D.</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ═══ LAYER 2 ═══ -->
+<div class="sec" id="l2">
+  <div class="sec-head">
+    <div class="sec-hed-left">
+      <div class="sec-eye"><span class="label">Layer 2 · Compounding · Every Installation</span></div>
+      <div class="sec-title">Neighbour <em>System</em></div>
+      <div class="sec-sub">Every completed installation is a sales event. The original playbook has this right. The upgrade: two-sided incentive, water-framing, and the addition of an architect/designer referral card in the pack.</div>
+    </div>
+    <div class="sec-num">2</div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div class="card-title" style="margin-bottom:12px"><span class="label">Neighbour Pack Contents</span></div>
+      <table class="tbl">
+        <thead><tr><th>Item</th><th>Qty</th><th>Purpose</th><th>VDOS Upgrade</th></tr></thead>
+        <tbody>
+          <tr><td>Referral card — neighbour</td><td>5</td><td>Peer warm introduction</td><td>R2,000 reward (up from R500). Water framing.</td></tr>
+          <tr><td class="strong" style="color:var(--gold)">Referral card — architect</td><td>2</td><td class="strong">Specification channel seeding</td><td class="strong" style="color:var(--gold)">New. Targets any architect/designer the client knows.</td></tr>
+          <tr><td>QR code card → WhatsApp</td><td>1</td><td>Fast inbound capture</td><td>Links to infrastructure messaging, not aesthetics page.</td></tr>
+          <tr><td>Before/after photo card</td><td>1</td><td>Portfolio evidence</td><td>Professionally shot. See Layer 6.</td></tr>
+          <tr><td>Branded installation sign</td><td>1</td><td>30-day hyperlocal visibility</td><td>R180/sign. Placed at kerb for 30 days. Suburb-dense areas compound fast.</td></tr>
+        </tbody>
+      </table>
+      <div class="ins ins-green"><strong>VDOS Addition — Architect Card</strong>The original playbook does not include an architect referral pathway. If the homeowner knows an architect or designer — which upper-income clients often do — this card seeds a Channel D (CPI 6,933) relationship for zero additional cost.</div>
+    </div>
+    <div>
+      <div class="copy-block">
+        <div class="copy-label">Two-Sided Referral Card — Print Copy <button class="copy-btn" onclick="cp(this,'neighbour_card')">Copy</button></div>
+        <div class="copy-text" id="neighbour_card">FRONT:
+Your neighbour just installed Prime Turf.
+Zero water. Zero maintenance. Permanent.
+
+BACK:
+Referral Reward Programme
+
+You receive: R2,000 after installation
+Your referee receives: R2,000 off their install
+
+WhatsApp: 076 804 8868
+www.primeturf.co.za
+[QR CODE]
+
+---
+ARCHITECT VERSION (front):
+Prime Turf — Specification Partner
+Outdoor surface systems for residential
+and commercial specification.
+
+Product spec sheets, substrate guides,
+10-year warranty documentation and
+samples available on request.
+
+Contact: [name]@primeturf.co.za
+076 804 8868
+www.primeturf.co.za/spec</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LAYER 3 ═══ -->
+<div class="sec" id="l3">
+  <div class="sec-head">
+    <div class="sec-hed-left">
+      <div class="sec-eye"><span class="label">Layer 3 · New Layer · Highest CPI in System</span></div>
+      <div class="sec-title">Architect &amp; Developer <em>Specification</em></div>
+      <div class="sec-sub">This layer does not exist in the original playbook. It should receive more founder time than Layers 5–8 combined. CPI: 6,933. One architect relationship = 6–15 projects per year at Band A/B pricing without competitive comparison.</div>
+    </div>
+    <div class="sec-num">3</div>
+  </div>
+
+  <div class="g3" style="margin-bottom:20px">
+    <div class="stat"><div class="sk">CPI Score</div><div class="sv gold">6,933</div><div class="ss">Highest in the system. 21× higher than direct inbound (Layer 5–8).</div></div>
+    <div class="stat"><div class="sk">Close Rate</div><div class="sv green">78–94%</div><div class="ss">Price objection structurally absent when specification is locked pre-contact.</div></div>
+    <div class="stat"><div class="sk">Floor Rate</div><div class="sv gold">R620/m²</div><div class="ss">Architect-specified floor. No negotiation. Specification is the price justification.</div></div>
+  </div>
+
+  <div class="layer-card">
+    <div class="lc-head" onclick="lc(this)">
+      <div class="lc-rank green">3a</div>
+      <div class="lc-label-col"><div class="lc-lbl lbl-green">Outreach</div><div class="lc-name">Architect Contact</div></div>
+      <div class="lc-meta"><div class="lc-meta-title">Contact architects and designers already in your deal history. These are warm, not cold.</div><div class="lc-meta-sub">If an architect has specified or recommended you before without a formal relationship, they are already selling for you. Formalise it.</div></div>
+      <div class="lc-stats">
+        <div class="lc-stat"><div class="lc-sv gold">Warm</div><div class="lc-sl">Contact</div></div>
+        <div class="lc-stat"><div class="lc-sv green">~50%</div><div class="lc-sl">Meet Rate</div></div>
+      </div>
+      <div class="lc-toggle">▾</div>
+    </div>
+    <div class="lc-body"><div class="lc-inner">
+      <div class="copy-block">
+        <div class="copy-label">Architect Outreach Message — Email / LinkedIn <button class="copy-btn" onclick="cp(this,'arch_msg')">Copy</button></div>
+        <div class="copy-text" id="arch_msg">Hi [Name],
+
+I am the founder of Prime Turf — we completed the outdoor surface installation at [project/address] which I understand you specified / were involved with.
+
+I would like to offer you a proper specification consultation so that any future projects you specify are easier to handle.
+
+We have a full specification package ready — product spec sheets, substrate and drainage design guides, 10-year warranty documentation, and physical samples — specifically formatted for architectural specification.
+
+Would you be open to a 30-minute meeting or a sample delivery to your studio?
+
+There is no sales agenda. You have already sent us work. I simply want to make the process more formal and useful for you.
+
+[Name]
+Prime Turf
+076 804 8868</div>
+      </div>
+      <div class="ins ins-teal"><strong>Framing Critical</strong>Do not frame this as a sales call. Frame it as a technical resource meeting. The architect is a professional partner — not a lead. The distinction changes the entire tone and close rate of the conversation.</div>
+    </div></div>
+  </div>
+
+  <div class="layer-card">
+    <div class="lc-head" onclick="lc(this)">
+      <div class="lc-rank green">3b</div>
+      <div class="lc-label-col"><div class="lc-lbl lbl-green">Developer</div><div class="lc-name">Framework Approach</div></div>
+      <div class="lc-meta"><div class="lc-meta-title">Approach one developer with a formal specification framework proposal. After 3 architect relationships are active.</div><div class="lc-meta-sub">One signed framework = R500k–R3M per project cycle at locked Band B pricing with zero competitive quoting.</div></div>
+      <div class="lc-stats">
+        <div class="lc-stat"><div class="lc-sv gold">R500k+</div><div class="lc-sl">Per cycle</div></div>
+        <div class="lc-stat"><div class="lc-sv green">Locked</div><div class="lc-sl">No quoting</div></div>
+      </div>
+      <div class="lc-toggle">▾</div>
+    </div>
+    <div class="lc-body"><div class="lc-inner">
+      <div class="copy-block">
+        <div class="copy-label">Developer Framework Proposal Opening Message <button class="copy-btn" onclick="cp(this,'dev_msg')">Copy</button></div>
+        <div class="copy-text" id="dev_msg">Hi [Name],
+
+I am the founder of Prime Turf, a premium outdoor surface installation business serving Gauteng and Cape Town.
+
+We are currently working with several architects on residential specification projects and would like to offer [Developer Name] a formal supplier framework agreement.
+
+This would give you:
+• A locked product specification for consistent quality across all units
+• Fixed m² pricing valid for 12 months (no re-quoting per project)
+• Full installation SOP documentation for QA purposes
+• 10-year product warranty on all installations
+• Priority scheduling for project timelines
+
+I would like to present a one-page framework proposal at a time that suits you.
+
+[Name]
+Prime Turf
+076 804 8868</div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ═══ LAYER 4 ═══ -->
+<div class="sec" id="l4">
+  <div class="sec-head">
+    <div class="sec-hed-left">
+      <div class="sec-eye"><span class="label">Layer 4 · Original Layer · Upgraded Commission Structure</span></div>
+      <div class="sec-title">Affiliate &amp; Partner <em>Network</em></div>
+      <div class="sec-sub">The original commission table is preserved. Upgraded with VDOS partner tiering — architect and developer partners earn at a higher rate than general trade partners, reflecting CPI differential.</div>
+    </div>
+    <div class="sec-num">4</div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div class="card-title" style="margin-bottom:12px"><span class="label">Commission Structure — VDOS Upgraded</span></div>
+      <div class="comm-row header"><div>Partner Type</div><div>Commission Rate</div><div>Why This Rate</div></div>
+      <div class="comm-row" style="background:var(--gold-p)"><div><strong>Architect / Designer</strong></div><div style="color:var(--gold)"><strong>10% on all project value</strong></div><div>CPI 6,933. Every specification they produce = zero-CAC close.</div></div>
+      <div class="comm-row" style="background:var(--gold-p)"><div><strong>Property Developer</strong></div><div style="color:var(--gold)"><strong>7.5% + framework bonus</strong></div><div>Volume + locked pricing = highest revenue per relationship.</div></div>
+      <div class="comm-row"><div>Pool builder / Landscaper</div><div>7.5% (R30k–R100k)</div><div>Adjacent service. Same buyer. Warm referral.</div></div>
+      <div class="comm-row"><div>Estate agent</div><div>5% (up to R30k)</div><div>Pre-listing motivation. Fast close cycle.</div></div>
+      <div class="comm-row"><div>Builder / Contractor</div><div>5%</div><div>Project-adjacent. Medium trust transfer.</div></div>
+      <div class="comm-row"><div>School / Body Corporate</div><div>5%</div><div>B2B volume potential. Slow sales cycle.</div></div>
+      <div class="ins ins-gold"><strong>VDOS Upgrade</strong>Original table starts all partners at the same rate by deal size. VDOS tiering reflects that an architect who specifies your product has structurally higher value than a general contractor who mentions your name. The rate difference reinforces that.</div>
+    </div>
+    <div>
+      <div class="card-title" style="margin-bottom:12px"><span class="label">Partner Outreach Priority — by CPI Alignment</span></div>
+      <table class="tbl">
+        <thead><tr><th>Priority</th><th>Partner Type</th><th>Approach Method</th><th>Timeline</th></tr></thead>
+        <tbody>
+          <tr class="rh"><td>1</td><td><strong>Architects already in deal history</strong></td><td>Layer 3a message — warm outreach</td><td>This week</td></tr>
+          <tr class="rh"><td>2</td><td><strong>Pool builders (same buyer, same project)</strong></td><td>Direct call + partner kit</td><td>Week 2</td></tr>
+          <tr class="rh"><td>3</td><td><strong>Solar/borehole installers</strong></td><td>Bundle pitch — "whole property resilience"</td><td>Week 2–3</td></tr>
+          <tr><td>4</td><td>Estate agents (pre-listing upgrade)</td><td>In-person visit + before/after portfolio</td><td>Week 3–4</td></tr>
+          <tr><td>5</td><td>Property developers (framework)</td><td>Layer 3b after arch. programme active</td><td>Month 2–3</td></tr>
+          <tr><td>6</td><td>Schools / Body corporates</td><td>Tender + specification document</td><td>Month 3+</td></tr>
+        </tbody>
+      </table>
+      <div class="copy-block" style="margin-top:14px">
+        <div class="copy-label">Partner Kit Introduction Message <button class="copy-btn" onclick="cp(this,'partner_msg')">Copy</button></div>
+        <div class="copy-text" id="partner_msg">Hi [Name],
+
+I'm [Name] from Prime Turf — we install premium artificial turf and outdoor surface systems in Gauteng and Cape Town.
+
+I'm reaching out because we work with a lot of the same clients you do, and I'd like to set up a formal referral arrangement.
+
+Here's how it works:
+• You identify a client who could benefit from an outdoor surface upgrade
+• We quote, install, and manage the project
+• You earn [X]% commission after installation is complete
+
+We have a partner kit ready — referral links, QR codes, and marketing materials — so there is no effort required on your side beyond the introduction.
+
+Would a quick call work to set this up?
+
+[Name] — Prime Turf
+076 804 8868</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LAYERS 5–8 ═══ -->
+<div class="sec" id="l58">
+  <div class="sec-head">
+    <div class="sec-hed-left">
+      <div class="sec-eye"><span class="label">Layers 5–8 · Support Channels · 30% of Investment</span></div>
+      <div class="sec-title">Digital <em>Support</em> Channels</div>
+      <div class="sec-sub">WhatsApp engine, Google Business Profile, Facebook Groups, and retargeting. These channels are valid. They are not the primary engine. They support and amplify Layers 1–4. Investment ceiling: 30% of total budget and founder time.</div>
+    </div>
+    <div class="sec-num">5–8</div>
+  </div>
+
+  <div class="g2" style="margin-bottom:16px">
+    <!-- Layer 5 -->
+    <div class="layer-card" style="margin-bottom:0">
+      <div class="lc-head" onclick="lc(this)">
+        <div class="lc-rank amber">5</div>
+        <div class="lc-label-col"><div class="lc-lbl lbl-amber">Layer 5</div><div class="lc-name">WhatsApp Engine</div></div>
+        <div class="lc-meta"><div class="lc-meta-title">Facebook Ad → WhatsApp → Automated qualification. Floor rate: R420/m² minimum.</div><div class="lc-meta-sub">VDOS upgrade: water infrastructure framing in all ad creative. Not "beautiful lawn."</div></div>
+        <div class="lc-toggle">▾</div>
+      </div>
+      <div class="lc-body"><div class="lc-inner">
+        <div class="copy-block">
+          <div class="copy-label">WhatsApp Auto-Reply — VDOS Upgraded <button class="copy-btn" onclick="cp(this,'wa_msg')">Copy</button></div>
+          <div class="copy-text" id="wa_msg">Welcome to Prime Turf.
+
+We install permanent outdoor surface systems that require zero irrigation — engineered for Gauteng and Cape Town water restrictions.
+
+To receive your FREE site assessment please reply with:
+
+1. Your name
+2. Suburb
+3. Approximate area in m² (or just describe the space)
+4. One photo of the area if available
+
+We respond within 30 minutes during business hours.
+
+Prime Turf — Permanent. Zero water. Zero maintenance.
+076 804 8868 | www.primeturf.co.za</div>
+        </div>
+        <div class="ins ins-gold"><strong>VDOS Upgrade</strong>Original says "beautiful outdoor space." VDOS says "zero irrigation / water restrictions." Same product. Different framing. Leads arriving from infrastructure messaging are pre-qualified and significantly less price-sensitive.</div>
+      </div></div>
+    </div>
+
+    <!-- Layer 6 -->
+    <div class="layer-card" style="margin-bottom:0">
+      <div class="lc-head" onclick="lc(this)">
+        <div class="lc-rank amber">6</div>
+        <div class="lc-label-col"><div class="lc-lbl lbl-amber">Layer 6</div><div class="lc-name">Google Business Profile</div></div>
+        <div class="lc-meta"><div class="lc-meta-title">Every completed project: 1 review request, 1 photo upload, 1 keyword-rich update.</div><div class="lc-meta-sub">Zero cost. Compounds with volume. High-intent searchers are pre-motivated buyers.</div></div>
+        <div class="lc-toggle">▾</div>
+      </div>
+      <div class="lc-body"><div class="lc-inner">
+        <div class="copy-block">
+          <div class="copy-label">Review Request Message <button class="copy-btn" onclick="cp(this,'review_msg')">Copy</button></div>
+          <div class="copy-text" id="review_msg">Hi [Name],
+
+Thank you for choosing Prime Turf.
+
+If you are happy with your installation, a Google review would mean a great deal to us — it takes under 2 minutes and helps other homeowners in [suburb] find a reliable, quality installer.
+
+[Google Review Link]
+
+If there is anything you would like us to address, please call me directly on 076 804 8868 before leaving a review.
+
+Thank you.
+[Name] — Prime Turf</div>
+        </div>
+        <div class="card-title" style="margin-bottom:8px;margin-top:14px"><span class="label">Weekly GBP Update Schedule</span></div>
+        <table class="tbl">
+          <thead><tr><th>Action</th><th>Content</th><th>Keyword Target</th></tr></thead>
+          <tbody>
+            <tr><td>Photo upload</td><td>Latest completed project</td><td>Artificial turf [suburb]</td></tr>
+            <tr><td>Post update</td><td>Water saving tip or project</td><td>Water-wise garden [city]</td></tr>
+            <tr><td>Review request</td><td>Send to last 3 clients</td><td>Builds star rating + recency</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <!-- Layer 7 -->
+    <div class="layer-card" style="margin-bottom:0">
+      <div class="lc-head" onclick="lc(this)">
+        <div class="lc-rank amber">7</div>
+        <div class="lc-label-col"><div class="lc-lbl lbl-amber">Layer 7</div><div class="lc-name">Facebook Groups</div></div>
+        <div class="lc-meta"><div class="lc-meta-title">Daily posts in local community, estate, home improvement, and pet groups.</div><div class="lc-meta-sub">VDOS upgrade: content calendar shifted from aesthetic-first to water/cost/restriction-first.</div></div>
+        <div class="lc-toggle">▾</div>
+      </div>
+      <div class="lc-body"><div class="lc-inner">
+        <div class="card-title" style="margin-bottom:10px"><span class="label">VDOS-Upgraded Content Calendar</span></div>
+        <table class="tbl">
+          <thead><tr><th>Day</th><th>Original</th><th>VDOS Upgrade</th></tr></thead>
+          <tbody>
+            <tr><td>Monday</td><td>Before &amp; After</td><td>Before/after with water bill comparison</td></tr>
+            <tr class="rh"><td>Tuesday</td><td>Cost comparison</td><td><strong>Water restriction ROI: "pays back in 2.3 years"</strong></td></tr>
+            <tr><td>Wednesday</td><td>Pet-friendly turf</td><td>Pet-friendly + drought-proof (dual driver)</td></tr>
+            <tr><td>Thursday</td><td>Putting greens</td><td>Putting greens / rooftop / balcony spaces</td></tr>
+            <tr class="rh"><td>Friday</td><td>Customer review</td><td><strong>Customer review citing water saving specifically</strong></td></tr>
+            <tr><td>Saturday</td><td>Transformation video</td><td>Transformation video — "Day Zero proof" framing</td></tr>
+            <tr><td>Sunday</td><td>Free quote offer</td><td>Free quote — "Water-wise outdoor upgrade"</td></tr>
+          </tbody>
+        </table>
+        <div class="ins ins-gold"><strong>VDOS Upgrade</strong>Tuesday and Friday posts shift from generic social proof to financially-framed evidence. "Pays back in 2.3 years" and "saves R16,000 per year" are conversion triggers — not lifestyle statements.</div>
+      </div></div>
+    </div>
+
+    <!-- Layer 8 -->
+    <div class="layer-card" style="margin-bottom:0">
+      <div class="lc-head" onclick="lc(this)">
+        <div class="lc-rank amber">8</div>
+        <div class="lc-label-col"><div class="lc-lbl lbl-amber">Layer 8</div><div class="lc-name">Retargeting</div></div>
+        <div class="lc-meta"><div class="lc-meta-title">Meta Pixel + Google Analytics. Retarget website visitors and WhatsApp clickers for 30–90 days.</div><div class="lc-meta-sub">Passive. Set once. Budget cap R600/month. Do not over-invest.</div></div>
+        <div class="lc-toggle">▾</div>
+      </div>
+      <div class="lc-body"><div class="lc-inner">
+        <div class="g2">
+          <div>
+            <div class="card-title" style="margin-bottom:10px"><span class="label">Setup Checklist</span></div>
+            <table class="tbl">
+              <thead><tr><th>Item</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Meta Pixel installed on website</td><td><span class="badge bg-amber">Check</span></td></tr>
+                <tr><td>Google Analytics GA4 installed</td><td><span class="badge bg-amber">Check</span></td></tr>
+                <tr><td>WhatsApp click event tracked</td><td><span class="badge bg-amber">Check</span></td></tr>
+                <tr><td>Custom audience: website visitors 30 days</td><td><span class="badge bg-amber">Create</span></td></tr>
+                <tr><td>Lookalike audience from customer list</td><td><span class="badge bg-amber">Create</span></td></tr>
+                <tr><td>Retargeting ad creative: infrastructure framing</td><td><span class="badge bg-amber">Update</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="copy-block" style="height:100%">
+            <div class="copy-label">Retargeting Ad Copy — VDOS Upgraded <button class="copy-btn" onclick="cp(this,'retarg_msg')">Copy</button></div>
+            <div class="copy-text" id="retarg_msg">Still thinking about artificial turf?
+
+Water restrictions in [Gauteng / Cape Town] are not going away.
+
+The average lawn costs R16,000/year in irrigation and gardening labour.
+Prime Turf pays back in under 3 years.
+
+Permanent. Zero water. Zero maintenance.
+
+FREE site assessment → [link]
+WhatsApp: 076 804 8868</div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 30-DAY MODEL ═══ -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-hed-left">
+      <div class="sec-eye"><span class="label">30-Day Target Model — VDOS Weighted</span></div>
+      <div class="sec-title">Lead-to-Revenue <em>Model</em></div>
+      <div class="sec-sub">Original model runs all channels at equal weight. VDOS model weights by CPI. Same 100-lead target. Higher revenue per lead because channel mix shifts toward higher-margin closes.</div>
+    </div>
+  </div>
+
+  <div class="model-grid" style="margin-bottom:20px">
+    <div class="mg-cell header"><div class="mg-lbl">Channel</div></div>
+    <div class="mg-cell header"><div class="mg-lbl">Lead Target</div></div>
+    <div class="mg-cell header"><div class="mg-lbl">Quote Rate</div></div>
+    <div class="mg-cell header"><div class="mg-lbl">Close Rate</div></div>
+    <div class="mg-cell header"><div class="mg-lbl">Avg Revenue</div></div>
+
+    <div class="mg-cell" style="background:var(--gold-p)"><div class="mg-lbl">L1 Dormant Base</div><div class="mg-val gold">20</div></div>
+    <div class="mg-cell" style="background:var(--gold-p)"><div class="mg-val">90%</div></div>
+    <div class="mg-cell" style="background:var(--gold-p)"><div class="mg-val green">75%</div></div>
+    <div class="mg-cell" style="background:var(--gold-p)"><div class="mg-val green">R45k</div></div>
+    <div class="mg-cell" style="background:var(--gold-p)"><div class="mg-lbl">Est. Sales</div><div class="mg-val gold">~13</div></div>
+
+    <div class="mg-cell" style="background:var(--green-p)"><div class="mg-lbl">L2 Neighbour</div><div class="mg-val green">15</div></div>
+    <div class="mg-cell" style="background:var(--green-p)"><div class="mg-val">75%</div></div>
+    <div class="mg-cell" style="background:var(--green-p)"><div class="mg-val green">65%</div></div>
+    <div class="mg-cell" style="background:var(--green-p)"><div class="mg-val green">R42k</div></div>
+    <div class="mg-cell" style="background:var(--green-p)"><div class="mg-lbl">Est. Sales</div><div class="mg-val green">~7</div></div>
+
+    <div class="mg-cell" style="background:var(--teal-p)"><div class="mg-lbl">L4 Partners</div><div class="mg-val" style="color:var(--teal)">15</div></div>
+    <div class="mg-cell" style="background:var(--teal-p)"><div class="mg-val">70%</div></div>
+    <div class="mg-cell" style="background:var(--teal-p)"><div class="mg-val" style="color:var(--teal)">60%</div></div>
+    <div class="mg-cell" style="background:var(--teal-p)"><div class="mg-val">R38k</div></div>
+    <div class="mg-cell" style="background:var(--teal-p)"><div class="mg-lbl">Est. Sales</div><div class="mg-val" style="color:var(--teal)">~6</div></div>
+
+    <div class="mg-cell"><div class="mg-lbl">L5–8 Digital</div><div class="mg-val amber">50</div></div>
+    <div class="mg-cell"><div class="mg-val">50%</div></div>
+    <div class="mg-cell"><div class="mg-val amber">30%</div></div>
+    <div class="mg-cell"><div class="mg-val">R32k</div></div>
+    <div class="mg-cell"><div class="mg-lbl">Est. Sales</div><div class="mg-val amber">~7</div></div>
+
+    <div class="mg-cell" style="background:var(--warm)"><div class="mg-lbl"><strong>TOTAL</strong></div><div class="mg-val gold"><strong>100</strong></div></div>
+    <div class="mg-cell" style="background:var(--warm)"><div class="mg-val">67% avg</div></div>
+    <div class="mg-cell" style="background:var(--warm)"><div class="mg-val green">55% avg</div></div>
+    <div class="mg-cell" style="background:var(--warm)"><div class="mg-val green">R39k avg</div></div>
+    <div class="mg-cell" style="background:var(--warm)"><div class="mg-lbl">Est. Sales</div><div class="mg-val gold"><strong>~33</strong></div></div>
+  </div>
+
+  <div class="g3">
+    <div class="stat"><div class="sk">Original Model Estimate</div><div class="sv amber">15 sales</div><div class="ss">From 100 leads at equal-weight channels. Avg deal ~R30k. Total ~R450k.</div></div>
+    <div class="stat"><div class="sk">VDOS-Weighted Estimate</div><div class="sv green">~33 sales</div><div class="ss">Same 100 leads. CPI-weighted channels. Avg deal ~R39k. Total ~R1.28M.</div></div>
+    <div class="stat"><div class="sk">Difference</div><div class="sv gold">+R830k</div><div class="ss">From channel reweighting alone. No new marketing spend. No new product.</div></div>
+  </div>
+  <div class="ins ins-green" style="margin-top:16px">
+    <strong>The Core Insight</strong>
+    The original playbook is not wrong. It is unweighted. Every channel in it has real value. The VDOS finding is that treating them equally misallocates founder time toward the lowest-CPI channels and away from the highest. The same 100 leads, routed through CPI-weighted channels with appropriate floor rates, produce more than double the revenue — not because of better marketing, but because of better architecture.
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer class="footer">
+  <div><div class="fb">Prime<em>Turf</em> SA</div><div class="ft">Revenue Activation System<br/>8 Layers · VDOS-Integrated<br/>Gauteng + Cape Town</div></div>
+  <div>
+    <div class="fcol-t">Layer Index</div>
+    <div class="flinks">
+      <a href="#l1">Layer 1 — Dormant Base Activation (Today)</a>
+      <a href="#l2">Layer 2 — Neighbour System</a>
+      <a href="#l3">Layer 3 — Architect + Developer Specification</a>
+      <a href="#l4">Layer 4 — Affiliate + Partner Network</a>
+      <a href="#l58">Layers 5–8 — Digital Support Channels</a>
+    </div>
+  </div>
+  <div><div class="fq">"The focus becomes generating referrals from every installation so each customer becomes the start of the next sale. That creates a compounding growth engine rather than a campaign."<br/><br/>— Original Playbook · The one insight that was right from the start.</div></div>
+</footer>
+
+<script>
+function lc(h){
+  const b=h.parentElement.querySelector('.lc-body'),i=h.querySelector('.lc-toggle');
+  const o=b.classList.toggle('open');
+  i.classList.toggle('open',o);
+}
+function cp(btn,id){
+  const t=document.getElementById(id).textContent;
+  navigator.clipboard.writeText(t).then(()=>{
+    btn.textContent='Copied';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+  }).catch(()=>{btn.textContent='Select + copy manually';});
+}
+</script>
+</body>
+</html>
