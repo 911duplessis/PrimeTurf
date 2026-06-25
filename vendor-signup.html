@@ -14,6 +14,7 @@
   gtag('js', new Date());
   gtag('config', 'G-3Z5G37WW47');
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -235,11 +236,37 @@
 <script>
 const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
 
+const SUPABASE_URL = 'https://vmpylowuiqmntihbtlum.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_Z51RMwVwleMHB_44uiLOkQ_nFAR2uGb';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+function slugify(str) {
+  return str.toLowerCase().trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function parsePercent(str) {
+  const n = parseFloat(String(str).replace(/[^0-9.]/g, ''));
+  return Number.isFinite(n) ? n : null;
+}
+
+function parseRandToCents(str) {
+  if (!str || /none/i.test(str)) return null;
+  const n = parseFloat(String(str).replace(/[^0-9.]/g, ''));
+  return Number.isFinite(n) ? Math.round(n * 100) : null;
+}
+
 async function handleSubmit(btn) {
   const form = document.getElementById('vendorForm');
   const businessName = form.business_name.value.trim();
   const contactName = form.contact_name.value.trim();
   const phone = form.phone.value.trim();
+  const email = form.email.value.trim();
+  const website = form.website.value.trim();
+  const referralPercent = form.referral_percent.value.trim();
+  const closingBonus = form.closing_bonus.value.trim();
+  const leadDescription = form.lead_description.value.trim();
   const agreed = document.getElementById('agreeCheck').checked;
 
   if (!businessName || !contactName || !phone || !agreed) {
@@ -259,6 +286,18 @@ async function handleSubmit(btn) {
     });
     const data = await res.json();
     if (!res.ok || !data.success) throw new Error(data.message || 'Submission failed');
+
+    const { error: sbError } = await sb.from('vendors').insert({
+      slug: slugify(businessName),
+      name: businessName,
+      whatsapp_number: phone,
+      website: website || null,
+      tier1_pct: parsePercent(referralPercent),
+      tier1_flat_cents: parseRandToCents(closingBonus),
+      currency: 'ZAR',
+      active: false
+    });
+    if (sbError) console.error('Supabase vendor insert failed:', sbError.message, '— contact_name:', contactName, 'email:', email, 'lead_description:', leadDescription);
 
     gtag('event', 'form_submit', { event_category: 'conversion', event_label: 'vendor_signup', value: 5 });
 
