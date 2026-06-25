@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /design/
+Disallow: /community/
+
+Sitemap: https://primeturf.co.za/sitemap.xml
