@@ -12,13 +12,17 @@
 <script src="/assets/vendor/react.production.min.js"></script>
 <script src="/assets/vendor/react-dom.production.min.js"></script>
 <script src="/assets/vendor/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 </head>
 <body>
 <div id="root"></div>
 
 <script type="text/babel" data-presets="react">
-const { useState, useEffect } = React;
-const STORAGE_KEY = "tcn_dashboard_data_v1";
+const { useState, useEffect, useMemo } = React;
+
+const SUPABASE_URL = 'https://hnqcvzzlkpewqwrgzdli.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_DfD9bigkbB13pBArATr6Sg_EHoGBjhk';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const AGREEMENT = {
   vendor: "PrimeTurf",
@@ -26,20 +30,6 @@ const AGREEMENT = {
   closingFee: 500,
   version: "1.0",
   effectiveDate: "2026-06-25",
-};
-
-const INITIAL_DATA = {
-  connectors: [
-    { id: 1, name: "Demo: Thabo M.", area: "Sandton", type: "REFERRER", tag: "PRIORITY", joined: "2026-06-18", referrals: 2, converted: 1, revenue: 2000, lastActive: "2026-06-24", agreementSigned: true, agreementSignedDate: "2026-06-18", link: "https://facebook.com/thabo.connects" },
-    { id: 2, name: "Demo: Lerato K.", area: "Midrand", type: "REFERRER", tag: "ACTIVE", joined: "2026-06-19", referrals: 1, converted: 0, revenue: 0, lastActive: "2026-06-22", agreementSigned: true, agreementSignedDate: "2026-06-19", link: "" },
-    { id: 3, name: "Demo: Sipho N.", area: "Pretoria", type: "SUPPLIER", tag: "SUPPLIER", joined: "2026-06-19", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-20", agreementSigned: false, agreementSignedDate: null, link: "" },
-    { id: 4, name: "Demo: Anja V.", area: "Roodepoort", type: "REFERRER", tag: "EXPLORER", joined: "2026-06-21", referrals: 0, converted: 0, revenue: 0, lastActive: "2026-06-21", agreementSigned: false, agreementSignedDate: null, link: "" },
-  ],
-  leads: [
-    { id: 1, need: "Artificial grass installation", area: "Sandton", size: "80m²", budget: "High", status: "CONVERTED", connectorId: 1, reward: 2000, date: "2026-06-20", notes: "Referred to PrimeTurf. Job confirmed." },
-    { id: 2, need: "Turf supply — school sports field", area: "Midrand", size: "400m²", budget: "High", status: "ACTIVE", connectorId: 2, reward: 0, date: "2026-06-23", notes: "Connector made intro. Awaiting quote." },
-    { id: 3, need: "Garden turf residential", area: "Centurion", size: "50m²", budget: "Medium", status: "OPEN", connectorId: null, reward: 0, date: "2026-06-24", notes: "Posted to PRIORITY list." },
-  ]
 };
 
 const TAG_COLORS = {
@@ -54,6 +44,7 @@ const TAG_COLORS = {
 
 const STATUS_COLORS = {
   CONVERTED: { bg: "rgba(34,197,94,0.12)",  text: "#4ADE80", border: "rgba(34,197,94,0.3)" },
+  QUOTED:    { bg: "rgba(168,85,247,0.12)", text: "#C084FC", border: "rgba(168,85,247,0.3)" },
   ACTIVE:    { bg: "rgba(26,111,255,0.12)", text: "#60A5FA", border: "rgba(26,111,255,0.3)" },
   OPEN:      { bg: "rgba(245,183,49,0.12)", text: "#FCD34D", border: "rgba(245,183,49,0.3)" },
   LOST:      { bg: "rgba(239,68,68,0.1)",   text: "#F87171", border: "rgba(239,68,68,0.25)" },
@@ -61,7 +52,20 @@ const STATUS_COLORS = {
 
 const TAGS = ["PRIORITY","ACTIVE","REFERRER","SUPPLIER","EXPLORER","COLD","EXITED"];
 const TYPES = ["REFERRER","SUPPLIER","EXPLORER"];
-const LEAD_STATUSES = ["OPEN","ACTIVE","CONVERTED","LOST"];
+const LEAD_STATUSES = ["OPEN","ACTIVE","QUOTED","CONVERTED","LOST"];
+
+// dashboard status vocabulary <-> referrals.status CHECK constraint
+const STATUS_UI_TO_DB = { OPEN: "submitted", ACTIVE: "contacted", QUOTED: "quoted", CONVERTED: "won", LOST: "lost" };
+const STATUS_DB_TO_UI = { submitted: "OPEN", contacted: "ACTIVE", quoted: "QUOTED", won: "CONVERTED", lost: "LOST" };
+
+const EMPTY_CONNECTOR = { name: "", whatsapp_number: "", referral_code: "", area: "", type: "REFERRER", tag: "EXPLORER", link: "" };
+const EMPTY_LEAD = { need: "", lead_name: "", lead_contact: "", area: "", size: "", budget: "Medium", status: "OPEN", connectorId: "", reward: 0, notes: "" };
+
+function genReferralCode(name) {
+  const base = (name || "CONNECTOR").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 6) || "CONNECTOR";
+  const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `${base}-${suffix}`;
+}
 
 function Pill({ label, colors }) {
   const c = colors || { bg: "rgba(200,214,229,0.1)", text: "#8899AA", border: "rgba(200,214,229,0.2)" };
@@ -127,18 +131,52 @@ const inputStyle = {
 const selectStyle = { ...inputStyle };
 
 function App() {
-  const [data, setData] = useState(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? JSON.parse(saved) : INITIAL_DATA;
-    } catch (e) {
-      return INITIAL_DATA;
-    }
-  });
+  const [vendorId, setVendorId] = useState(null);
+  const [connectors, setConnectors] = useState([]);
+  const [referrals, setReferrals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
-  }, [data]);
+  async function ensureVendor() {
+    let { data: v, error: selErr } = await sb.from('vendors').select('id').eq('slug', 'primeturf').maybeSingle();
+    if (selErr) throw selErr;
+    if (!v) {
+      const { data: inserted, error: insErr } = await sb.from('vendors').insert({
+        slug: 'primeturf',
+        name: AGREEMENT.vendor,
+        tier1_pct: AGREEMENT.referralPercent,
+        tier1_flat_cents: AGREEMENT.closingFee * 100,
+        currency: 'ZAR',
+        active: true
+      }).select('id').single();
+      if (insErr) throw insErr;
+      v = inserted;
+    }
+    return v.id;
+  }
+
+  async function loadAll() {
+    setLoading(true);
+    setError(null);
+    try {
+      const vId = await ensureVendor();
+      setVendorId(vId);
+      const [{ data: connectorsData, error: cErr }, { data: referralsData, error: rErr }] = await Promise.all([
+        sb.from('connectors').select('*').order('created_at', { ascending: false }),
+        sb.from('referrals').select('*').order('created_at', { ascending: false }),
+      ]);
+      if (cErr) throw cErr;
+      if (rErr) throw rErr;
+      setConnectors(connectorsData || []);
+      setReferrals(referralsData || []);
+    } catch (e) {
+      setError(e.message || String(e));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => { loadAll(); }, []);
 
   const [view, setView] = useState("dashboard");
   const [showAddConnector, setShowAddConnector] = useState(false);
@@ -148,58 +186,136 @@ function App() {
   const [filterTag, setFilterTag] = useState("ALL");
   const [filterStatus, setFilterStatus] = useState("ALL");
 
-  const [newConnector, setNewConnector] = useState({ name: "", area: "", type: "REFERRER", tag: "EXPLORER", link: "" });
-  const [newLead, setNewLead] = useState({ need: "", area: "", size: "", budget: "Medium", status: "OPEN", connectorId: "", reward: 0, notes: "" });
+  const [newConnector, setNewConnector] = useState(EMPTY_CONNECTOR);
+  const [newLead, setNewLead] = useState(EMPTY_LEAD);
+
+  const connectorsView = useMemo(() => connectors.map(c => {
+    const own = referrals.filter(r => r.connector_id === c.id);
+    const converted = own.filter(r => STATUS_DB_TO_UI[r.status] === "CONVERTED").length;
+    const revenue = own.reduce((s, r) => s + (r.reward_cents ? r.reward_cents / 100 : 0), 0);
+    return {
+      id: c.id, name: c.name, area: c.area || "", type: c.type || "REFERRER", tag: c.tag || "EXPLORER",
+      joined: (c.created_at || "").slice(0, 10), referrals: own.length, converted, revenue,
+      lastActive: own[0] ? own[0].created_at.slice(0, 10) : (c.created_at || "").slice(0, 10),
+      agreementSigned: !!c.agreement_signed_at, agreementSignedDate: c.agreement_signed_at ? c.agreement_signed_at.slice(0, 10) : null,
+      link: c.link || "", whatsapp_number: c.whatsapp_number || "", referral_code: c.referral_code || "",
+    };
+  }), [connectors, referrals]);
+
+  const leadsView = useMemo(() => referrals.map(r => ({
+    id: r.id, need: r.need || r.note || "Referral", area: r.area || "", size: r.size || "",
+    budget: r.budget || "Medium", status: STATUS_DB_TO_UI[r.status] || "OPEN",
+    connectorId: r.connector_id, reward: r.reward_cents ? Math.round(r.reward_cents / 100) : 0,
+    date: (r.created_at || "").slice(0, 10), notes: r.note || "",
+    lead_name: r.lead_name || "", lead_contact: r.lead_contact || "",
+  })), [referrals]);
 
   // Metrics
-  const totalConnectors = data.connectors.length;
-  const activeConnectors = data.connectors.filter(c => ["PRIORITY","ACTIVE","REFERRER"].includes(c.tag)).length;
-  const totalLeads = data.leads.length;
-  const convertedLeads = data.leads.filter(l => l.status === "CONVERTED").length;
-  const totalRevenue = data.leads.reduce((s, l) => s + (l.reward || 0), 0);
+  const totalConnectors = connectorsView.length;
+  const activeConnectors = connectorsView.filter(c => ["PRIORITY","ACTIVE","REFERRER"].includes(c.tag)).length;
+  const totalLeads = leadsView.length;
+  const convertedLeads = leadsView.filter(l => l.status === "CONVERTED").length;
+  const totalRevenue = leadsView.reduce((s, l) => s + (l.reward || 0), 0);
   const conversionRate = totalLeads > 0 ? Math.round((convertedLeads / totalLeads) * 100) : 0;
-  const pipelineValue = data.leads.filter(l => l.status === "ACTIVE").length;
+  const pipelineValue = leadsView.filter(l => l.status === "ACTIVE").length;
 
-  function addConnector() {
-    if (!newConnector.name.trim()) return;
-    const c = { ...newConnector, id: Date.now(), referrals: 0, converted: 0, revenue: 0, joined: new Date().toISOString().slice(0,10), lastActive: new Date().toISOString().slice(0,10), agreementSigned: false, agreementSignedDate: null };
-    setData(d => ({ ...d, connectors: [...d.connectors, c] }));
-    setNewConnector({ name: "", area: "", type: "REFERRER", tag: "EXPLORER", link: "" });
+  async function addConnector() {
+    if (!newConnector.name.trim() || !newConnector.whatsapp_number.trim()) {
+      alert('Name and WhatsApp number are required.');
+      return;
+    }
+    const { error: insErr } = await sb.from('connectors').insert({
+      name: newConnector.name.trim(),
+      whatsapp_number: newConnector.whatsapp_number.trim(),
+      referral_code: (newConnector.referral_code.trim() || genReferralCode(newConnector.name)),
+      area: newConnector.area || null,
+      type: newConnector.type,
+      tag: newConnector.tag,
+      link: newConnector.link || null,
+    });
+    if (insErr) { alert('Failed to add connector: ' + insErr.message); return; }
+    setNewConnector(EMPTY_CONNECTOR);
     setShowAddConnector(false);
+    loadAll();
   }
 
-  function saveConnector() {
-    setData(d => ({ ...d, connectors: d.connectors.map(c => c.id === editConnector.id ? editConnector : c) }));
+  async function saveConnector() {
+    const { error: updErr } = await sb.from('connectors').update({
+      name: editConnector.name,
+      whatsapp_number: editConnector.whatsapp_number,
+      referral_code: editConnector.referral_code,
+      area: editConnector.area,
+      tag: editConnector.tag,
+      link: editConnector.link,
+      agreement_signed_at: editConnector.agreementSigned
+        ? (editConnector.agreementSignedDate ? new Date(editConnector.agreementSignedDate).toISOString() : new Date().toISOString())
+        : null,
+    }).eq('id', editConnector.id);
+    if (updErr) { alert('Failed to save connector: ' + updErr.message); return; }
     setEditConnector(null);
+    loadAll();
   }
 
-  function deleteConnector(id) {
-    setData(d => ({ ...d, connectors: d.connectors.filter(c => c.id !== id) }));
+  async function deleteConnector(id) {
+    if (!confirm('Delete this connector? This cannot be undone.')) return;
+    const { error: delErr } = await sb.from('connectors').delete().eq('id', id);
+    if (delErr) { alert('Failed to delete connector: ' + delErr.message); return; }
     setEditConnector(null);
+    loadAll();
   }
 
-  function addLead() {
-    if (!newLead.need.trim()) return;
-    const l = { ...newLead, id: Date.now(), connectorId: newLead.connectorId ? parseInt(newLead.connectorId) : null, reward: parseInt(newLead.reward) || 0, date: new Date().toISOString().slice(0,10) };
-    setData(d => ({ ...d, leads: [...d.leads, l] }));
-    setNewLead({ need: "", area: "", size: "", budget: "Medium", status: "OPEN", connectorId: "", reward: 0, notes: "" });
+  async function addLead() {
+    if (!newLead.need.trim() || !newLead.lead_name.trim() || !newLead.lead_contact.trim() || !newLead.connectorId) {
+      alert('Need, lead name, lead contact, and connector are required.');
+      return;
+    }
+    const { error: insErr } = await sb.from('referrals').insert({
+      connector_id: newLead.connectorId,
+      vendor_id: vendorId,
+      lead_name: newLead.lead_name.trim(),
+      lead_contact: newLead.lead_contact.trim(),
+      note: newLead.notes || null,
+      status: STATUS_UI_TO_DB[newLead.status] || 'submitted',
+      need: newLead.need.trim(),
+      area: newLead.area || null,
+      size: newLead.size || null,
+      budget: newLead.budget,
+      reward_cents: Math.round((parseFloat(newLead.reward) || 0) * 100),
+    });
+    if (insErr) { alert('Failed to add lead: ' + insErr.message); return; }
+    setNewLead(EMPTY_LEAD);
     setShowAddLead(false);
+    loadAll();
   }
 
-  function saveLead() {
-    setData(d => ({ ...d, leads: d.leads.map(l => l.id === editLead.id ? { ...editLead, reward: parseInt(editLead.reward) || 0 } : l) }));
+  async function saveLead() {
+    const { error: updErr } = await sb.from('referrals').update({
+      lead_name: editLead.lead_name,
+      lead_contact: editLead.lead_contact,
+      note: editLead.notes,
+      status: STATUS_UI_TO_DB[editLead.status] || 'submitted',
+      need: editLead.need,
+      area: editLead.area,
+      connector_id: editLead.connectorId,
+      reward_cents: Math.round((parseFloat(editLead.reward) || 0) * 100),
+    }).eq('id', editLead.id);
+    if (updErr) { alert('Failed to save lead: ' + updErr.message); return; }
     setEditLead(null);
+    loadAll();
   }
 
-  function deleteLead(id) {
-    setData(d => ({ ...d, leads: d.leads.filter(l => l.id !== id) }));
+  async function deleteLead(id) {
+    if (!confirm('Delete this lead? This cannot be undone.')) return;
+    const { error: delErr } = await sb.from('referrals').delete().eq('id', id);
+    if (delErr) { alert('Failed to delete lead: ' + delErr.message); return; }
     setEditLead(null);
+    loadAll();
   }
 
-  const filteredConnectors = data.connectors.filter(c => filterTag === "ALL" || c.tag === filterTag);
-  const filteredLeads = data.leads.filter(l => filterStatus === "ALL" || l.status === filterStatus);
+  const filteredConnectors = connectorsView.filter(c => filterTag === "ALL" || c.tag === filterTag);
+  const filteredLeads = leadsView.filter(l => filterStatus === "ALL" || l.status === filterStatus);
 
-  const signedConnectors = data.connectors.filter(c => c.agreementSigned).length;
+  const signedConnectors = connectorsView.filter(c => c.agreementSigned).length;
 
   const navItems = [
     { id: "dashboard", label: "Dashboard" },
@@ -208,6 +324,14 @@ function App() {
     { id: "agreement", label: "Agreement" },
     { id: "flow", label: "Flow Guide" },
   ];
+
+  if (loading) {
+    return (
+      <div style={{ background: "#080C14", minHeight: "100vh", color: "#6B7A94", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Inter, sans-serif" }}>
+        Loading network data…
+      </div>
+    );
+  }
 
   return (
     <div style={{ background: "#080C14", minHeight: "100vh", color: "#EEF2F8", fontFamily: "Inter, sans-serif", fontSize: 14 }}>
@@ -231,6 +355,13 @@ function App() {
         </div>
       </div>
 
+      {error && (
+        <div style={{ background: "rgba(239,68,68,0.1)", borderBottom: "1px solid rgba(239,68,68,0.25)", color: "#F87171", padding: "12px 28px", fontSize: 13, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
+          <span>Connection error: {error}</span>
+          <button onClick={loadAll} style={{ background: "transparent", border: "1px solid rgba(239,68,68,0.4)", color: "#F87171", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontFamily: "inherit" }}>Retry</button>
+        </div>
+      )}
+
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "32px 24px 64px" }}>
 
         {/* ── DASHBOARD ── */}
@@ -253,8 +384,8 @@ function App() {
             <div style={{ background: "#1C2433", border: "1px solid rgba(200,214,229,0.08)", borderRadius: 10, padding: "24px", marginBottom: 32 }}>
               <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7A94", marginBottom: 20 }}>Referral Pipeline</div>
               <div style={{ display: "flex", gap: 4, alignItems: "stretch" }}>
-                {["OPEN","ACTIVE","CONVERTED","LOST"].map(s => {
-                  const count = data.leads.filter(l => l.status === s).length;
+                {LEAD_STATUSES.map(s => {
+                  const count = leadsView.filter(l => l.status === s).length;
                   const pct = totalLeads > 0 ? (count / totalLeads) * 100 : 0;
                   const sc = STATUS_COLORS[s];
                   return (
@@ -279,7 +410,7 @@ function App() {
               <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7A94", marginBottom: 20 }}>Connector Breakdown by Tag</div>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 {TAGS.map(tag => {
-                  const count = data.connectors.filter(c => c.tag === tag).length;
+                  const count = connectorsView.filter(c => c.tag === tag).length;
                   if (!count) return null;
                   return (
                     <div key={tag} style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -296,7 +427,7 @@ function App() {
               <div style={{ padding: "20px 24px", borderBottom: "1px solid rgba(200,214,229,0.06)" }}>
                 <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7A94" }}>Top Connectors</div>
               </div>
-              {data.connectors.filter(c => c.referrals > 0 || c.converted > 0).sort((a,b) => b.revenue - a.revenue).slice(0,5).map(c => (
+              {connectorsView.filter(c => c.referrals > 0 || c.converted > 0).sort((a,b) => b.revenue - a.revenue).slice(0,5).map(c => (
                 <div key={c.id} style={{ padding: "16px 24px", borderBottom: "1px solid rgba(200,214,229,0.04)", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
                   <div style={{ flex: 1, minWidth: 160 }}>
                     <div style={{ fontWeight: 600, color: "#EEF2F8", marginBottom: 2 }}>{c.name}</div>
@@ -317,7 +448,7 @@ function App() {
                   </div>
                 </div>
               ))}
-              {data.connectors.filter(c => c.referrals > 0 || c.converted > 0).length === 0 && (
+              {connectorsView.filter(c => c.referrals > 0 || c.converted > 0).length === 0 && (
                 <div style={{ padding: "32px 24px", textAlign: "center", color: "#6B7A94", fontSize: 13 }}>No active referral data yet. Add connectors and leads to see rankings.</div>
               )}
             </div>
@@ -352,7 +483,7 @@ function App() {
                 }}>
                   <div>
                     <div style={{ fontWeight: 600, color: "#EEF2F8", marginBottom: 3 }}>{c.name}</div>
-                    <div style={{ fontSize: 12, color: "#6B7A94" }}>{c.area} · Joined {c.joined}{c.link && <> · <a href={c.link} target="_blank" rel="noopener" onClick={e => e.stopPropagation()} style={{ color: "#7AABFF" }}>Linked Profile ↗</a></>}</div>
+                    <div style={{ fontSize: 12, color: "#6B7A94" }}>{c.area} · {c.whatsapp_number} · Joined {c.joined}{c.link && <> · <a href={c.link} target="_blank" rel="noopener" onClick={e => e.stopPropagation()} style={{ color: "#7AABFF" }}>Linked Profile ↗</a></>}</div>
                   </div>
                   <Pill label={c.tag} colors={TAG_COLORS[c.tag]} />
                   <div style={{ textAlign: "center" }}>
@@ -387,13 +518,16 @@ function App() {
                   <option value="ALL">All Statuses</option>
                   {LEAD_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
-                <button onClick={() => setShowAddLead(true)} style={{ background: "#1A6FFF", border: "none", color: "#fff", padding: "10px 20px", borderRadius: 6, cursor: "pointer", fontWeight: 600, fontSize: 12, letterSpacing: "0.06em", fontFamily: "inherit" }}>+ Add Lead</button>
+                <button onClick={() => setShowAddLead(true)} disabled={connectorsView.length === 0} style={{ background: "#1A6FFF", border: "none", color: "#fff", padding: "10px 20px", borderRadius: 6, cursor: connectorsView.length === 0 ? "default" : "pointer", opacity: connectorsView.length === 0 ? 0.5 : 1, fontWeight: 600, fontSize: 12, letterSpacing: "0.06em", fontFamily: "inherit" }}>+ Add Lead</button>
               </div>
             </div>
+            {connectorsView.length === 0 && (
+              <div style={{ fontSize: 12, color: "#6B7A94", marginBottom: 16 }}>Add a connector first — every lead must be attributed to one.</div>
+            )}
 
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {filteredLeads.map(l => {
-                const connector = data.connectors.find(c => c.id === l.connectorId);
+                const connector = connectorsView.find(c => c.id === l.connectorId);
                 return (
                   <div key={l.id} onClick={() => setEditLead({...l})} style={{
                     background: "#1C2433", border: "1px solid rgba(200,214,229,0.08)",
@@ -407,6 +541,7 @@ function App() {
                     <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
                       <div style={{ fontSize: 12, color: "#6B7A94" }}>📍 {l.area}{l.size ? ` · ${l.size}` : ""}</div>
                       <div style={{ fontSize: 12, color: "#6B7A94" }}>Budget: {l.budget}</div>
+                      <div style={{ fontSize: 12, color: "#6B7A94" }}>Lead: <span style={{ color: "#C8D6E5" }}>{l.lead_name}</span>{l.lead_contact ? ` · ${l.lead_contact}` : ""}</div>
                       {connector && <div style={{ fontSize: 12, color: "#6B7A94" }}>Connector: <span style={{ color: "#C8D6E5" }}>{connector.name}</span></div>}
                       <div style={{ fontSize: 12, color: "#6B7A94" }}>{l.date}</div>
                     </div>
@@ -435,7 +570,7 @@ function App() {
               <div style={{ padding: "20px 24px", borderBottom: "1px solid rgba(200,214,229,0.06)" }}>
                 <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7A94" }}>Signature Status</div>
               </div>
-              {data.connectors.map(c => (
+              {connectorsView.map(c => (
                 <div key={c.id} style={{ padding: "14px 24px", borderBottom: "1px solid rgba(200,214,229,0.04)", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
                   <div style={{ flex: 1, minWidth: 160 }}>
                     <div style={{ fontWeight: 600, color: "#EEF2F8" }}>{c.name}</div>
@@ -503,6 +638,8 @@ function App() {
       {showAddConnector && (
         <Modal title="Add Connector" onClose={() => setShowAddConnector(false)}>
           <Field label="Full Name *"><input style={inputStyle} value={newConnector.name} onChange={e => setNewConnector(p => ({...p, name: e.target.value}))} placeholder="e.g. Thabo Mokoena" /></Field>
+          <Field label="WhatsApp Number *"><input style={inputStyle} value={newConnector.whatsapp_number} onChange={e => setNewConnector(p => ({...p, whatsapp_number: e.target.value}))} placeholder="+27 XX XXX XXXX" /></Field>
+          <Field label="Referral Code (auto-generated if blank)"><input style={inputStyle} value={newConnector.referral_code} onChange={e => setNewConnector(p => ({...p, referral_code: e.target.value}))} placeholder="e.g. THABO-7F2K" /></Field>
           <Field label="Area / Location"><input style={inputStyle} value={newConnector.area} onChange={e => setNewConnector(p => ({...p, area: e.target.value}))} placeholder="e.g. Sandton, Gauteng" /></Field>
           <Field label="Website / Social Profile (Optional)"><input style={inputStyle} value={newConnector.link} onChange={e => setNewConnector(p => ({...p, link: e.target.value}))} placeholder="https://facebook.com/..." /></Field>
           <Field label="Type">
@@ -526,6 +663,8 @@ function App() {
       {editConnector && (
         <Modal title="Edit Connector" onClose={() => setEditConnector(null)}>
           <Field label="Full Name"><input style={inputStyle} value={editConnector.name} onChange={e => setEditConnector(p => ({...p, name: e.target.value}))} /></Field>
+          <Field label="WhatsApp Number"><input style={inputStyle} value={editConnector.whatsapp_number} onChange={e => setEditConnector(p => ({...p, whatsapp_number: e.target.value}))} /></Field>
+          <Field label="Referral Code"><input style={inputStyle} value={editConnector.referral_code} onChange={e => setEditConnector(p => ({...p, referral_code: e.target.value}))} /></Field>
           <Field label="Area"><input style={inputStyle} value={editConnector.area} onChange={e => setEditConnector(p => ({...p, area: e.target.value}))} /></Field>
           <Field label="Website / Social Profile"><input style={inputStyle} value={editConnector.link || ""} onChange={e => setEditConnector(p => ({...p, link: e.target.value}))} placeholder="https://facebook.com/..." /></Field>
           <Field label="Tag">
@@ -533,9 +672,20 @@ function App() {
               {TAGS.map(t => <option key={t}>{t}</option>)}
             </select>
           </Field>
-          <Field label="Referrals Made"><input style={inputStyle} type="number" value={editConnector.referrals} onChange={e => setEditConnector(p => ({...p, referrals: parseInt(e.target.value)||0}))} /></Field>
-          <Field label="Converted"><input style={inputStyle} type="number" value={editConnector.converted} onChange={e => setEditConnector(p => ({...p, converted: parseInt(e.target.value)||0}))} /></Field>
-          <Field label="Total Revenue Earned (R)"><input style={inputStyle} type="number" value={editConnector.revenue} onChange={e => setEditConnector(p => ({...p, revenue: parseInt(e.target.value)||0}))} /></Field>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 16 }}>
+            <div>
+              <div style={{ fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7A94", marginBottom: 6 }}>Referrals</div>
+              <div style={{ fontFamily: "monospace", fontWeight: 700, fontSize: 18 }}>{editConnector.referrals}</div>
+            </div>
+            <div>
+              <div style={{ fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7A94", marginBottom: 6 }}>Converted</div>
+              <div style={{ fontFamily: "monospace", fontWeight: 700, fontSize: 18, color: "#22C55E" }}>{editConnector.converted}</div>
+            </div>
+            <div>
+              <div style={{ fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7A94", marginBottom: 6 }}>Earned</div>
+              <div style={{ fontFamily: "monospace", fontWeight: 700, fontSize: 18, color: "#F5B731" }}>R{editConnector.revenue.toLocaleString()}</div>
+            </div>
+          </div>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
             <input type="checkbox" id="agreementSigned" checked={!!editConnector.agreementSigned} onChange={e => setEditConnector(p => ({...p, agreementSigned: e.target.checked, agreementSignedDate: e.target.checked ? (p.agreementSignedDate || new Date().toISOString().slice(0,10)) : null}))} style={{ width: 16, height: 16 }} />
             <label htmlFor="agreementSigned" style={{ fontSize: 13, color: "#C8D6E5" }}>Partner agreement signed{editConnector.agreementSignedDate ? ` (${editConnector.agreementSignedDate})` : ""}</label>
@@ -551,6 +701,8 @@ function App() {
       {showAddLead && (
         <Modal title="Add Lead / Opportunity" onClose={() => setShowAddLead(false)}>
           <Field label="Need / Service *"><input style={inputStyle} value={newLead.need} onChange={e => setNewLead(p => ({...p, need: e.target.value}))} placeholder="e.g. Artificial grass installation" /></Field>
+          <Field label="Lead Name *"><input style={inputStyle} value={newLead.lead_name} onChange={e => setNewLead(p => ({...p, lead_name: e.target.value}))} placeholder="Customer's name" /></Field>
+          <Field label="Lead Contact *"><input style={inputStyle} value={newLead.lead_contact} onChange={e => setNewLead(p => ({...p, lead_contact: e.target.value}))} placeholder="Phone or email" /></Field>
           <Field label="Area"><input style={inputStyle} value={newLead.area} onChange={e => setNewLead(p => ({...p, area: e.target.value}))} placeholder="e.g. Sandton" /></Field>
           <Field label="Size / Scope"><input style={inputStyle} value={newLead.size} onChange={e => setNewLead(p => ({...p, size: e.target.value}))} placeholder="e.g. 80m²" /></Field>
           <Field label="Budget Signal">
@@ -563,10 +715,10 @@ function App() {
               {LEAD_STATUSES.map(s => <option key={s}>{s}</option>)}
             </select>
           </Field>
-          <Field label="Connector (who referred this)">
+          <Field label="Connector (who referred this) *">
             <select style={selectStyle} value={newLead.connectorId} onChange={e => setNewLead(p => ({...p, connectorId: e.target.value}))}>
-              <option value="">— None yet —</option>
-              {data.connectors.map(c => <option key={c.id} value={c.id}>{c.name} ({c.area})</option>)}
+              <option value="">Select a connector…</option>
+              {connectorsView.map(c => <option key={c.id} value={c.id}>{c.name} ({c.area})</option>)}
             </select>
           </Field>
           <Field label="Reward Paid (R)"><input style={inputStyle} type="number" value={newLead.reward} onChange={e => setNewLead(p => ({...p, reward: e.target.value}))} placeholder="0" /></Field>
@@ -582,6 +734,8 @@ function App() {
       {editLead && (
         <Modal title="Edit Lead" onClose={() => setEditLead(null)}>
           <Field label="Need / Service"><input style={inputStyle} value={editLead.need} onChange={e => setEditLead(p => ({...p, need: e.target.value}))} /></Field>
+          <Field label="Lead Name"><input style={inputStyle} value={editLead.lead_name} onChange={e => setEditLead(p => ({...p, lead_name: e.target.value}))} /></Field>
+          <Field label="Lead Contact"><input style={inputStyle} value={editLead.lead_contact} onChange={e => setEditLead(p => ({...p, lead_contact: e.target.value}))} /></Field>
           <Field label="Area"><input style={inputStyle} value={editLead.area} onChange={e => setEditLead(p => ({...p, area: e.target.value}))} /></Field>
           <Field label="Status">
             <select style={selectStyle} value={editLead.status} onChange={e => setEditLead(p => ({...p, status: e.target.value}))}>
@@ -589,9 +743,8 @@ function App() {
             </select>
           </Field>
           <Field label="Connector">
-            <select style={selectStyle} value={editLead.connectorId || ""} onChange={e => setEditLead(p => ({...p, connectorId: e.target.value ? parseInt(e.target.value) : null}))}>
-              <option value="">— None —</option>
-              {data.connectors.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+            <select style={selectStyle} value={editLead.connectorId || ""} onChange={e => setEditLead(p => ({...p, connectorId: e.target.value}))}>
+              {connectorsView.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
           </Field>
           <Field label="Reward Paid (R)"><input style={inputStyle} type="number" value={editLead.reward} onChange={e => setEditLead(p => ({...p, reward: e.target.value}))} /></Field>
