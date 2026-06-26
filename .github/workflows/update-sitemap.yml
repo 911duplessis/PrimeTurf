@@ -1,0 +1,41 @@
+name: Update sitemap lastmod
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "contact.html"
+      - "artificial-grass-johannesburg.html"
+      - "artificial-grass-cape-town.html"
+      - "quote-calculator.html"
+      - "blog/index.html"
+      - "blog/artificial-grass-cost-guide-south-africa.html"
+      - "blog/drought-proof-garden-cape-town.html"
+
+permissions:
+  contents: write
+
+jobs:
+  update-sitemap:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Update sitemap.xml lastmod dates
+        run: python3 .github/scripts/update_sitemap_lastmod.py ${{ github.event.before }} ${{ github.sha }}
+
+      - name: Commit and push if sitemap changed
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "sitemap.xml unchanged"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "chore: auto-update sitemap.xml lastmod dates [skip ci]"
+          git push
