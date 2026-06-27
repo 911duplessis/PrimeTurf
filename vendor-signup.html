@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vendor Sign-Up — The Connection Network</title>
-<meta name="description" content="Become a vendor in The Connection Network: list your business, set your referral reward and closing bonus, and let connectors send you leads.">
+<title>Vendor Sign Up — The Connection Network</title>
+<meta name="description" content="List your business on The Connection Network and start receiving referrals from connectors, with every commission recorded on a public ledger.">
 <link rel="canonical" href="https://www.primeturf.co.za/vendor-signup.html">
+<meta http-equiv="refresh" content="6;url=https://connection-network.vercel.app/vendors/signup">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z5G37WW47"></script>
 <script>
@@ -14,10 +15,8 @@
   gtag('js', new Date());
   gtag('config', 'G-3Z5G37WW47');
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --black:   #080C14;
     --cobalt:  #1A6FFF;
@@ -28,300 +27,45 @@
     --dim:     #1C2433;
     --muted:   #6B7A94;
   }
-
-  html { scroll-behavior: smooth; }
-
   body {
     background: var(--black);
     color: var(--white);
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    line-height: 1.65;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
   }
-
-  .wrap { max-width: 720px; margin: 0 auto; padding: 64px 24px 100px; }
-
+  .wrap { max-width: 560px; }
   .eyebrow {
     font-size: 11px; font-weight: 600; letter-spacing: 0.25em;
-    color: var(--cobalt); text-transform: uppercase;
-    text-align: center; margin-bottom: 16px;
+    color: var(--cobalt); text-transform: uppercase; margin-bottom: 16px;
   }
-
   h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(32px, 6vw, 52px);
-    line-height: 1.05; letter-spacing: 0.02em;
-    text-align: center; margin-bottom: 12px;
+    font-size: clamp(30px, 6vw, 46px);
+    line-height: 1.1; letter-spacing: 0.02em; margin-bottom: 16px;
   }
-
-  .lede {
-    text-align: center; color: var(--silver);
-    max-width: 540px; margin: 0 auto 40px; font-size: 15px;
+  p { color: var(--silver); font-size: 15px; line-height: 1.7; margin-bottom: 28px; }
+  .btn {
+    display: inline-block; background: var(--cobalt); color: #fff;
+    font-weight: 600; font-size: 14px; letter-spacing: 0.04em;
+    padding: 16px 32px; border-radius: 6px; text-decoration: none;
   }
-
-  .example-card {
-    background: var(--dim); border-radius: 8px; padding: 24px 28px;
-    border-top: 2px solid var(--gold); margin-bottom: 48px;
-  }
-
-  .example-card .example-label {
-    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
-    font-weight: 600; color: var(--gold); margin-bottom: 12px;
-  }
-
-  .example-card p { font-size: 14px; color: var(--silver); }
-
-  .example-card .terms { color: var(--white); font-weight: 600; }
-
-  .clause-list { list-style: none; margin-bottom: 48px; }
-
-  .clause-list li {
-    display: flex; gap: 14px; padding: 14px 0;
-    border-bottom: 1px solid rgba(200,214,229,0.07);
-    font-size: 14px; color: var(--silver);
-  }
-
-  .clause-list li::before { content: '—'; color: var(--cobalt); flex-shrink: 0; }
-
-  .vendor-form {
-    background: var(--dim); border: 1px solid rgba(200,214,229,0.1);
-    border-radius: 10px; padding: 32px;
-  }
-
-  .vendor-form h2 {
-    font-family: 'Bebas Neue', sans-serif; font-size: 24px;
-    letter-spacing: 0.02em; margin-bottom: 8px;
-  }
-
-  .vendor-form .sub {
-    font-size: 13px; color: var(--muted); margin-bottom: 24px;
-  }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-  @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
-
-  .form-group { margin-bottom: 18px; }
-
-  .form-group label {
-    display: block; font-size: 11px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
-  }
-
-  .form-group input, .form-group textarea {
-    width: 100%; background: var(--black);
-    border: 1px solid rgba(200,214,229,0.15); border-radius: 6px;
-    padding: 12px 14px; color: var(--white); font-size: 14px;
-    font-family: inherit; outline: none;
-  }
-
-  .form-group textarea { resize: vertical; min-height: 70px; }
-
-  .form-group input:focus, .form-group textarea:focus { border-color: var(--cobalt); }
-
-  .checkbox-row {
-    display: flex; gap: 12px; align-items: flex-start;
-    margin: 24px 0; font-size: 13px; color: var(--silver); line-height: 1.6;
-  }
-
-  .checkbox-row input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; }
-
-  .btn-submit {
-    width: 100%; background: var(--cobalt); color: #fff; border: none;
-    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 16px; border-radius: 6px; cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .btn-submit:hover { background: var(--cobalt2); }
-  .btn-submit:disabled { opacity: 0.6; cursor: default; }
-
-  footer {
-    text-align: center; padding: 32px 24px;
-    border-top: 1px solid rgba(200,214,229,0.06);
-    font-size: 12px; color: var(--muted); letter-spacing: 0.06em;
-  }
-
-  footer a { color: var(--cobalt); }
+  .btn:hover { background: var(--cobalt2); }
+  .note { margin-top: 20px; font-size: 12px; color: var(--muted); }
+  .note a { color: var(--cobalt); }
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <p class="eyebrow">The Connection Network</p>
-  <h1>Vendor Sign-Up</h1>
-  <p class="lede">List your business in The Connection Network. Tell us what you're willing to pay connectors for a lead — a % of job value, a fixed closing bonus, or both — and we'll route warm introductions your way.</p>
-
-  <div class="example-card">
-    <div class="example-label">Already In The Network</div>
-    <p><strong class="terms" style="color:var(--white);">PrimeTurf</strong> — artificial grass &amp; outdoor installations, Gauteng.<br>Offering connectors: <span class="terms">5% of job value</span> (once the partner agreement is signed) <span class="terms">+ R500</span> fixed closing bonus.<br><a href="https://www.primeturf.co.za" target="_blank" rel="noopener" style="color:var(--cobalt);">www.primeturf.co.za</a></p>
-  </div>
-
-  <ul class="clause-list">
-    <li>You set your own referral terms — a % of job value, a fixed amount, or a combination of both.</li>
-    <li>Connectors only get paid once a lead they introduced converts into a confirmed, paying job.</li>
-    <li>There's no cost to list as a vendor — you only pay out when a referral actually closes.</li>
-    <li>Once you sign up, your terms are published to the network so connectors know what's on offer.</li>
-    <li>You can adjust your offered terms at any time by getting in touch — existing signed connectors keep their agreed rate until notified of a change.</li>
-  </ul>
-
-  <div class="vendor-form">
-    <h2>Sign Up Your Business</h2>
-    <p class="sub">Submitting this form registers your business and your offered referral terms with The Connection Network.</p>
-
-    <form id="vendorForm">
-      <input type="hidden" name="access_key" value="9923a61d-593b-4551-bd12-ce9c1a3933b7">
-      <input type="hidden" name="subject" value="Connection Network — New Vendor Sign-Up">
-      <input type="hidden" name="from_name" value="The Connection Network">
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-
-      <div class="form-group">
-        <label>Business Name *</label>
-        <input type="text" name="business_name" placeholder="Your business name" required autocomplete="organization">
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Contact Person *</label>
-          <input type="text" name="contact_name" placeholder="Your name" required autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label>Phone / WhatsApp *</label>
-          <input type="tel" name="phone" placeholder="+27 XX XXX XXXX" required autocomplete="tel">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" name="email" placeholder="your@email.com" autocomplete="email">
-        </div>
-        <div class="form-group">
-          <label>Website</label>
-          <input type="url" name="website" placeholder="https://yourbusiness.co.za" autocomplete="url">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Referral Reward Offered (%)</label>
-          <input type="text" name="referral_percent" placeholder="e.g. 5%">
-        </div>
-        <div class="form-group">
-          <label>Fixed Closing Bonus Offered</label>
-          <input type="text" name="closing_bonus" placeholder="e.g. R500, or none">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>What kind of leads are you looking for?</label>
-        <textarea name="lead_description" placeholder="e.g. residential and commercial artificial grass installs across Gauteng"></textarea>
-      </div>
-
-      <div class="checkbox-row">
-        <input type="checkbox" id="agreeCheck" required>
-        <label for="agreeCheck">I confirm the terms above are accurate and I agree to pay connectors the referral reward I've offered once a lead I receive converts into a confirmed job.</label>
-      </div>
-
-      <button type="button" class="btn-submit" id="submitBtn" onclick="handleSubmit(this)">Sign Up As A Vendor →</button>
-    </form>
-  </div>
+  <h1>Vendor sign-up has moved</h1>
+  <p>List your business, set your own referral terms, and start receiving connector referrals directly on The Connection Network platform.</p>
+  <a href="https://connection-network.vercel.app/vendors/signup" class="btn">Sign up as a vendor →</a>
+  <p class="note">Redirecting automatically in a few seconds, or <a href="https://connection-network.vercel.app/vendors/signup">click here</a> if nothing happens.<br>Back to <a href="https://www.primeturf.co.za">www.primeturf.co.za</a></p>
 </div>
-
-<footer>
-  <p>The Connection Network &nbsp;·&nbsp; <a href="https://wa.me/27768048868" target="_blank" rel="noopener" data-wa-source="vendor_signup_footer">WhatsApp</a> &nbsp;·&nbsp; <a href="/connection-network.html">Back to The Connection Network</a></p>
-</footer>
-
-<script>
-const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
-
-const SUPABASE_URL = 'https://hnqcvzzlkpewqwrgzdli.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_DfD9bigkbB13pBArATr6Sg_EHoGBjhk';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-function slugify(str) {
-  return str.toLowerCase().trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-function parsePercent(str) {
-  const n = parseFloat(String(str).replace(/[^0-9.]/g, ''));
-  return Number.isFinite(n) ? n : null;
-}
-
-function parseRandToCents(str) {
-  if (!str || /none/i.test(str)) return null;
-  const n = parseFloat(String(str).replace(/[^0-9.]/g, ''));
-  return Number.isFinite(n) ? Math.round(n * 100) : null;
-}
-
-async function handleSubmit(btn) {
-  const form = document.getElementById('vendorForm');
-  const businessName = form.business_name.value.trim();
-  const contactName = form.contact_name.value.trim();
-  const phone = form.phone.value.trim();
-  const email = form.email.value.trim();
-  const website = form.website.value.trim();
-  const referralPercent = form.referral_percent.value.trim();
-  const closingBonus = form.closing_bonus.value.trim();
-  const leadDescription = form.lead_description.value.trim();
-  const agreed = document.getElementById('agreeCheck').checked;
-
-  if (!businessName || !contactName || !phone || !agreed) {
-    alert('Please complete your business name, contact name, phone number, and accept the terms.');
-    return;
-  }
-
-  const originalText = btn.textContent;
-  btn.textContent = 'Submitting…';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch(FORM_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(form)
-    });
-    const data = await res.json();
-    if (!res.ok || !data.success) throw new Error(data.message || 'Submission failed');
-
-    const { error: sbError } = await sb.from('vendors').insert({
-      slug: slugify(businessName),
-      name: businessName,
-      whatsapp_number: phone,
-      website: website || null,
-      tier1_pct: parsePercent(referralPercent),
-      tier1_flat_cents: parseRandToCents(closingBonus),
-      currency: 'ZAR',
-      active: false
-    });
-    if (sbError) console.error('Supabase vendor insert failed:', sbError.message, '— contact_name:', contactName, 'email:', email, 'lead_description:', leadDescription);
-
-    gtag('event', 'form_submit', { event_category: 'conversion', event_label: 'vendor_signup', value: 5 });
-
-    btn.textContent = '✓ Vendor Sign-Up Received — We\'ll be in touch';
-    btn.style.background = '#1A3A2A';
-    form.reset();
-  } catch (e) {
-    btn.textContent = 'Error — please try WhatsApp instead';
-    btn.disabled = false;
-    setTimeout(() => { btn.textContent = originalText; }, 3500);
-  }
-}
-
-document.querySelectorAll('a[href*="wa.me"]').forEach(function (el) {
-  el.addEventListener('click', function () {
-    gtag('event', 'whatsapp_click', {
-      event_category: 'conversion',
-      event_label: 'vendor_signup_' + (el.getAttribute('data-wa-source') || 'footer'),
-      source: el.getAttribute('data-wa-source') || 'footer',
-      value: 3
-    });
-  });
-});
-</script>
-
 </body>
 </html>
