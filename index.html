@@ -592,7 +592,7 @@ a { text-decoration:none; }
 ════════════════════════════════════════════ */
 #services { background:var(--parchment); }
 .services-layout {
-  display:grid; grid-template-columns:repeat(3,1fr);
+  display:grid; grid-template-columns:1fr;
   border:1px solid var(--border-gold);
 }
 .service-panel {
@@ -1192,6 +1192,75 @@ footer {
   .footer-logo-wrap, .footer-logo-wrap img { width:160px; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+      "@id": "https://primeturf.co.za/#business",
+      "name": "PrimeTurf",
+      "url": "https://primeturf.co.za",
+      "telephone": "+27768048868",
+      "image": "https://primeturf.co.za/images/after-lg.jpg",
+      "areaServed": [
+        {"@type": "City", "name": "Johannesburg"},
+        {"@type": "City", "name": "Pretoria"},
+        {"@type": "City", "name": "Centurion"},
+        {"@type": "City", "name": "Sandton"},
+        {"@type": "City", "name": "Midrand"},
+        {"@type": "City", "name": "Cape Town"}
+      ],
+      "contactPoint": {"@type": "ContactPoint", "telephone": "+27768048868", "contactType": "customer service"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does artificial grass cost per m² in South Africa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Artificial grass installation in South Africa ranges from approximately R350 to R850 per m² fully installed, depending on turf grade, site preparation, and location. PrimeTurf provides a detailed fixed-price quote after a free site visit — no hidden costs. Use our online quote calculator for an instant estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can artificial grass be installed on concrete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — artificial grass can be installed directly on concrete using an adhesive and shock-pad underlay system. This is ideal for patios, pool surrounds, balconies, and rooftop areas. PrimeTurf's team assesses the surface drainage and condition before recommending the correct installation method."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What warranty does PrimeTurf offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PrimeTurf provides an 8-year manufacturer's product warranty on all turf supplied, plus a 24-month installation guarantee covering our own workmanship. Both warranties are included in every project — no additional cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is artificial grass safe for children and pets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — PrimeTurf's artificial grass is non-toxic, lead-free, and fully certified safe for children and pets. It is hypoallergenic, drains efficiently, and can be sanitised easily. No lawn chemicals, fertilisers, or pesticides are ever needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does PrimeTurf serve Johannesburg, Pretoria, and Cape Town?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — PrimeTurf installs artificial grass across Gauteng (Johannesburg, Pretoria, Centurion, Sandton, Midrand) and the Western Cape (Cape Town, Stellenbosch, Somerset West). Contact us on 076 804 8868 for a free site consultation in your area."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1208,7 +1277,6 @@ footer {
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
 
@@ -1227,9 +1295,8 @@ footer {
 <div class="mobile-nav" id="mobileNav">
   <a href="#home"         onclick="toggleNav()">Home</a>
   <a href="#services"     onclick="toggleNav()">Services</a>
-  <a href="#gallery"      onclick="toggleNav()">Gallery</a>
-  <a href="#testimonials" onclick="toggleNav()">Testimonials</a>
-  <a href="#contact"      onclick="toggleNav()">Contact</a>
+  <a href="#gallery"  onclick="toggleNav()">Gallery</a>
+  <a href="#contact"  onclick="toggleNav()">Contact</a>
   <a href="tel:+27768048868" onclick="toggleNav()">076 804 8868</a>
 </div>
 
@@ -1757,7 +1824,6 @@ footer {
           <li><a href="#home">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
