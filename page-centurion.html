@@ -10,6 +10,69 @@
 <meta property="og:description" content="Premium artificial grass installation in Centurion. Golf estate specialists, residential gardens, complex common areas. 8-year warranty. Free site consultation. Call 076 804 8868.">
 <meta property="og:url" content="https://www.primeturf.co.za/artificial-grass-centurion/">
 <style>
+:root{
+  --F:#0B3D2E; --F2:#14543E; --Au:#C9A44A; --AuL:#E8C96E; --AuD:#8A6B20;
+  --Dk:#070E09; --Iv:#FAF8F2; --Cr:#F5F0E8; --W:#FFFFFF;
+  --Mu:#7A7670; --Bd:rgba(11,61,46,0.10);
+  --sr:'Cormorant Garamond',Georgia,serif;
+  --ss:'Montserrat',system-ui,sans-serif;
+  --ease:cubic-bezier(0.25,0.1,0.25,1); --t:0.26s;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;max-width:100%}
+body{font-family:var(--ss);background:var(--Iv);color:var(--Dk);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+.strip{background:var(--F);height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;position:relative;z-index:1000;overflow:hidden;width:100%}
+.strip-l{display:flex;align-items:center;gap:9px;font-family:var(--ss);font-size:11px;color:rgba(255,255,255,.50);letter-spacing:.03em}
+.pulse{width:6px;height:6px;border-radius:50%;background:#4ADE80;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}}
+.strip-r{display:flex;align-items:center;gap:18px}
+.strip-link{font-size:10px;color:rgba(255,255,255,.44);letter-spacing:.06em;transition:color var(--t)}
+.strip-link:hover{color:var(--AuL)}
+.strip-btn{background:var(--Au);color:var(--F);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:1px;transition:background var(--t);white-space:nowrap}
+.strip-btn:hover{background:var(--AuL)}
+
+header{position:sticky;top:0;z-index:900;background:rgba(250,248,242,0.96);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid rgba(11,61,46,.09);box-shadow:0 1px 0 rgba(201,164,74,.14),0 4px 20px rgba(0,0,0,.04);transition:box-shadow var(--t)}
+header.scrolled{box-shadow:0 1px 0 rgba(201,164,74,.20),0 8px 36px rgba(0,0,0,.09)}
+.hdr{max-width:1440px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px;transition:all 0.28s var(--ease)}
+.hdr-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:pointer;text-decoration:none}
+.hdr-logo-img{height:54px;width:auto;mix-blend-mode:multiply;transition:all 0.28s var(--ease)}
+.hdr-logo:hover .hdr-logo-img{transform:scale(1.02)}
+.hdr-wm{font-family:var(--sr);font-size:19px;font-weight:500;line-height:1;letter-spacing:.01em;color:var(--F)}
+.hdr-sub{display:none}
+nav.desk{display:flex;align-items:center;flex:1;justify-content:center}
+.nl{font-size:10px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:var(--F);padding:0 15px;height:78px;display:flex;align-items:center;position:relative;white-space:nowrap;transition:all 0.28s var(--ease)}
+.nl::after{content:'';position:absolute;bottom:0;left:15px;right:15px;height:2px;background:var(--Au);transform:scaleX(0);transform-origin:left;transition:transform var(--t) var(--ease)}
+.nl:hover::after,.nl.on::after{transform:scaleX(1)}
+.nl:hover{color:var(--AuD)}
+.hd{position:relative}
+.hd>.nl::before{content:' ▾';font-size:7px;opacity:.45}
+.drop{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-6px);background:var(--W);border:1px solid rgba(11,61,46,.07);border-top:2px solid var(--Au);box-shadow:0 20px 56px rgba(0,0,0,.10);min-width:215px;opacity:0;pointer-events:none;transition:opacity var(--t),transform var(--t);z-index:200}
+.hd:hover .drop{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.dl{display:block;padding:11px 18px;font-size:11px;font-weight:500;letter-spacing:.04em;color:var(--F);border-bottom:1px solid rgba(11,61,46,.05);transition:background var(--t),padding-left var(--t),color var(--t)}
+.dl:last-child{border-bottom:none}
+.dl:hover{background:var(--Cr);padding-left:24px;color:var(--AuD)}
+.dl small{display:block;font-size:9px;color:var(--Mu);margin-top:1px;font-weight:400}
+.hdr-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.hdr-ph{font-size:12px;font-weight:600;color:var(--F);letter-spacing:.02em;white-space:nowrap;transition:all 0.28s var(--ease)}
+.hdr-quote{background:var(--F);color:var(--W);font-size:9px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;padding:11px 22px;border-radius:1px;border:2px solid var(--F);transition:all 0.28s var(--ease);white-space:nowrap}
+.hdr-quote:hover{background:transparent;color:var(--F)}
+.ham{display:none;flex-direction:column;gap:5px;width:36px;height:36px;align-items:center;justify-content:center;flex-shrink:0}
+.ham span{display:block;width:22px;height:1.5px;background:var(--F);border-radius:2px;transition:all var(--t)}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-nav{display:none;position:fixed;top:0;right:0;bottom:0;width:min(300px,90vw);background:var(--W);z-index:1000;box-shadow:-8px 0 40px rgba(0,0,0,.13);flex-direction:column;padding:72px 28px 28px;transition:transform .32s var(--ease);overflow-y:auto;transform:translateX(100%)}
+.mob-nav.open{transform:translateX(0)}
+.mob-nav a{font-size:13px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--F);padding:14px 0;border-bottom:1px solid var(--Bd);display:block;transition:color var(--t)}
+.mob-nav a:hover{color:var(--AuD)}
+.mob-nav .mob-cta{background:var(--F);color:var(--W);text-align:center;padding:14px;margin-top:14px;border-radius:1px;border:none}
+.mob-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.40);z-index:999}
+.mob-ov.open{display:block}
+nav.desk,nav.mob-nav { background: none; padding: 0; }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{--green:#1A5A28;--green-d:#0f3a19;--gold:#B8902A;--bg:#fafaf8;--muted:#5a5a5a;--border:#e0e0da}
   body{font-family:Georgia,serif;color:#1a1a1a;background:var(--bg);line-height:1.7}
@@ -41,11 +104,49 @@
   footer a{color:var(--gold)}
   @media(max-width:640px){.g2{grid-template-columns:1fr}.hero{padding:50px 20px}}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav>
-  <a class="logo" href="/">PrimeTurf</a>
-  <div><a href="/">Home</a><a href="/#services">Services</a><a href="/#gallery">Gallery</a><a href="/#contact">Contact</a></div>
+<div class="strip">
+  <div class="strip-l"><div class="pulse"></div><span>Gauteng Level 1 water restrictions active — artificial turf is zero-irrigation and fully compliant</span></div>
+  <div class="strip-r">
+    <a href="tel:0768048868" class="strip-link">076 804 8868</a>
+    <a href="mailto:social@primeturf.co.za" class="strip-link">social@primeturf.co.za</a>
+    <a href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%20would%20like%20to%20request%20a%20free%20site%20consultation." class="strip-btn">WhatsApp</a>
+  </div>
+</div>
+<header id="site-header">
+  <div class="hdr">
+    <a href="index-54.html" class="hdr-logo" aria-label="PrimeTurf SA">
+      <img src="assets/logo/primeturf-header-logo.png" alt="PrimeTurf SA" class="hdr-logo-img">
+    </a>
+    <nav class="desk" aria-label="Primary Navigation">
+      <a href="index-54.html" class="nl">Home</a>
+      <div class="hd"><a href="index-54.html#our-story" class="nl">About Us</a><div class="drop"><a href="index-54.html#our-story" class="dl">Our Story<small>Who PrimeTurf is</small></a><a href="index-54.html#why" class="dl">Why PrimeTurf<small>The premium difference</small></a><a href="quote-calculator.html" class="dl">Our Turf Range<small>9 premium SKUs</small></a><a href="index-54.html#our-story" class="dl">Sustainability<small>Zero water. Zero waste.</small></a></div></div>
+      <div class="hd"><a href="index-54.html#services" class="nl">Services</a><div class="drop"><a href="index-54.html#services" class="dl">Estate Gardens<small>Luxury residential lawns</small></a><a href="index-54.html#services" class="dl">Poolside Design<small>Heat-resistant pool surrounds</small></a><a href="index-54.html#services" class="dl">Putting Greens<small>Tournament-grade greens</small></a><a href="index-54.html#services" class="dl">Commercial Spaces<small>Offices and corporate</small></a><a href="index-54.html#services" class="dl">Rooftop Terraces<small>Balcony systems</small></a><a href="index-54.html#services" class="dl">Safe Play Areas<small>Child-safe surfaces</small></a><a href="index-54.html#services" class="dl">HOA Installations<small>ARC submission included</small></a><a href="index-54.html#services" class="dl">Architect Specification<small>B2B design integration</small></a></div></div>
+      <div class="hd"><a href="index-54.html#gallery" class="nl">Gallery</a><div class="drop"><a href="index-54.html#gallery" class="dl">Estate Gardens</a><a href="index-54.html#gallery" class="dl">Poolside Installations</a><a href="index-54.html#gallery" class="dl">Commercial Projects</a><a href="index-54.html#gallery" class="dl">Before and After</a></div></div>
+      <a href="contact.html" class="nl">Contact</a>
+    </nav>
+    <div class="hdr-right">
+      <a href="tel:0768048868" class="hdr-ph">076 804 8868</a>
+      <a href="quote-calculator.html" class="hdr-quote">Get a Quote</a>
+      <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mob-ov" id="mob-ov" onclick="closeNav()"></div>
+<nav class="mob-nav" id="mob-nav" aria-label="Mobile navigation">
+  <button class="mob-close" onclick="closeNav()" aria-label="Close">x</button>
+  <a href="index-54.html" onclick="closeNav()">Home</a>
+  <a href="index-54.html#our-story" onclick="closeNav()">About Us</a>
+  <a href="index-54.html#services" onclick="closeNav()">Services</a>
+  <a href="index-54.html#gallery" onclick="closeNav()">Gallery</a>
+  <a href="index-54.html#areas" onclick="closeNav()">Areas We Serve</a>
+  <a href="blog/index.html" onclick="closeNav()">Insights</a>
+  <a href="contact.html" onclick="closeNav()">Contact</a>
+  <a href="quote-calculator.html" class="mob-cta" onclick="closeNav()">Get a Quote</a>
 </nav>
 <div class="hero">
   <div class="eyebrow">Centurion Golf Estate · Lyttelton · Irene · Highveld</div>
@@ -58,28 +159,8 @@
   <h2>Premium Artificial Grass in Centurion</h2>
   <p>PrimeTurf brings the same precision and standard that has made us trusted across Gauteng's finest addresses to Centurion. Whether it is a residential garden, a secure estate common area, or a commercial property, our installation process is engineered for longevity, drainage performance, and visual perfection from day one.</p>
   <div class="g2">
-    <div class="card">
-      <h3>What We Install in Centurion</h3>
-      <ul class="chk">
-        <li>Residential garden and lawn replacement</li>
-        <li>Estate and complex common areas</li>
-        <li>Pool surrounds and entertainment areas</li>
-        <li>Balcony, rooftop and patio turf</li>
-        <li>School grounds and play areas</li>
-        <li>Custom putting greens</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>The PrimeTurf Standard</h3>
-      <ul class="chk">
-        <li>8-year manufacturer warranty</li>
-        <li>24-month installation guarantee</li>
-        <li>Free on-site consultation</li>
-        <li>24-hour itemised quotation</li>
-        <li>Full drainage engineering</li>
-        <li>Transparent, no-surprise pricing</li>
-      </ul>
-    </div>
+    <div class="card"><h3>What We Install in Centurion</h3><ul class="chk"><li>Residential garden and lawn replacement</li><li>Estate and complex common areas</li><li>Pool surrounds and entertainment areas</li><li>Balcony, rooftop and patio turf</li><li>School grounds and play areas</li><li>Custom putting greens</li></ul></div>
+    <div class="card"><h3>The PrimeTurf Standard</h3><ul class="chk"><li>8-year manufacturer warranty</li><li>24-month installation guarantee</li><li>Free on-site consultation</li><li>24-hour itemised quotation</li><li>Full drainage engineering</li><li>Transparent, no-surprise pricing</li></ul></div>
   </div>
   <h2>Areas Covered in Centurion</h2>
   <div class="pills"><span class="pill">Centurion CBD</span><span class="pill">Lyttelton</span><span class="pill">Irene</span><span class="pill">Highveld</span><span class="pill">Eldoraigne</span><span class="pill">Die Hoewes</span><span class="pill">Rooihuiskraal</span><span class="pill">Zwartkop</span><span class="pill">Thatchfield</span><span class="pill">Centurion Lake</span></div>
@@ -98,5 +179,20 @@
   <a class="btn out" href="tel:+27768048868">Call 076 804 8868</a>
 </div>
 <footer><p>&copy; 2026 PrimeTurf | <a href="/">Home</a> | <a href="/privacy-policy/">Privacy</a> | Serving all of Gauteng</p></footer>
+<script>
+(function(){
+  var hdr=document.getElementById('site-header');
+  var strip=document.querySelector('.strip');
+  if(strip&&hdr)hdr.style.top=strip.offsetHeight+'px';
+  window.addEventListener('scroll',function(){hdr.classList.toggle('scrolled',window.scrollY>10)},{passive:true});
+  var ham=document.getElementById('ham');
+  var mn=document.getElementById('mob-nav');
+  var mov=document.getElementById('mob-ov');
+  function openNav(){ham.classList.add('open');mn.classList.add('open');mov.classList.add('open');document.body.style.overflow='hidden';ham.setAttribute('aria-expanded','true')}
+  function closeNav(){ham.classList.remove('open');mn.classList.remove('open');mov.classList.remove('open');document.body.style.overflow='';ham.setAttribute('aria-expanded','false')}
+  window.closeNav=closeNav;
+  if(ham)ham.addEventListener('click',function(){mn.classList.contains('open')?closeNav():openNav()});
+})();
+</script>
 </body>
 </html>
