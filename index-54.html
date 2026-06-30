@@ -20,14 +20,14 @@
   --ease:cubic-bezier(0.25,0.1,0.25,1); --t:0.26s;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;max-width:100%}
 body{font-family:var(--ss);background:var(--Iv);color:var(--Dk);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ── STRIP ── */
-.strip{background:var(--F);height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;position:relative;z-index:1000}
+.strip{background:var(--F);height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;position:relative;z-index:1000;overflow:hidden;width:100%}
 .strip-l{display:flex;align-items:center;gap:9px;font-family:var(--ss);font-size:11px;color:rgba(255,255,255,.50);letter-spacing:.03em}
 .pulse{width:6px;height:6px;border-radius:50%;background:#4ADE80;flex-shrink:0;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}}
@@ -78,8 +78,8 @@ nav.desk{display:flex;align-items:center;flex:1;justify-content:center}
 .ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0}
 .ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mob-nav{display:none;position:fixed;top:0;right:-100%;bottom:0;width:300px;background:var(--W);z-index:1000;box-shadow:-8px 0 40px rgba(0,0,0,.13);flex-direction:column;padding:72px 28px 28px;transition:right .32s var(--ease);overflow-y:auto}
-.mob-nav.open{right:0}
+.mob-nav{display:none;position:fixed;top:0;right:0;bottom:0;width:min(300px,90vw);background:var(--W);z-index:1000;box-shadow:-8px 0 40px rgba(0,0,0,.13);flex-direction:column;padding:72px 28px 28px;transition:transform .32s var(--ease);overflow-y:auto;transform:translateX(100%)}
+.mob-nav.open{transform:translateX(0)}
 .mob-nav a{font-size:13px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--F);padding:14px 0;border-bottom:1px solid var(--Bd);display:block;transition:color var(--t)}
 .mob-nav a:hover{color:var(--AuD)}
 .mob-nav .mob-cta{background:var(--F);color:var(--W);text-align:center;padding:14px;margin-top:14px;border-radius:1px;border:none}
@@ -243,7 +243,7 @@ nav.desk{display:flex;align-items:center;flex:1;justify-content:center}
 .sc-name{font-family:var(--sr);font-weight:300;color:var(--W);margin-bottom:7px;line-height:1.2}
 .sc.lg .sc-name{font-size:30px}
 .sc:not(.lg) .sc-name{font-size:19px}
-.sc-desc{font-size:12px;color:rgba(255,255,255,.44);line-height:1.60;margin-bottom:12px;opacity:0;transform:translateY(6px);transition:all var(--t) var(--ease)}
+.sc-desc{font-size:12px;color:rgba(255,255,255,.70);line-height:1.60;margin-bottom:12px;opacity:0;transform:translateY(6px);transition:all var(--t) var(--ease)}
 .sc:hover .sc-desc{opacity:1;transform:translateY(0)}
 .sc-lk{font-size:8px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--Au);display:inline-flex;align-items:center;gap:8px;opacity:0;transform:translateY(5px);transition:all var(--t) var(--ease)}
 .sc-lk::after{content:'';display:block;width:18px;height:1px;background:var(--Au);transition:width var(--t)}
@@ -394,6 +394,10 @@ footer{background:#050C07}
   .ft-bot{padding:20px}
   .strip{padding:0 16px}
   .sl-wrap{aspect-ratio:4/3}
+  .story-p{color:rgba(255,255,255,.78)}
+  .story-pull-title{font-size:17px}
+  .sec{padding:60px 20px}
+  body{width:100%;max-width:100%}
 }
 @media(max-width:600px){
   .why-g{grid-template-columns:1fr}
@@ -405,6 +409,9 @@ footer{background:#050C07}
   .hero-trust{grid-template-columns:repeat(2,1fr)}
   .ht:nth-child(3),.ht:nth-child(4){display:none}
   .ba-stats{grid-template-columns:repeat(3,1fr)}
+  .hero-sub{color:rgba(255,255,255,.85);font-size:15px}
+  .hero-h1{line-height:1.10}
+  .hero-ey-txt{letter-spacing:.18em}
 }
 
 /* ── PROCESS GRID ── */
