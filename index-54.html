@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PrimeTurf SA | Luxury Artificial Grass Gauteng — Precision Installed</title>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PrimeTurf SA">
+<meta property="og:title" content="PrimeTurf SA | Luxury Artificial Grass Gauteng — Precision Installed">
+<meta property="og:description" content="Gauteng's premier luxury artificial grass installer. Estate-grade installations across Sandton, Midrand, Centurion and the finest properties. 12-year warranty. Zero irrigation. HOA approved.">
+<meta property="og:url" content="https://www.primeturf.co.za/index-54.html">
+<meta property="og:image" content="https://www.primeturf.co.za/images/ad-banner.jpg">
+<meta property="og:image:width" content="1536">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:alt" content="PrimeTurf SA — Luxury Artificial Grass Gauteng">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.primeturf.co.za/images/ad-banner.jpg">
 <meta name="description" content="Gauteng&apos;s premier luxury artificial grass installer. Estate-grade installations across Sandton, Midrand, Centurion and the finest properties. 12-year warranty. Zero irrigation. HOA approved.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="128x128" href="/assets/icons/pt-icon-128.png">
@@ -20,14 +32,14 @@
   --ease:cubic-bezier(0.25,0.1,0.25,1); --t:0.26s;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--ss);background:var(--Iv);color:var(--Dk);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{font-family:var(--ss);background:var(--Iv);color:var(--Dk);-webkit-font-smoothing:antialiased;overflow-x:clip}
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ── STRIP ── */
-.strip{background:var(--F);height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;position:relative;z-index:1000}
+.strip{background:var(--F);height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;position:relative;z-index:1000;overflow:hidden;width:100%}
 .strip-l{display:flex;align-items:center;gap:9px;font-family:var(--ss);font-size:11px;color:rgba(255,255,255,.50);letter-spacing:.03em}
 .pulse{width:6px;height:6px;border-radius:50%;background:#4ADE80;flex-shrink:0;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}}
@@ -78,8 +90,8 @@ nav.desk{display:flex;align-items:center;flex:1;justify-content:center}
 .ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0}
 .ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mob-nav{display:none;position:fixed;top:0;right:-100%;bottom:0;width:300px;background:var(--W);z-index:1000;box-shadow:-8px 0 40px rgba(0,0,0,.13);flex-direction:column;padding:72px 28px 28px;transition:right .32s var(--ease);overflow-y:auto}
-.mob-nav.open{right:0}
+.mob-nav{display:none;position:fixed;top:0;right:0;bottom:0;width:min(300px,90vw);background:var(--W);z-index:1000;box-shadow:-8px 0 40px rgba(0,0,0,.13);flex-direction:column;padding:72px 28px 28px;transition:transform .32s var(--ease);overflow-y:auto;transform:translateX(100%)}
+.mob-nav.open{transform:translateX(0)}
 .mob-nav a{font-size:13px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--F);padding:14px 0;border-bottom:1px solid var(--Bd);display:block;transition:color var(--t)}
 .mob-nav a:hover{color:var(--AuD)}
 .mob-nav .mob-cta{background:var(--F);color:var(--W);text-align:center;padding:14px;margin-top:14px;border-radius:1px;border:none}
@@ -243,7 +255,7 @@ nav.desk{display:flex;align-items:center;flex:1;justify-content:center}
 .sc-name{font-family:var(--sr);font-weight:300;color:var(--W);margin-bottom:7px;line-height:1.2}
 .sc.lg .sc-name{font-size:30px}
 .sc:not(.lg) .sc-name{font-size:19px}
-.sc-desc{font-size:12px;color:rgba(255,255,255,.44);line-height:1.60;margin-bottom:12px;opacity:0;transform:translateY(6px);transition:all var(--t) var(--ease)}
+.sc-desc{font-size:12px;color:rgba(255,255,255,.70);line-height:1.60;margin-bottom:12px;opacity:0;transform:translateY(6px);transition:all var(--t) var(--ease)}
 .sc:hover .sc-desc{opacity:1;transform:translateY(0)}
 .sc-lk{font-size:8px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--Au);display:inline-flex;align-items:center;gap:8px;opacity:0;transform:translateY(5px);transition:all var(--t) var(--ease)}
 .sc-lk::after{content:'';display:block;width:18px;height:1px;background:var(--Au);transition:width var(--t)}
@@ -394,6 +406,9 @@ footer{background:#050C07}
   .ft-bot{padding:20px}
   .strip{padding:0 16px}
   .sl-wrap{aspect-ratio:4/3}
+  .story-p{color:rgba(255,255,255,.78)}
+  .story-pull-title{font-size:17px}
+  .sec{padding:60px 20px}
 }
 @media(max-width:600px){
   .why-g{grid-template-columns:1fr}
@@ -405,6 +420,9 @@ footer{background:#050C07}
   .hero-trust{grid-template-columns:repeat(2,1fr)}
   .ht:nth-child(3),.ht:nth-child(4){display:none}
   .ba-stats{grid-template-columns:repeat(3,1fr)}
+  .hero-sub{color:rgba(255,255,255,.85);font-size:15px}
+  .hero-h1{line-height:1.10}
+  .hero-ey-txt{letter-spacing:.18em}
 }
 
 /* ── PROCESS GRID ── */
@@ -819,21 +837,21 @@ select.cf-input{cursor:pointer}
     <h2 class="areas-h2" id="areas-h2">Luxury Estates Across <em>Gauteng</em></h2>
     <div class="chips">
       <a href="page-sandton.html" class="chip">Sandton</a>
-      <a href="contact.html" class="chip">Waterfall City</a>
+      <a href="page-waterfall-city.html" class="chip">Waterfall City</a>
       <a href="page-midrand.html" class="chip">Midrand</a>
-      <a href="contact.html" class="chip">Silver Lakes</a>
+      <a href="page-silver-lakes.html" class="chip">Silver Lakes</a>
       <a href="page-centurion.html" class="chip">Centurion</a>
       <a href="page-fourways.html" class="chip">Fourways</a>
       <a href="page-pretoria-east.html" class="chip">Pretoria East</a>
-      <a href="contact.html" class="chip">Bryanston</a>
-      <a href="contact.html" class="chip">Mooikloof</a>
-      <a href="contact.html" class="chip">Houghton</a>
-      <a href="contact.html" class="chip">Hyde Park</a>
-      <a href="contact.html" class="chip">Edenvale</a>
-      <a href="contact.html" class="chip">Boksburg</a>
-      <a href="contact.html" class="chip">Randburg</a>
-      <a href="contact.html" class="chip">Roodepoort</a>
-      <a href="contact.html" class="chip">Bedfordview</a>
+      <a href="page-bryanston.html" class="chip">Bryanston</a>
+      <a href="page-mooikloof.html" class="chip">Mooikloof</a>
+      <a href="page-houghton.html" class="chip">Houghton</a>
+      <a href="page-hyde-park.html" class="chip">Hyde Park</a>
+      <a href="page-edenvale.html" class="chip">Edenvale</a>
+      <a href="page-boksburg.html" class="chip">Boksburg</a>
+      <a href="page-randburg.html" class="chip">Randburg</a>
+      <a href="page-roodepoort.html" class="chip">Roodepoort</a>
+      <a href="page-bedfordview.html" class="chip">Bedfordview</a>
     </div>
   </div>
 </section>
@@ -849,12 +867,20 @@ select.cf-input{cursor:pointer}
         <div class="atags">
           <a href="page-sandton.html" class="atag">Sandton</a>
           <a href="page-midrand.html" class="atag">Midrand</a>
-          <a href="contact.html" class="atag">Waterfall City</a>
-          <a href="contact.html" class="atag">Silver Lakes</a>
+          <a href="page-waterfall-city.html" class="atag">Waterfall City</a>
+          <a href="page-silver-lakes.html" class="atag">Silver Lakes</a>
           <a href="page-centurion.html" class="atag">Centurion</a>
           <a href="page-fourways.html" class="atag">Fourways</a>
           <a href="page-pretoria-east.html" class="atag">Pretoria East</a>
-          <a href="contact.html" class="atag">Bryanston</a>
+          <a href="page-bryanston.html" class="atag">Bryanston</a>
+          <a href="page-mooikloof.html" class="atag">Mooikloof</a>
+          <a href="page-houghton.html" class="atag">Houghton</a>
+          <a href="page-hyde-park.html" class="atag">Hyde Park</a>
+          <a href="page-edenvale.html" class="atag">Edenvale</a>
+          <a href="page-boksburg.html" class="atag">Boksburg</a>
+          <a href="page-randburg.html" class="atag">Randburg</a>
+          <a href="page-roodepoort.html" class="atag">Roodepoort</a>
+          <a href="page-bedfordview.html" class="atag">Bedfordview</a>
         </div>
       </div>
     </div>
@@ -1030,11 +1056,14 @@ select.cf-input{cursor:pointer}
     </ul></div>
     <div class="ft-col"><h4>Areas</h4><ul>
       <li><a href="page-sandton.html">Sandton</a></li>
-      <li><a href="contact.html">Waterfall City</a></li>
+      <li><a href="page-waterfall-city.html">Waterfall City</a></li>
       <li><a href="page-midrand.html">Midrand</a></li>
-      <li><a href="contact.html">Silver Lakes</a></li>
+      <li><a href="page-silver-lakes.html">Silver Lakes</a></li>
       <li><a href="page-fourways.html">Fourways</a></li>
       <li><a href="page-pretoria-east.html">Pretoria East</a></li>
+      <li><a href="page-bryanston.html">Bryanston</a></li>
+      <li><a href="page-mooikloof.html">Mooikloof</a></li>
+      <li><a href="page-houghton.html">Houghton</a></li>
       <li><a href="#areas">All Areas</a></li>
     </ul></div>
     <div class="ft-col"><h4>Company</h4><ul>
