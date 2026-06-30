@@ -19,8 +19,8 @@
   --ease:cubic-bezier(0.25,0.1,0.25,1); --t:0.26s;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;max-width:100%}
-body{font-family:var(--ss);background:var(--Iv);color:var(--Dk);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip;max-width:100%}
+body{font-family:var(--ss);background:var(--Iv);color:var(--Dk);-webkit-font-smoothing:antialiased;overflow-x:clip}
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
@@ -213,18 +213,6 @@ nav.desk,nav.mob-nav { background: none; padding: 0; }
   <a href="contact.html" onclick="closeNav()">Contact</a>
   <a href="quote-calculator.html" class="mob-cta" onclick="closeNav()">Get a Quote</a>
 </nav>
-<nav class="mob-nav" id="mob-nav" aria-label="Mobile navigation">
-  <button class="mob-close" onclick="closeNav()" aria-label="Close">x</button>
-  <a href="index-54.html" onclick="closeNav()">Home</a>
-  <a href="index-54.html#our-story" onclick="closeNav()">About Us</a>
-  <a href="index-54.html#services" onclick="closeNav()">Services</a>
-  <a href="index-54.html#gallery" onclick="closeNav()">Gallery</a>
-  <a href="index-54.html#areas" onclick="closeNav()">Areas We Serve</a>
-  <a href="blog/index.html" onclick="closeNav()">Insights</a>
-  <a href="contact.html" onclick="closeNav()">Contact</a>
-  <a href="quote-calculator.html" class="mob-cta" onclick="closeNav()">Get a Quote</a>
-</nav>
-
 <div class="hero">
   <div class="eyebrow">Halfway House · Kyalami · Waterfall · Grand Central</div>
   <h1>Artificial Grass Installation<br>in Midrand</h1>
