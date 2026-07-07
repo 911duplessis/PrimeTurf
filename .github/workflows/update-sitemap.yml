@@ -28,6 +28,7 @@ on:
       - "page-roodepoort.html"
       - "page-silver-lakes.html"
       - "page-waterfall-city.html"
+      - "page-steyn-city.html"
 
 permissions:
   contents: write
