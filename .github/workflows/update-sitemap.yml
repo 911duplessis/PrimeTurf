@@ -12,6 +12,22 @@ on:
       - "blog/index.html"
       - "blog/artificial-grass-cost-guide-south-africa.html"
       - "blog/drought-proof-garden-cape-town.html"
+      - "page-sandton.html"
+      - "page-pretoria-east.html"
+      - "page-centurion.html"
+      - "page-midrand.html"
+      - "page-fourways.html"
+      - "page-bryanston.html"
+      - "page-bedfordview.html"
+      - "page-boksburg.html"
+      - "page-edenvale.html"
+      - "page-houghton.html"
+      - "page-hyde-park.html"
+      - "page-mooikloof.html"
+      - "page-randburg.html"
+      - "page-roodepoort.html"
+      - "page-silver-lakes.html"
+      - "page-waterfall-city.html"
 
 permissions:
   contents: write

@@ -7,113 +7,153 @@
   <!-- HOMEPAGE -->
   <url>
     <loc>https://www.primeturf.co.za/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- SERVICE PAGES (to be created) -->
+  <!-- SERVICE / CITY PAGES -->
   <url>
-    <loc>https://www.primeturf.co.za/luxury-estate-artificial-grass-gauteng/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.primeturf.co.za/residential-artificial-grass-gauteng/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.primeturf.co.za/commercial-artificial-grass-gauteng/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://www.primeturf.co.za/artificial-grass-cape-town.html</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.primeturf.co.za/putting-green-installation-gauteng/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://www.primeturf.co.za/artificial-grass-johannesburg.html</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.primeturf.co.za/school-playground-artificial-grass/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- LOCATION PAGES (to be created) -->
-  <url>
-    <loc>https://www.primeturf.co.za/artificial-grass-sandton/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.primeturf.co.za/artificial-grass-pretoria-east/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.primeturf.co.za/artificial-grass-centurion/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.primeturf.co.za/artificial-grass-midrand/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.primeturf.co.za/artificial-grass-fourways/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.primeturf.co.za/artificial-grass-cape-town/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- BLOG (to be created) -->
-  <url>
-    <loc>https://www.primeturf.co.za/blog/artificial-grass-cost-per-sqm-south-africa/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://www.primeturf.co.za/quote-calculator.html</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.primeturf.co.za/blog/artificial-grass-vs-natural-lawn-gauteng/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.primeturf.co.za/blog/how-to-maintain-artificial-grass-south-africa/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://www.primeturf.co.za/contact.html</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
-  <!-- LEGAL -->
+  <!-- GAUTENG LOCATION PAGES -->
   <url>
-    <loc>https://www.primeturf.co.za/privacy-policy/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.primeturf.co.za/page-sandton.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.primeturf.co.za/terms-of-service/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.primeturf.co.za/page-pretoria-east.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-centurion.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-midrand.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-fourways.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-bryanston.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-bedfordview.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-boksburg.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-edenvale.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-houghton.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-hyde-park.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-mooikloof.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-randburg.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-roodepoort.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-silver-lakes.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/page-waterfall-city.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- BLOG -->
+  <url>
+    <loc>https://www.primeturf.co.za/blog/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/blog/artificial-grass-cost-guide-south-africa.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.primeturf.co.za/blog/drought-proof-garden-cape-town.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
