@@ -32,6 +32,7 @@ PAGE_TO_URL = {
     "page-roodepoort.html": "https://www.primeturf.co.za/page-roodepoort.html",
     "page-silver-lakes.html": "https://www.primeturf.co.za/page-silver-lakes.html",
     "page-waterfall-city.html": "https://www.primeturf.co.za/page-waterfall-city.html",
+    "page-steyn-city.html": "https://www.primeturf.co.za/page-steyn-city.html",
 }
 
 
