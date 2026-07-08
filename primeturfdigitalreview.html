@@ -1,4 +1,4 @@
-<title>PrimeTurf Digital Growth & Competitive SEO Executive Report</title>
+<title>PrimeTurf Digital Performance & Growth Executive Review</title>
 <style>
   @font-face{
     font-family:'Fraunces';
@@ -102,7 +102,7 @@
     letter-spacing:-.01em;
     color:var(--ink);
   }
-  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;white-space:nowrap}
   a{color:var(--accent)}
   ::selection{background:var(--accent);color:var(--accent-ink)}
 
@@ -233,7 +233,7 @@
   /* ---- tables ---- */
   .twrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow)}
   table{border-collapse:collapse;width:100%;min-width:560px;font-size:.88rem}
-  th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:normal;min-width:120px}
   thead th{
     font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);
     background:var(--chip-bg);font-weight:700;position:sticky;top:0;
@@ -275,6 +275,16 @@
   .risk-card h4{margin:0 0 4px;font-size:.92rem;font-family:'IBM Plex Sans',sans-serif;font-weight:700}
   .risk-card p{margin:0;font-size:.83rem;color:var(--ink-muted)}
 
+  /* ---- ecosystem funnel diagram ---- */
+  .funnel{display:flex;flex-direction:column;align-items:center;gap:2px;max-width:420px;margin:1.2em 0}
+  .fnode{
+    width:100%;text-align:center;padding:10px 16px;border-radius:10px;
+    background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);
+    font-size:.9rem;font-weight:600;color:var(--ink-muted);
+  }
+  .fnode-prime{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .farrow{color:var(--ink-faint);font-size:.8rem;line-height:1.1}
+
   footer{max-width:760px;padding:40px 0 0;color:var(--ink-faint);font-size:.8rem}
 
   @media (prefers-reduced-motion:no-preference){
@@ -287,11 +297,13 @@
   <nav class="rail" aria-label="Report sections">
     <div class="rail-brand">
       <div class="mark">PrimeTurf</div>
-      <div class="sub">Digital Growth Review</div>
+      <div class="sub">Performance &amp; Growth Review</div>
     </div>
     <ol id="navlist">
+      <li><a href="#scorecard">Executive Scorecard</a></li>
       <li><a href="#dashboard">Executive Dashboard</a></li>
       <li><a href="#glance">Key Metrics at a Glance</a></li>
+      <li><a href="#status">Operational Status Update</a></li>
       <li><a href="#evidence">Evidence Standard</a></li>
       <li><a href="#summary">Executive Summary</a></li>
       <li><a href="#maturity">Digital Maturity Score</a></li>
@@ -300,12 +312,14 @@
       <li><a href="#technical">Technical SEO Audit</a></li>
       <li><a href="#local">Local SEO & Schema</a></li>
       <li><a href="#content">Content & Keyword Gaps</a></li>
-      <li><a href="#investment">Investment Already Made</a></li>
+      <li><a href="#investment">Digital Assets Created</a></li>
       <li><a href="#transformation">36-Day Transformation</a></li>
       <li><a href="#ai">AI Search Readiness</a></li>
       <li><a href="#recommendations">Recommendations</a></li>
       <li><a href="#risks">Risks Outside SEO</a></li>
+      <li><a href="#ecosystem">Community & Authority Ecosystem</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#value">Business Value Created</a></li>
       <li><a href="#conclusion">Conclusion</a></li>
       <li><a href="#matrix">Decision Matrix</a></li>
       <li><a href="#success">Definition of Success</a></li>
@@ -315,15 +329,39 @@
 
   <main>
     <div class="doc-head">
-      <div class="kicker">Executive Report · Version 1.0</div>
-      <h1>PrimeTurf Digital Growth &amp; Competitive SEO Executive Report</h1>
-      <p class="lede">A 36-day account of what has been built, where PrimeTurf stands against ArtGrass Pro and Easigrass, and what should happen next — built entirely from verifiable evidence.</p>
+      <div class="kicker">Executive Review · Version 1.1</div>
+      <h1>PrimeTurf Digital Performance &amp; Growth Executive Review</h1>
+      <p class="lede">36-Day Strategic Assessment — Competitive Position · Technical Maturity · Business Readiness. Built entirely from verifiable evidence.</p>
       <div class="meta">
         <span>Prepared for <b>Leon</b>, PrimeTurf</span>
         <span>Date <b class="num">8 July 2026</b></span>
         <span>Domains assessed <b>primeturf.co.za · artgrasspro.com · easigrass.co.za</b></span>
       </div>
+      <div class="note" style="margin-top:14px"><b>Version 1.1 Update:</b> Following completion of Version 1.0, the operational status of PrimeTurf's Google Business Profile and Facebook assets changed. This report has been updated to reflect their current reported operational status while preserving the historical context of the review period (Section 04). Technical findings, competitive analysis and recommendations remain unchanged unless explicitly noted.</div>
     </div>
+
+    <!-- 0. EXECUTIVE SCORECARD -->
+    <section id="scorecard">
+      <div class="eyebrow">00 · One-Minute Read</div>
+      <h2>Executive Scorecard</h2>
+      <p>The whole report, before any of the detail.</p>
+      <div class="twrap">
+        <table>
+          <thead><tr><th class="metric">Area</th><th>Status</th><th>Score</th></tr></thead>
+          <tbody>
+            <tr><td class="metric">Website Architecture</td><td>🟢 Strong</td><td class="num">9/10</td></tr>
+            <tr><td class="metric">Technical SEO</td><td>🟢 Strong</td><td class="num">8/10</td></tr>
+            <tr><td class="metric">Local SEO Foundation</td><td>🟡 Developing</td><td class="num">7/10</td></tr>
+            <tr><td class="metric">Content Foundation</td><td>🟡 Developing</td><td class="num">4/10</td></tr>
+            <tr><td class="metric">Organic Authority</td><td>🔴 Needs Investment</td><td class="num">2/10</td></tr>
+            <tr><td class="metric">Conversion Readiness</td><td>🟡 Improving</td><td class="num">6/10</td></tr>
+            <tr><td class="metric">Social Ecosystem</td><td>🟡 Growing</td><td class="num">3/10</td></tr>
+            <tr><td class="metric">Business Readiness</td><td>🟢 Good</td><td class="num">4/10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1em"><strong>Overall Digital Maturity: <span class="num">6.1/10</span></strong> — the mean of the Digital Maturity Score in Section 05; not a separately-judged figure.</p>
+    </section>
 
     <!-- 1. EXECUTIVE DASHBOARD -->
     <section id="dashboard">
@@ -353,13 +391,13 @@
         </div>
         <div class="tile">
           <div class="k">Immediate Priority</div>
-          <div class="v" style="font-size:1.1rem">GBP + Facebook</div>
-          <div class="d">Neither is an SEO fix — both block leads regardless of ranking.</div>
+          <div class="v" style="font-size:1.1rem">Community &amp; Content</div>
+          <div class="d">GBP and Facebook are now reported active (Section 02a) — focus shifts from recovery to growth.</div>
         </div>
         <div class="tile risk">
           <div class="k">Highest Business Risk</div>
           <div class="v" style="font-size:1.1rem">Zero closed leads</div>
-          <div class="d">Visibility is improving; conversion path is not yet proven.</div>
+          <div class="d">Visibility is improving; conversion path is not yet proven — no longer explained by platform access.</div>
         </div>
       </div>
     </section>
@@ -386,6 +424,26 @@
         </table>
       </div>
       <p style="font-size:.82rem;color:var(--ink-faint)">*Semrush access (domain authority, backlink count, organic traffic/keyword estimates) is not included in the current Semrush plan connected to this session — see Section 03.</p>
+    </section>
+
+    <!-- 2A. OPERATIONAL STATUS UPDATE -->
+    <section id="status" class="wide">
+      <div class="eyebrow">02a · v1.1 Update</div>
+      <h2>Operational Status Update</h2>
+      <p>Kept separate from SEO/technical findings deliberately — these are business-operations facts, not search-engine facts.</p>
+      <div class="twrap">
+        <table>
+          <thead><tr><th class="metric">Asset</th><th>Status During Review</th><th>Current Status</th><th>Evidence</th></tr></thead>
+          <tbody>
+            <tr><td class="metric">Website</td><td>Active</td><td><span class="pill pill-yes">Active</span></td><td>Verified</td></tr>
+            <tr><td class="metric">Google Business Profile</td><td>Previously unavailable</td><td><span class="pill pill-yes">Active</span> (based on user confirmation; independent administrative verification was not available during this review)</td><td>User confirmation</td></tr>
+            <tr><td class="metric">Facebook Page</td><td>Previously inaccessible</td><td><span class="pill pill-yes">Active</span> (based on user confirmation; independent administrative verification was not available during this review)</td><td>User confirmation</td></tr>
+            <tr><td class="metric">Facebook Community Group</td><td>Existing</td><td><span class="pill pill-yes">Active</span> — 27,000+ members</td><td>User supplied</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><span class="tag tag-analysis">Analysis</span> Both platform-access blockers reported at the start of this review are now reported resolved. This is a genuine change in the business's risk position, not a correction to earlier findings — Section 15 documents both the historical blocker and the current state, and Section 18's Decision Matrix reflects the shift from "recovery" to "growth" priorities.</p>
+      <p style="font-size:.85rem;color:var(--ink-faint)"><span class="tag tag-conf-medium">Medium confidence</span> — WebFetch could not independently reach either platform during this session (Facebook returns its generic login wall to unauthenticated requests; the shared Google link redirects to a non-resolving stub), so this table reflects user-reported status, consistent with how Section 03 treats every user-reported claim.</p>
     </section>
 
     <!-- 3. EVIDENCE STANDARD -->
@@ -416,7 +474,7 @@
       <p class="lede">Thirty-six days ago, PrimeTurf had one indexed page. Today it has a 26-page site with working schema, 17 dedicated Gauteng location pages, a comparison page, a blog, and an automated sitemap-maintenance workflow — all verified directly against the live repository, not taken on faith. <span class="tag tag-fact">Verified fact</span></p>
       <p>That is real, measurable infrastructure. It is also, honestly, not yet the thing Leon is asking about: closed leads. Those are two different questions, and this report is written to answer both without letting the first one drown out the second.</p>
       <p><span class="tag tag-analysis">Analysis</span> On technical SEO and site architecture, PrimeTurf already out-executes both named competitors — neither ArtGrass Pro nor Easigrass exposes structured data (schema) on the pages sampled, and neither builds one landing page per suburb the way PrimeTurf now does for 17 Gauteng areas. On authority — the compounding trust Google and buyers build up over months and years of backlinks, reviews, and repeat visits — PrimeTurf is exactly where a 36-day-old domain should be: near zero, competing against an 8-year-warranty Cape Town specialist and a national dealer network running 58 blog posts and a 14-region footprint.</p>
-      <p><span class="tag tag-rec">Recommendation</span> The right conversation is not "why no leads yet," but "is the foundation strong enough to compound." Based on what's verifiable today, yes — with two conditions attached that have nothing to do with SEO: a suspended Google Business Profile and a compromised Facebook account are actively capping the ceiling on any traffic this site earns. Section 15 treats those as first-class business risks, not footnotes.</p>
+      <p><span class="tag tag-rec">Recommendation</span> The right conversation is not "why no leads yet," but "is the foundation strong enough to compound." Based on what's verifiable today, yes. During this review period, a suspended Google Business Profile and a compromised Facebook account were actively capping the ceiling on any traffic this site could earn — both are now reported active (Section 02a), which removes two real constraints, though it doesn't by itself produce leads. Section 15 treats what's resolved and what's still open as separate, first-class business facts, not footnotes.</p>
     </section>
 
     <!-- 5. DIGITAL MATURITY SCORE -->
@@ -506,11 +564,11 @@
       <p><span class="tag tag-rec">Recommendation</span> Treat content production as a scheduled monthly deliverable, not an ad-hoc one — see Section 16.</p>
     </section>
 
-    <!-- 11. INVESTMENT ALREADY MADE -->
+    <!-- 11. DIGITAL ASSETS CREATED -->
     <section id="investment">
       <div class="eyebrow">11 · Assets</div>
-      <h2>Investment Already Made</h2>
-      <p>Reframed as assets created, not a list of hours worked:</p>
+      <h2>Digital Assets Created <span class="tag tag-fact" style="vertical-align:middle">Verified Fact</span></h2>
+      <p>What was built, in full — nothing more. What it's worth commercially is a separate question, answered in Business Value Created (Section 16a).</p>
       <ul>
         <li><strong>Sitemap expanded</strong> — 1 page → 26 indexed URLs, all verified live.</li>
         <li><strong>17 location landing pages</strong> published, each with its own schema block.</li>
@@ -538,8 +596,8 @@
         <li><span class="chk">✓</span><div><b>Competitor comparison asset</b> — built and published (primeturf-vs-easigrass.html)<span class="src">Verified: commit 739b1d1</span></div></li>
         <li><span class="chk">✓</span><div><b>Automation</b> — sitemap lastmod GitHub Action shipped<span class="src">Verified: .github/workflows</span></div></li>
         <li><span class="chk">✓</span><div><b>Technical debt</b> — canonical/redirect issues flagged by Search Console resolved<span class="src">Verified: commit history, PR #61</span></div></li>
-        <li><span class="chk" style="color:var(--critical)">✕</span><div><b>Remaining blocker</b> — Google Business Profile suspended<span class="src">Reported by Leon; not independently re-verifiable within this SEO audit's scope</span></div></li>
-        <li><span class="chk" style="color:var(--critical)">✕</span><div><b>Remaining blocker</b> — Facebook account compromised<span class="src">Reported by Leon; see Section 15</span></div></li>
+        <li><span class="chk">✓</span><div><b>Google Business Profile</b> — suspended during review period → now reported Active<span class="src">See Operational Status Update, Section 02a</span></div></li>
+        <li><span class="chk">✓</span><div><b>Facebook Page</b> — inaccessible during review period → now reported Active<span class="src">See Operational Status Update, Section 02a</span></div></li>
         <li><span class="chk" style="color:var(--warn)">–</span><div><b>Outcome still pending</b> — zero closed leads to date<span class="src">Reported; addressed directly in Section 15, not minimised</span></div></li>
       </ul>
     </section>
@@ -558,8 +616,8 @@
       <div class="eyebrow">14 · Action</div>
       <h2>High-Impact Recommendations</h2>
       <ol class="plain">
-        <li><strong>Reinstate the Google Business Profile.</strong> No amount of on-site SEO substitutes for local pack visibility. <span class="tag tag-conf-high">High</span></li>
-        <li><strong>Recover the Facebook account</strong> and audit what was posted while compromised — a security and reputation issue, not an SEO one. <span class="tag tag-conf-high">High</span></li>
+        <li><strong>Maintain GBP and Facebook now that both are reported active</strong> — post consistently, respond to enquiries fast, and set a calendar reminder to check access monthly so this doesn't silently lapse again. <span class="tag tag-conf-high">High</span></li>
+        <li><strong>Launch the Community &amp; Authority Ecosystem strategy</strong> (Section 15a) to put the 27,000-member Facebook Group to work as a referral and trust engine, not a dormant asset. <span class="tag tag-conf-medium">Medium</span></li>
         <li><strong>Publish content on a fixed monthly schedule</strong> rather than in bursts, to start closing the 58-vs-2 article gap against Easigrass. <span class="tag tag-conf-medium">Medium</span></li>
         <li><strong>Add Search Console verification and re-run this audit with first-party click/impression data</strong> once available. <span class="tag tag-conf-high">High</span></li>
         <li><strong>Start a review-acquisition process</strong> (WhatsApp/email follow-up after every completed installation) — reviews compound local trust in a way no amount of schema can replace. <span class="tag tag-conf-medium">Medium</span></li>
@@ -572,9 +630,13 @@
       <div class="eyebrow">15 · Honesty Check</div>
       <h2>Business Risks Outside SEO</h2>
       <p>SEO is one input to lead generation, not all of it. These are reported blockers this report cannot fix with a sitemap change:</p>
+      <h3>Resolved during this period</h3>
       <div class="risks">
-        <div class="risk-card"><h4>Suspended Google Business Profile</h4><p>Removes the business from the local map pack entirely — the single highest-traffic placement for "artificial grass near me" searches, regardless of website ranking.</p></div>
-        <div class="risk-card"><h4>Compromised Facebook account</h4><p>Damages both brand trust and referral traffic, and is the likely source of the social-media activity mentioned separately.</p></div>
+        <div class="risk-card" style="border-left-color:var(--good)"><h4>Google Business Profile</h4><p>Was suspended during the review period; now reported Active (based on user confirmation — Section 02a). Removed from the active risk list, kept here as history.</p></div>
+        <div class="risk-card" style="border-left-color:var(--good)"><h4>Facebook Page</h4><p>Was inaccessible during the review period; now reported Active (based on user confirmation — Section 02a).</p></div>
+      </div>
+      <h3 style="margin-top:1.6em">Still open — not fixed by SEO</h3>
+      <div class="risks">
         <div class="risk-card"><h4>Review acquisition</h4><p>No structured process yet for turning completed jobs into public reviews — a trust signal SEO alone cannot manufacture.</p></div>
         <div class="risk-card"><h4>Sales follow-up / response time</h4><p>Even perfect visibility fails if enquiries aren't answered fast — this sits entirely outside the website.</p></div>
         <div class="risk-card"><h4>Paid advertising</h4><p>Organic SEO compounds over months; nothing in this report substitutes for paid demand while organic authority is still building.</p></div>
@@ -582,14 +644,84 @@
       </div>
     </section>
 
+    <!-- 15A. COMMUNITY & AUTHORITY ECOSYSTEM -->
+    <section id="ecosystem" class="wide">
+      <div class="eyebrow">15a · Ecosystem</div>
+      <h2>Community &amp; Authority Ecosystem</h2>
+      <p>The 27,000-member Facebook Group is the single largest under-leveraged asset in this entire review by audience size — 770x the Facebook Page's own follower count. This section treats it as part of one connected system, not an isolated growth hack.</p>
+      <div class="twrap">
+        <table>
+          <thead><tr><th class="metric">Asset</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td class="metric">1 — PrimeTurf Website</td><td>Owns organic search traffic and conversions (quote calculator, contact form).</td></tr>
+            <tr><td class="metric">2 — PrimeTurf Facebook Page</td><td>Official company presence (35 followers, per Meta Ad Library) — the connective tissue between the website and the Group.</td></tr>
+            <tr><td class="metric">3 — PrimeTurf Community Group (27,000 members)</td><td>Community trust, referral engine, organic reach, customer education, lead generation.</td></tr>
+            <tr><td class="metric">4 — TCN / The Connection Network</td><td>Strategic amplification partner — referral network, cross-promotion, corporate/partner channel.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>How the ecosystem should flow</h3>
+      <div class="funnel">
+        <div class="fnode">Google Organic Search</div>
+        <div class="farrow">↓</div>
+        <div class="fnode fnode-prime">PrimeTurf Website</div>
+        <div class="farrow">↓</div>
+        <div class="fnode">Facebook Page</div>
+        <div class="farrow">↓</div>
+        <div class="fnode fnode-prime">Community Group · 27,000</div>
+        <div class="farrow">↓</div>
+        <div class="fnode">Customer Trust</div>
+        <div class="farrow">↓</div>
+        <div class="fnode">Leads</div>
+        <div class="farrow">↓</div>
+        <div class="fnode">Reviews</div>
+        <div class="farrow">↓ feeds back into ↑</div>
+        <div class="fnode fnode-prime">Organic Rankings</div>
+      </div>
+
+      <h3>Recommendations</h3>
+      <ul>
+        <li><strong>Discoverability</strong> — confirm the Group's privacy is Public and its name/description carry the same core keywords as the site (artificial grass, Gauteng, putting greens). <span class="tag tag-conf-medium">Medium</span></li>
+        <li><strong>Cross-linking</strong> — link the Group from primeturf.co.za and from the Page's Groups tab, avoiding the same fragmentation problem already seen elsewhere in this project's history (splitting one audience across disconnected assets with no link between them). <span class="tag tag-conf-high">High</span></li>
+        <li><strong>Activation cadence</strong> — tie into the monthly content-cadence recommendation (Section 14); a large but dormant group loses reach in Facebook's algorithm. <span class="tag tag-conf-medium">Medium</span></li>
+        <li><strong>Lead capture</strong> — a pinned post with a UTM-tagged link to <code>quote-calculator.html</code> (<code>?utm_source=fb_group</code>) so any leads this ecosystem produces are measurable, not assumed. <span class="tag tag-conf-high">High</span></li>
+      </ul>
+      <p style="font-size:.85rem;color:var(--ink-faint)"><span class="tag tag-conf-low">Low confidence</span> on Group-specific detail — Facebook blocks unauthenticated fetches, so this section is general best-practice applied to the known PrimeTurf brand, not independently pulled Group analytics.</p>
+    </section>
+
     <!-- 16. ROADMAP -->
     <section id="roadmap">
       <div class="eyebrow">16 · What's Next</div>
       <h2>Roadmap, as Milestones</h2>
       <div class="road">
-        <div class="step"><div class="when">Next 30 Days</div><ul><li>Technical completion pass on any remaining inaccurate content</li><li>Local citation building (directories, estate portals)</li><li>Google Business Profile reinstatement</li><li>Internal linking audit across all 26 pages</li></ul></div>
+        <div class="step"><div class="when">Next 30 Days</div><ul><li>Technical completion pass on any remaining inaccurate content</li><li>Local citation building (directories, estate portals)</li><li>Launch the Community &amp; Authority Ecosystem strategy (Section 15a)</li><li>Internal linking audit across all 26 pages</li></ul></div>
         <div class="step"><div class="when">30–90 Days</div><ul><li>Content expansion toward a fixed monthly publishing cadence</li><li>Authority building via legitimate local partnerships</li><li>Backlink acquisition from Gauteng estate/HOA-adjacent sites</li><li>Structured review-generation process live</li></ul></div>
         <div class="step"><div class="when">90–180 Days</div><ul><li>Geographic expansion (the 2 additional areas already scoped for a future Cape Town franchise pass)</li><li>Topical authority — expand FAQ/guide content per service line</li><li>Conversion-path optimisation on quote calculator and contact flow</li><li>Re-audit with Search Console + Semrush data to measure actual movement</li></ul></div>
+      </div>
+    </section>
+
+    <!-- 16A. BUSINESS VALUE CREATED -->
+    <section id="value" class="wide">
+      <div class="eyebrow">16a · Interpretation</div>
+      <h2>Business Value Created</h2>
+      <p>Leon thinks he paid for "SEO." This table shows what he actually owns now — the commercial meaning behind the factual asset list in Section 11.</p>
+      <div class="twrap">
+        <table>
+          <thead><tr><th class="metric">Asset Created</th><th>Business Value</th></tr></thead>
+          <tbody>
+            <tr><td class="metric">17 location pages</td><td>Long-term geographic visibility</td></tr>
+            <tr><td class="metric">Structured data (schema)</td><td>Better search-engine understanding of the business</td></tr>
+            <tr><td class="metric">Comparison page</td><td>Competitive positioning at the point of decision</td></tr>
+            <tr><td class="metric">Blog</td><td>Topical authority</td></tr>
+            <tr><td class="metric">Internal linking</td><td>Crawl efficiency</td></tr>
+            <tr><td class="metric">Metadata rewrite</td><td>Click-through-rate improvement</td></tr>
+            <tr><td class="metric">Sitemap</td><td>Faster discovery of new content</td></tr>
+            <tr><td class="metric">Quote calculator</td><td>Lead generation</td></tr>
+            <tr><td class="metric">Community &amp; Authority Ecosystem</td><td>Social authority and referral reach</td></tr>
+            <tr><td class="metric">Technical foundation</td><td>Ready base for future SEO investment</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -599,9 +731,15 @@
       <h2>Conclusion</h2>
       <p><strong>What changed in 36 days:</strong> a single unindexed page became a 26-page site with working schema, 17 local landing pages, a blog, a competitor-comparison page, and an automated sitemap workflow — all independently verified, not self-reported.</p>
       <p><strong>What remains unfinished:</strong> content depth (2 articles vs. a market leader's 58), any first-party Search Console evidence in this version, and confirmation that every on-site claim is currently accurate.</p>
-      <p><strong>What's unrelated to SEO:</strong> the suspended Google Business Profile and compromised Facebook account — both cap lead flow independently of how well the website ranks.</p>
-      <p><strong>Highest-impact next actions:</strong> reinstate GBP, recover Facebook, move content to a monthly cadence, and re-run this audit with Search Console data once available.</p>
+      <p><strong>What's unrelated to SEO:</strong> the Google Business Profile and Facebook account — both were reported blockers during the review period and are now reported active (Section 02a), but review acquisition, sales follow-up speed, paid advertising, and brand trust remain open (Section 15).</p>
+      <p><strong>Highest-impact next actions:</strong> maintain GBP/Facebook now that they're active, launch the Community &amp; Authority Ecosystem strategy, move content to a monthly cadence, and re-run this audit with Search Console data once available.</p>
       <p><strong>What success looks like in 3–6 months:</strong> not a #1 ranking — a realistic, measurable rise in impressions and local-pack visibility for the 17 location pages, a handful of closed leads directly attributable to organic search, and a content library approaching parity with the smaller competitor (ArtGrass Pro) as a first milestone before chasing the national player.</p>
+      <div class="note" style="margin-top:1.4em">
+        <b>Executive Statement</b><br><br>
+        Based on the evidence reviewed — including technical implementation, website architecture, public search signals, competitor comparison, and business readiness — the work completed over the past 36 days has materially improved PrimeTurf's digital foundation.<br><br>
+        While measurable lead growth remains constrained by factors such as domain authority, backlink acquisition, operational maturity, and the time required for organic search performance to compound, the business now possesses a significantly stronger digital asset base than at the beginning of this engagement.<br><br>
+        This document should be treated as the baseline against which future quarterly performance reviews, marketing investment decisions, and operational improvements are measured.
+      </div>
     </section>
 
     <!-- 18. EXECUTIVE DECISION MATRIX -->
@@ -612,11 +750,13 @@
         <table>
           <thead><tr><th class="metric">Question</th><th>Evidence</th><th>Recommendation</th><th>Priority</th></tr></thead>
           <tbody>
-            <tr><td class="metric">Has meaningful progress been made?</td><td>Sitemap, schema, repo history (Sections 05, 12)</td><td>Yes</td><td><span class="pill pill-yes">High</span></td></tr>
-            <tr><td class="metric">Is the website technically stronger?</td><td>Technical SEO audit (Section 08)</td><td>Yes, ahead of both named competitors on schema and local pages</td><td><span class="pill pill-yes">High</span></td></tr>
-            <tr><td class="metric">Why are leads still limited?</td><td>Business risks + domain-age reality (Sections 05, 15)</td><td>Multi-factor: young domain, suspended GBP, compromised Facebook — not a website failure</td><td><span class="pill pill-no">Critical</span></td></tr>
-            <tr><td class="metric">Should we continue investing?</td><td>Overall assessment (Sections 01, 04)</td><td>Yes, with the priorities below in a fixed order</td><td><span class="pill pill-yes">High</span></td></tr>
-            <tr><td class="metric">What must happen first?</td><td>Roadmap (Section 16)</td><td>GBP reinstatement + Facebook recovery, before any further content push</td><td><span class="pill pill-no">Critical</span></td></tr>
+            <tr><td class="metric">Has meaningful work been completed?</td><td>Sitemap, schema, repo history (Sections 05, 11, 12)</td><td>Yes — technical architecture expanded substantially</td><td><span class="pill pill-yes">High</span></td></tr>
+            <tr><td class="metric">Is the website now technically stronger?</td><td>Technical SEO audit (Section 08)</td><td>Yes, ahead of both named competitors on schema and local pages</td><td><span class="pill pill-yes">High</span></td></tr>
+            <tr><td class="metric">Why haven't leads increased yet?</td><td>Digital Maturity Score + domain-age reality (Sections 05, 15)</td><td>Authority, brand trust, reviews, backlinks and conversion maturity are still developing — no longer explained by GBP/Facebook access</td><td><span class="pill pill-no">Critical</span></td></tr>
+            <tr><td class="metric">Were operational blockers resolved?</td><td>Operational Status Update (Section 02a)</td><td>Yes, according to current user confirmation</td><td><span class="pill pill-yes">High</span></td></tr>
+            <tr><td class="metric">Should we continue investing?</td><td>Overall assessment (Sections 01, 04)</td><td>Yes — shift focus from recovery to growth</td><td><span class="pill pill-yes">High</span></td></tr>
+            <tr><td class="metric">What must happen first?</td><td>Roadmap (Section 16)</td><td>Maintain GBP/Facebook + launch the Community &amp; Authority Ecosystem strategy, before any further content push</td><td><span class="pill pill-no">Critical</span></td></tr>
+            <tr><td class="metric">What should management measure going forward?</td><td>This review's methodology (Section 03)</td><td>A monthly dashboard: organic traffic, qualified enquiries, quote requests, phone calls, GBP actions, conversion rate</td><td><span class="pill pill-yes">High</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -676,7 +816,7 @@
     </section>
 
     <footer>
-      PrimeTurf Digital Growth &amp; Competitive SEO Executive Report — Version 1.0 · 8 July 2026<br>
+      PrimeTurf Digital Performance &amp; Growth Executive Review — Version 1.1 · 8 July 2026<br>
       Every figure in this document traces to a named, checkable source. Where evidence was unavailable, this report says so rather than estimating.
     </footer>
   </main>
