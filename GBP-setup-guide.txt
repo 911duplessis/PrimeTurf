@@ -9,7 +9,7 @@ CATEGORY (Secondary): Landscaping Supply Store / Turf Supplier
 SHORT NAME: PrimeTurf
 
 DESCRIPTION (750 chars max):
-PrimeTurf is Gauteng's premium artificial grass installation company, trusted by distinguished estates, residential properties, schools, and commercial developments across Pretoria, Sandton, Midrand, Centurion, Fourways, and beyond. Every installation is backed by an 8-year manufacturer's warranty and a 24-month workmanship guarantee.
+PrimeTurf is Gauteng's premium artificial grass installation company, trusted by distinguished estates, residential properties, schools, and commercial developments across Pretoria, Sandton, Midrand, Centurion, Fourways, and beyond. Every installation is backed by a 6-year manufacturer's warranty and a 24-month workmanship guarantee.
 
 We install luxury estate lawns, pool surrounds, entertainment areas, putting greens, school grounds, play areas, and commercial common areas. Our four-stage process — consultation, design and quote, site preparation, and final inspection — ensures precision delivery on every project.
 
@@ -51,7 +51,7 @@ Sunday: By appointment
 
 Q&A TO PRE-POPULATE (add these to GBP Q&A section):
 Q: Do you offer a warranty on artificial grass installation?
-A: Yes. PrimeTurf provides an 8-year manufacturer's warranty on all turf products and a 24-month installation guarantee covering all workmanship.
+A: Yes. PrimeTurf provides a 6-year manufacturer's warranty on all turf products and a 24-month installation guarantee covering all workmanship.
 
 Q: Do you serve all of Gauteng?
 A: Yes. PrimeTurf services all Gauteng suburbs including Pretoria East, Sandton, Midrand, Centurion, Fourways, and Johannesburg. We also serve Cape Town.
@@ -64,7 +64,7 @@ A: Most residential installations take 1 to 3 days. Larger commercial or estate 
 
 FIRST POST TO PUBLISH (Google Business Post):
 Title: Free Site Consultation — Artificial Grass Across Gauteng
-Body: PrimeTurf is now serving all of Gauteng — from Waterkloof Ridge to Sandton's finest estates. Get a free on-site consultation and itemised quote within 24 hours. 8-year warranty. Call 076 804 8868 or WhatsApp us today.
+Body: PrimeTurf is now serving all of Gauteng — from Waterkloof Ridge to Sandton's finest estates. Get a free on-site consultation and itemised quote within 24 hours. 6-year warranty. Call 076 804 8868 or WhatsApp us today.
 CTA: Book now → https://wa.me/27768048868
 
 PHOTO UPLOAD CHECKLIST (minimum 20 photos for strong GBP):

@@ -140,7 +140,7 @@ providing:
 
 — Supply and installation of specification-grade synthetic turf
 — Architect and engineer specification support (data sheets, installation protocols)
-— 8-year manufacturer warranty + 24-month workmanship guarantee on all installations
+— 6-year manufacturer warranty + 24-month workmanship guarantee on all installations
 — References from comparable estate and development projects
 
 For developers, we offer competitive volume pricing, early-stage specification support, 
@@ -175,7 +175,7 @@ Key data points that drive the story:
 — Natural lawn in Cape Town uses 150–300L per m² per month in summer
 — Level 6 water restrictions ban outdoor watering entirely — killing natural lawns citywide
 — The cost to replace dead lawn in Cape Town: R4,000–R8,000 per occurrence
-— Artificial grass: zero water after installation, 8-year warranty, permanent restriction immunity
+— Artificial grass: zero water after installation, 6-year warranty, permanent restriction immunity
 — Dam level recovery does not eliminate the risk — the infrastructure pressure cycle repeats every 5–8 years
 
 This story has a strong data backbone, a clear social relevance angle, and a solution 

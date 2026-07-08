@@ -255,7 +255,7 @@ log(f"Replaced {count_arch_low} instances of 'architectural' → 'professional'"
 
 # Proof text replacement
 old_proof = "Trusted by Gauteng's Most Distinguished Properties"
-new_proof = "8 Year Manufacturer's Warranty"
+new_proof = "6 Year Manufacturer's Warranty"
 if old_proof in content:
     content = content.replace(old_proof, new_proof)
     log(f"Proof text: '{old_proof}' → '{new_proof}'")
@@ -497,7 +497,7 @@ else:
 
 # Add process-guarantee div after closing </div> of .process-steps, before wrap close
 process_guarantee_block = '''    <div class="process-guarantee">
-      <p>8 Year Manufacturer's Warranty &nbsp;·&nbsp; 24 Month Installation Guarantee</p>
+      <p>6 Year Manufacturer's Warranty &nbsp;·&nbsp; 24 Month Installation Guarantee</p>
       <p><em>Your Outdoor Legacy Begins.</em></p>
     </div>'''
 
