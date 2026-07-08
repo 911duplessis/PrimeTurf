@@ -285,6 +285,19 @@
   .fnode-prime{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
   .farrow{color:var(--ink-faint);font-size:.8rem;line-height:1.1}
 
+  /* ---- domain registration timeline ---- */
+  .timeline{max-width:760px;margin:1.4em 0}
+  .tl-row{display:grid;grid-template-columns:130px 1fr 150px;align-items:center;gap:12px;margin:14px 0}
+  @media (max-width:640px){.tl-row{grid-template-columns:1fr;text-align:left;gap:4px}}
+  .tl-label{font-size:.85rem;font-weight:600;color:var(--ink)}
+  .tl-track{position:relative;height:6px;border-radius:999px;background:var(--chip-bg)}
+  .tl-dot{position:absolute;top:50%;width:14px;height:14px;border-radius:50%;background:var(--accent-2);border:2px solid var(--panel);transform:translate(-50%,-50%);box-shadow:var(--shadow)}
+  .tl-dot-prime{background:var(--accent)}
+  .tl-date{font-size:.8rem;color:var(--ink-muted);font-variant-numeric:tabular-nums;text-align:right}
+  @media (max-width:640px){.tl-date{text-align:left}}
+  .tl-axis{display:flex;justify-content:space-between;margin:6px 130px 0 0;padding-left:142px;font-size:.72rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em}
+  @media (max-width:640px){.tl-axis{padding-left:0;margin-right:0}}
+
   footer{max-width:760px;padding:40px 0 0;color:var(--ink-faint);font-size:.8rem}
 
   @media (prefers-reduced-motion:no-preference){
@@ -312,6 +325,7 @@
       <li><a href="#technical">Technical SEO Audit</a></li>
       <li><a href="#local">Local SEO & Schema</a></li>
       <li><a href="#content">Content & Keyword Gaps</a></li>
+      <li><a href="#domain">Domain Registration</a></li>
       <li><a href="#investment">Digital Assets Created</a></li>
       <li><a href="#transformation">36-Day Transformation</a></li>
       <li><a href="#ai">AI Search Readiness</a></li>
@@ -419,7 +433,7 @@
             <tr><td class="metric">Blog / content articles</td><td class="prime num">2 published</td><td class="num">0 detected</td><td class="num">58</td></tr>
             <tr><td class="metric">Published warranty term</td><td class="prime num">12 years</td><td class="num">8 years</td><td class="num">8 years</td></tr>
             <tr><td class="metric">HOA / ARC submission service</td><td class="prime"><span class="pill pill-yes">Included</span></td><td><span class="pill pill-no">Not mentioned</span></td><td><span class="pill pill-no">Not mentioned</span></td></tr>
-            <tr><td class="metric">Domain age</td><td class="prime num">~36 days</td><td class="cell-na">Not disclosed</td><td class="cell-na">Established national brand</td></tr>
+            <tr><td class="metric">Domain registered</td><td class="prime num">1 Jun 2026 (~37 days)</td><td class="num">1 Oct 2025 (~9 months)</td><td class="num">8 May 2012 (~14 years)</td></tr>
           </tbody>
         </table>
       </div>
@@ -472,6 +486,7 @@
       <div class="eyebrow">04 · Summary</div>
       <h2>Executive Summary</h2>
       <p class="lede">Thirty-six days ago, PrimeTurf had one indexed page. Today it has a 26-page site with working schema, 17 dedicated Gauteng location pages, a comparison page, a blog, and an automated sitemap-maintenance workflow — all verified directly against the live repository, not taken on faith. <span class="tag tag-fact">Verified fact</span></p>
+      <p>This isn't an existing business getting a website refresh. Registry data plus Leon's own confirmation (Section 10a) place the domain, the business, and the digital transformation at the same starting line — 1 June 2026. Everything catalogued in this report was built from zero in that window, not layered onto years of pre-existing infrastructure.</p>
       <p>That is real, measurable infrastructure. It is also, honestly, not yet the thing Leon is asking about: closed leads. Those are two different questions, and this report is written to answer both without letting the first one drown out the second.</p>
       <p><span class="tag tag-analysis">Analysis</span> On technical SEO and site architecture, PrimeTurf already out-executes both named competitors — neither ArtGrass Pro nor Easigrass exposes structured data (schema) on the pages sampled, and neither builds one landing page per suburb the way PrimeTurf now does for 17 Gauteng areas. On authority — the compounding trust Google and buyers build up over months and years of backlinks, reviews, and repeat visits — PrimeTurf is exactly where a 36-day-old domain should be: near zero, competing against an 8-year-warranty Cape Town specialist and a national dealer network running 58 blog posts and a 14-region footprint.</p>
       <p><span class="tag tag-rec">Recommendation</span> The right conversation is not "why no leads yet," but "is the foundation strong enough to compound." Based on what's verifiable today, yes. During this review period, a suspended Google Business Profile and a compromised Facebook account were actively capping the ceiling on any traffic this site could earn — both are now reported active (Section 02a), which removes two real constraints, though it doesn't by itself produce leads. Section 15 treats what's resolved and what's still open as separate, first-class business facts, not footnotes.</p>
@@ -510,6 +525,7 @@
           <thead><tr><th class="metric">Category</th><th class="prime">PrimeTurf</th><th>ArtGrass Pro</th><th>Easigrass</th></tr></thead>
           <tbody>
             <tr><td class="metric">Positioning</td><td class="prime">Gauteng luxury-estate specialist</td><td>General Cape Town supplier</td><td>National dealer network, "No.1 brand" claim</td></tr>
+            <tr><td class="metric">Domain registered</td><td class="prime num">1 Jun 2026 (~37 days)</td><td class="num">1 Oct 2025 (~9 months)</td><td class="num">8 May 2012 (~14 years)</td></tr>
             <tr><td class="metric">Site architecture</td><td class="prime">26 pages, clear service/location hierarchy</td><td>11 pages, includes 2 apparent duplicate pages (Products-1, Privacy-Policy-1)</td><td>WordPress + Rank Math, 100+ URLs across pages/products/posts</td></tr>
             <tr><td class="metric">Local SEO pages</td><td class="prime">17 dedicated suburb pages</td><td>None found</td><td>1 consolidated "areas we cover" page for 14 regions</td></tr>
             <tr><td class="metric">Structured data</td><td class="prime">LocalBusiness, HomeAndConstructionBusiness, FAQPage</td><td>None detected</td><td>None detected on pages sampled</td></tr>
@@ -521,7 +537,7 @@
           </tbody>
         </table>
       </div>
-      <p style="margin-top:1em"><span class="tag tag-analysis">Analysis</span> Based on the factors measured in this report, PrimeTurf demonstrates stronger technical implementation in the assessed areas, while both competitors currently appear to retain the advantage that matters most in practice — an established domain history and, in Easigrass's case, a much larger content and product footprint. Neither is erased by better architecture; it's a head start PrimeTurf is positioned to close over time, not this quarter. <span class="tag tag-conf-high">High confidence</span> on the structural comparison, <span class="tag tag-conf-low">Low confidence</span> on any claim about current ranking positions, which none of these tools can verify without Search Console/Semrush access.</p>
+      <p style="margin-top:1em"><span class="tag tag-analysis">Analysis</span> Based on the factors measured in this report, PrimeTurf demonstrates stronger technical implementation in the assessed areas. Registry data (verified via WHOIS/RDAP — see Section 10a) shows this isn't a uniform "young domain vs. two incumbents" picture: <b>Easigrass's ~14-year domain history</b> is the real, defensible incumbent advantage, and it lines up with its much larger content/product footprint. <b>ArtGrass Pro's domain is only ~9 months old</b> — closer to PrimeTurf's own age tier than to Easigrass's — so its apparent seniority as "the other competitor" isn't backed by domain history the way it might appear. <span class="tag tag-conf-high">High confidence</span> on the structural comparison and the registry dates themselves, <span class="tag tag-conf-low">Low confidence</span> on any claim about current ranking positions, which none of these tools can verify without Search Console/Semrush access.</p>
     </section>
 
     <!-- 8. TECHNICAL SEO AUDIT -->
@@ -562,6 +578,35 @@
       <p><span class="tag tag-fact">Verified fact</span> PrimeTurf has published 2 long-form blog articles (an artificial-grass cost guide, a drought-proofing guide for Cape Town). Easigrass has 58. ArtGrass Pro has none detected.</p>
       <p><span class="tag tag-analysis">Analysis</span> Content volume is the single largest, most objectively measurable gap in this report — a 29x difference against the market's largest player. Without Semrush keyword-overlap data, this report cannot say precisely which search terms that content wins, but the volume gap alone is enough to prioritise. <span class="tag tag-conf-low">Low confidence</span> on which specific keywords are contested; <span class="tag tag-conf-high">High confidence</span> on the raw volume gap itself, since it's a direct page count.</p>
       <p><span class="tag tag-rec">Recommendation</span> Treat content production as a scheduled monthly deliverable, not an ad-hoc one — see Section 16.</p>
+    </section>
+
+    <!-- 10A. DOMAIN REGISTRATION VS DIGITAL TRANSFORMATION -->
+    <section id="domain" class="wide">
+      <div class="eyebrow">10a · Registry Evidence</div>
+      <h2>Domain Registration vs Digital Transformation</h2>
+      <p><span class="tag tag-fact">Verified fact</span> Domain registration dates for all three domains were retrieved directly from registry sources on 8 July 2026: primeturf.co.za and easigrass.co.za via ZARC (the official <code>.co.za</code> registry operator); artgrasspro.com via RDAP through Verisign. Not estimates — registry records.</p>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-label">primeturf.co.za</div>
+          <div class="tl-track"><div class="tl-dot tl-dot-prime" style="left:99.3%"></div></div>
+          <div class="tl-date">1 Jun 2026 · ~37 days</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-label">artgrasspro.com</div>
+          <div class="tl-track"><div class="tl-dot" style="left:94.6%"></div></div>
+          <div class="tl-date">1 Oct 2025 · ~9 months</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-label">easigrass.co.za</div>
+          <div class="tl-track"><div class="tl-dot" style="left:0%"></div></div>
+          <div class="tl-date">8 May 2012 · ~14 years</div>
+        </div>
+        <div class="tl-axis"><span>2012</span><span>2026</span><span>Today</span></div>
+      </div>
+      <p><span class="tag tag-analysis">Analysis</span> Google has repeatedly stated that domain registration age by itself is a weak-to-negligible ranking factor — what matters is consistent publishing, backlinks, and trust accumulated since a site became genuinely active, not the date a registrar record was created. That distinction matters here in a specific way: for PrimeTurf, the domain's registration date and the digital-transformation start date are effectively the same event (~37 days apart) — there is no older domain history being separated from a recent rebuild, because none exists. This section exists to give Leon an accurate register of when each domain actually began, not to claim registration age as an SEO advantage or excuse.</p>
+      <p><span class="tag tag-fact">User-reported</span> The business itself was founded the same day as the domain — PrimeTurf is not an existing operation that recently got a new website; company and domain both started ~1 June 2026. This is Leon's own knowledge of his business, not something a domain registry lookup can independently verify, so it carries the same evidentiary weight as the Operational Status Update in Section 02a. It means every asset catalogued in this report — the 26 pages, the schema, the 17 location pages, the blog, the Community &amp; Authority Ecosystem — was built from literal zero in 36 days, not layered onto pre-existing digital infrastructure.</p>
+      <p><span class="tag tag-rec">Recommendation</span> Use these dates as a factual reference point only — e.g. "the domain is 37 days old, matching the digital transformation" — and do not describe PrimeTurf as having a long-standing domain history, since the registry record does not support that claim.</p>
+      <p style="font-size:.85rem;color:var(--ink-faint)"><span class="tag tag-conf-high">High confidence</span> on the registry dates (primary registry sources). <span class="tag tag-conf-medium">Medium confidence</span> on the business-founding date specifically, since that portion rests on user confirmation rather than an independent companies-registry lookup.</p>
     </section>
 
     <!-- 11. DIGITAL ASSETS CREATED -->
