@@ -13,7 +13,7 @@ The site is a single-page layout with smooth-scroll anchor navigation, fixed nav
 | — | **Navbar** (fixed, 92px) | logo + 5 links + phone + CTA + hamburger | `:158-221` |
 | 1 | **Hero** `#home` | Centered single-column stack: watermark "PT" → decorative rings → logo mark → eyebrow line → micro-label ("Professional Outdoor Excellence") → H1 → italic subtitle → 8 application chips → 3 CTAs (WhatsApp / phone / Explore) → 4 proof points separated by gold dividers → scroll hint | `:247-430`, markup `:1212-1278` |
 | 2 | **Positioning Band** | 4-column horizontal row of short trust statements | `:435-460`, markup `:1281-1296` |
-| 3 | **Brand Statement** | 2-col grid `1fr 1fr`: **left** = label + headline + 5-item feature grid + 2 CTAs; **right** = trust copy + 2 warranty blocks (8-yr / 24-month) + tagline | `:462-579`, markup `:1299-1362` |
+| 3 | **Brand Statement** | 2-col grid `1fr 1fr`: **left** = label + headline + 5-item feature grid + 2 CTAs; **right** = trust copy + 2 warranty blocks (6-yr / 24-month) + tagline | `:462-579`, markup `:1299-1362` |
 | 4 | **Services** `#services` | Section intro (centered) + `.services-layout` container styled as a **3-column bordered grid** containing a single consolidated panel ("01 — Luxury Turf Installation") | `:584-632`, markup `:1365-1394` |
 | 5 | **Estates Marquee** | Horizontal auto-scrolling band of 12 estate names (looped ×2) | `:637-666`, markup `:1397-1424` |
 | 6 | **Gallery** `#gallery` | Section intro + draggable before/after comparison slider + 5-item asymmetric photo mosaic (3-col grid, 2 items spanning 2 columns) | `:668-777`, markup `:1426-1513` |

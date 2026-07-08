@@ -16,7 +16,7 @@ All four JSON-LD blocks are deployed in `index.html` (before `</head>`) as a sin
 
 ### 1.2 Service Schema
 - References `#business` via `provider`
-- Includes `WarrantyPromise`: 8 years, `LabourAndParts`
+- Includes `WarrantyPromise`: 6 years, `LabourAndParts`
 - `UnitPriceSpecification`: ZAR per m²
 - `availability`: InStock
 
@@ -25,7 +25,7 @@ All four JSON-LD blocks are deployed in `index.html` (before `</head>`) as a sin
 |---|---|
 | Cost per m² in South Africa | "artificial grass cost per m2 south africa" |
 | Can it go on concrete? | "can you put artificial grass on concrete" |
-| What warranty? | "artificial grass 8 year warranty south africa" |
+| What warranty? | "artificial grass 6 year warranty south africa" |
 | Is it pet-safe? | "best artificial grass for dogs south africa" |
 | How long does installation take? | purchase-intent qualifier |
 
@@ -43,21 +43,21 @@ Test all schemas at: https://search.google.com/test/rich-results
 
 ### Homepage (`index.html`)
 - **Title**: `Artificial Grass Gauteng | Premium Installation | PrimeTurf` (59 chars ✓)
-- **Description**: `Premium artificial grass installation across Gauteng & Cape Town. 8-year warranty · Free site consultation · Trusted by Gauteng's finest estates. Call PrimeTurf today.` (170 chars — slightly long, Google trims at ~155; monitor CTR)
+- **Description**: `Premium artificial grass installation across Gauteng & Cape Town. 6-year warranty · Free site consultation · Trusted by Gauteng's finest estates. Call PrimeTurf today.` (170 chars — slightly long, Google trims at ~155; monitor CTR)
 
 *Previously*: "PrimeTurf | Professional Artificial Grass Solutions · Gauteng" — brand-first, less keyword signal
 
 ### Johannesburg Landing Page (`artificial-grass-johannesburg.html`)
 - **Title**: `Artificial Grass Johannesburg | Supply & Installation | PrimeTurf` (65 chars — trim to `Artificial Grass Johannesburg | Installation | PrimeTurf` if needed = 56 chars)
-- **Description**: `Premium artificial grass installation across Johannesburg — Sandton, Midrand, Fourways, Bryanston & beyond. 8-year warranty · Free site consultation. Call PrimeTurf today.` (172 chars — suburb-rich for CTR)
+- **Description**: `Premium artificial grass installation across Johannesburg — Sandton, Midrand, Fourways, Bryanston & beyond. 6-year warranty · Free site consultation. Call PrimeTurf today.` (172 chars — suburb-rich for CTR)
 
 ### Cape Town Landing Page (`artificial-grass-cape-town.html`)
 - **Title**: `Artificial Grass Cape Town | Water-Wise Installation | PrimeTurf` (64 chars ✓)
-- **Description**: `Drought-resistant artificial grass installation across Cape Town, Stellenbosch & the Winelands. Beat water restrictions permanently. 8-year warranty · Free quote from PrimeTurf.` (180 chars — trim if Google truncates)
+- **Description**: `Drought-resistant artificial grass installation across Cape Town, Stellenbosch & the Winelands. Beat water restrictions permanently. 6-year warranty · Free quote from PrimeTurf.` (180 chars — trim if Google truncates)
 
 ### Contact Page (`contact.html`) — existing, retained
 - **Title**: `PrimeTurf | Request a Free Quote — Gauteng` (42 chars ✓)
-- **Description**: `Request a free site consultation from PrimeTurf — Gauteng's premium artificial grass specialists. 8-year warranty, professional installation.` (143 chars ✓)
+- **Description**: `Request a free site consultation from PrimeTurf — Gauteng's premium artificial grass specialists. 6-year warranty, professional installation.` (143 chars ✓)
 
 ### Commercial/Architect Page (`commercial-artificial-turf-specification.html`) — Phase 03 Priority 1 (not yet created)
 - **Title**: `Commercial Artificial Turf Specification | Architects | PrimeTurf` (66 chars — acceptable)

@@ -39,7 +39,7 @@ General contractor
 ```
 PrimeTurf installs premium artificial grass and synthetic turf for residential, commercial, and estate properties across Gauteng and Cape Town. We supply and install UV-stabilised, pet-safe artificial grass for garden lawns, pool surrounds, rooftop decks, sports surfaces, and commercial developments.
 
-Every installation includes a free site consultation, a fixed-price written quote, an 8-year manufacturer's warranty, and a 24-month workmanship guarantee.
+Every installation includes a free site consultation, a fixed-price written quote, a 6-year manufacturer's warranty, and a 24-month workmanship guarantee.
 
 We serve all of Johannesburg (Sandton, Midrand, Fourways, Bryanston), Pretoria, Centurion, and Cape Town including Stellenbosch and the Winelands.
 ```
@@ -91,7 +91,7 @@ Add each of the following as a service in the Services section:
 
 | Service Name | Price | Description |
 |---|---|---|
-| Artificial Grass Installation | From R350/m² | Supply and installation of premium synthetic turf for residential lawns, pool surrounds, and outdoor areas. 8-year warranty included. |
+| Artificial Grass Installation | From R350/m² | Supply and installation of premium synthetic turf for residential lawns, pool surrounds, and outdoor areas. 6-year warranty included. |
 | Pool Surround Turf | Get a quote | Non-slip, UV-resistant artificial grass for pool surround installations. Drainage integrated, chlorine resistant. |
 | Rooftop Artificial Grass | Get a quote | Lightweight artificial turf systems for rooftop decks and apartment balconies. |
 | Commercial Artificial Turf | Get a quote | Specification-grade synthetic turf for commercial developments, estates, and office parks across Gauteng and Cape Town. |
@@ -127,7 +127,7 @@ Google allows businesses to seed their own Q&A. Add these questions + answers fr
 > A: Yes — PrimeTurf installs artificial grass across Cape Town (including the Atlantic Seaboard, Southern Suburbs, and Northern Suburbs), as well as Stellenbosch, Somerset West, Franschhoek, and the broader Winelands area.
 
 **Q: What warranty do you offer on artificial grass?**
-> A: Every PrimeTurf installation includes an 8-year manufacturer's product warranty plus a 24-month workmanship installation guarantee — both included at no additional cost.
+> A: Every PrimeTurf installation includes a 6-year manufacturer's product warranty plus a 24-month workmanship installation guarantee — both included at no additional cost.
 
 **Q: Is artificial grass safe for pets?**
 > A: Yes — all PrimeTurf products are non-toxic, lead-free, and certified pet-safe. The turf drains efficiently and can be rinsed and sanitised easily. It eliminates mud and reduces lawn allergens compared to natural grass.
@@ -168,7 +168,7 @@ A 100m² lawn uses approximately 15,000–20,000 litres per month during summer 
 
 Over 5 years: R21,000–R33,000 in water costs alone.
 
-Artificial grass uses zero litres after installation. Our 8-year manufacturer warranty means the surface outlasts every natural lawn it replaces.
+Artificial grass uses zero litres after installation. Our 6-year manufacturer warranty means the surface outlasts every natural lawn it replaces.
 
 For Cape Town clients: artificial grass means permanent immunity from water restriction fines and the cost of replacing dead lawn every summer.
 
@@ -208,7 +208,7 @@ Lay turf in a single direction. Seam where required. Infill with silica sand. Po
 
 Final: drainage test, edge inspection, client walkthrough.
 
-8-year warranty. No conditions.
+6-year warranty. No conditions.
 
 📞 076 804 8868 | primeturf.co.za
 ```

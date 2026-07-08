@@ -197,7 +197,7 @@ A 100m² natural lawn in Gauteng uses approximately 15,000–20,000 litres of wa
 
 Over 5 years: R21,000–R33,000 in water costs. Plus mowing, fertiliser, reseeding after dry spells, and the time it takes to maintain.
 
-Artificial grass uses zero litres after installation. Our 8-year manufacturer warranty means the surface outlasts every natural lawn it replaces.
+Artificial grass uses zero litres after installation. Our 6-year manufacturer warranty means the surface outlasts every natural lawn it replaces.
 
 For Cape Town clients: artificial grass means permanent immunity from water restriction fines and the cost of replacing dead lawn every summer.
 
@@ -247,7 +247,7 @@ Serving all of Gauteng (Johannesburg, Pretoria, Sandton, Midrand) and Cape Town 
 ```
 What actually happens on installation day?
 
-A lot of artificial grass quotes look similar on paper. The difference between a 3-year surface and an 8-year surface is almost entirely in the preparation — what you never see after the turf goes down.
+A lot of artificial grass quotes look similar on paper. The difference between a 3-year surface and a 6-year surface is almost entirely in the preparation — what you never see after the turf goes down.
 
 Our standard process:
 
@@ -261,7 +261,7 @@ Final check: drainage test, edge inspection, client walkthrough.
 
 What the client receives: a surface that drains in rain within minutes, stands up to Highveld heat, and requires nothing beyond occasional brushing.
 
-8-year warranty included. No conditions.
+6-year warranty included. No conditions.
 
 📞 076 804 8868 | primeturf.co.za
 ```

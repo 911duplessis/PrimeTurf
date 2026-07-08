@@ -5,7 +5,7 @@
     "@id": "https://www.primeturf.co.za/#business",
     "name": "PrimeTurf",
     "legalName": "PrimeTurf SA",
-    "description": "Premium artificial grass installation across Gauteng and Cape Town. Professional-grade synthetic turf for luxury estates, residential gardens, commercial properties, schools, and sports surfaces. 8-year manufacturer's warranty and 24-month installation guarantee.",
+    "description": "Premium artificial grass installation across Gauteng and Cape Town. Professional-grade synthetic turf for luxury estates, residential gardens, commercial properties, schools, and sports surfaces. 6-year manufacturer's warranty and 24-month installation guarantee.",
     "url": "https://www.primeturf.co.za",
     "telephone": "+27768048868",
     "email": "info@primeturf.co.za",
@@ -153,7 +153,7 @@
         "name": "What warranty does PrimeTurf offer?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "PrimeTurf offers an 8-year manufacturer's warranty on all turf products and a 24-month installation guarantee covering all workmanship. Warranty documentation is provided at the final project walkthrough."
+          "text": "PrimeTurf offers a 6-year manufacturer's warranty on all turf products and a 24-month installation guarantee covering all workmanship. Warranty documentation is provided at the final project walkthrough."
         }
       },
       {

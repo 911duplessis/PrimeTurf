@@ -135,7 +135,7 @@ Highest revenue volume. JHB page needs: suburb list (Sandton, Midrand, Fourways,
 | 4 | "best artificial grass for dogs South Africa" | 60 | Pet use-case with hygiene angle — emotional buyer |
 | 5 | "artificial grass rooftop deck Cape Town" | 30 | Urban apartment segment — growing search trend |
 | 6 | "artificial turf sports pitch contractor Gauteng" | 35 | Commercial niche — schools, estates, clubs |
-| 7 | "artificial grass 8 year warranty South Africa" | 20 | Matches PrimeTurf's USP exactly — branded search term opportunity |
+| 7 | "artificial grass 6 year warranty South Africa" | 20 | Matches PrimeTurf's USP exactly — branded search term opportunity |
 | 8 | "landscape architect artificial grass specification PDF" | 15 | Download intent — high lead quality |
 | 9 | "water saving garden ideas Cape Town 2025" | 80 | Seasonal / evergreen content — ranks easily with 1200-word post |
 | 10 | "fake lawn Sandton installation" | 40 | Hyper-local suburb targeting — near-zero direct competition |
