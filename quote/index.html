@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instant Artificial Grass Quote | PrimeTurf SA</title>
+<meta name="description" content="Build an instant artificial grass installation quote for your property — choose turf spec, dimensions and add-ons and get a live price estimate. PrimeTurf SA, Gauteng.">
+<link rel="canonical" href="https://www.primeturf.co.za/quote/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PrimeTurf SA">
+<meta property="og:title" content="Instant Artificial Grass Quote | PrimeTurf SA">
+<meta property="og:description" content="Choose your turf, dimensions and add-ons and get a live installation price estimate in seconds.">
+<meta property="og:url" content="https://www.primeturf.co.za/quote/">
+<meta property="og:image" content="https://www.primeturf.co.za/images/ad-banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a1f14'/><text x='16' y='22' font-family='Georgia,serif' font-size='15' font-weight='700' text-anchor='middle' fill='%23d4a83a'>PT</text></svg>">
+
+<!-- Google tag (gtag.js) — PrimeTurf property -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z5G37WW47"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3Z5G37WW47');
+  // Safe event tracker — no-ops if analytics is blocked or unavailable.
+  window.ptTrack = function(name, params){ try { gtag('event', name, params || {}); } catch (e) {} };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Rajdhani:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="engine/theme.css">
+</head>
+<body>
+<div class="pt-wrap">
+
+  <div id="quote-form-view">
+    <div class="pt-header">
+      <div class="pt-eyebrow">PrimeTurf SA</div>
+      <div class="pt-title">Instant Turf Quote</div>
+      <div class="pt-client-fields">
+        <input type="text" id="client-name-input" placeholder="Your name (optional)">
+        <input type="text" id="client-location-input" placeholder="Property location (optional)">
+      </div>
+    </div>
+    <div id="quote-form"></div>
+    <button type="button" id="get-quote-btn" class="pt-btn pt-btn-gold">Get My Quote</button>
+  </div>
+
+  <div id="quote-summary-view" class="hidden">
+    <div class="pt-header">
+      <div class="pt-eyebrow">PrimeTurf SA</div>
+      <div class="pt-title">Your Quote</div>
+    </div>
+    <div id="quote-summary"></div>
+  </div>
+
+</div>
+
+<div id="live-total-bar"></div>
+
+<script src="engine/format.js"></script>
+<script src="engine/state.js"></script>
+<script src="engine/calc.js"></script>
+<script src="engine/form.js"></script>
+<script src="engine/summary.js"></script>
+<script src="engine/exportQuote.js"></script>
+<script src="engine/main.js"></script>
+</body>
+</html>
