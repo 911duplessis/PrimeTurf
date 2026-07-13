@@ -1,4 +1,15 @@
 User-agent: *
 Allow: /
 
+# Internal tooling, dashboards and drafts — not customer-facing content
+Disallow: /crm/
+Disallow: /design/
+Disallow: /community/
+Disallow: /seo-dashboard.html
+Disallow: /seo-engine.html
+Disallow: /seo-report.html
+Disallow: /project-plan.html
+Disallow: /tcn-dashboard.html
+Disallow: /tcn-whatsapp-flow.html
+
 Sitemap: https://www.primeturf.co.za/sitemap.xml
