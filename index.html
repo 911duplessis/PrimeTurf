@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PrimeTurf | Premium Artificial Grass Solutions</title>
@@ -32,17 +33,31 @@
   /* NAV */
   header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
   .nav{display:flex;align-items:center;gap:14px;padding:14px 28px;max-width:1160px;margin:0 auto;}
-  .nav img{height:40px;width:auto;}
+  .nav img{height:44px;width:auto;}
   .brandname{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:22px;color:var(--forest);}
   .navlinks{display:flex;gap:24px;margin-left:auto;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);}
   .navlinks a{opacity:.8;transition:opacity .2s;}
   .navlinks a:hover{opacity:1;color:var(--forest);}
-  .navcta{background:var(--gold);color:var(--forest-deep);padding:11px 20px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;}
-  @media (max-width:860px){.navlinks{display:none;}}
+  .navcta{background:var(--gold);color:var(--forest-deep);padding:11px 20px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;margin-left:16px;}
+
+  /* MOBILE NAV DRAWER */
+  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:30px;height:30px;cursor:pointer;background:none;border:0;padding:0;margin-left:auto;}
+  .hamburger span{display:block;height:2px;width:100%;background:var(--forest);border-radius:2px;transition:transform .25s ease,opacity .25s ease;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .nav-overlay{display:none;position:fixed;inset:0;background:rgba(21,63,44,.45);z-index:90;}
+  .nav-overlay.open{display:block;}
+  .mobile-nav{position:fixed;top:0;right:0;bottom:0;width:76%;max-width:320px;background:var(--white);z-index:95;box-shadow:-12px 0 40px rgba(0,0,0,.22);padding:100px 30px 30px;display:flex;flex-direction:column;gap:24px;transform:translateX(100%);transition:transform .32s ease;}
+  .mobile-nav.open{transform:translateX(0);}
+  .mobile-nav a{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--forest);font-weight:700;}
+  .mobile-nav .navcta{margin-top:6px;text-align:center;justify-content:center;margin-left:0;}
+  @media (max-width:860px){.navlinks{display:none;}.nav .navcta{display:none;}.hamburger{display:flex;}}
 
   /* HERO */
   .hero{background:var(--sand);padding:70px 0 64px;text-align:center;}
-  .hero img.mark{height:96px;margin:0 auto 20px;}
+  .hero img.mark{height:190px;margin:0 auto 20px;}
+  @media (max-width:600px){.hero img.mark{height:140px;}}
   .hero h1{font-size:44px;line-height:1.08;margin:0 0 8px;font-weight:600;color:var(--forest);}
   .hero .sub{font-size:13px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:28px;}
   .tag-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:640px;margin:0 auto 32px;}
@@ -99,11 +114,28 @@
   @media (max-width:860px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:520px){.gallery-grid{grid-template-columns:1fr;}.g-tile img{height:220px;}}
 
-  /* FB VIDEOS */
-  .fb-videos{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:40px auto 0;}
-  .fb-video-wrap{border:1px solid var(--line);background:#000;aspect-ratio:9/16;max-height:520px;}
-  .fb-video-wrap iframe{width:100%;height:100%;border:0;display:block;}
-  @media (max-width:700px){.fb-videos{grid-template-columns:1fr;}}
+  /* CLIP VIDEOS */
+  .clip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:980px;margin:36px auto 0;}
+  .clip-tile{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:#000;aspect-ratio:9/16;box-shadow:0 16px 34px rgba(0,0,0,.3);transition:transform .4s ease,box-shadow .4s ease;}
+  .clip-tile:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(0,0,0,.4);}
+  .clip-tile video{width:100%;height:100%;object-fit:cover;display:block;}
+  .clip-tile .clip-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(to top,rgba(0,0,0,.78),transparent);color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.02em;}
+  .clip-mute{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.45);display:grid;place-items:center;cursor:pointer;color:#fff;border:1px solid rgba(255,255,255,.35);}
+  @media (max-width:760px){.clip-grid{grid-template-columns:1fr 1fr;max-width:420px;}}
+  @media (max-width:520px){.clip-grid{grid-template-columns:1fr;max-width:280px;}}
+
+  /* FOLLOW ON FACEBOOK */
+  .fb-follow{display:flex;align-items:center;gap:20px;max-width:740px;margin:56px auto 0;padding:24px 28px;border:1px solid var(--line);background:var(--sand);border-radius:14px;flex-wrap:wrap;justify-content:center;text-align:center;}
+  .fb-follow svg{flex-shrink:0;color:#1877F2;}
+  .fb-follow strong{display:block;color:var(--forest);font-size:15.5px;font-family:"Cormorant Garamond",serif;font-weight:700;}
+  .fb-follow p{margin:6px 0 0;color:var(--muted);font-size:13.5px;line-height:1.6;max-width:440px;}
+  .fb-follow .btn{flex-shrink:0;}
+
+  /* SCROLL REVEAL — safe by default; only hides content once JS confirms it can reveal it again */
+  .reveal{opacity:1;transform:none;}
+  html.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  html.js .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){html.js .reveal{opacity:1;transform:none;transition:none;}}
 
   /* SLIDER */
   .slider-wrap{max-width:900px;margin:50px auto 0;}
@@ -134,7 +166,7 @@
   @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}.form-row,.checklist{grid-template-columns:1fr;}}
 
   footer{background:var(--forest-deep);color:#a9bcae;padding:36px 0;text-align:center;font-size:12px;}
-  footer .fmark{height:30px;margin:0 auto 12px;}
+  footer .fmark{height:46px;margin:0 auto 12px;}
   footer a{color:var(--gold-light);}
 
   .floating-wa{position:fixed;bottom:22px;right:22px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25);animation:wa-pulse 2.6s infinite;}
@@ -150,7 +182,7 @@
 
 <header>
   <div class="nav">
-    <img src="assets/icons/pt-icon-128.png" alt="PrimeTurf">
+    <img src="assets/logo/pt-logo-transparent-cropped.png" alt="PrimeTurf logo">
     <span class="brandname">PrimeTurf</span>
     <nav class="navlinks">
       <a href="#services">Services</a>
@@ -158,12 +190,24 @@
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
     <a class="navcta" href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%27d%20like%20to%20enquire." target="_blank" rel="noopener">Get a Quote</a>
   </div>
 </header>
 
+<div class="nav-overlay" id="navOverlay"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Contact</a>
+  <a class="navcta" href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%27d%20like%20to%20enquire." target="_blank" rel="noopener">Get a Quote</a>
+</nav>
+
 <section class="hero">
-  <img class="mark" src="assets/logo/pt-logo-transparent.png" alt="">
+  <img class="mark" src="assets/logo/pt-logo-transparent-cropped.png" alt="PrimeTurf — Premium Artificial Grass Solutions">
   <p class="eyebrow">Serving Gauteng</p>
   <h1 class="serif">Premium Artificial<br>Grass Solutions</h1>
   <p class="sub">Signature Turf Systems for Residential and Commercial Use</p>
@@ -195,12 +239,12 @@
 
 <section class="section" id="services">
   <div class="shell">
-    <div class="section-head">
+    <div class="section-head reveal">
       <p class="eyebrow">What We Install</p>
       <h2 class="serif">Premium turf systems, every space.</h2>
       <p>From private gardens to school grounds and commercial complexes — professionally installed, built to specification.</p>
     </div>
-    <div class="services">
+    <div class="services reveal">
       <div class="svc"><h3>School Grounds</h3></div>
       <div class="svc"><h3>Play Areas</h3></div>
       <div class="svc"><h3>Restaurant Play Areas</h3></div>
@@ -217,14 +261,14 @@
 
 <section class="process-wrap" id="process">
   <div class="shell">
-    <div class="section-head">
+    <div class="section-head reveal">
       <p class="eyebrow" style="color:var(--gold-light);">Our Process</p>
       <h2 class="serif">The secret to a long-lasting lawn starts beneath the surface.</h2>
       <p>Our professional 7-step sub-base process ensures exceptional drainage, durability, weed prevention, and a natural look and feel that lasts for years.</p>
     </div>
     <div class="process7">
-      <img class="process7-img" src="images/process-7-step-prep.jpg" alt="PrimeTurf 7-step sub-base preparation cross-section: Jeyes fluid and salt, G5 soil, crusher dust, cement layer, cement edges, turf installation, silica sand">
-      <ol class="process7-list">
+      <img class="process7-img reveal" src="images/process-7-step-prep.jpg" alt="PrimeTurf 7-step sub-base preparation cross-section: Jeyes fluid and salt, G5 soil, crusher dust, cement layer, cement edges, turf installation, silica sand">
+      <ol class="process7-list reveal">
         <li><span class="p7-n">1</span><div><h4>Jeyes Fluid &amp; Coarse Salt Mix</h4><p>Helps keep weeds and bugs away.</p></div></li>
         <li><span class="p7-n">2</span><div><h4>G5 Soil</h4><p>Expertly levelled for a stable foundation.</p></div></li>
         <li><span class="p7-n">3</span><div><h4>Crusher Dust</h4><p>Provides excellent drainage and strength.</p></div></li>
@@ -239,23 +283,23 @@
 
 <section class="section" id="gallery">
   <div class="shell">
-    <div class="section-head">
+    <div class="section-head reveal">
       <p class="eyebrow">Our Work</p>
       <h2 class="serif">Real installations across Gauteng.</h2>
       <p>Tennis courts, school playgrounds, putting greens, and commercial spaces — completed PrimeTurf projects, done by our own team.</p>
     </div>
     <div class="gallery-grid">
-      <div class="g-tile"><img src="images/gallery-tree-courtyard-lawn.jpg" alt="PrimeTurf courtyard lawn installation around a mature tree"><span class="g-cap">Courtyard Lawn</span></div>
-      <div class="g-tile"><img src="images/gallery-playground-swings.jpg" alt="PrimeTurf school playground with swings and shade sail"><span class="g-cap">School Playground</span></div>
-      <div class="g-tile"><img src="images/gallery-playground-hopscotch.jpg" alt="PrimeTurf custom hopscotch and activity turf markings"><span class="g-cap">Custom Play Markings</span></div>
-      <div class="g-tile"><img src="images/gallery-poolside-firepit.jpg" alt="PrimeTurf poolside lawn with firepit lounge area"><span class="g-cap">Poolside Firepit Lounge</span></div>
-      <div class="g-tile"><img src="images/gallery-paver-garden.jpg" alt="PrimeTurf paver and lawn garden design"><span class="g-cap">Paver &amp; Lawn Garden</span></div>
-      <div class="g-tile"><img src="images/gallery-giant-chessboard.jpg" alt="PrimeTurf giant chessboard play feature on artificial grass"><span class="g-cap">Giant Chessboard Feature</span></div>
-      <div class="g-tile"><img src="images/gallery-tennis-court-estate.jpg" alt="PrimeTurf private tennis court installation"><span class="g-cap">Private Tennis Court</span></div>
-      <div class="g-tile"><img src="images/gallery-install-team.jpg" alt="The PrimeTurf installation team on a completed tennis court"><span class="g-cap">Meet Our Install Team</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-tree-courtyard-lawn.jpg" alt="PrimeTurf courtyard lawn installation around a mature tree"><span class="g-cap">Courtyard Lawn</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-playground-swings.jpg" alt="PrimeTurf school playground with swings and shade sail"><span class="g-cap">School Playground</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-playground-hopscotch.jpg" alt="PrimeTurf custom hopscotch and activity turf markings"><span class="g-cap">Custom Play Markings</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-poolside-firepit.jpg" alt="PrimeTurf poolside lawn with firepit lounge area"><span class="g-cap">Poolside Firepit Lounge</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-paver-garden.jpg" alt="PrimeTurf paver and lawn garden design"><span class="g-cap">Paver &amp; Lawn Garden</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-giant-chessboard.jpg" alt="PrimeTurf giant chessboard play feature on artificial grass"><span class="g-cap">Giant Chessboard Feature</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-tennis-court-estate.jpg" alt="PrimeTurf private tennis court installation"><span class="g-cap">Private Tennis Court</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-install-team.jpg" alt="The PrimeTurf installation team on a completed tennis court"><span class="g-cap">Meet Our Install Team</span></div>
     </div>
 
-    <div class="slider-wrap">
+    <div class="slider-wrap reveal">
       <p class="eyebrow" style="display:block;text-align:center;margin-bottom:16px;">Drag to Compare — Courtyard Transformation</p>
       <div id="comparison" class="compare" role="slider" tabindex="0" aria-label="Before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
         <img src="images/before.jpg" alt="Site before PrimeTurf installation">
@@ -270,14 +314,38 @@
       </div>
     </div>
 
-    <p class="eyebrow" style="display:block;text-align:center;margin:50px 0 16px;">See It In Action</p>
-    <div class="fb-videos">
-      <div class="fb-video-wrap">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1GvzasWtVz%2F&show_text=false" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy" title="PrimeTurf installation video"></iframe>
+    <p class="eyebrow reveal" style="display:block;text-align:center;margin:56px 0 16px;">See It In Action</p>
+    <div class="clip-grid">
+      <div class="clip-tile reveal">
+        <video src="videos/gallery-clip-1.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <button class="clip-mute" aria-label="Toggle sound" title="Toggle sound">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+        <span class="clip-cap">Step 1 In Action — Prepping The Base</span>
       </div>
-      <div class="fb-video-wrap">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1JkFQRVirL%2F&show_text=false" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy" title="PrimeTurf installation video"></iframe>
+      <div class="clip-tile reveal">
+        <video src="videos/gallery-clip-2.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <button class="clip-mute" aria-label="Toggle sound" title="Toggle sound">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+        <span class="clip-cap">Soft Enough For Naps 🐾</span>
       </div>
+      <div class="clip-tile reveal">
+        <video src="videos/gallery-clip-3.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <button class="clip-mute" aria-label="Toggle sound" title="Toggle sound">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+        <span class="clip-cap">Modern Spaces Deserve Modern Grass</span>
+      </div>
+    </div>
+
+    <div class="fb-follow reveal">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+      <div>
+        <strong>Join the PrimeTurf family on Facebook</strong>
+        <p>We're a proud local, family-run business — follow along for new transformations, behind-the-scenes install days, and the odd dog nap on fresh turf.</p>
+      </div>
+      <a class="btn btn-outline" href="https://www.facebook.com/share/18eU3RrRu4/" target="_blank" rel="noopener">Follow Us</a>
     </div>
   </div>
 </section>
@@ -306,7 +374,7 @@
         <p style="margin-top:26px;font-size:13px;color:var(--muted);">8 Year Manufacturers Warranty · 24 Month Installation Guarantee</p>
       </div>
 
-      <form class="form-panel" onsubmit="return submitEnquiry(event)">
+      <form class="form-panel reveal" onsubmit="return submitEnquiry(event)">
         <h3 class="serif">Request a Quote</h3>
         <p class="fnote">Tell us about your project — one or more services can be selected.</p>
         <div class="form-row">
@@ -332,7 +400,7 @@
 </section>
 
 <footer>
-  <img class="fmark" src="assets/logo/pt-logo-transparent.png" alt="">
+  <img class="fmark" src="assets/logo/pt-logo-transparent-cropped.png" alt="PrimeTurf">
   <div>© 2026 PrimeTurf. All rights reserved.</div>
   <div style="margin-top:6px;"><a href="tel:+27768048868">076 804 8868</a> · <a href="mailto:leon@primeturf.co.za">leon@primeturf.co.za</a> · <a href="https://www.primeturf.co.za">primeturf.co.za</a></div>
 </footer>
@@ -342,6 +410,60 @@
 </a>
 
 <script>
+  // Mobile nav drawer
+  (function(){
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('navOverlay');
+    function closeNav(){
+      mobileNav.classList.remove('open');
+      overlay.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+    function openNav(){
+      mobileNav.classList.add('open');
+      overlay.classList.add('open');
+      hamburger.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+    }
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.contains('open') ? closeNav() : openNav();
+    });
+    overlay.addEventListener('click', closeNav);
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+  })();
+
+  // Scroll reveal
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el, i) => {
+      el.style.transitionDelay = Math.min(i % 4, 3) * 0.08 + 's';
+      io.observe(el);
+    });
+  })();
+
+  // Video clip mute toggle
+  (function(){
+    document.querySelectorAll('.clip-tile').forEach(tile => {
+      const video = tile.querySelector('video');
+      const btn = tile.querySelector('.clip-mute');
+      if (!video || !btn) return;
+      btn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        btn.innerHTML = video.muted
+          ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>'
+          : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
+      });
+    });
+  })();
+
   // Live before/after slider
   (function(){
     const comparison = document.getElementById('comparison');
