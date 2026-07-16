@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z5G37WW47"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3Z5G37WW47');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrimeTurf — Layout Map: Current vs. Proposed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --emerald:#1A3A2A; --emerald-mid:#1C4A2A; --gold:#B8922A; --gold-light:#D4A940;
+    --gold-pale:#EDD9A3; --cream:#FFFFFF; --cream-mid:#F5F2EC; --cream-dark:#E8DCBB;
+    --text-dark:#1E1C14; --text-mid:#4A4438; --text-soft:#7A7060;
+    --border-gold:rgba(184,146,42,.25);
+    --issue:#9C3B2E; --issue-bg:#F7E9E6; --change:#1C5C3B; --change-bg:#E6F1EA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Lato',sans-serif;background:var(--cream-mid);color:var(--text-dark);padding:40px 24px 100px;}
+  h1{font-family:'Playfair Display',serif;color:var(--emerald);font-size:clamp(26px,4vw,38px);text-align:center;margin-bottom:10px;}
+  .sub{text-align:center;color:var(--text-soft);font-size:13px;max-width:680px;margin:0 auto 44px;line-height:1.7;}
+  .sub strong{color:var(--text-mid)}
+
+  .legend{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:48px;font-size:11px;letter-spacing:.5px;color:var(--text-mid)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .swatch{width:14px;height:14px;border-radius:3px;display:inline-block;}
+  .sw-issue{background:var(--issue-bg);border:1px solid var(--issue)}
+  .sw-change{background:var(--change-bg);border:1px solid var(--change)}
+
+  .board{display:grid;grid-template-columns:1fr 1fr;gap:36px;max-width:1180px;margin:0 auto;align-items:start;}
+  @media (max-width:880px){ .board{grid-template-columns:1fr;} }
+
+  .col-head{font-family:'Playfair Display',serif;font-size:20px;color:var(--emerald);text-align:center;margin-bottom:6px;}
+  .col-sub{text-align:center;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:700;}
+
+  .stack{display:flex;flex-direction:column;gap:6px;border:1px solid var(--border-gold);background:var(--cream);padding:14px;border-radius:4px;}
+
+  .blk{position:relative;border-radius:3px;padding:12px 14px;font-size:12px;line-height:1.55;}
+  .blk .name{font-family:'Playfair Display',serif;font-weight:700;font-size:13.5px;display:block;margin-bottom:3px;}
+  .blk .meta{font-size:10.5px;color:var(--text-soft);letter-spacing:.3px;}
+  .blk .cols{display:flex;gap:5px;margin-top:8px;}
+  .chip{flex:1;height:18px;border-radius:2px;background:rgba(255,255,255,.55);border:1px dashed var(--border-gold);display:flex;align-items:center;justify-content:center;font-size:8.5px;letter-spacing:1px;color:var(--text-soft);text-transform:uppercase;}
+
+  /* base block tones cycling through palette to mimic section bg rhythm */
+  .b-nav{background:var(--cream);border:1px solid var(--border-gold);}
+  .b-hero{background:linear-gradient(170deg,#fff,var(--cream-mid));border:1px solid var(--border-gold);}
+  .b-band{background:#fff;border:1px solid var(--border-gold);}
+  .b-tint{background:var(--cream-mid);border:1px solid var(--border-gold);}
+  .b-marquee{background:var(--gold-pale);border:1px solid var(--gold);}
+  .b-dark{background:var(--emerald);color:#F5EFE0;border:1px solid var(--emerald-mid);}
+  .b-dark .meta{color:rgba(245,239,224,.55);}
+  .b-foot{background:var(--text-dark);color:#F5EFE0;border:1px solid #000;}
+  .b-foot .meta{color:rgba(245,239,224,.4);}
+
+  .h-short{padding-top:8px;padding-bottom:8px;}
+  .h-tall{padding-top:26px;padding-bottom:26px;}
+  .h-xtall{padding-top:40px;padding-bottom:40px;}
+
+  .flag{position:absolute;top:-9px;right:10px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+        padding:3px 9px;border-radius:10px;}
+  .flag-issue{background:var(--issue-bg);color:var(--issue);border:1px solid var(--issue);}
+  .flag-change{background:var(--change-bg);color:var(--change);border:1px solid var(--change);}
+  .flag-note{background:var(--gold-pale);color:#7A5010;border:1px solid var(--gold);}
+
+  .note{margin-top:6px;font-size:10.5px;color:var(--issue);background:var(--issue-bg);border-left:2px solid var(--issue);padding:6px 10px;border-radius:0 3px 3px 0;}
+  .note.good{color:var(--change);background:var(--change-bg);border-left-color:var(--change);}
+
+  .arrow-row{display:flex;align-items:center;justify-content:center;gap:10px;margin:34px 0 6px;color:var(--gold-dark, #8A6A20);font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;}
+  .arrow-row::before,.arrow-row::after{content:'';flex:1;max-width:140px;height:1px;background:linear-gradient(to right,transparent,var(--gold));}
+  .arrow-row::after{background:linear-gradient(to left,transparent,var(--gold));}
+
+  footer{max-width:880px;margin:60px auto 0;text-align:center;font-size:11px;color:var(--text-soft);line-height:1.8;}
+  footer a{color:var(--gold-dark,#8A6A20);}
+</style>
+</head>
+<body>
+
+  <h1>PrimeTurf Homepage — Layout Map</h1>
+  <p class="sub">A block-level wireframe of <strong>index.html</strong>'s current section flow alongside the proposed structural adjustments.
+  Block height roughly mirrors each section's vertical weight on the page; colour tones echo the site's own emerald / gold / cream palette.
+  No copy changes are represented here — only structure, order, and proportion. Full written rationale: <strong>PrimeTurf_Layout_Analysis.md</strong>.</p>
+
+  <div class="legend">
+    <span><span class="swatch sw-issue"></span> Structural issue (current)</span>
+    <span><span class="swatch sw-change"></span> Proposed structural change</span>
+  </div>
+
+  <div class="board">
+
+    <!-- ============ CURRENT ============ -->
+    <div>
+      <div class="col-head">Current Flow</div>
+      <div class="col-sub">As built</div>
+      <div class="stack">
+
+        <div class="blk b-nav h-short">
+          <span class="name">Navbar</span>
+          <span class="meta">fixed · logo · 5 links · phone · CTA</span>
+        </div>
+
+        <div class="blk b-hero h-xtall">
+          <span class="name">Hero</span>
+          <span class="meta">centered single-column stack — logo · eyebrow · label · H1 · subtitle · 8 chips · 3 CTAs · 4 proof points</span>
+          <span class="flag flag-issue">8 stacked elements</span>
+          <div class="note">Long centered vertical chain — adds scroll depth before any proof content appears (§2.3)</div>
+        </div>
+
+        <div class="blk b-band h-short">
+          <span class="name">Positioning Band</span>
+          <span class="meta">4-across trust statement row</span>
+          <div class="cols"><div class="chip">1</div><div class="chip">2</div><div class="chip">3</div><div class="chip">4</div></div>
+        </div>
+
+        <div class="blk b-tint h-tall">
+          <span class="name">Brand Statement</span>
+          <span class="meta">2-col grid — copy + features (left) · trust / warranty (right)</span>
+          <div class="cols"><div class="chip">copy · features</div><div class="chip">trust · warranty</div></div>
+        </div>
+
+        <div class="blk b-band h-tall">
+          <span class="name">Services</span>
+          <span class="meta">section intro + bordered 3-column grid container holding ONE panel</span>
+          <span class="flag flag-issue">grid / content mismatch</span>
+          <div class="cols"><div class="chip" style="background:var(--cream-mid);border-style:solid;">01 — panel</div><div class="chip" style="opacity:.45">empty</div><div class="chip" style="opacity:.45">empty</div></div>
+          <div class="note">3-col grid CSS (`repeat(3,1fr)`) but only 1 `.service-panel` exists → ~2/3 of the bordered box renders empty (§2.1)</div>
+        </div>
+
+        <div class="blk b-marquee h-short">
+          <span class="name">Estates Marquee</span>
+          <span class="meta">scrolling band of 12 estate names</span>
+          <span class="flag flag-issue">placement</span>
+          <div class="note">Sits between Services and Gallery — doesn't reinforce either neighbour (§2.5)</div>
+        </div>
+
+        <div class="blk b-band h-xtall">
+          <span class="name">Gallery</span>
+          <span class="meta">section intro · before/after slider · 5-item asymmetric photo mosaic</span>
+        </div>
+
+        <div class="blk b-tint h-tall">
+          <span class="name">Process</span>
+          <span class="meta">4-step row with connecting rule + numbered circles</span>
+          <div class="cols"><div class="chip">1</div><div class="chip">2</div><div class="chip">3</div><div class="chip">4</div></div>
+        </div>
+
+        <div class="blk b-band h-tall">
+          <span class="name">Gauteng Region Band</span>
+          <span class="meta">2-col grid — copy + CTA (left) · SVG province map (right)</span>
+          <span class="flag flag-issue">repetition</span>
+          <div class="cols"><div class="chip">copy · CTA</div><div class="chip">map visual</div></div>
+        </div>
+
+        <div class="blk b-dark h-short">
+          <span class="name">CTA Band</span>
+          <span class="meta">centered headline · sub · 2 CTAs (dark emerald contrast)</span>
+        </div>
+
+        <div class="blk b-tint h-tall">
+          <span class="name">Contact</span>
+          <span class="meta">2-col grid (1fr / 1.4fr) — info (left) · enquiry form (right)</span>
+        </div>
+
+        <div class="blk b-foot h-tall">
+          <span class="name">Footer</span>
+          <span class="meta">4-col grid — brand · nav · services · contact + tagline + bottom bar</span>
+        </div>
+
+      </div>
+      <div class="note" style="margin-top:14px;max-width:none;">
+        <strong style="color:var(--issue)">Also flagged (not shown as a block):</strong> nav links to <code>#testimonials</code> (desktop nav, mobile nav, footer) point at a section that no longer exists in the markup — a fully styled <code>.testi-grid</code> system sits unused in the CSS (§2.2). Left as-is per your instruction.
+      </div>
+    </div>
+
+    <!-- ============ PROPOSED ============ -->
+    <div>
+      <div class="col-head">Proposed Flow</div>
+      <div class="col-sub">Structural adjustments only</div>
+      <div class="stack">
+
+        <div class="blk b-nav h-short">
+          <span class="name">Navbar</span>
+          <span class="meta">unchanged — fixed · logo · 5 links · phone · CTA</span>
+        </div>
+
+        <div class="blk b-hero h-tall">
+          <span class="name">Hero</span>
+          <span class="meta">regrouped &amp; tightened — single combined label line, condensed spacing scale, optional asymmetric visual/content split on large screens</span>
+          <span class="flag flag-change">shortened stack</span>
+          <div class="note good">Same copy, fewer stacked focal layers → shorter scroll distance to first section (§4.3)</div>
+        </div>
+
+        <div class="blk b-band h-short">
+          <span class="name">Positioning Band</span>
+          <span class="meta">unchanged — 4-across trust statement row</span>
+          <div class="cols"><div class="chip">1</div><div class="chip">2</div><div class="chip">3</div><div class="chip">4</div></div>
+        </div>
+
+        <div class="blk b-tint h-tall">
+          <span class="name">Brand Statement</span>
+          <span class="meta">unchanged — copy + features (left) · trust / warranty (right)</span>
+          <div class="cols"><div class="chip">copy · features</div><div class="chip">trust · warranty</div></div>
+        </div>
+
+        <div class="blk b-band h-tall">
+          <span class="name">Services</span>
+          <span class="meta">re-balanced container — single panel paired with a supporting value strip (existing warranty / feature content), sized to fit instead of a 3-slot grid</span>
+          <span class="flag flag-change">re-balanced</span>
+          <div class="cols"><div class="chip" style="background:var(--cream-mid);border-style:solid;">01 — panel</div><div class="chip" style="background:var(--gold-pale);border-style:solid;color:#7A5010;">value strip</div></div>
+          <div class="note good">Bordered container now reads as one intentional composition — no empty grid space (§4.1)</div>
+        </div>
+
+        <div class="blk b-band h-xtall">
+          <span class="name">Gallery</span>
+          <span class="meta">unchanged — section intro · before/after slider · 5-item mosaic, now follows Services directly</span>
+        </div>
+
+        <div class="blk b-tint h-tall">
+          <span class="name">Process</span>
+          <span class="meta">unchanged — 4-step row with connecting rule</span>
+          <div class="cols"><div class="chip">1</div><div class="chip">2</div><div class="chip">3</div><div class="chip">4</div></div>
+        </div>
+
+        <div class="blk b-band h-tall">
+          <span class="name">Gauteng Region Band</span>
+          <span class="meta">mirrored — SVG map (left) · copy + CTA (right): a grid-order flip for visual variety</span>
+          <span class="flag flag-change">mirrored layout</span>
+          <div class="cols"><div class="chip">map visual</div><div class="chip">copy · CTA</div></div>
+          <div class="note good">Breaks the repeated left-copy/right-visual pattern → left-right-left rhythm down the page (§4.2)</div>
+        </div>
+
+        <div class="blk b-marquee h-short">
+          <span class="name">Estates Marquee</span>
+          <span class="meta">relocated directly beneath the Gauteng band</span>
+          <span class="flag flag-change">relocated</span>
+          <div class="note good">Now visually reinforces the "areas we serve" message instead of interrupting Services → Gallery (§4.4)</div>
+        </div>
+
+        <div class="blk b-dark h-short">
+          <span class="name">CTA Band</span>
+          <span class="meta">unchanged — centered headline · sub · 2 CTAs</span>
+        </div>
+
+        <div class="blk b-tint h-tall">
+          <span class="name">Contact</span>
+          <span class="meta">unchanged — info (left) · enquiry form (right)</span>
+        </div>
+
+        <div class="blk b-foot h-tall">
+          <span class="name">Footer</span>
+          <span class="meta">unchanged — 4-col grid + tagline + bottom bar</span>
+        </div>
+
+      </div>
+      <div class="note good" style="margin-top:14px;max-width:none;">
+        <strong style="color:var(--change)">Net effect:</strong> same content, same design tokens, same responsive collapse rules — just a more balanced Services panel, clearer regional storytelling (map → copy → estates), a left/right/left rhythm across the band sections, and a shorter hero scroll distance.
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Companion document: <a href="./PrimeTurf_Layout_Analysis.md">PrimeTurf_Layout_Analysis.md</a> — full section-by-section map, code references, and rationale for every change shown here.
+  </footer>
+
+</body>
+</html>

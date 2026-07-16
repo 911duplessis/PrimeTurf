@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 188 118"
+     role="img" aria-label="PrimeTurf" preserveAspectRatio="xMidYMid meet">
+  <title>PrimeTurf</title>
+  <rect width="188" height="118" rx="14" fill="#1A3A2A"/>
+  <g transform="translate(14,14)">
+  <!-- P -->
+  <text x="0" y="74"
+        font-family="Cinzel,'Cormorant Garamond',Georgia,'Times New Roman',serif" font-size="86" font-weight="700"
+        fill="#D4A940">P</text>
+  <!-- T -->
+  <text x="88" y="74"
+        font-family="Cinzel,'Cormorant Garamond',Georgia,'Times New Roman',serif" font-size="86" font-weight="700"
+        fill="#D4A940">T</text>
+  <!-- Grass blades -->
+  <path d="M 59.0,76 C 59.0,52.9 57.2,38.0 58.0,34.0 C 58.8,38.0 65.0,52.9 65.0,76 Z" fill="#B8922A"/>
+  <path d="M 65.0,76 C 65.0,47.4 65.2,28.0 66.0,24.0 C 66.8,28.0 73.0,47.4 73.0,76 Z" fill="#B8922A"/>
+  <path d="M 71.0,76 C 71.0,40.8 75.2,16.0 76.0,12.0 C 76.8,16.0 81.0,40.8 81.0,76 Z" fill="#B8922A"/>
+  <path d="M 79.0,76 C 79.0,47.4 85.2,28.0 86.0,24.0 C 86.8,28.0 87.0,47.4 87.0,76 Z" fill="#B8922A"/>
+  <path d="M 87.0,76 C 87.0,52.9 93.2,38.0 94.0,34.0 C 94.8,38.0 93.0,52.9 93.0,76 Z" fill="#B8922A"/>
+  </g>
+</svg>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z5G37WW47"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3Z5G37WW47');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeTurf Community Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#0B1C13',
+                        brandDark: '#07120C',
+                        brandGold: '#D4AF37',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Helvetica Neue', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col font-sans">
+
+    <!-- TOP HEADER BAR -->
+    <header class="border-b border-zinc-800 bg-zinc-900/50 backdrop-blur px-8 py-4 flex justify-between items-center">
+        <div>
+            <h1 class="text-lg font-bold tracking-wider text-brandGold uppercase">PrimeTurf Automation Engine</h1>
+            <p class="text-xs text-zinc-400">30-Day Automated Graphic Suite for Facebook (27k Members)</p>
+        </div>
+        <a href="https://www.primeturf.co.za" target="_blank" class="text-xs tracking-widest text-brandGold font-semibold uppercase border border-brandGold/20 px-3 py-1 bg-brandGold/5 hover:bg-brandGold/10 transition">www.primeturf.co.za</a>
+    </header>
+
+    <!-- MAIN INTERFACE SPLIT -->
+    <div class="flex-1 flex overflow-hidden">
+
+        <!-- SIDEBAR: CALENDAR SELECTOR -->
+        <aside class="w-80 border-r border-zinc-800 bg-zinc-900 overflow-y-auto p-4 space-y-2">
+            <h2 class="text-xs font-bold text-zinc-400 uppercase tracking-widest px-2 mb-4">Content Roadmap</h2>
+            <div id="calendar-menu" class="space-y-1">
+                <!-- Injected via JavaScript -->
+            </div>
+        </aside>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="flex-1 bg-zinc-950 p-8 flex flex-col xl:flex-row gap-8 items-center justify-center overflow-y-auto">
+
+            <!-- LEFT: INTERACTIVE CANVAS CONTAINER -->
+            <div class="flex flex-col items-center gap-4">
+                <div class="bg-zinc-900 p-2 rounded-xl shadow-2xl border border-zinc-800">
+                    <!-- Standard High-Res 1200x1200 Facebook Grid Size, Scaled for Viewport Display -->
+                    <canvas id="creativeCanvas" width="1200" height="1200" class="w-[450px] h-[450px] rounded-lg shadow-inner bg-brandDark"></canvas>
+                </div>
+                <button onclick="downloadGraphic()" class="w-full max-w-[450px] bg-brandGold text-brandDark font-bold py-3 px-6 rounded-lg transition hover:bg-yellow-500 flex items-center justify-center gap-2 uppercase tracking-wider text-sm shadow-lg shadow-brandGold/10">
+                    Export Production Graphic (PNG)
+                </button>
+            </div>
+
+            <!-- RIGHT: COPYWRITING REPO PANEL -->
+            <div class="w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-xl p-6 flex flex-col justify-between self-stretch">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span id="badge-category" class="text-[10px] font-bold tracking-[0.2em] text-brandGold uppercase bg-brandGold/10 border border-brandGold/30 px-2 py-0.5 rounded">Welcome</span>
+                            <h3 id="display-day" class="text-xl font-bold mt-2 text-white">Day 1: Welcome Asset</h3>
+                        </div>
+                    </div>
+
+                    <hr class="border-zinc-800 my-4" />
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-[11px] uppercase tracking-wider text-zinc-400 block mb-1">Graphic Headline</label>
+                            <input type="text" id="input-headline" oninput="updateActiveGraphic()" class="w-full bg-zinc-950 border border-zinc-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-brandGold" />
+                        </div>
+                        <div>
+                            <label class="text-[11px] uppercase tracking-wider text-zinc-400 block mb-1">Graphic Description</label>
+                            <textarea id="input-subtext" oninput="updateActiveGraphic()" rows="3" class="w-full bg-zinc-950 border border-zinc-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-brandGold resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-[11px] uppercase tracking-wider text-zinc-400 block mb-1">Facebook Copywriting (Paste Ready)</label>
+                            <div class="bg-zinc-950 border border-zinc-800 rounded p-3 text-xs text-zinc-300 max-h-40 overflow-y-auto whitespace-pre-line leading-relaxed" id="display-fb-copy">
+                                <!-- Facebook post description goes here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-zinc-800 text-[11px] text-zinc-500 flex items-center justify-between">
+                    <span>Layout Framework: Open-Source Canvas v1.0</span>
+                    <span>System Focus: Eco-Conscious / Scalable</span>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- CORE AUTOMATION ENGINE LOGIC -->
+    <script>
+        // Full Dataset integration for your 30-Day Strategy mapped dynamically
+        const dataset = [
+            { day: 1, cat: "Welcome", title: "Day 1: Welcome Pillar", head: "WELCOME TO THE\nPRIMETURF FAMILY.", sub: "Gauteng's premier community for luxury artificial grass, precision landscaping, and elite outdoor living environments.", copy: "🌱 Welcome to the PrimeTurf Community! 🌱\n\nWith over 27,000 members, this is Gauteng's premier group for premium artificial grass and luxury outdoor living.\n\nDrop a photo of your current outdoor space or dream lawn below 👇 and let us know what you're looking to achieve!" },
+            { day: 3, cat: "Guidelines", title: "Day 3: Group Rules", head: "COMMUNITY FIRST:\nOUR GROUP RULES.", sub: "Protecting a high-value, executive environment for all 27,000+ landscaping enthusiasts and home owners.", copy: "🔒 PrimeTurf Community Rules\n\nTo keep this a high-quality, valuable space for all 27,000+ members, please ensure your posts stay respectful, entirely on-topic, and free of unapproved self-promotion." },
+            { day: 5, cat: "Engagement", title: "Day 5: Photo Contest", head: "SHOW US YOUR\nCURRENT LAWN.", sub: "Drop a picture of your current outdoor space or terrace transformation project in the comments section below.", copy: "📸 Time for a clean refresh! Drop a photo of your current lawn, patio, or backyard setup below. Let's talk about what's needed to unlock its true architectural potential." },
+            { day: 7, cat: "Showcase", title: "Day 7: Transformation", head: "WATERKLOOF RIDGE\nESTATE PREVIEW.", sub: "Professional Lawn · 680m² highlighting a pristine, lush estate green spaces transformation layout.", copy: "✨ BEFORE & AFTER TRANSFORMATION ✨\n\nTake a look at how our precision-engineered turf systems completely reshaped this 680m² premium layout at Waterkloof Ridge Estate. Crafted for long-term sustainability." },
+            { day: 9, cat: "Education", title: "Day 9: Expert Insight", head: "5 REASONS PREMIUM\nTURF WINS IN JHB.", sub: "Exploring executive landscape sustainability, low maintenance footprints, and enduring UV resistance calculations.", copy: "💡 Why premium artificial turf is shifting the real estate narrative across Gauteng: water conservation, year-round flawless emerald aesthetic, and completely pet-safe frameworks." }
+        ];
+
+        let activeIndex = 0;
+
+        function initializeApp() {
+            const menuContainer = document.getElementById('calendar-menu');
+            dataset.forEach((item, index) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-3 rounded transition flex flex-col gap-1 border ${index === 0 ? 'bg-brandGreen border-brandGold/40 text-white' : 'bg-zinc-900/40 border-transparent text-zinc-400 hover:bg-zinc-800/50'}`;
+                btn.id = `side-btn-${index}`;
+                btn.onclick = () => selectDay(index);
+                btn.innerHTML = `
+                    <div class="flex justify-between items-center w-full">
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-brandGold">${item.cat}</span>
+                        <span class="text-[10px] text-zinc-500">Day ${item.day}</span>
+                    </div>
+                    <span class="text-xs font-semibold text-zinc-200">${item.title.split(': ')[1]}</span>
+                `;
+                menuContainer.appendChild(btn);
+            });
+            selectDay(0);
+        }
+
+        function selectDay(index) {
+            document.getElementById(`side-btn-${activeIndex}`).classList.replace('bg-brandGreen', 'bg-zinc-900/40');
+            document.getElementById(`side-btn-${activeIndex}`).classList.replace('border-brandGold/40', 'border-transparent');
+
+            activeIndex = index;
+            const current = dataset[index];
+
+            document.getElementById(`side-btn-${index}`).classList.replace('bg-zinc-900/40', 'bg-brandGreen');
+            document.getElementById(`side-btn-${index}`).classList.replace('border-transparent', 'border-brandGold/40');
+
+            document.getElementById('badge-category').innerText = current.cat;
+            document.getElementById('display-day').innerText = current.title;
+            document.getElementById('input-headline').value = current.head;
+            document.getElementById('input-subtext').value = current.sub;
+            document.getElementById('display-fb-copy').innerText = current.copy;
+
+            updateActiveGraphic();
+        }
+
+        function updateActiveGraphic() {
+            const canvas = document.getElementById('creativeCanvas');
+            const ctx = canvas.getContext('2d');
+
+            const headline = document.getElementById('input-headline').value;
+            const subtext = document.getElementById('input-subtext').value;
+            const category = document.getElementById('badge-category').innerText;
+
+            // 1. Brand background
+            ctx.fillStyle = '#0B1C13';
+            ctx.fillRect(0, 0, 1200, 1200);
+
+            // Vignette gradient
+            const gradient = ctx.createLinearGradient(0, 0, 1200, 1200);
+            gradient.addColorStop(0, 'rgba(11, 28, 19, 0.2)');
+            gradient.addColorStop(1, 'rgba(7, 18, 12, 0.95)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1200, 1200);
+
+            // 2. Structural border rules
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(100, 140);
+            ctx.lineTo(1100, 140);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(100, 1060);
+            ctx.lineTo(1100, 1060);
+            ctx.stroke();
+
+            // 3. Metadata
+            ctx.fillStyle = '#D4AF37';
+            ctx.font = '600 24px "Inter", sans-serif';
+            ctx.textAlign = 'left';
+            renderTrackedText(ctx, `COMMUNITY PROTOCOL // ${category.toUpperCase()}`, 100, 95, 4);
+
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            ctx.font = '400 22px "Inter", sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText('GAUTENG SYSTEM', 1100, 95);
+
+            // 4. Headline (supports \n line breaks)
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '700 76px "Inter", sans-serif';
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'top';
+
+            const lines = headline.split('\n');
+            let currentY = 320;
+            lines.forEach(line => {
+                ctx.fillText(line, 100, currentY);
+                currentY += 92;
+            });
+
+            // 5. Subtext
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+            ctx.font = '300 34px "Inter", sans-serif';
+            wrapCanvasText(ctx, subtext, 100, currentY + 40, 750, 48);
+
+            // 6. Footer anchors
+            ctx.fillStyle = '#D4AF37';
+            ctx.font = '600 24px "Inter", sans-serif';
+            ctx.textAlign = 'right';
+            renderTrackedText(ctx, 'WWW.PRIMETURF.CO.ZA', 1100, 1115, 3);
+
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.font = '400 24px "Inter", sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Crafting Timeless Luxury', 100, 1115);
+        }
+
+        function renderTrackedText(ctx, text, x, y, spacing) {
+            let currentX = x;
+            if (ctx.textAlign === 'right') {
+                const totalWidth = [...text].reduce((acc, char) => acc + ctx.measureText(char).width + spacing, 0) - spacing;
+                currentX = x - totalWidth;
+                ctx.textAlign = 'left';
+            }
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                ctx.fillText(char, currentX, y);
+                currentX += ctx.measureText(char).width + spacing;
+            }
+        }
+
+        function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            let line = '';
+            let currentY = y;
+
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                const metrics = ctx.measureText(testLine);
+                if (metrics.width > maxWidth && n > 0) {
+                    ctx.fillText(line, x, currentY);
+                    line = words[n] + ' ';
+                    currentY += lineHeight;
+                } else {
+                    line = testLine;
+                }
+            }
+            ctx.fillText(line, x, currentY);
+        }
+
+        function downloadGraphic() {
+            const canvas = document.getElementById('creativeCanvas');
+            const dayLabel = dataset[activeIndex].title.toLowerCase().replace(/[^a-z0-9]/g, '-');
+            const link = document.createElement('a');
+            link.download = `primeturf-${dayLabel}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        window.onload = initializeApp;
+    </script>
+</body>
+</html>

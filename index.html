@@ -1,781 +1,528 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PrimeTurf · Developer Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>PrimeTurf | Premium Artificial Grass Solutions</title>
+<meta name="description" content="PrimeTurf installs premium artificial grass systems for estates, schools, restaurants, and commercial properties across Gauteng.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#080807; --slate:#111110; --panel:#161614;
-  --forest:#1A3A2A; --green:#4CAF65; --gold:#C8953A;
-  --gold-l:#E8B86D; --warm:#F5F2EC; --dim:rgba(245,242,236,0.35);
-  --border:rgba(200,149,58,0.12); --border-bright:rgba(200,149,58,0.3);
-  --danger:#E05555; --info:#4A9EBF;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--ink);color:var(--warm);font-family:'Montserrat',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden;}
+  :root{
+    --forest:#1e5b3f;       /* lightened per instruction — was near-black */
+    --forest-deep:#153f2c;
+    --gold:#c7a24d;
+    --gold-light:#e5c97f;
+    --sand:#f6f3ea;         /* replaces salmon background */
+    --white:#ffffff;
+    --ink:#1a241d;
+    --muted:#666d64;
+    --line:rgba(199,162,77,.3);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:"Lato",sans-serif;color:var(--ink);background:var(--white);overflow-x:hidden;}
+  img{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  .serif{font-family:"Cormorant Garamond",serif;}
+  .shell{max-width:1160px;margin:0 auto;padding-inline:28px;}
+  .eyebrow{text-transform:uppercase;letter-spacing:.26em;font-size:11px;font-weight:700;color:var(--gold);}
 
-/* NOISE */
-body::before{content:'';position:fixed;inset:0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.022'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:9999;}
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;gap:14px;padding:14px 28px;max-width:1160px;margin:0 auto;}
+  .nav img{height:44px;width:auto;}
+  .brandname{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:22px;color:var(--forest);}
+  .navlinks{display:flex;gap:24px;margin-left:auto;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);}
+  .navlinks a{opacity:.8;transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;color:var(--forest);}
+  .navcta{background:var(--gold);color:var(--forest-deep);padding:11px 20px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;margin-left:16px;}
 
-/* ═══ TOP BAR ═══ */
-.topbar{background:rgba(8,8,7,0.97);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:800;backdrop-filter:blur(16px);}
-.topbar-inner{display:flex;align-items:center;height:56px;padding:0 40px;gap:0;}
-.tb-logo{font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:0.22em;margin-right:32px;white-space:nowrap;}
-.tb-logo span{color:var(--gold);}
-.tb-tag{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(200,149,58,0.4);letter-spacing:0.12em;margin-right:auto;}
+  /* MOBILE NAV DRAWER */
+  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:30px;height:30px;cursor:pointer;background:none;border:0;padding:0;margin-left:auto;}
+  .hamburger span{display:block;height:2px;width:100%;background:var(--forest);border-radius:2px;transition:transform .25s ease,opacity .25s ease;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .nav-overlay{display:none;position:fixed;inset:0;background:rgba(21,63,44,.45);z-index:90;}
+  .nav-overlay.open{display:block;}
+  .mobile-nav{position:fixed;top:0;right:0;bottom:0;width:76%;max-width:320px;background:var(--white);z-index:95;box-shadow:-12px 0 40px rgba(0,0,0,.22);padding:100px 30px 30px;display:flex;flex-direction:column;gap:24px;transform:translateX(100%);transition:transform .32s ease;}
+  .mobile-nav.open{transform:translateX(0);}
+  .mobile-nav a{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--forest);font-weight:700;}
+  .mobile-nav .navcta{margin-top:6px;text-align:center;justify-content:center;margin-left:0;}
+  @media (max-width:860px){.navlinks{display:none;}.nav .navcta{display:none;}.hamburger{display:flex;}}
 
-/* Site nav buttons */
-.site-nav{display:flex;gap:8px;}
-.snav-btn{display:flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid var(--border);background:rgba(200,149,58,0.04);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;color:var(--dim);text-transform:uppercase;text-decoration:none;transition:all 0.25s;white-space:nowrap;}
-.snav-btn:hover{background:rgba(200,149,58,0.1);border-color:var(--border-bright);color:var(--gold);}
-.snav-btn .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
-.snav-btn .dot.brand{background:#4CAF65;}
-.snav-btn .dot.blueprint{background:var(--gold);}
-.snav-btn .dot.website{background:var(--info);}
+  /* HERO */
+  .hero{background:var(--sand);padding:70px 0 64px;text-align:center;}
+  .hero img.mark{height:190px;margin:0 auto 20px;}
+  @media (max-width:600px){.hero img.mark{height:140px;}}
+  .hero h1{font-size:44px;line-height:1.08;margin:0 0 8px;font-weight:600;color:var(--forest);}
+  .hero .sub{font-size:13px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:28px;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:640px;margin:0 auto 32px;}
+  .tag-chip{border:1px solid var(--line);padding:8px 16px;font-size:12px;color:var(--forest);background:var(--white);}
+  .hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;border:1px solid transparent;transition:transform .2s,box-shadow .2s;cursor:pointer;}
+  .btn-gold{background:var(--gold);color:var(--forest-deep);}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.18);}
+  .btn-outline{border-color:var(--forest);color:var(--forest);}
+  .btn-outline:hover{background:rgba(30,91,63,.06);}
 
-/* ═══ HERO / HEADER ═══ */
-.hub-hero{padding:64px 40px 48px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:flex-end;}
-.hub-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(200,149,58,0.45);margin-bottom:16px;}
-.hub-title{font-family:'Cinzel',serif;font-size:clamp(32px,5vw,58px);font-weight:700;letter-spacing:0.08em;line-height:0.9;margin-bottom:12px;}
-.hub-title span{color:var(--gold);}
-.hub-sub{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;font-style:italic;color:var(--dim);margin-bottom:24px;}
-.hub-meta{display:flex;gap:24px;flex-wrap:wrap;}
-.hm{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:rgba(245,242,236,0.28);}
-.hm strong{color:var(--gold);}
+  /* FEATURE STRIP */
+  .feature-strip{background:var(--forest);color:#fff;padding:22px 0;}
+  .feature-strip .shell{display:flex;flex-wrap:wrap;justify-content:center;gap:0;}
+  .fitem{padding:8px 26px;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border-right:1px solid rgba(255,255,255,.2);}
+  .fitem:last-child{border-right:none;}
+  @media (max-width:760px){.fitem{border-right:none;padding:6px 16px;}}
 
-.hub-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;width:280px;}
-.hs{padding:20px 22px;background:var(--panel);border:1px solid var(--border);text-align:center;}
-.hs-v{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--gold);line-height:1;margin-bottom:4px;}
-.hs-l{font-family:'Cinzel',serif;font-size:8px;letter-spacing:0.38em;text-transform:uppercase;color:var(--dim);}
+  /* SECTION */
+  .section{padding:76px 0;}
+  .section-head{max-width:680px;margin:0 auto 46px;text-align:center;}
+  .section-head h2{font-size:34px;font-weight:600;color:var(--forest);margin:12px 0 12px;}
+  .section-head p{color:var(--muted);font-size:15px;line-height:1.7;margin:0;}
 
-/* ═══ SITEMAP NAV CARDS ═══ */
-.section{padding:0 40px 64px;max-width:1400px;margin:0 auto;}
-.sec-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.5em;text-transform:uppercase;color:rgba(200,149,58,0.45);margin-bottom:20px;}
-.sec-title{font-family:'Cinzel',serif;font-size:22px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm);margin-bottom:28px;}
-.h-rule{height:1px;background:linear-gradient(to right,transparent,rgba(200,149,58,0.18),transparent);margin:0 40px 56px;}
+  .signature-line{text-align:center;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;color:var(--forest);padding:50px 28px;background:var(--sand);}
 
-.sitemap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:8px;}
-.smap-card{padding:40px 36px;border:1px solid var(--border);background:var(--panel);position:relative;overflow:hidden;transition:all 0.3s;text-decoration:none;display:block;color:inherit;}
-.smap-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-.smap-card.brand::before{background:linear-gradient(to right,#4CAF65,rgba(76,175,101,0.3));}
-.smap-card.blueprint::before{background:linear-gradient(to right,var(--gold),rgba(200,149,58,0.3));}
-.smap-card.website::before{background:linear-gradient(to right,var(--info),rgba(74,158,191,0.3));}
-.smap-card:hover{background:rgba(26,58,42,0.2);border-color:var(--border-bright);transform:translateY(-2px);}
-.sc-icon{font-size:28px;margin-bottom:16px;}
-.sc-doc{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;margin-bottom:10px;}
-.smap-card.brand .sc-doc{color:#4CAF65;}
-.smap-card.blueprint .sc-doc{color:var(--gold);}
-.smap-card.website .sc-doc{color:var(--info);}
-.sc-name{font-family:'Cinzel',serif;font-size:16px;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm);margin-bottom:8px;}
-.sc-desc{font-size:12px;color:var(--dim);line-height:1.75;margin-bottom:20px;}
-.sc-link{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--dim);transition:color 0.2s;}
-.smap-card:hover .sc-link{color:var(--gold);}
-.sc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:16px;}
-.sc-tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.12em;padding:3px 8px;border:1px solid rgba(200,149,58,0.15);color:var(--dim);}
+  /* SERVICES GRID */
+  .services{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .svc{background:var(--white);padding:26px 22px;}
+  .svc h3{font-family:"Cormorant Garamond",serif;font-size:19px;color:var(--forest);margin:0;font-weight:700;}
+  @media (max-width:860px){.services{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.services{grid-template-columns:1fr;}}
 
-/* ═══ MAIN GRID ═══ */
-.main-grid{display:grid;grid-template-columns:1fr 380px;gap:2px;}
-.left-col{display:flex;flex-direction:column;gap:2px;}
-.right-col{display:flex;flex-direction:column;gap:2px;}
+  /* PROCESS */
+  .process-wrap{background:var(--forest);color:#fff;padding:76px 0;}
+  .process-wrap .section-head{max-width:760px;}
+  .process-wrap .section-head h2{color:#fff;}
+  .process-wrap .section-head p{color:#d7e4dc;}
+  .process7{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:center;max-width:1080px;margin:0 auto;}
+  .process7-img{width:100%;border:1px solid rgba(255,255,255,.18);box-shadow:0 20px 44px rgba(0,0,0,.28);}
+  .process7-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;}
+  .process7-list li{display:flex;gap:16px;align-items:flex-start;}
+  .p7-n{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--gold);color:var(--forest-deep);font-weight:700;font-size:16px;display:grid;place-items:center;font-family:"Cormorant Garamond",serif;}
+  .process7-list h4{margin:0 0 4px;font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.03em;color:#fff;}
+  .process7-list p{margin:0;font-size:13px;color:#d7e4dc;line-height:1.6;}
+  @media (max-width:800px){.process7{grid-template-columns:1fr;}.process7-img{max-width:420px;margin:0 auto;}}
 
-/* panel base */
-.panel{background:var(--panel);border:1px solid var(--border);padding:32px;}
-.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border);}
-.ph-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);}
-.ph-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;padding:3px 10px;border:1px solid;border-radius:2px;}
-.ph-badge.live{border-color:rgba(76,175,101,0.4);color:var(--green);background:rgba(76,175,101,0.08);}
-.ph-badge.pending{border-color:rgba(200,149,58,0.4);color:var(--gold);background:rgba(200,149,58,0.08);}
-.ph-badge.info{border-color:rgba(74,158,191,0.4);color:var(--info);background:rgba(74,158,191,0.08);}
+  /* GALLERY GRID */
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .g-tile{position:relative;overflow:hidden;border:1px solid var(--line);}
+  .g-tile img{width:100%;height:230px;object-fit:cover;display:block;transition:transform .5s;}
+  .g-tile:hover img{transform:scale(1.07);}
+  .g-tile .g-cap{position:absolute;left:0;right:0;bottom:0;padding:10px 14px;background:linear-gradient(to top,rgba(21,63,44,.9),transparent);color:#fff;font-size:12px;font-weight:700;letter-spacing:.02em;}
+  @media (max-width:860px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.gallery-grid{grid-template-columns:1fr;}.g-tile img{height:220px;}}
 
-/* ═══ TASK TRACKER ═══ */
-.task-section{margin-bottom:20px;}
-.task-section-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.18em;color:rgba(200,149,58,0.4);text-transform:uppercase;margin-bottom:12px;}
-.task-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(200,149,58,0.04);cursor:pointer;transition:all 0.2s;}
-.task-item:last-child{border-bottom:none;}
-.task-item:hover{padding-left:4px;}
-.task-cb{width:18px;height:18px;border:1.5px solid;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;cursor:pointer;}
-.task-cb.done{border-color:var(--green);background:rgba(76,175,101,0.15);}
-.task-cb.todo{border-color:rgba(200,149,58,0.35);}
-.task-cb.done::after{content:'✓';font-size:10px;color:var(--green);font-weight:700;}
-.task-text{font-size:12px;line-height:1.6;transition:color 0.2s;}
-.task-item.is-done .task-text{color:rgba(245,242,236,0.3);text-decoration:line-through;}
-.task-item.is-todo .task-text{color:rgba(245,242,236,0.7);}
-.task-priority{font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 6px;border-radius:2px;margin-left:auto;flex-shrink:0;white-space:nowrap;}
-.task-priority.high{background:rgba(224,85,85,0.15);color:var(--danger);border:1px solid rgba(224,85,85,0.25);}
-.task-priority.med{background:rgba(200,149,58,0.1);color:var(--gold);border:1px solid rgba(200,149,58,0.2);}
-.task-priority.low{background:rgba(76,175,101,0.1);color:var(--green);border:1px solid rgba(76,175,101,0.2);}
+  /* CLIP VIDEOS */
+  .clip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:980px;margin:36px auto 0;}
+  .clip-tile{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:#000;aspect-ratio:1/1;box-shadow:0 16px 34px rgba(0,0,0,.3);transition:transform .4s ease,box-shadow .4s ease;}
+  .clip-tile:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(0,0,0,.4);}
+  .clip-tile video{width:100%;height:100%;object-fit:cover;display:block;}
+  .clip-tile .clip-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(to top,rgba(0,0,0,.78),transparent);color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.02em;}
+  .clip-mute{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.45);display:grid;place-items:center;cursor:pointer;color:#fff;border:1px solid rgba(255,255,255,.35);}
+  @media (max-width:760px){.clip-grid{grid-template-columns:1fr 1fr;max-width:420px;}}
+  @media (max-width:520px){.clip-grid{grid-template-columns:1fr;max-width:280px;}}
 
-/* add task */
-.add-task-row{display:flex;gap:8px;margin-top:16px;}
-.add-task-input{flex:1;background:rgba(0,0,0,0.3);border:1px solid var(--border);padding:9px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--warm);outline:none;transition:border 0.2s;}
-.add-task-input:focus{border-color:rgba(200,149,58,0.35);}
-.add-task-input::placeholder{color:rgba(245,242,236,0.2);}
-.add-btn{padding:9px 18px;background:rgba(200,149,58,0.08);border:1px solid var(--border-bright);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;color:var(--gold);cursor:pointer;transition:all 0.2s;white-space:nowrap;}
-.add-btn:hover{background:rgba(200,149,58,0.18);}
+  /* FOLLOW ON FACEBOOK */
+  .fb-follow{display:flex;align-items:center;gap:20px;max-width:740px;margin:56px auto 0;padding:24px 28px;border:1px solid var(--line);background:var(--sand);border-radius:14px;flex-wrap:wrap;justify-content:center;text-align:center;}
+  .fb-follow svg{flex-shrink:0;color:#1877F2;}
+  .fb-follow strong{display:block;color:var(--forest);font-size:15.5px;font-family:"Cormorant Garamond",serif;font-weight:700;}
+  .fb-follow p{margin:6px 0 0;color:var(--muted);font-size:13.5px;line-height:1.6;max-width:440px;}
+  .fb-follow .btn{flex-shrink:0;}
 
-/* ═══ IDEA LOG / BLOG ═══ */
-.idea-entry{padding:18px 0;border-bottom:1px solid rgba(200,149,58,0.05);}
-.idea-entry:last-child{border-bottom:none;}
-.ie-meta{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.ie-date{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(245,242,236,0.22);letter-spacing:0.1em;}
-.ie-tag{font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 8px;border-radius:2px;}
-.ie-tag.workflow{background:rgba(74,158,191,0.12);color:var(--info);border:1px solid rgba(74,158,191,0.2);}
-.ie-tag.brand{background:rgba(76,175,101,0.1);color:var(--green);border:1px solid rgba(76,175,101,0.2);}
-.ie-tag.idea{background:rgba(200,149,58,0.1);color:var(--gold);border:1px solid rgba(200,149,58,0.2);}
-.ie-tag.content{background:rgba(180,120,200,0.1);color:#C89EE8;border:1px solid rgba(180,120,200,0.2);}
-.ie-title{font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.1em;color:var(--warm);margin-bottom:6px;}
-.ie-body{font-size:12px;color:var(--dim);line-height:1.7;}
+  /* SCROLL REVEAL — safe by default; only hides content once JS confirms it can reveal it again */
+  .reveal{opacity:1;transform:none;}
+  html.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  html.js .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){html.js .reveal{opacity:1;transform:none;transition:none;}}
 
-/* idea input */
-.idea-compose{margin-top:20px;border-top:1px solid var(--border);padding-top:20px;}
-.ic-row{display:flex;gap:8px;margin-bottom:8px;}
-.ic-input{flex:1;background:rgba(0,0,0,0.3);border:1px solid var(--border);padding:9px 14px;font-family:'Montserrat',sans-serif;font-size:12px;color:var(--warm);outline:none;transition:border 0.2s;}
-.ic-input:focus{border-color:rgba(200,149,58,0.35);}
-.ic-input::placeholder{color:rgba(245,242,236,0.2);}
-.ic-select{background:rgba(0,0,0,0.3);border:1px solid var(--border);padding:9px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);outline:none;cursor:pointer;}
-.ic-select option{background:#161614;}
-.ic-textarea{width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;color:var(--warm);outline:none;resize:vertical;min-height:80px;transition:border 0.2s;margin-bottom:8px;}
-.ic-textarea:focus{border-color:rgba(200,149,58,0.35);}
-.ic-textarea::placeholder{color:rgba(245,242,236,0.2);}
-.post-btn{padding:10px 24px;background:rgba(200,149,58,0.08);border:1px solid var(--border-bright);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.35em;color:var(--gold);cursor:pointer;transition:all 0.2s;}
-.post-btn:hover{background:rgba(200,149,58,0.18);}
+  /* SLIDER */
+  .slider-wrap{max-width:900px;margin:50px auto 0;}
+  .compare{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);cursor:ew-resize;touch-action:none;user-select:none;}
+  .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .compare-after{clip-path:inset(0 50% 0 0);}
+  .compare-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-50%);z-index:5;}
+  .compare-handle{position:absolute;top:50%;left:50%;width:50px;height:50px;transform:translate(-50%,-50%);border-radius:50%;background:var(--gold);display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.25);color:var(--forest-deep);}
+  .compare-label{position:absolute;top:16px;z-index:4;background:rgba(21,63,44,.85);color:#fff;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.18em;padding:7px 12px;}
+  .compare-label.before{left:16px;}
+  .compare-label.after{right:16px;}
 
-/* ═══ CRM PANEL ═══ */
-.crm-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid rgba(200,149,58,0.04);}
-.crm-item:last-child{border-bottom:none;}
-.crm-avatar{width:36px;height:36px;flex-shrink:0;background:rgba(26,58,42,0.4);border:1px solid rgba(200,149,58,0.15);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--gold);}
-.crm-info{flex:1;min-width:0;}
-.crm-name{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;color:var(--warm);margin-bottom:3px;}
-.crm-detail{font-size:11px;color:var(--dim);margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.crm-meta{display:flex;gap:8px;align-items:center;}
-.crm-status{font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 7px;border-radius:2px;}
-.crm-status.new{background:rgba(200,149,58,0.12);color:var(--gold);border:1px solid rgba(200,149,58,0.25);}
-.crm-status.quote{background:rgba(74,158,191,0.1);color:var(--info);border:1px solid rgba(74,158,191,0.2);}
-.crm-status.won{background:rgba(76,175,101,0.1);color:var(--green);border:1px solid rgba(76,175,101,0.2);}
-.crm-status.nurture{background:rgba(180,120,200,0.1);color:#C89EE8;border:1px solid rgba(180,120,200,0.2);}
-.crm-time{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(245,242,236,0.2);}
+  /* CONTACT */
+  .contact{background:var(--sand);padding:80px 0;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start;}
+  .contact-list{margin-top:24px;}
+  .crow{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;font-weight:700;color:var(--forest);}
+  .crow svg{flex-shrink:0;color:var(--gold);}
+  .form-panel{background:var(--white);border:1px solid var(--line);padding:32px;}
+  .form-panel h3{margin:0 0 6px;color:var(--forest);font-size:24px;}
+  .form-panel .fnote{font-size:13px;color:var(--muted);margin:0 0 22px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+  .form-field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--forest);margin-bottom:6px;}
+  .form-field input,.form-field textarea{width:100%;border:1px solid var(--line);padding:11px 12px;background:var(--white);font:inherit;font-size:14px;}
+  .checklist{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 18px;}
+  .check-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .check-item input{width:16px;height:16px;accent-color:var(--forest);}
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}.form-row,.checklist{grid-template-columns:1fr;}}
 
-/* ═══ AUTOMATION STACK ═══ */
-.stack-layer{display:flex;align-items:center;gap:16px;padding:14px 16px;border:1px solid var(--border);background:rgba(0,0,0,0.2);margin-bottom:2px;transition:all 0.25s;}
-.stack-layer:hover{background:rgba(26,58,42,0.2);border-color:var(--border-bright);}
-.sl-icon{font-size:20px;width:36px;text-align:center;flex-shrink:0;}
-.sl-info{flex:1;}
-.sl-layer{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.15em;color:rgba(200,149,58,0.45);text-transform:uppercase;margin-bottom:3px;}
-.sl-tool{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.12em;color:var(--warm);margin-bottom:2px;}
-.sl-func{font-size:11px;color:var(--dim);}
-.sl-status{font-family:'JetBrains Mono',monospace;font-size:8px;padding:3px 8px;border-radius:2px;white-space:nowrap;}
-.sl-status.planned{background:rgba(200,149,58,0.1);color:var(--gold);border:1px solid rgba(200,149,58,0.2);}
-.sl-status.active{background:rgba(76,175,101,0.1);color:var(--green);border:1px solid rgba(76,175,101,0.2);}
-.sl-status.building{background:rgba(74,158,191,0.1);color:var(--info);border:1px solid rgba(74,158,191,0.2);}
+  footer{background:var(--forest-deep);color:#a9bcae;padding:36px 0;text-align:center;font-size:12px;}
+  footer .fmark{height:46px;margin:0 auto 12px;}
+  footer a{color:var(--gold-light);}
 
-/* ═══ PROJECT INFO ═══ */
-.info-row{display:flex;gap:0;border-bottom:1px solid rgba(200,149,58,0.05);padding:10px 0;}
-.info-row:last-child{border-bottom:none;}
-.ir-key{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:rgba(200,149,58,0.45);width:130px;flex-shrink:0;}
-.ir-val{font-size:12px;color:var(--dim);}
-.ir-val a{color:var(--gold);text-decoration:none;}
-.ir-val a:hover{text-decoration:underline;}
-
-/* ═══ PROGRESS BARS ═══ */
-.prog-item{margin-bottom:16px;}
-.pi-head{display:flex;justify-content:space-between;margin-bottom:6px;}
-.pi-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--dim);}
-.pi-val{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);}
-.prog-track{height:4px;background:rgba(255,255,255,0.06);border-radius:0;overflow:hidden;}
-.prog-fill{height:100%;background:linear-gradient(to right,var(--forest),var(--gold));border-radius:0;transition:width 1s ease;}
-
-/* RESPONSIVE */
-@media(max-width:1100px){
-  .main-grid{grid-template-columns:1fr;}
-  .sitemap-grid{grid-template-columns:1fr 1fr;}
-  .hub-hero{grid-template-columns:1fr;gap:24px;}
-  .hub-stats{width:100%;grid-template-columns:repeat(4,1fr);}
-}
-@media(max-width:700px){
-  .topbar-inner,.section,.hub-hero{padding-left:20px;padding-right:20px;}
-  .h-rule{margin-left:20px;margin-right:20px;}
-  .sitemap-grid{grid-template-columns:1fr;}
-  .hub-stats{grid-template-columns:1fr 1fr;}
-  .site-nav{display:none;}
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.hub-hero>*{animation:fadeUp 0.8s ease forwards;opacity:0;}
-.hub-hero>*:nth-child(1){animation-delay:0.1s;}
-.hub-hero>*:nth-child(2){animation-delay:0.25s;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+  .floating-wa{position:fixed;bottom:22px;right:22px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25);animation:wa-pulse 2.6s infinite;}
+  .floating-wa:hover{animation:none;}
+  @keyframes wa-pulse{
+    0%{box-shadow:0 10px 24px rgba(0,0,0,.25),0 0 0 0 rgba(37,211,102,.55);}
+    70%{box-shadow:0 10px 24px rgba(0,0,0,.25),0 0 0 14px rgba(37,211,102,0);}
+    100%{box-shadow:0 10px 24px rgba(0,0,0,.25),0 0 0 0 rgba(37,211,102,0);}
+  }
 </style>
 </head>
 <body>
 
-<!-- ══ TOP BAR ══ -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="tb-logo">Prime<span>Turf</span></div>
-    <div class="tb-tag">/ dev-hub &nbsp;·&nbsp; stiaan@primeturf.co.za</div>
-    <div class="site-nav">
-      <a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_BrandSystem.html" target="_blank" class="snav-btn">
-        <span class="dot brand"></span>Brand System
-      </a>
-      <a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_MasterBlueprint_v5.html" target="_blank" class="snav-btn">
-        <span class="dot blueprint"></span>Master Blueprint
-      </a>
-      <a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_Website.html#philosophy" target="_blank" class="snav-btn">
-        <span class="dot website"></span>Website Preview
-      </a>
+<header>
+  <div class="nav">
+    <img src="assets/logo/pt-logo-transparent-cropped.png" alt="PrimeTurf logo">
+    <span class="brandname">PrimeTurf</span>
+    <nav class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="navcta" href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%27d%20like%20to%20enquire." target="_blank" rel="noopener">Get a Quote</a>
+  </div>
+</header>
+
+<div class="nav-overlay" id="navOverlay"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Contact</a>
+  <a class="navcta" href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%27d%20like%20to%20enquire." target="_blank" rel="noopener">Get a Quote</a>
+</nav>
+
+<section class="hero">
+  <img class="mark" src="assets/logo/pt-logo-transparent-cropped.png" alt="PrimeTurf — Premium Artificial Grass Solutions">
+  <p class="eyebrow">Serving Gauteng</p>
+  <h1 class="serif">Premium Artificial<br>Grass Solutions</h1>
+  <p class="sub">Signature Turf Systems for Residential and Commercial Use</p>
+  <div class="tag-row">
+    <span class="tag-chip">Estate Lawns</span>
+    <span class="tag-chip">School Grounds</span>
+    <span class="tag-chip">Play Areas</span>
+    <span class="tag-chip">Restaurant Play Areas</span>
+    <span class="tag-chip">Residential</span>
+    <span class="tag-chip">Commercial</span>
+    <span class="tag-chip">Patios</span>
+    <span class="tag-chip">Putting Greens</span>
+  </div>
+  <div class="hero-buttons">
+    <a class="btn btn-gold" href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%27d%20like%20a%20quote." target="_blank" rel="noopener">Get a Quote</a>
+    <a class="btn btn-outline" href="#gallery">See Our Work</a>
+  </div>
+</section>
+
+<div class="feature-strip">
+  <div class="shell">
+    <span class="fitem">Low Maintenance</span>
+    <span class="fitem">Water Saving</span>
+    <span class="fitem">Pet Friendly</span>
+    <span class="fitem">Non-Toxic</span>
+    <span class="fitem">Built to Last</span>
+  </div>
+</div>
+
+<section class="section" id="services">
+  <div class="shell">
+    <div class="section-head reveal">
+      <p class="eyebrow">What We Install</p>
+      <h2 class="serif">Premium turf systems, every space.</h2>
+      <p>From private gardens to school grounds and commercial complexes — professionally installed, built to specification.</p>
+    </div>
+    <div class="services reveal">
+      <div class="svc"><h3>School Grounds</h3></div>
+      <div class="svc"><h3>Play Areas</h3></div>
+      <div class="svc"><h3>Restaurant Play Areas</h3></div>
+      <div class="svc"><h3>Residential</h3></div>
+      <div class="svc"><h3>Commercial</h3></div>
+      <div class="svc"><h3>Patios</h3></div>
+      <div class="svc"><h3>Putting Greens</h3></div>
+      <div class="svc"><h3>Custom Installs</h3></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ══ HERO ══ -->
-<div class="hub-hero">
-  <div>
-    <div class="hub-eyebrow">// developer · command hub · v1.0</div>
-    <div class="hub-title">Prime<span>Turf</span><br>Dev Hub</div>
-    <div class="hub-sub">Build log, task force & project intelligence</div>
-    <div class="hub-meta">
-      <div class="hm">Phase <strong>Launch</strong></div>
-      <div class="hm">Territory <strong>Pretoria East</strong></div>
-      <div class="hm">Lead <strong>Stiaan du Plessis</strong></div>
-      <div class="hm" id="live-date"></div>
+<div class="signature-line">Quality you can see, service you can trust.</div>
+
+<section class="process-wrap" id="process">
+  <div class="shell">
+    <div class="section-head reveal">
+      <p class="eyebrow" style="color:var(--gold-light);">Our Process</p>
+      <h2 class="serif">The secret to a long-lasting lawn starts beneath the surface.</h2>
+      <p>Our professional 7-step sub-base process ensures exceptional drainage, durability, weed prevention, and a natural look and feel that lasts for years.</p>
+    </div>
+    <div class="process7">
+      <img class="process7-img reveal" src="images/process-7-step-prep.jpg" alt="PrimeTurf 7-step sub-base preparation cross-section: Jeyes fluid and salt, G5 soil, crusher dust, cement layer, cement edges, turf installation, silica sand">
+      <ol class="process7-list reveal">
+        <li><span class="p7-n">1</span><div><h4>Jeyes Fluid &amp; Coarse Salt Mix</h4><p>Helps keep weeds and bugs away.</p></div></li>
+        <li><span class="p7-n">2</span><div><h4>G5 Soil</h4><p>Expertly levelled for a stable foundation.</p></div></li>
+        <li><span class="p7-n">3</span><div><h4>Crusher Dust</h4><p>Provides excellent drainage and strength.</p></div></li>
+        <li><span class="p7-n">4</span><div><h4>Thin Dust Cement Layer</h4><p>Binds the base together.</p></div></li>
+        <li><span class="p7-n">5</span><div><h4>Cement Edges</h4><p>Creates the perfect surface for high-quality glue adhesion.</p></div></li>
+        <li><span class="p7-n">6</span><div><h4>Professional Artificial Turf Installation</h4><p>Precision installed for a flawless finish.</p></div></li>
+        <li><span class="p7-n">7</span><div><h4>Silica Sand</h4><p>Improves durability, drainage, temperature control and delivers a realistic feel.</p></div></li>
+      </ol>
     </div>
   </div>
-  <div class="hub-stats">
-    <div class="hs"><div class="hs-v">3</div><div class="hs-l">Live Docs</div></div>
-    <div class="hs"><div class="hs-v" id="task-count">—</div><div class="hs-l">Tasks Done</div></div>
-    <div class="hs"><div class="hs-v" id="idea-count">5</div><div class="hs-l">Ideas Logged</div></div>
-    <div class="hs"><div class="hs-v">5yr</div><div class="hs-l">Vision</div></div>
-  </div>
-</div>
+</section>
 
-<!-- ══ SITEMAP ══ -->
-<div class="section">
-  <div class="sec-label">Sitemap</div>
-  <div class="sec-title">Live Documents</div>
-  <div class="sitemap-grid">
-
-    <a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_BrandSystem.html" target="_blank" class="smap-card brand">
-      <div class="sc-icon">🎨</div>
-      <div class="sc-doc">DOC 01 · BRAND SYSTEM</div>
-      <div class="sc-name">Brand Bible</div>
-      <div class="sc-desc">Logo system, colour palette, typography, photography direction, brand voice, vehicle branding, uniforms, social templates, proposal design, estate lifestyle positioning.</div>
-      <div class="sc-link">→ iamstiaan.github.io/PrimeTurf/PrimeTurf_BrandSystem.html</div>
-      <div class="sc-tags">
-        <span class="sc-tag">Identity</span>
-        <span class="sc-tag">Guidelines</span>
-        <span class="sc-tag">Reference</span>
-      </div>
-    </a>
-
-    <a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_MasterBlueprint_v5.html" target="_blank" class="smap-card blueprint">
-      <div class="sc-icon">⚙️</div>
-      <div class="sc-doc">DOC 02 · MASTER BLUEPRINT</div>
-      <div class="sc-name">Operating System</div>
-      <div class="sc-desc">Launch sequence, leadership, lead architecture, CRM, sales pipeline, WhatsApp system, SEO, Google Business, referrals, expansion, KPIs, aligned incentives, 5-year roadmap.</div>
-      <div class="sc-link">→ iamstiaan.github.io/PrimeTurf/PrimeTurf_MasterBlueprint_v5.html</div>
-      <div class="sc-tags">
-        <span class="sc-tag">Execution</span>
-        <span class="sc-tag">Operations</span>
-        <span class="sc-tag">Growth</span>
-      </div>
-    </a>
-
-    <a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_Website.html#philosophy" target="_blank" class="smap-card website">
-      <div class="sc-icon">🌐</div>
-      <div class="sc-doc">DOC 03 · WEBSITE PREVIEW</div>
-      <div class="sc-name">Client-Facing Site</div>
-      <div class="sc-desc">Live website preview. Philosophy, estate lifestyle positioning, transformation gallery, WhatsApp lead capture, SEO-ready suburb landing pages, premium client experience.</div>
-      <div class="sc-link">→ iamstiaan.github.io/PrimeTurf/PrimeTurf_Website.html</div>
-      <div class="sc-tags">
-        <span class="sc-tag">Client-Facing</span>
-        <span class="sc-tag">SEO</span>
-        <span class="sc-tag">Lead Capture</span>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- Mobile nav fallback -->
-  <div style="display:none;gap:8px;flex-wrap:wrap;margin-top:16px" id="mobile-nav">
-    <a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_BrandSystem.html" target="_blank" class="snav-btn"><span class="dot brand"></span>Brand System</a>
-    <a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_MasterBlueprint_v5.html" target="_blank" class="snav-btn"><span class="dot blueprint"></span>Master Blueprint</a>
-    <a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_Website.html#philosophy" target="_blank" class="snav-btn"><span class="dot website"></span>Website Preview</a>
-  </div>
-</div>
-
-<div class="h-rule"></div>
-
-<!-- ══ MAIN GRID ══ -->
-<div class="section">
-  <div class="main-grid">
-
-    <!-- LEFT: TASK TRACKER + IDEA LOG -->
-    <div class="left-col">
-
-      <!-- TASK TRACKER -->
-      <div class="panel">
-        <div class="panel-head">
-          <div class="ph-title">⬜ Task Force</div>
-          <div class="ph-badge pending" id="tasks-remaining">Loading...</div>
-        </div>
-
-        <div class="task-section">
-          <div class="task-section-label">// Foundation — Week 1</div>
-          <div class="task-item is-done" onclick="toggleTask(this)">
-            <div class="task-cb done"></div>
-            <div class="task-text">Brand System locked and published</div>
-            <div class="task-priority low">Done</div>
-          </div>
-          <div class="task-item is-done" onclick="toggleTask(this)">
-            <div class="task-cb done"></div>
-            <div class="task-text">Master Blueprint v5 rebuilt and published</div>
-            <div class="task-priority low">Done</div>
-          </div>
-          <div class="task-item is-done" onclick="toggleTask(this)">
-            <div class="task-cb done"></div>
-            <div class="task-text">Leadership structure & authority matrix defined</div>
-            <div class="task-priority low">Done</div>
-          </div>
-          <div class="task-item is-done" onclick="toggleTask(this)">
-            <div class="task-cb done"></div>
-            <div class="task-text">Compensation redesigned — shared-growth framework</div>
-            <div class="task-priority low">Done</div>
-          </div>
-          <div class="task-item is-done" onclick="toggleTask(this)">
-            <div class="task-cb done"></div>
-            <div class="task-text">Command Center rebuilt as dominant opening section</div>
-            <div class="task-priority low">Done</div>
-          </div>
-        </div>
-
-        <div class="task-section">
-          <div class="task-section-label">// Launch — Next Actions</div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Register domain (primeturf.co.za)</div>
-            <div class="task-priority high">High</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Secure @primeturf social handles (Instagram, TikTok, Facebook)</div>
-            <div class="task-priority high">High</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Create Google Business Profile — complete 100% of fields</div>
-            <div class="task-priority high">High</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Configure WhatsApp Business — auto-reply active</div>
-            <div class="task-priority high">High</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Activate CRM (HubSpot Free) — first pipeline live</div>
-            <div class="task-priority med">Med</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Publish first social post — estate lifestyle content</div>
-            <div class="task-priority med">Med</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Activate first 10 referrers — warm network</div>
-            <div class="task-priority med">Med</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Acquire first Google review from completed job</div>
-            <div class="task-priority med">Med</div>
-          </div>
-        </div>
-
-        <div class="task-section">
-          <div class="task-section-label">// Digital — Month 1</div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Website SEO audit — schema markup, meta, suburb pages</div>
-            <div class="task-priority med">Med</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Set up Google Analytics 4 + Search Console</div>
-            <div class="task-priority med">Med</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Build Before/After content bank — 10 pieces per job</div>
-            <div class="task-priority low">Low</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Set up content scheduler (Buffer or Meta Suite)</div>
-            <div class="task-priority low">Low</div>
-          </div>
-        </div>
-
-        <div class="task-section">
-          <div class="task-section-label">// Automation Sideline</div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Configure AI Creative Agent for branded visual generation</div>
-            <div class="task-priority low">Low</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Set up asset management (Google Drive, auto-tagging by theme)</div>
-            <div class="task-priority low">Low</div>
-          </div>
-          <div class="task-item is-todo" onclick="toggleTask(this)">
-            <div class="task-cb todo"></div>
-            <div class="task-text">Connect Analytics Agent — weekly report automation</div>
-            <div class="task-priority low">Low</div>
-          </div>
-        </div>
-
-        <div class="add-task-row">
-          <input class="add-task-input" id="new-task-input" type="text" placeholder="// add task..." onkeydown="if(event.key==='Enter')addTask()">
-          <button class="add-btn" onclick="addTask()">+ Add</button>
-        </div>
-      </div>
-
-      <!-- IDEA LOG -->
-      <div class="panel">
-        <div class="panel-head">
-          <div class="ph-title">💡 Idea Log &amp; Build Notes</div>
-          <div class="ph-badge live">Live</div>
-        </div>
-
-        <div id="idea-feed">
-
-          <div class="idea-entry">
-            <div class="ie-meta">
-              <span class="ie-date">2025-06-02</span>
-              <span class="ie-tag workflow">Workflow</span>
-            </div>
-            <div class="ie-title">Fully Automated Content Pipeline</div>
-            <div class="ie-body">AI Creative Agent generates branded visuals (flyers, carousels, story ads) and writes captions + hashtags aligned with PrimeTurf's tone. Syncs with content calendar. Stack: Copilot/Canva API → Google Drive → Buffer → Meta Insights → AI Optimisation Agent.</div>
-          </div>
-
-          <div class="idea-entry">
-            <div class="ie-meta">
-              <span class="ie-date">2025-06-02</span>
-              <span class="ie-tag content">Content</span>
-            </div>
-            <div class="ie-title">Golf Estate Series — New Creative Angle</div>
-            <div class="ie-body">"Luxury Turf for Golf Estates" as a content vertical. Silver Lakes as the anchor reference. Format: cinematic before/after, golden hour photography, minimal text, WhatsApp CTA. High-conversion demographic: estate buyers, HOA committees.</div>
-          </div>
-
-          <div class="idea-entry">
-            <div class="ie-meta">
-              <span class="ie-date">2025-06-02</span>
-              <span class="ie-tag brand">Brand</span>
-            </div>
-            <div class="ie-title">Dev Hub — Command Intelligence Layer</div>
-            <div class="ie-body">Build a developer homepage as the single source of truth for all PrimeTurf documents. Connects Brand System, Master Blueprint, and Website Preview. Includes task tracker, idea log, CRM mini-feed, and automation stack overview. This page.</div>
-          </div>
-
-          <div class="idea-entry">
-            <div class="ie-meta">
-              <span class="ie-date">2025-06-01</span>
-              <span class="ie-tag workflow">Workflow</span>
-            </div>
-            <div class="ie-title">Asset Auto-Tagging System</div>
-            <div class="ie-body">All flyers and carousels stored in Google Drive, auto-tagged by theme: Lifestyle, Estate, Confidence, Craftsmanship, Heritage. Version control layer ensures brand consistency across all updates. Prevents rogue brand drift.</div>
-          </div>
-
-          <div class="idea-entry">
-            <div class="ie-meta">
-              <span class="ie-date">2025-06-01</span>
-              <span class="ie-tag idea">Idea</span>
-            </div>
-            <div class="ie-title">WhatsApp UTM Tracking per Campaign</div>
-            <div class="ie-body">Add UTM parameters to every WhatsApp link shared via social. Track which post, which estate, which creative drives actual enquiries. Feed into Analytics Agent weekly report. Identify top-performing estates and double down.</div>
-          </div>
-
-        </div>
-
-        <!-- Compose -->
-        <div class="idea-compose">
-          <div class="ic-row">
-            <input class="ic-input" id="idea-title" type="text" placeholder="Idea title or note heading...">
-            <select class="ic-select" id="idea-tag">
-              <option value="idea">💡 Idea</option>
-              <option value="workflow">⚙️ Workflow</option>
-              <option value="brand">🎨 Brand</option>
-              <option value="content">📸 Content</option>
-            </select>
-          </div>
-          <textarea class="ic-textarea" id="idea-body" placeholder="Expand your thinking here — workflow steps, campaign angles, technical notes, creative directions..."></textarea>
-          <button class="post-btn" onclick="postIdea()">→ Log Idea</button>
-        </div>
-      </div>
-
+<section class="section" id="gallery">
+  <div class="shell">
+    <div class="section-head reveal">
+      <p class="eyebrow">Our Work</p>
+      <h2 class="serif">Real installations across Gauteng.</h2>
+      <p>Tennis courts, school playgrounds, putting greens, and commercial spaces — completed PrimeTurf projects, done by our own team.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-tile reveal"><img src="images/gallery-tree-courtyard-lawn.jpg" alt="PrimeTurf courtyard lawn installation around a mature tree"><span class="g-cap">Courtyard Lawn</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-playground-swings.jpg" alt="PrimeTurf school playground with swings and shade sail"><span class="g-cap">School Playground</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-playground-hopscotch.jpg" alt="PrimeTurf custom hopscotch and activity turf markings"><span class="g-cap">Custom Play Markings</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-poolside-firepit.jpg" alt="PrimeTurf poolside lawn with firepit lounge area"><span class="g-cap">Poolside Firepit Lounge</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-paver-garden.jpg" alt="PrimeTurf paver and lawn garden design"><span class="g-cap">Paver &amp; Lawn Garden</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-giant-chessboard.jpg" alt="PrimeTurf giant chessboard play feature on artificial grass"><span class="g-cap">Giant Chessboard Feature</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-tennis-court-estate.jpg" alt="PrimeTurf private tennis court installation"><span class="g-cap">Private Tennis Court</span></div>
+      <div class="g-tile reveal"><img src="images/gallery-install-team.jpg" alt="The PrimeTurf installation team on a completed tennis court"><span class="g-cap">Meet Our Install Team</span></div>
     </div>
 
-    <!-- RIGHT: CRM + AUTOMATION + PROJECT INFO -->
-    <div class="right-col">
-
-      <!-- PROJECT INFO -->
-      <div class="panel">
-        <div class="panel-head">
-          <div class="ph-title">📋 Project Info</div>
-          <div class="ph-badge live">Active</div>
-        </div>
-        <div class="info-row"><div class="ir-key">Project</div><div class="ir-val">PrimeTurf Launch</div></div>
-        <div class="info-row"><div class="ir-key">Phase</div><div class="ir-val">Launch — Pretoria East</div></div>
-        <div class="info-row"><div class="ir-key">MD</div><div class="ir-val">Leon van Eeden</div></div>
-        <div class="info-row"><div class="ir-key">Operations</div><div class="ir-val">Stefan</div></div>
-        <div class="info-row"><div class="ir-key">Client Exp.</div><div class="ir-val">Mechanne van Eeden</div></div>
-        <div class="info-row"><div class="ir-key">Dev / Growth</div><div class="ir-val">Stiaan du Plessis</div></div>
-        <div class="info-row"><div class="ir-key">WhatsApp</div><div class="ir-val"><a href="https://wa.me/27768048868">076 804 8868</a></div></div>
-        <div class="info-row"><div class="ir-key">Territory</div><div class="ir-val">Pretoria East, ZA</div></div>
-        <div class="info-row"><div class="ir-key">Brand System</div><div class="ir-val"><a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_BrandSystem.html" target="_blank">→ Open</a></div></div>
-        <div class="info-row"><div class="ir-key">Blueprint</div><div class="ir-val"><a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_MasterBlueprint_v5.html" target="_blank">→ Open</a></div></div>
-        <div class="info-row"><div class="ir-key">Website</div><div class="ir-val"><a href="https://iamstiaan.github.io/PrimeTurf/PrimeTurf_Website.html" target="_blank">→ Open</a></div></div>
-      </div>
-
-      <!-- PROGRESS -->
-      <div class="panel">
-        <div class="panel-head">
-          <div class="ph-title">📈 Launch Progress</div>
-          <div class="ph-badge pending">Phase 1</div>
-        </div>
-        <div class="prog-item">
-          <div class="pi-head"><span class="pi-label">Brand System</span><span class="pi-val">100%</span></div>
-          <div class="prog-track"><div class="prog-fill" style="width:100%"></div></div>
-        </div>
-        <div class="prog-item">
-          <div class="pi-head"><span class="pi-label">Master Blueprint</span><span class="pi-val">100%</span></div>
-          <div class="prog-track"><div class="prog-fill" style="width:100%"></div></div>
-        </div>
-        <div class="prog-item">
-          <div class="pi-head"><span class="pi-label">Website Preview</span><span class="pi-val">90%</span></div>
-          <div class="prog-track"><div class="prog-fill" style="width:90%"></div></div>
-        </div>
-        <div class="prog-item">
-          <div class="pi-head"><span class="pi-label">Digital Infrastructure</span><span class="pi-val">20%</span></div>
-          <div class="prog-track"><div class="prog-fill" style="width:20%"></div></div>
-        </div>
-        <div class="prog-item">
-          <div class="pi-head"><span class="pi-label">Lead Pipeline Active</span><span class="pi-val">0%</span></div>
-          <div class="prog-track"><div class="prog-fill" style="width:0%"></div></div>
-        </div>
-        <div class="prog-item">
-          <div class="pi-head"><span class="pi-label">First 10 Reviews</span><span class="pi-val">0%</span></div>
-          <div class="prog-track"><div class="prog-fill" style="width:0%"></div></div>
+    <div class="slider-wrap reveal">
+      <p class="eyebrow" style="display:block;text-align:center;margin-bottom:16px;">Drag to Compare — Courtyard Transformation</p>
+      <div id="comparison" class="compare" role="slider" tabindex="0" aria-label="Before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+        <img src="images/before.jpg" alt="Site before PrimeTurf installation">
+        <img id="after-image" class="compare-after" src="images/after.jpg" alt="Site after PrimeTurf installation">
+        <span class="compare-label before">Before</span>
+        <span class="compare-label after">After</span>
+        <div id="compare-divider" class="compare-divider">
+          <div class="compare-handle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- CRM MINI FEED -->
-      <div class="panel">
-        <div class="panel-head">
-          <div class="ph-title">👤 CRM Feed</div>
-          <div class="ph-badge info">Demo Data</div>
-        </div>
-        <div class="crm-item">
-          <div class="crm-avatar">JN</div>
-          <div class="crm-info">
-            <div class="crm-name">Johan Nel</div>
-            <div class="crm-detail">Silver Lakes — 180m² garden + pool surround</div>
-            <div class="crm-meta"><span class="crm-status new">New Enquiry</span><span class="crm-time">2h ago</span></div>
-          </div>
-        </div>
-        <div class="crm-item">
-          <div class="crm-avatar">SB</div>
-          <div class="crm-info">
-            <div class="crm-name">Sandra Botha</div>
-            <div class="crm-detail">Waterkloof Ridge — Quote sent, two options</div>
-            <div class="crm-meta"><span class="crm-status quote">Quote Sent</span><span class="crm-time">1d ago</span></div>
-          </div>
-        </div>
-        <div class="crm-item">
-          <div class="crm-avatar">MV</div>
-          <div class="crm-info">
-            <div class="crm-name">Marius van Wyk</div>
-            <div class="crm-detail">Moreleta Park — 90m² front lawn, deposit paid</div>
-            <div class="crm-meta"><span class="crm-status won">Won ✓</span><span class="crm-time">3d ago</span></div>
-          </div>
-        </div>
-        <div class="crm-item">
-          <div class="crm-avatar">TR</div>
-          <div class="crm-info">
-            <div class="crm-name">Theresa Rousseau</div>
-            <div class="crm-detail">Mooikloof — Large plot, seasonal follow-up</div>
-            <div class="crm-meta"><span class="crm-status nurture">Nurture</span><span class="crm-time">5d ago</span></div>
-          </div>
-        </div>
-        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
-          <div class="task-section-label" style="margin-bottom:8px">// connect real CRM</div>
-          <div style="font-size:11px;color:var(--dim);line-height:1.7">Link HubSpot Free or a Google Sheet to populate this feed with real leads. Mechanne owns this pipeline.</div>
-        </div>
+    <p class="eyebrow reveal" style="display:block;text-align:center;margin:56px 0 16px;">See It In Action</p>
+    <div class="clip-grid">
+      <div class="clip-tile reveal">
+        <video src="videos/gallery-clip-1.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <button class="clip-mute" aria-label="Toggle sound" title="Toggle sound">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+        <span class="clip-cap">Step 1 In Action — Prepping The Base</span>
       </div>
-
-      <!-- AUTOMATION STACK -->
-      <div class="panel">
-        <div class="panel-head">
-          <div class="ph-title">🤖 Automation Stack</div>
-          <div class="ph-badge pending">Planned</div>
-        </div>
-
-        <div class="stack-layer">
-          <div class="sl-icon">🧠</div>
-          <div class="sl-info">
-            <div class="sl-layer">Creative Layer</div>
-            <div class="sl-tool">AI Creative Agent</div>
-            <div class="sl-func">Copilot / Canva API — branded visuals, captions, hashtags</div>
-          </div>
-          <div class="sl-status planned">Planned</div>
-        </div>
-
-        <div class="stack-layer">
-          <div class="sl-icon">💾</div>
-          <div class="sl-info">
-            <div class="sl-layer">Storage Layer</div>
-            <div class="sl-tool">Asset Management</div>
-            <div class="sl-func">Google Drive — auto-tagged by theme, version control</div>
-          </div>
-          <div class="sl-status planned">Planned</div>
-        </div>
-
-        <div class="stack-layer">
-          <div class="sl-icon">📲</div>
-          <div class="sl-info">
-            <div class="sl-layer">Scheduling Layer</div>
-            <div class="sl-tool">Social Scheduler</div>
-            <div class="sl-func">Buffer / Meta Suite — awareness → engagement → trust</div>
-          </div>
-          <div class="sl-status building">Building</div>
-        </div>
-
-        <div class="stack-layer">
-          <div class="sl-icon">📈</div>
-          <div class="sl-info">
-            <div class="sl-layer">Analytics Layer</div>
-            <div class="sl-tool">Analytics Agent</div>
-            <div class="sl-func">Meta Insights / GA4 — reach, CTR, WhatsApp clicks</div>
-          </div>
-          <div class="sl-status planned">Planned</div>
-        </div>
-
-        <div class="stack-layer">
-          <div class="sl-icon">🔁</div>
-          <div class="sl-info">
-            <div class="sl-layer">Optimisation Layer</div>
-            <div class="sl-tool">Feedback Loop</div>
-            <div class="sl-func">AI refines tone, timing, visuals from engagement data</div>
-          </div>
-          <div class="sl-status planned">Planned</div>
-        </div>
-
-        <div style="margin-top:16px;padding:14px;background:rgba(200,149,58,0.04);border:1px solid rgba(200,149,58,0.1)">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;color:rgba(200,149,58,0.45);margin-bottom:8px">// workflow loop</div>
-          <div style="font-size:11px;color:var(--dim);line-height:1.85">AI drafts → Scheduler posts → Analytics tracks → Agent optimises → You approve.</div>
-        </div>
+      <div class="clip-tile reveal">
+        <video src="videos/gallery-clip-2.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <button class="clip-mute" aria-label="Toggle sound" title="Toggle sound">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+        <span class="clip-cap">Soft Enough For Dogs</span>
       </div>
+      <div class="clip-tile reveal">
+        <video src="videos/gallery-clip-3.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <button class="clip-mute" aria-label="Toggle sound" title="Toggle sound">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+        <span class="clip-cap">Modern Spaces Deserve Modern Grass</span>
+      </div>
+    </div>
 
+    <div class="fb-follow reveal">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+      <div>
+        <strong>Join the PrimeTurf family on Facebook</strong>
+        <p>We're a proud local, family-run business — follow along for new transformations, behind-the-scenes install days, and the odd dog nap on fresh turf.</p>
+      </div>
+      <a class="btn btn-outline" href="https://www.facebook.com/share/1Hke5uvkcZ/" target="_blank" rel="noopener">Follow Us</a>
     </div>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
-<div style="border-top:1px solid var(--border);padding:32px 40px;display:flex;align-items:center;justify-content:space-between;margin-top:40px">
-  <div style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.22em">Prime<span style="color:var(--gold)">Turf</span> <span style="color:rgba(245,242,236,0.2);font-size:9px;letter-spacing:0.3em">Developer Hub · v1.0 · Confidential</span></div>
-  <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(245,242,236,0.18);letter-spacing:0.1em">Built by Stiaan du Plessis · Pretoria East Launch Edition</div>
-</div>
+<section class="contact" id="contact">
+  <div class="shell">
+    <div class="contact-grid">
+      <div>
+        <p class="eyebrow">Get In Touch</p>
+        <h2 class="serif" style="font-size:30px;color:var(--forest);margin:12px 0 12px;">Speak with our Operations Manager directly.</h2>
+        <p style="color:var(--muted);font-size:14.5px;line-height:1.7;margin:0;">Your consultation begins the moment you make contact. Complete the form and our Operations Manager will respond within 24 hours.</p>
+        <div class="contact-list">
+          <div class="crow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            076 804 8868
+          </div>
+          <div class="crow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+            leon@primeturf.co.za
+          </div>
+          <div class="crow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Proudly Serving Gauteng
+          </div>
+        </div>
+        <p style="margin-top:26px;font-size:13px;color:var(--muted);">8 Year Manufacturers Warranty · 24 Month Installation Guarantee</p>
+      </div>
+
+      <form class="form-panel reveal" onsubmit="return submitEnquiry(event)">
+        <h3 class="serif">Request a Quote</h3>
+        <p class="fnote">Tell us about your project — one or more services can be selected.</p>
+        <div class="form-row">
+          <div class="form-field"><label>Name</label><input type="text" id="f-name" required></div>
+          <div class="form-field"><label>Phone</label><input type="tel" id="f-phone" required></div>
+        </div>
+        <div class="form-field" style="margin-bottom:14px;"><label>Area / Suburb</label><input type="text" id="f-area"></div>
+        <label style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--forest);margin-bottom:10px;">Services (tick one or more)</label>
+        <div class="checklist">
+          <label class="check-item"><input type="checkbox" value="Luxury turf installation indoor or outdoor">Luxury turf installation indoor/outdoor</label>
+          <label class="check-item"><input type="checkbox" value="Paving or stonework">Paving or stonework</label>
+          <label class="check-item"><input type="checkbox" value="Playground">Playground</label>
+          <label class="check-item"><input type="checkbox" value="Putting green">Putting green</label>
+          <label class="check-item"><input type="checkbox" value="Restaurant play area">Restaurant play area</label>
+          <label class="check-item"><input type="checkbox" value="School indoor or outdoor area">School indoor/outdoor area</label>
+          <label class="check-item"><input type="checkbox" value="Custom installs">Custom installs</label>
+        </div>
+        <div class="form-field" style="margin-bottom:18px;"><label>Additional Details</label><textarea id="f-notes" rows="3" style="resize:vertical;"></textarea></div>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Continue on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img class="fmark" src="assets/logo/pt-logo-transparent-cropped.png" alt="PrimeTurf">
+  <div>© 2026 PrimeTurf. All rights reserved.</div>
+  <div style="margin-top:6px;"><a href="tel:+27768048868">076 804 8868</a> · <a href="mailto:leon@primeturf.co.za">leon@primeturf.co.za</a> · <a href="https://www.primeturf.co.za">primeturf.co.za</a></div>
+</footer>
+
+<a class="floating-wa" href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%27d%20like%20to%20enquire." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.72.45 3.39 1.31 4.87L2 22l5.35-1.4a9.9 9.9 0 0 0 4.69 1.19h.01c5.46 0 9.9-4.45 9.9-9.91C22 6.45 17.5 2 12.04 2zm0 18.11h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.34c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.55-3.7 8.19-8.26 8.19zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.24-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.47-.01a.9.9 0 0 0-.65.31c-.22.24-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.73 2.64 4.19 3.7.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+</a>
 
 <script>
-// ── Live date
-(function(){
-  const d = new Date();
-  const el = document.getElementById('live-date');
-  if(el) el.innerHTML = 'Date <strong>' + d.toISOString().slice(0,10) + '</strong>';
-})();
+  // Mobile nav drawer
+  (function(){
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('navOverlay');
+    function closeNav(){
+      mobileNav.classList.remove('open');
+      overlay.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+    function openNav(){
+      mobileNav.classList.add('open');
+      overlay.classList.add('open');
+      hamburger.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+    }
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.contains('open') ? closeNav() : openNav();
+    });
+    overlay.addEventListener('click', closeNav);
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+  })();
 
-// ── Task toggle
-function toggleTask(item){
-  const isDone = item.classList.contains('is-done');
-  const cb = item.querySelector('.task-cb');
-  const pri = item.querySelector('.task-priority');
-  if(isDone){
-    item.classList.replace('is-done','is-todo');
-    cb.classList.replace('done','todo');
-    if(pri && pri.textContent==='Done') pri.textContent='Todo', pri.className='task-priority med';
-  } else {
-    item.classList.replace('is-todo','is-done');
-    cb.classList.replace('todo','done');
-    if(pri) pri.textContent='Done', pri.className='task-priority low';
+  // Scroll reveal
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el, i) => {
+      el.style.transitionDelay = Math.min(i % 4, 3) * 0.08 + 's';
+      io.observe(el);
+    });
+  })();
+
+  // Video clip mute toggle
+  (function(){
+    document.querySelectorAll('.clip-tile').forEach(tile => {
+      const video = tile.querySelector('video');
+      const btn = tile.querySelector('.clip-mute');
+      if (!video || !btn) return;
+      btn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        btn.innerHTML = video.muted
+          ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>'
+          : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
+      });
+    });
+  })();
+
+  // Live before/after slider
+  (function(){
+    const comparison = document.getElementById('comparison');
+    const afterImage = document.getElementById('after-image');
+    const divider = document.getElementById('compare-divider');
+    let value = 50, dragging = false;
+
+    function setValue(v){
+      value = Math.max(0, Math.min(100, v));
+      afterImage.style.clipPath = `inset(0 ${100-value}% 0 0)`;
+      divider.style.left = value + '%';
+      comparison.setAttribute('aria-valuenow', String(Math.round(value)));
+    }
+    function fromPointer(e){
+      const r = comparison.getBoundingClientRect();
+      setValue(((e.clientX - r.left) / r.width) * 100);
+    }
+    comparison.addEventListener('pointerdown', e => { dragging = true; comparison.setPointerCapture(e.pointerId); fromPointer(e); });
+    comparison.addEventListener('pointermove', e => { if (dragging) fromPointer(e); });
+    comparison.addEventListener('pointerup', () => dragging = false);
+    comparison.addEventListener('pointercancel', () => dragging = false);
+    comparison.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); setValue(value - 4); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); setValue(value + 4); }
+    });
+  })();
+
+  function submitEnquiry(e){
+    e.preventDefault();
+    const name = document.getElementById('f-name').value;
+    const phone = document.getElementById('f-phone').value;
+    const area = document.getElementById('f-area').value;
+    const notes = document.getElementById('f-notes').value;
+    const services = Array.from(document.querySelectorAll('.check-item input:checked')).map(c => c.value).join(', ') || 'Not specified';
+
+    // Email the enquiry to PrimeTurf via Web3Forms
+    const formData = new FormData();
+    formData.append('access_key', '9923a61d-593b-4551-bd12-ce9c1a3933b7');
+    formData.append('subject', 'New PrimeTurf Enquiry — Website Lead');
+    formData.append('from_name', 'PrimeTurf Website');
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('area', area);
+    formData.append('services', services);
+    formData.append('message', notes);
+    fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData }).catch(() => {});
+
+    const msg = [
+      'Hi PrimeTurf, I would like to request a quote.',
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Area: ${area}`,
+      `Services: ${services}`,
+      `Details: ${notes}`
+    ].join('\n');
+    window.open(`https://wa.me/27768048868?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+    return false;
   }
-  updateTaskCount();
-}
-
-function updateTaskCount(){
-  const done = document.querySelectorAll('.task-item.is-done').length;
-  const total = document.querySelectorAll('.task-item').length;
-  const el = document.getElementById('task-count');
-  if(el) el.textContent = done+'/'+total;
-  const rem = document.getElementById('tasks-remaining');
-  if(rem){
-    const left = total - done;
-    rem.textContent = left + ' remaining';
-    rem.className = 'ph-badge ' + (left===0?'live':left<5?'info':'pending');
-  }
-}
-updateTaskCount();
-
-// ── Add task
-function addTask(){
-  const inp = document.getElementById('new-task-input');
-  const text = (inp.value||'').trim();
-  if(!text) return;
-  const sec = document.querySelector('.task-section:last-of-type') || document.querySelector('.task-section');
-  const item = document.createElement('div');
-  item.className='task-item is-todo';
-  item.setAttribute('onclick','toggleTask(this)');
-  item.innerHTML='<div class="task-cb todo"></div><div class="task-text">'+text+'</div><div class="task-priority med">New</div>';
-  sec.appendChild(item);
-  inp.value='';
-  updateTaskCount();
-}
-
-// ── Idea log
-function postIdea(){
-  const title = document.getElementById('idea-title').value.trim();
-  const body = document.getElementById('idea-body').value.trim();
-  const tagVal = document.getElementById('idea-tag').value;
-  if(!title&&!body) return;
-
-  const tagLabels = {idea:'💡 Idea', workflow:'⚙️ Workflow', brand:'🎨 Brand', content:'📸 Content'};
-  const today = new Date().toISOString().slice(0,10);
-
-  const entry = document.createElement('div');
-  entry.className='idea-entry';
-  entry.style.animation='fadeUp 0.4s ease forwards';
-  entry.innerHTML = `
-    <div class="ie-meta">
-      <span class="ie-date">${today}</span>
-      <span class="ie-tag ${tagVal}">${tagLabels[tagVal]}</span>
-    </div>
-    ${title?`<div class="ie-title">${title}</div>`:''}
-    ${body?`<div class="ie-body">${body}</div>`:''}
-  `;
-
-  const feed = document.getElementById('idea-feed');
-  feed.insertBefore(entry, feed.firstChild);
-  document.getElementById('idea-title').value='';
-  document.getElementById('idea-body').value='';
-
-  const cnt = document.getElementById('idea-count');
-  if(cnt) cnt.textContent = parseInt(cnt.textContent||0) + 1;
-}
 </script>
+
 </body>
 </html>
