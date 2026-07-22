@@ -6,10 +6,10 @@ proposed_new_url: / (already exists on Wix as generic brand copy - this is a con
 priority: 1-city
 ---
 
-## ⚠️ Content review flags
+## ⚠️ Content review flags — RESOLVED
 
-1. **Warranty inconsistency**: this homepage's contact section states **"8 Year Manufacturers Warranty · 24 Month Installation Guarantee"**, but every other page on the old site (suburb pages, contact.html, terms-of-service.html) says **6-year** warranty. Confirm the correct number before publishing on Wix — don't propagate whichever one is wrong.
-2. **Contact email inconsistency**: the homepage contact section lists `leon@primeturf.co.za`, while every other page uses `social@primeturf.co.za`. Confirm which inbox is actually monitored before publishing.
+1. **Warranty inconsistency — resolved**: confirmed correct figure is **6-year warranty**. The old homepage's "8 Year Manufacturers Warranty" line was wrong — use 6-year everywhere, matching every other page.
+2. **Contact email inconsistency**: the homepage contact section lists `leon@primeturf.co.za`, while every other page uses `social@primeturf.co.za`. Still unconfirmed which inbox is monitored — defaulting to `social@primeturf.co.za` for consistency with the rest of the site unless told otherwise.
 3. The current live Wix homepage already has different brand-positioning copy ("Crafted. Elevated. Defined."). This file is a reference for what content existed on the old homepage, not a mandate to replace the new Wix homepage wholesale — reconcile deliberately rather than overwrite.
 
 ## Hero
@@ -60,7 +60,7 @@ Gallery captions: Courtyard Lawn · School Playground · Custom Play Markings ·
 
 Contact details: 076 804 8868 · leon@primeturf.co.za *(see flag above)* · "Proudly Serving Gauteng"
 
-Warranty line: "8 Year Manufacturers Warranty · 24 Month Installation Guarantee" *(see flag above — conflicts with 6-year stated elsewhere)*
+Warranty line: use "6 Year Manufacturers Warranty · 24 Month Installation Guarantee" (corrected from the old page's incorrect "8 Year")
 
 Form fields: Name, Phone, Area/Suburb, Services checklist (Luxury turf installation indoor/outdoor, Paving or stonework, Playground, Putting green, Restaurant play area, School indoor/outdoor area, Custom installs), Additional Details. Submit button: "Continue on WhatsApp" (form data gets appended to a WhatsApp deep link rather than emailed — different mechanism than contact.html's Web3Forms submission).
 

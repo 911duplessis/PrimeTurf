@@ -17,7 +17,7 @@ PrimeTurf's site moved from GitHub Pages (`www.primeturf.co.za`, served from thi
 4. **2 city pages** — Cape Town, Johannesburg. These use a richer template than the suburb pages (water-stats band, FAQ schema, suburb-tag grid) — don't try to reuse the suburb-page template for these two.
 5. **Top 5 suburbs** — Sandton, Centurion, Fourways, Bryanston, Pretoria East. Highest population/estate density, likely the biggest share of current lead volume.
 6. **Remaining 12 suburbs** — Bedfordview, Boksburg, Edenvale, Houghton, Hyde Park, Midrand, Mooikloof, Randburg, Roodepoort, Silver Lakes, Steyn City, Waterfall City. All share one template — content is ready in `content/`, this is the most mechanical batch.
-7. **Comparison page** — `primeturf-vs-easigrass.html`. **Don't publish as-is** — the old page's own fine print admits the competitor figures need re-verification before publishing, and the table as written shows the competitor's warranty (8yr) beating PrimeTurf's (6yr). Get current numbers before this goes live.
+7. ~~Comparison page~~ — **Skipped by stakeholder decision (2026-07-22).** `primeturf-vs-easigrass.html` will not be republished; marked `do-not-publish` in the redirect map.
 8. **Blog** — index + 2 real posts. Low urgency; only 2 posts exist despite the blog index displaying 4 more "coming soon" placeholders that were never built.
 9. **Terms of service** — needed for legal completeness, but the old page had `noindex` set, so it's not part of the SEO recovery — no rush.
 
@@ -25,7 +25,7 @@ PrimeTurf's site moved from GitHub Pages (`www.primeturf.co.za`, served from thi
 
 - **Delete or merge `/about-6`** — looks like a leftover duplicate of `/about-us` from site setup. Two near-identical pages is a duplicate-content risk.
 - **Re-verify Google Search Console domain ownership under Wix.** The old GSC verification was two static HTML stub files (`google2bbf502f984c3743.html`, `google57c2ac6f73edc94d.html`) that don't exist on Wix. Re-verify via Wix's Site Settings → SEO Tools (meta tag or DNS method) so Search Console access isn't silently broken.
-- **`connection-network.html`, `vendor-signup.html`, `partner-agreement.html`, `tcn-dashboard.html`, `tcn-whatsapp-flow.html`** — these describe a separate "The Connection Network" referral-partner side-project, not PrimeTurf's core turf-installation content. Confirm with the site owner whether this needs its own migration track or should be dropped — it's excluded from this plan by default.
+- **`connection-network.html`, `vendor-signup.html`, `partner-agreement.html`, `tcn-dashboard.html`, `tcn-whatsapp-flow.html`** — a separate "The Connection Network" referral-partner side-project, not PrimeTurf's core turf-installation content. **Stakeholder decision (2026-07-22): excluded from this migration entirely.**
 
 ## Redirect setup (do this last, per page, as each goes live)
 

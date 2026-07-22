@@ -2,13 +2,15 @@
 title: PrimeTurf vs Easigrass SA | Compare Gauteng Artificial Grass Installers
 meta_description: Comparing PrimeTurf and Easigrass SA on warranty length and HOA/ARC submission support for Gauteng luxury estate installations — the two factors estate homeowners ask about most.
 old_url: /primeturf-vs-easigrass.html
-proposed_new_url: /primeturf-vs-easigrass
-priority: 3-remaining-suburb
+proposed_new_url: (none - not being republished)
+priority: do-not-publish
 ---
 
-## ⚠️ Content review flag before republishing
+## ⚠️ DECISION: not being republished
 
-The old page's own fine-print says: *"Easigrass SA figures reflect their publicly listed warranty term at time of writing — competitor terms can change, so verify current details directly with Easigrass before publishing this comparison, and update this table if either company's terms change."* That's a note-to-self that shipped live on the page. **Re-verify both companies' current warranty/HOA-ARC terms before this page goes live on Wix** — the table as written also shows Easigrass's warranty (8 years) as longer than PrimeTurf's (6 years), which undercuts the comparison's framing and is worth a copy pass, not just a straight port.
+Stakeholder decision (2026-07-22): **this page is not worth republishing** and will not be rebuilt on Wix. Kept below for reference only — do not port this content. `redirect-map.csv` marks `/primeturf-vs-easigrass.html` as `do-not-publish`.
+
+*(Original review flag, for context: the old page's own fine-print said "verify current details directly with Easigrass before publishing this comparison" — a note-to-self that shipped live — and the table as written showed Easigrass's warranty (8 years) beating PrimeTurf's (6 years), undercutting the comparison's framing.)*
 
 ## Hero
 
