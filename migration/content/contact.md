@@ -40,5 +40,5 @@ Fallback line: "Prefer to chat? Message us on WhatsApp →"
 
 ## Footer
 
-PrimeTurf · 076 804 8868 · social@primeturf.co.za · www.primeturf.co.za
+PrimeTurf · 076 804 8868 · leon@primeturf.co.za · www.primeturf.co.za
 Serving All of Gauteng Province
