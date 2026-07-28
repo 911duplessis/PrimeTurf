@@ -23,8 +23,8 @@ PrimeTurf's site moved from GitHub Pages (`www.primeturf.co.za`, served from thi
 
 ## Cleanup items on the Wix side (not content, but flagged)
 
-- **Delete or merge `/about-6`** — looks like a leftover duplicate of `/about-us` from site setup. Two near-identical pages is a duplicate-content risk.
-- **Re-verify Google Search Console domain ownership under Wix.** The old GSC verification was two static HTML stub files (`google2bbf502f984c3743.html`, `google57c2ac6f73edc94d.html`) that don't exist on Wix. Re-verify via Wix's Site Settings → SEO Tools (meta tag or DNS method) so Search Console access isn't silently broken.
+- ~~Delete or merge `/about-6`~~ — **Corrected 2026-07-28**: checked the live page, it's titled "Preparation," not a duplicate of `/about-us`. Don't delete on the old assumption — someone needs to actually look at its content before deciding.
+- ~~Re-verify Google Search Console domain ownership under Wix~~ — **Done.** Confirmed 2026-07-28: `google-site-verification` meta tag is present on the live homepage (`dz5Y4cIXi1isX3TD0Vt4TLgf54KDsF9l2qZYBcUtI70`), so GSC access under Wix is live.
 - **`connection-network.html`, `vendor-signup.html`, `partner-agreement.html`, `tcn-dashboard.html`, `tcn-whatsapp-flow.html`** — a separate "The Connection Network" referral-partner side-project, not PrimeTurf's core turf-installation content. **Stakeholder decision (2026-07-22): excluded from this migration entirely.**
 
 ## Redirect setup (do this last, per page, as each goes live)
@@ -41,3 +41,12 @@ Leave GitHub Pages content in this repo untouched until the corresponding Wix pa
 - `curl -I https://www.primeturf.co.za/page-boksburg.html` (and the other old URLs) should return a **301** to the new URL once its redirect is configured — not a 404.
 - Re-fetch `https://www.primeturf.co.za/pages-sitemap.xml` periodically and confirm new URLs appear as pages go live.
 - Check Google Search Console's Pages report a few weeks after each redirect batch to confirm re-indexing, rather than assuming it worked.
+
+## Status check — 2026-07-28
+
+Live-verified against the actual Wix site and GSC coverage exports (`primeturf.co.za` and `http://primeturf.co.za` properties, both dated 2026-07-26):
+
+- **Domain redirects are healthy.** All four variants (`http`/`https` × bare/`www`) resolve to `https://www.primeturf.co.za/` with 301s. The GSC "not indexed" numbers (22-25 pages) are a **content gap**, not a redirect problem — confirms the original diagnosis in this doc.
+- **`/contact` is live** — native Wix Form + WhatsApp CTA, matches `content/contact.md`. Moved to `done` in `redirect-map.csv`.
+- **`pages-sitemap.xml` currently lists 8 pages**: `/`, `/contact`, `/gallery`, `/blog`, `/english-privacy-policy`, `/accessibility-statement`, `/about-6`, `/about-us`. None of the 27 `needs-rebuild` rows (suburbs, cities, quote calculator, terms of service) are live yet — that gap is still the main blocker for the missing ~20+ indexed pages.
+- **Contact email — resolved 2026-07-28**: `leon@primeturf.co.za` confirmed as the correct, monitored inbox (the live site had already shipped it that way on the homepage and `/contact`). Updated `content/homepage.md`, `content/contact.md`, and `content/terms-of-service.md` to stop spec'ing `social@primeturf.co.za` — `leon@primeturf.co.za` is now the single source of truth for the remaining 27 unbuilt pages.

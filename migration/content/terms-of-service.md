@@ -46,6 +46,6 @@ These terms are governed by the laws of the Republic of South Africa. Any disput
 
 ## 10. Contact
 For any queries regarding these Terms of Service:
-Email: social@primeturf.co.za
+Email: leon@primeturf.co.za
 Phone: +27 76 804 8868
 PrimeTurf, Gauteng, South Africa

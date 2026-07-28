@@ -9,7 +9,7 @@ priority: 1-city
 ## ⚠️ Content review flags — RESOLVED
 
 1. **Warranty inconsistency — resolved**: confirmed correct figure is **6-year warranty**. The old homepage's "8 Year Manufacturers Warranty" line was wrong — use 6-year everywhere, matching every other page.
-2. **Contact email inconsistency**: the homepage contact section lists `leon@primeturf.co.za`, while every other page uses `social@primeturf.co.za`. Still unconfirmed which inbox is monitored — defaulting to `social@primeturf.co.za` for consistency with the rest of the site unless told otherwise.
+2. **Contact email — resolved 2026-07-28**: confirmed `leon@primeturf.co.za` is the monitored inbox. Use `leon@primeturf.co.za` everywhere going forward (not `social@primeturf.co.za`) — this reverses the earlier default in this file.
 3. The current live Wix homepage already has different brand-positioning copy ("Crafted. Elevated. Defined."). This file is a reference for what content existed on the old homepage, not a mandate to replace the new Wix homepage wholesale — reconcile deliberately rather than overwrite.
 
 ## Hero
