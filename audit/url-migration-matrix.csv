@@ -1,0 +1,30 @@
+github_url,github_title,wix_url,wix_page_id,wix_has_custom_seo,google_indexed,current_http_status,action_required,priority,content_file
+/,PrimeTurf | Premium Artificial Grass Solutions,/,bqvuq,NO,YES (Wix title),200,IMPROVE - add custom title/desc/schema,P0,migration/content/homepage.md
+/artificial-grass-johannesburg.html,Artificial Grass Johannesburg | 6-Year Warranty,/artificial-grass-johannesburg,jhk27,YES,YES (old URL 404),404 on old URL,REDIRECT old .html to new,P0,migration/content/artificial-grass-johannesburg.md
+/artificial-grass-cape-town.html,Artificial Grass Cape Town | Water-Wise Installation,MISSING,,NO,YES (old URL 404),404,RECREATE + REDIRECT,P0,migration/content/artificial-grass-cape-town.md
+/page-sandton.html,Artificial Grass Sandton | Premium Installation,/artificial-grass-sandton,avhi7,YES,INFERRED,404 on old URL,REDIRECT old .html to new,P0,migration/content/artificial-grass-sandton.md
+/page-pretoria-east.html,Artificial Grass Pretoria East | Waterkloof Silverlakes Mooikloof,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P0,migration/content/artificial-grass-pretoria-east.md
+/page-centurion.html,Artificial Grass Centurion | Golf Estate Specialists,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P1,migration/content/artificial-grass-centurion.md
+/page-steyn-city.html,Artificial Grass Steyn City | Luxury Estate Specialists,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P1,migration/content/artificial-grass-steyn-city.md
+/page-midrand.html,Artificial Grass Midrand | Secure Estate Specialists,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P1,migration/content/artificial-grass-midrand.md
+/page-fourways.html,Artificial Grass Fourways | Dainfern Lonehill Broadacres,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P1,migration/content/artificial-grass-fourways.md
+/page-bryanston.html,Artificial Grass Bryanston | Luxury Residential,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P1,migration/content/artificial-grass-bryanston.md
+/page-bedfordview.html,Artificial Grass Bedfordview | East Rand Luxury,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P2,migration/content/artificial-grass-bedfordview.md
+/page-boksburg.html,Artificial Grass Boksburg | East Rand Residential,MISSING,,NO,YES (old URL 404),404,RECREATE + REDIRECT,P1,migration/content/artificial-grass-boksburg.md
+/page-edenvale.html,Artificial Grass Edenvale | East Rand Specialists,/artificial-grass-edenvale,q46e6,YES,INFERRED,404 on old URL,REDIRECT old .html to new,P1,migration/content/artificial-grass-edenvale.md
+/page-houghton.html,Artificial Grass Houghton | Luxury Estate Specialists,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P2,migration/content/artificial-grass-houghton.md
+/page-hyde-park.html,Artificial Grass Hyde Park | Ultra-Luxury Estate,/artificial-grass-hyde-park,kgiig,YES,INFERRED,404 on old URL,REDIRECT old .html to new,P1,migration/content/artificial-grass-hyde-park.md
+/page-mooikloof.html,Artificial Grass Mooikloof | Country Estate Specialists,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P2,migration/content/artificial-grass-mooikloof.md
+/page-randburg.html,Artificial Grass Randburg | North Johannesburg,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P2,migration/content/artificial-grass-randburg.md
+/page-roodepoort.html,Artificial Grass Roodepoort | West Johannesburg,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P2,migration/content/artificial-grass-roodepoort.md
+/page-silver-lakes.html,Artificial Grass Silver Lakes | Pretoria East Estate,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P2,migration/content/artificial-grass-silver-lakes.md
+/page-waterfall-city.html,Artificial Grass Waterfall City | Luxury Estate,MISSING,,NO,INFERRED,404,RECREATE + REDIRECT,P2,migration/content/artificial-grass-waterfall-city.md
+/quote-calculator.html,Artificial Grass Quote Calculator South Africa,/quote,evnw7,NO,YES (old URL 404),404 on old URL,REDIRECT .html to /quote + improve SEO,P0,migration/content/quote-calculator.md
+/quote/,Instant Artificial Grass Quote | PrimeTurf SA,/quote,evnw7,NO,INFERRED,200 (Wix),KEEP - same destination,P1,migration/content/quote.md
+/contact.html,PrimeTurf | Request a Free Quote - Gauteng,/contact,m80pg,NO,INFERRED,200 (Wix),REDIRECT .html to /contact + improve SEO,P1,migration/content/contact.md
+/blog/,Artificial Grass Blog & Guides - South Africa,/blog,fuh2w,NO,INFERRED,200 (Wix),IMPROVE - add custom description,P2,migration/content/blog-index.md
+/blog/artificial-grass-cost-guide-south-africa.html,Artificial Grass Cost Per m2 South Africa - 2026,/post/how-much-does-artificial-grass-cost-per-m-in-south-africa-2026,,YES,YES (Wix URL),200 (Wix),REDIRECT old .html to Wix blog URL,P1,migration/content/blog-artificial-grass-cost-guide-south-africa.md
+/blog/drought-proof-garden-cape-town.html,Drought-Proof Your Cape Town Garden,/post/drought-proof-your-cape-town-garden-artificial-grass-and-water-restrictions,,YES,INFERRED,200 (Wix),REDIRECT old .html to Wix blog URL,P1,migration/content/blog-drought-proof-garden-cape-town.md
+/primeturf-vs-easigrass.html,PrimeTurf vs Easigrass SA | Compare Installers,DO NOT REPUBLISH,,NO,UNKNOWN,404,REDIRECT to homepage - stakeholder decision,P3,migration/content/primeturf-vs-easigrass.md
+/privacy-policy.html,Privacy Policy,/english-privacy-policy,uuztp,NO,UNKNOWN,200 (Wix),REDIRECT old .html to Wix URL,P3,
+/terms-of-service.html,Terms of Service,MISSING,,NO,UNKNOWN,404,RECREATE (noindex OK),P3,migration/content/terms-of-service.md

@@ -1,0 +1,403 @@
+{
+  "generated": "2026-08-16",
+  "total_missing": 15,
+  "notes": "13 suburb/city pages + terms of service + Cape Town city page. Content files exist in migration/content/. Each page should be created on Wix with the specified slug, then the 301 redirect configured in Wix URL Redirect Manager.",
+  "build_order": [
+    {
+      "batch": 1,
+      "label": "City pages (richest content, highest recovery value)",
+      "pages": ["artificial-grass-cape-town"]
+    },
+    {
+      "batch": 2,
+      "label": "Top 5 suburbs (highest population/estate density)",
+      "pages": ["artificial-grass-pretoria-east", "artificial-grass-centurion", "artificial-grass-fourways", "artificial-grass-bryanston", "artificial-grass-boksburg"]
+    },
+    {
+      "batch": 3,
+      "label": "Remaining suburbs (template batch)",
+      "pages": ["artificial-grass-steyn-city", "artificial-grass-midrand", "artificial-grass-bedfordview", "artificial-grass-houghton", "artificial-grass-mooikloof", "artificial-grass-randburg", "artificial-grass-roodepoort", "artificial-grass-silver-lakes", "artificial-grass-waterfall-city"]
+    },
+    {
+      "batch": 4,
+      "label": "Legal",
+      "pages": ["terms-of-service"]
+    }
+  ],
+  "pages": [
+    {
+      "wix_slug": "/artificial-grass-cape-town",
+      "old_github_url": "/artificial-grass-cape-town.html",
+      "content_file": "migration/content/artificial-grass-cape-town.md",
+      "page_type": "city",
+      "seo": {
+        "title": "Artificial Grass Cape Town | Water-Wise Installation | PrimeTurf",
+        "meta_description": "Drought-resistant artificial grass installation across Cape Town, Stellenbosch & the Winelands. Beat water restrictions permanently. 6-year warranty. Free quote from PrimeTurf.",
+        "h1": "Artificial Grass Cape Town",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-cape-town",
+        "og_title": "Artificial Grass Cape Town | Water-Wise Lawn | PrimeTurf",
+        "og_description": "Eliminate water restrictions from your lawn permanently. Premium artificial grass installation across Cape Town, Stellenbosch & Winelands. 6-year warranty.",
+        "og_image": "https://www.primeturf.co.za/images/after-lg.jpg"
+      },
+      "schema": [
+        {
+          "@type": "LocalBusiness",
+          "subtype": "HomeAndConstructionBusiness",
+          "name": "PrimeTurf Cape Town",
+          "areaServed": "Cape Town, Western Cape",
+          "telephone": "+27768048868",
+          "url": "https://www.primeturf.co.za/artificial-grass-cape-town"
+        },
+        {
+          "@type": "FAQPage",
+          "questions": [
+            "Does artificial grass help with Cape Town water restrictions?",
+            "Does PrimeTurf install artificial grass in Stellenbosch and the Winelands?",
+            "Is artificial grass suitable for the Cape Town climate?"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "items": ["Home", "Artificial Grass Cape Town"]
+        }
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-johannesburg", "/contact", "/quote", "/blog"],
+        "from_homepage": true,
+        "from_nav": true
+      },
+      "google_indexed": true,
+      "priority": "P0",
+      "template": "city-page (richer than suburb - includes water stats band, FAQ schema, suburb-tag grid)"
+    },
+    {
+      "wix_slug": "/artificial-grass-pretoria-east",
+      "old_github_url": "/page-pretoria-east.html",
+      "content_file": "migration/content/artificial-grass-pretoria-east.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Pretoria East | Waterkloof, Silverlakes, Mooikloof | PrimeTurf",
+        "meta_description": "PrimeTurf installs premium artificial grass in Pretoria East — Waterkloof Ridge, Silverlakes, Faerie Glen, Mooikloof & surrounds. 6-year warranty. Free site consultation. Call 076 804 8868.",
+        "h1": "Artificial Grass Pretoria East",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-pretoria-east"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Pretoria East, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Pretoria East"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-johannesburg", "/artificial-grass-centurion", "/artificial-grass-silver-lakes", "/artificial-grass-mooikloof", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P0"
+    },
+    {
+      "wix_slug": "/artificial-grass-centurion",
+      "old_github_url": "/page-centurion.html",
+      "content_file": "migration/content/artificial-grass-centurion.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Centurion | Golf Estate Specialists | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Centurion. Golf estate specialists, residential gardens, complex common areas. 6-year warranty. Free site consultation. Call 076 804 8868.",
+        "h1": "Artificial Grass Centurion",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-centurion"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Centurion, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Centurion"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-pretoria-east", "/artificial-grass-midrand", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P1"
+    },
+    {
+      "wix_slug": "/artificial-grass-fourways",
+      "old_github_url": "/page-fourways.html",
+      "content_file": "migration/content/artificial-grass-fourways.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Fourways | Dainfern, Lonehill, Broadacres | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Fourways, Dainfern, Lonehill and surrounds. Professional synthetic turf for Fourways estates. Free consultation. Call 076 804 8868.",
+        "h1": "Artificial Grass Fourways",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-fourways"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Fourways, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Fourways"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-sandton", "/artificial-grass-bryanston", "/artificial-grass-randburg", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P1"
+    },
+    {
+      "wix_slug": "/artificial-grass-bryanston",
+      "old_github_url": "/page-bryanston.html",
+      "content_file": "migration/content/artificial-grass-bryanston.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Bryanston | Luxury Residential | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Bryanston, Craighall Park and surrounds. Luxury synthetic turf for Bryanston's finest estate properties. Free consultation. Call 076 804 8868.",
+        "h1": "Artificial Grass Bryanston",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-bryanston"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Bryanston, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Bryanston"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-sandton", "/artificial-grass-fourways", "/artificial-grass-hyde-park", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P1"
+    },
+    {
+      "wix_slug": "/artificial-grass-boksburg",
+      "old_github_url": "/page-boksburg.html",
+      "content_file": "migration/content/artificial-grass-boksburg.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Boksburg | East Rand Residential | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Boksburg, Benoni, Brakpan and the East Rand. Professional synthetic turf for residential and estate properties. Free quote. Call 076 804 8868.",
+        "h1": "Artificial Grass Boksburg",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-boksburg"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Boksburg, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Boksburg"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-edenvale", "/artificial-grass-bedfordview", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "google_indexed": true,
+      "priority": "P1"
+    },
+    {
+      "wix_slug": "/artificial-grass-steyn-city",
+      "old_github_url": "/page-steyn-city.html",
+      "content_file": "migration/content/artificial-grass-steyn-city.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Steyn City | Luxury Estate Specialists | PrimeTurf",
+        "meta_description": "Luxury synthetic lawn installation in Steyn City Estate, including Steyn City Golf Estate and The Manor. PrimeTurf delivers premium artificial grass for Johannesburg's premier lifestyle estate. Free quote. Call 076 804 8868.",
+        "h1": "Artificial Grass Steyn City",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-steyn-city"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Steyn City, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Steyn City"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-fourways", "/artificial-grass-midrand", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P1"
+    },
+    {
+      "wix_slug": "/artificial-grass-midrand",
+      "old_github_url": "/page-midrand.html",
+      "content_file": "migration/content/artificial-grass-midrand.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Midrand | Secure Estate Specialists | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Midrand. Secure estate and complex specialists across Halfway House, Kyalami, Waterfall. Free quote. Call 076 804 8868.",
+        "h1": "Artificial Grass Midrand",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-midrand"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Midrand, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Midrand"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-sandton", "/artificial-grass-centurion", "/artificial-grass-waterfall-city", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P1"
+    },
+    {
+      "wix_slug": "/artificial-grass-bedfordview",
+      "old_github_url": "/page-bedfordview.html",
+      "content_file": "migration/content/artificial-grass-bedfordview.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Bedfordview | East Rand Luxury | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Bedfordview, Edenvale and the East Rand. Luxury synthetic turf for Bedfordview's most prestigious residential properties. Call 076 804 8868.",
+        "h1": "Artificial Grass Bedfordview",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-bedfordview"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Bedfordview, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Bedfordview"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-edenvale", "/artificial-grass-boksburg", "/artificial-grass-houghton", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P2"
+    },
+    {
+      "wix_slug": "/artificial-grass-houghton",
+      "old_github_url": "/page-houghton.html",
+      "content_file": "migration/content/artificial-grass-houghton.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Houghton | Luxury Estate Specialists | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Houghton, Saxonwold, Parkview and surrounds. Luxury synthetic turf for Johannesburg's most prestigious residential addresses. Call 076 804 8868.",
+        "h1": "Artificial Grass Houghton",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-houghton"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Houghton, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Houghton"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-sandton", "/artificial-grass-hyde-park", "/artificial-grass-bedfordview", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P2"
+    },
+    {
+      "wix_slug": "/artificial-grass-mooikloof",
+      "old_github_url": "/page-mooikloof.html",
+      "content_file": "migration/content/artificial-grass-mooikloof.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Mooikloof | Country Estate Specialists | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Mooikloof, Mooikloof Country Estate and Mooikloof Equestrian Estate. Expert HOA submissions. 6-year warranty. Call 076 804 8868.",
+        "h1": "Artificial Grass Mooikloof",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-mooikloof"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Mooikloof, Pretoria"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Mooikloof"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-pretoria-east", "/artificial-grass-silver-lakes", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P2"
+    },
+    {
+      "wix_slug": "/artificial-grass-randburg",
+      "old_github_url": "/page-randburg.html",
+      "content_file": "migration/content/artificial-grass-randburg.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Randburg | North Johannesburg | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Randburg, Northcliff, Bordeaux and surrounds. Expert synthetic turf for north Johannesburg residential and estate properties. Call 076 804 8868.",
+        "h1": "Artificial Grass Randburg",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-randburg"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Randburg, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Randburg"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-fourways", "/artificial-grass-roodepoort", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P2"
+    },
+    {
+      "wix_slug": "/artificial-grass-roodepoort",
+      "old_github_url": "/page-roodepoort.html",
+      "content_file": "migration/content/artificial-grass-roodepoort.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Roodepoort | West Johannesburg | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Roodepoort, Weltevreden Park, Florida and surrounds. Expert synthetic turf for west Johannesburg residential properties. Call 076 804 8868.",
+        "h1": "Artificial Grass Roodepoort",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-roodepoort"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Roodepoort, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Roodepoort"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-randburg", "/artificial-grass-johannesburg", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P2"
+    },
+    {
+      "wix_slug": "/artificial-grass-silver-lakes",
+      "old_github_url": "/page-silver-lakes.html",
+      "content_file": "migration/content/artificial-grass-silver-lakes.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Silver Lakes | Pretoria East Estate | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Silver Lakes, Silverlakes Golf Estate and surrounds. Expert HOA submissions, 6-year warranty. Free site consultation. Call 076 804 8868.",
+        "h1": "Artificial Grass Silver Lakes",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-silver-lakes"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Silver Lakes, Pretoria"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Silver Lakes"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-pretoria-east", "/artificial-grass-mooikloof", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P2"
+    },
+    {
+      "wix_slug": "/artificial-grass-waterfall-city",
+      "old_github_url": "/page-waterfall-city.html",
+      "content_file": "migration/content/artificial-grass-waterfall-city.md",
+      "page_type": "suburb",
+      "seo": {
+        "title": "Artificial Grass Waterfall City | Luxury Estate | PrimeTurf",
+        "meta_description": "Premium artificial grass installation in Waterfall City, Waterfall Estate and Waterfall Hills. PrimeTurf delivers luxury synthetic turf for Midrand's premier addresses. Free quote. Call 076 804 8868.",
+        "h1": "Artificial Grass Waterfall City",
+        "canonical": "https://www.primeturf.co.za/artificial-grass-waterfall-city"
+      },
+      "schema": [
+        {"@type": "Service", "serviceType": "Artificial Grass Installation"},
+        {"@type": "LocalBusiness", "areaServed": "Waterfall City, Gauteng"},
+        {"@type": "BreadcrumbList", "items": ["Home", "Artificial Grass Waterfall City"]}
+      ],
+      "internal_links": {
+        "to": ["/", "/artificial-grass-midrand", "/artificial-grass-sandton", "/contact", "/quote"],
+        "from_homepage": true
+      },
+      "priority": "P2"
+    },
+    {
+      "wix_slug": "/terms-of-service",
+      "old_github_url": "/terms-of-service.html",
+      "content_file": "migration/content/terms-of-service.md",
+      "page_type": "legal",
+      "seo": {
+        "title": "Terms of Service | PrimeTurf",
+        "meta_description": "PrimeTurf terms of service for artificial grass installation services in South Africa.",
+        "h1": "Terms of Service",
+        "canonical": "https://www.primeturf.co.za/terms-of-service",
+        "noindex": true
+      },
+      "schema": [],
+      "internal_links": {
+        "to": ["/", "/english-privacy-policy", "/contact"],
+        "from_footer": true
+      },
+      "priority": "P3",
+      "notes": "Old page had noindex - maintain that on Wix. Legal completeness, not SEO recovery."
+    }
+  ]
+}

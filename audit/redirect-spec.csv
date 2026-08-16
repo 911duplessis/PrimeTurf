@@ -1,0 +1,27 @@
+old_url,new_url,redirect_type,prerequisite,status,notes
+/artificial-grass-johannesburg.html,/artificial-grass-johannesburg,301,none - page exists on Wix,ready,Wix page jhk27 has custom SEO
+/artificial-grass-cape-town.html,/artificial-grass-cape-town,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-sandton.html,/artificial-grass-sandton,301,none - page exists on Wix,ready,Wix page avhi7 has custom SEO
+/page-pretoria-east.html,/artificial-grass-pretoria-east,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-centurion.html,/artificial-grass-centurion,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-steyn-city.html,/artificial-grass-steyn-city,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-midrand.html,/artificial-grass-midrand,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-fourways.html,/artificial-grass-fourways,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-bryanston.html,/artificial-grass-bryanston,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-bedfordview.html,/artificial-grass-bedfordview,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-boksburg.html,/artificial-grass-boksburg,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-edenvale.html,/artificial-grass-edenvale,301,none - page exists on Wix,ready,Wix page q46e6 has custom SEO
+/page-houghton.html,/artificial-grass-houghton,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-hyde-park.html,/artificial-grass-hyde-park,301,none - page exists on Wix,ready,Wix page kgiig has custom SEO
+/page-mooikloof.html,/artificial-grass-mooikloof,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-randburg.html,/artificial-grass-randburg,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-roodepoort.html,/artificial-grass-roodepoort,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-silver-lakes.html,/artificial-grass-silver-lakes,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/page-waterfall-city.html,/artificial-grass-waterfall-city,301,RECREATE page first,blocked,Page does not exist on Wix yet
+/quote-calculator.html,/quote,301,none - page exists on Wix,ready,Wix page evnw7 exists but needs SEO improvement
+/contact.html,/contact,301,none - page exists on Wix,ready,Wix page m80pg is live (verified 2026-07-28)
+/blog/artificial-grass-cost-guide-south-africa.html,/post/how-much-does-artificial-grass-cost-per-m-in-south-africa-2026,301,none - blog post live on Wix,ready,Published via Blog API
+/blog/drought-proof-garden-cape-town.html,/post/drought-proof-your-cape-town-garden-artificial-grass-and-water-restrictions,301,none - blog post live on Wix,ready,Published via Blog API
+/privacy-policy.html,/english-privacy-policy,301,none - page exists on Wix,ready,Confirm content parity first
+/primeturf-vs-easigrass.html,/,301,none - redirect to homepage,ready,Stakeholder decision: do not republish (2026-07-22)
+/terms-of-service.html,/terms-of-service,301,RECREATE page first,blocked,Old page had noindex - legal completeness only
