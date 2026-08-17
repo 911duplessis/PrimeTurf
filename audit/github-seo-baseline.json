@@ -1,0 +1,708 @@
+{
+  "extracted_at": "2026-08-16T18:06:49.716655+00:00",
+  "total_pages": 36,
+  "pages": [
+    {
+      "file": "PrimeTurf (2).html",
+      "url_path": "/PrimeTurf (2).html",
+      "title": "PrimeTurf \u2014 Rebuild Effort Review",
+      "meta_description": "Try out Artifacts created by Claude users",
+      "canonical": null,
+      "h1": null,
+      "noindex": true,
+      "og_title": "Claude Artifact",
+      "og_description": "Try out Artifacts created by Claude users",
+      "og_image": "https://claude.ai/images/claude_ogimage.png",
+      "schemas": [],
+      "internal_links": []
+    },
+    {
+      "file": "PrimeTurf \u2014 Rebuild Effort Review.html",
+      "url_path": "/PrimeTurf \u2014 Rebuild Effort Review.html",
+      "title": "PrimeTurf \u2014 Rebuild Effort Review",
+      "meta_description": "Try out Artifacts created by Claude users",
+      "canonical": null,
+      "h1": null,
+      "noindex": true,
+      "og_title": "Claude Artifact",
+      "og_description": "Try out Artifacts created by Claude users",
+      "og_image": "https://claude.ai/images/claude_ogimage.png",
+      "schemas": [],
+      "internal_links": []
+    },
+    {
+      "file": "PrimeTurfRebuildEffortEeview.html",
+      "url_path": "/PrimeTurfRebuildEffortEeview.html",
+      "title": "PrimeTurf \u2014 Rebuild Effort Review",
+      "meta_description": "Try out Artifacts created by Claude users",
+      "canonical": null,
+      "h1": null,
+      "noindex": true,
+      "og_title": "Claude Artifact",
+      "og_description": "Try out Artifacts created by Claude users",
+      "og_image": "https://claude.ai/images/claude_ogimage.png",
+      "schemas": [],
+      "internal_links": []
+    },
+    {
+      "file": "artificial-grass-cape-town.html",
+      "url_path": "/artificial-grass-cape-town.html",
+      "title": "Artificial Grass Cape Town | Water-Wise Installation | PrimeTurf",
+      "meta_description": "Drought-resistant artificial grass installation across Cape Town, Stellenbosch & the Winelands. Beat water restrictions permanently. 6-year warranty \u00b7 Free quote from PrimeTurf.",
+      "canonical": "https://www.primeturf.co.za/artificial-grass-cape-town.html",
+      "h1": "Artificial GrassCape Town",
+      "noindex": false,
+      "og_title": "Artificial Grass Cape Town | Water-Wise Lawn | PrimeTurf",
+      "og_description": "Eliminate water restrictions from your lawn permanently. Premium artificial grass installation across Cape Town, Stellenbosch & Winelands. 6-year warranty.",
+      "og_image": "https://www.primeturf.co.za/images/after-lg.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/artificial-grass-cape-town.html",
+        "/artificial-grass-johannesburg.html",
+        "/contact.html",
+        "/favicon.svg",
+        "/privacy-policy.html"
+      ]
+    },
+    {
+      "file": "artificial-grass-johannesburg.html",
+      "url_path": "/artificial-grass-johannesburg.html",
+      "title": "Artificial Grass Johannesburg | 6-Year Warranty | PrimeTurf",
+      "meta_description": "Premium artificial grass installation across Johannesburg \u2014 Sandton, Midrand, Fourways, Bryanston & beyond. 6-year warranty, free site consultation, quote within 24 hours. Call PrimeTurf today.",
+      "canonical": "https://www.primeturf.co.za/artificial-grass-johannesburg.html",
+      "h1": "Artificial GrassJohannesburg",
+      "noindex": false,
+      "og_title": "Artificial Grass Johannesburg | 6-Year Warranty | PrimeTurf",
+      "og_description": "Premium artificial grass installation across Johannesburg. 6-year warranty, free site consultation, quote within 24 hours. Sandton \u00b7 Midrand \u00b7 Fourways \u00b7 Bryanston.",
+      "og_image": "https://www.primeturf.co.za/images/after-lg.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/artificial-grass-cape-town.html",
+        "/artificial-grass-johannesburg.html",
+        "/contact.html",
+        "/favicon.svg",
+        "/privacy-policy.html"
+      ]
+    },
+    {
+      "file": "blog/artificial-grass-cost-guide-south-africa.html",
+      "url_path": "/blog/artificial-grass-cost-guide-south-africa.html",
+      "title": "Artificial Grass Cost Per m\u00b2 South Africa \u2014 2026 Pricing Guide | PrimeTurf",
+      "meta_description": "How much does artificial grass cost per m\u00b2 in South Africa? 2026 price guide covering turf grades, installation costs, and the 5-year cost model. From PrimeTurf",
+      "canonical": "https://www.primeturf.co.za/blog/artificial-grass-cost-guide-south-africa.html",
+      "h1": "How Much Does Artificial Grass Cost Per m\u00b2 in South Africa? (2026)",
+      "noindex": false,
+      "og_title": null,
+      "og_description": null,
+      "og_image": null,
+      "schemas": [
+        {
+          "@type": "Article"
+        },
+        {
+          "@type": "FAQPage"
+        }
+      ],
+      "internal_links": [
+        "/",
+        "/artificial-grass-cape-town.html",
+        "/artificial-grass-johannesburg.html",
+        "/blog/",
+        "/blog/artificial-grass-cost-guide-south-africa.html",
+        "/blog/drought-proof-garden-cape-town.html",
+        "/contact.html",
+        "/favicon.svg"
+      ]
+    },
+    {
+      "file": "blog/drought-proof-garden-cape-town.html",
+      "url_path": "/blog/drought-proof-garden-cape-town.html",
+      "title": "Drought-Proof Your Cape Town Garden \u2014 Artificial Grass & Water Restrictions | PrimeTurf",
+      "meta_description": "How to eliminate water restriction anxiety permanently with artificial grass. Zero irrigation, stays green through any drought. Complete guide for Cape Town homeowners.",
+      "canonical": "https://www.primeturf.co.za/blog/drought-proof-garden-cape-town.html",
+      "h1": "Drought-Proof Your Cape Town Garden: Artificial Grass and Water Restrictions",
+      "noindex": false,
+      "og_title": null,
+      "og_description": null,
+      "og_image": null,
+      "schemas": [
+        {
+          "@type": "Article"
+        },
+        {
+          "@type": "FAQPage"
+        }
+      ],
+      "internal_links": [
+        "/",
+        "/artificial-grass-cape-town.html",
+        "/artificial-grass-johannesburg.html",
+        "/blog/",
+        "/blog/artificial-grass-cost-guide-south-africa.html",
+        "/blog/drought-proof-garden-cape-town.html",
+        "/contact.html",
+        "/favicon.svg"
+      ]
+    },
+    {
+      "file": "blog/index.html",
+      "url_path": "/blog/",
+      "title": "Artificial Grass Blog & Guides \u2014 South Africa | PrimeTurf",
+      "meta_description": "Expert guides on artificial grass costs, installation, and maintenance for South African homeowners and landscape architects. Written by PrimeTurf",
+      "canonical": "https://www.primeturf.co.za/blog/",
+      "h1": "Artificial Grass Guides",
+      "noindex": false,
+      "og_title": null,
+      "og_description": null,
+      "og_image": null,
+      "schemas": [
+        {
+          "@type": "Blog"
+        }
+      ],
+      "internal_links": [
+        "/",
+        "/artificial-grass-cape-town.html",
+        "/artificial-grass-johannesburg.html",
+        "/blog/",
+        "/blog/artificial-grass-cost-guide-south-africa.html",
+        "/blog/drought-proof-garden-cape-town.html",
+        "/contact.html",
+        "/favicon.svg"
+      ]
+    },
+    {
+      "file": "contact.html",
+      "url_path": "/contact.html",
+      "title": "PrimeTurf | Request a Free Quote \u2014 Gauteng",
+      "meta_description": "Request a free site consultation from PrimeTurf \u2014 Gauteng",
+      "canonical": "https://www.primeturf.co.za/contact.html",
+      "h1": "Request Your FreeSite Consultation",
+      "noindex": false,
+      "og_title": "Get Your Free Quote \u2014 PrimeTurf Gauteng",
+      "og_description": "Premium artificial grass installed across Gauteng. Free site consultation \u00b7 6-year warranty \u00b7 24-month installation guarantee. Chat on WhatsApp or complete our quick form.",
+      "og_image": "https://www.primeturf.co.za/images/after-lg.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/contact.html",
+        "/favicon.svg"
+      ]
+    },
+    {
+      "file": "index.html",
+      "url_path": "/",
+      "title": "PrimeTurf | Premium Artificial Grass Solutions",
+      "meta_description": "PrimeTurf installs premium artificial grass systems for estates, schools, restaurants, and commercial properties across Gauteng.",
+      "canonical": null,
+      "h1": "Premium ArtificialGrass Solutions",
+      "noindex": false,
+      "og_title": null,
+      "og_description": null,
+      "og_image": null,
+      "schemas": [],
+      "internal_links": [
+        "/"
+      ]
+    },
+    {
+      "file": "page-bedfordview.html",
+      "url_path": "/page-bedfordview.html",
+      "title": "Artificial Grass Bedfordview | East Rand Luxury Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Bedfordview, Edenvale and the East Rand. Luxury synthetic turf for Bedfordview",
+      "canonical": "https://www.primeturf.co.za/page-bedfordview.html",
+      "h1": "Artificial Grass Installationin Bedfordview",
+      "noindex": false,
+      "og_title": "Artificial Grass Bedfordview | East Rand Luxury Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Bedfordview, Edenvale and the East Rand. Luxury synthetic turf for Bedfordview",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-bedfordview.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-boksburg.html",
+      "url_path": "/page-boksburg.html",
+      "title": "Artificial Grass Boksburg | East Rand Residential & Estate | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Boksburg, Benoni, Brakpan and the East Rand. Professional synthetic turf for residential and estate properties. Free quote. Call 076 804 8868.",
+      "canonical": "https://www.primeturf.co.za/page-boksburg.html",
+      "h1": "Artificial Grass Installationin Boksburg",
+      "noindex": false,
+      "og_title": "Artificial Grass Boksburg | East Rand Residential & Estate | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Boksburg, Benoni, Brakpan and the East Rand. Professional synthetic turf for residential and estate properties. Free quote. Call 076 804 8868.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-boksburg.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-bryanston.html",
+      "url_path": "/page-bryanston.html",
+      "title": "Artificial Grass Bryanston | Luxury Residential Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Bryanston, Craighall Park and surrounds. Luxury synthetic turf for Bryanston",
+      "canonical": "https://www.primeturf.co.za/page-bryanston.html",
+      "h1": "Artificial Grass Installationin Bryanston",
+      "noindex": false,
+      "og_title": "Artificial Grass Bryanston | Luxury Residential Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Bryanston, Craighall Park and surrounds. Luxury synthetic turf for Bryanston",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-bryanston.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-centurion.html",
+      "url_path": "/page-centurion.html",
+      "title": "Artificial Grass Centurion | Golf Estate Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Centurion. Golf estate specialists, residential gardens, complex common areas. 6-year warranty. Free site consultation. Call 076 804 8868.",
+      "canonical": "https://www.primeturf.co.za/page-centurion.html",
+      "h1": "Artificial Grass Installationin Centurion",
+      "noindex": false,
+      "og_title": "Artificial Grass Centurion | Golf Estate Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Centurion. Golf estate specialists, residential gardens, complex common areas. 6-year warranty. Free site consultation. Call 076 804 8868.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-centurion.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-edenvale.html",
+      "url_path": "/page-edenvale.html",
+      "title": "Artificial Grass Edenvale | East Rand Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Edenvale, Bedfordview, Modderfontein and surrounds. Expert synthetic turf for the East Rand. Free consultation. Call 076 804 8868.",
+      "canonical": "https://www.primeturf.co.za/page-edenvale.html",
+      "h1": "Artificial Grass Installationin Edenvale",
+      "noindex": false,
+      "og_title": "Artificial Grass Edenvale | East Rand Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Edenvale, Bedfordview, Modderfontein and surrounds. Expert synthetic turf for the East Rand. Free consultation. Call 076 804 8868.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-edenvale.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-fourways.html",
+      "url_path": "/page-fourways.html",
+      "title": "Artificial Grass Fourways | Dainfern \u00b7 Lonehill \u00b7 Broadacres | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Fourways, Dainfern, Lonehill and surrounds. Professional synthetic turf for Fourways estates. Free consultation. Call 076 804 8868.",
+      "canonical": "https://www.primeturf.co.za/page-fourways.html",
+      "h1": "Artificial Grass Installationin Fourways",
+      "noindex": false,
+      "og_title": "Artificial Grass Fourways | Dainfern \u00b7 Lonehill \u00b7 Broadacres | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Fourways, Dainfern, Lonehill and surrounds. Professional synthetic turf for Fourways estates. Free consultation. Call 076 804 8868.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-fourways.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-houghton.html",
+      "url_path": "/page-houghton.html",
+      "title": "Artificial Grass Houghton | Luxury Estate Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Houghton, Saxonwold, Parkview and surrounds. Luxury synthetic turf for Johannesburg",
+      "canonical": "https://www.primeturf.co.za/page-houghton.html",
+      "h1": "Artificial Grass Installationin Houghton",
+      "noindex": false,
+      "og_title": "Artificial Grass Houghton | Luxury Estate Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Houghton, Saxonwold, Parkview and surrounds. Luxury synthetic turf for Johannesburg",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-houghton.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-hyde-park.html",
+      "url_path": "/page-hyde-park.html",
+      "title": "Artificial Grass Hyde Park | Ultra-Luxury Estate Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Hyde Park, Sandhurst and Atholl. Ultra-luxury synthetic turf for Johannesburg",
+      "canonical": "https://www.primeturf.co.za/page-hyde-park.html",
+      "h1": "Artificial Grass Installationin Hyde Park",
+      "noindex": false,
+      "og_title": "Artificial Grass Hyde Park | Ultra-Luxury Estate Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Hyde Park, Sandhurst and Atholl. Ultra-luxury synthetic turf for Johannesburg",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-hyde-park.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-midrand.html",
+      "url_path": "/page-midrand.html",
+      "title": "Artificial Grass Midrand | Secure Estate Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Midrand. Secure estate and complex specialists across Halfway House, Kyalami, Waterfall. Free quote. Call 076 804 8868.",
+      "canonical": "https://www.primeturf.co.za/page-midrand.html",
+      "h1": "Artificial Grass Installationin Midrand",
+      "noindex": false,
+      "og_title": "Artificial Grass Midrand | Secure Estate Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Midrand. Secure estate and complex specialists across Halfway House, Kyalami, Waterfall. Free quote. Call 076 804 8868.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-midrand.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-mooikloof.html",
+      "url_path": "/page-mooikloof.html",
+      "title": "Artificial Grass Mooikloof | Country Estate Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Mooikloof, Mooikloof Country Estate and Mooikloof Equestrian Estate. Expert HOA submissions. 6-year warranty. Call 076 804 8868.",
+      "canonical": "https://www.primeturf.co.za/page-mooikloof.html",
+      "h1": "Artificial Grass Installationin Mooikloof",
+      "noindex": false,
+      "og_title": "Artificial Grass Mooikloof | Country Estate Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Mooikloof, Mooikloof Country Estate and Mooikloof Equestrian Estate. Expert HOA submissions. 6-year warranty. Call 076 804 8868.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-mooikloof.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-pretoria-east.html",
+      "url_path": "/page-pretoria-east.html",
+      "title": "Artificial Grass Pretoria East | Waterkloof \u00b7 Silverlakes \u00b7 Mooikloof | PrimeTurf",
+      "meta_description": "PrimeTurf installs premium artificial grass in Pretoria East \u2014 Waterkloof Ridge, Silverlakes, Faerie Glen, Mooikloof & surrounds. 6-year warranty. Free site consultation. Call 076 804 8868.",
+      "canonical": "https://www.primeturf.co.za/page-pretoria-east.html",
+      "h1": "Artificial Grass Installationin Pretoria East",
+      "noindex": false,
+      "og_title": "Artificial Grass Pretoria East | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Pretoria East. Waterkloof Ridge, Silverlakes, Mooikloof specialists. Free consultation, 6-year warranty.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [
+        {
+          "@type": "Service"
+        }
+      ],
+      "internal_links": [
+        "/",
+        "/page-pretoria-east.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-randburg.html",
+      "url_path": "/page-randburg.html",
+      "title": "Artificial Grass Randburg | North Johannesburg Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Randburg, Northcliff, Bordeaux and surrounds. Expert synthetic turf for north Johannesburg residential and estate properties. Call 076 804 8868.",
+      "canonical": "https://www.primeturf.co.za/page-randburg.html",
+      "h1": "Artificial Grass Installationin Randburg",
+      "noindex": false,
+      "og_title": "Artificial Grass Randburg | North Johannesburg Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Randburg, Northcliff, Bordeaux and surrounds. Expert synthetic turf for north Johannesburg residential and estate properties. Call 076 804 8868.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-randburg.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-roodepoort.html",
+      "url_path": "/page-roodepoort.html",
+      "title": "Artificial Grass Roodepoort | West Johannesburg Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Roodepoort, Weltevreden Park, Florida and surrounds. Expert synthetic turf for west Johannesburg residential properties. Call 076 804 8868.",
+      "canonical": "https://www.primeturf.co.za/page-roodepoort.html",
+      "h1": "Artificial Grass Installationin Roodepoort",
+      "noindex": false,
+      "og_title": "Artificial Grass Roodepoort | West Johannesburg Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Roodepoort, Weltevreden Park, Florida and surrounds. Expert synthetic turf for west Johannesburg residential properties. Call 076 804 8868.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-roodepoort.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-sandton.html",
+      "url_path": "/page-sandton.html",
+      "title": "Artificial Grass Sandton | Premium Installation | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Sandton, Bryanston, Fourways & surrounds. PrimeTurf delivers luxury synthetic turf for Sandton",
+      "canonical": "https://www.primeturf.co.za/page-sandton.html",
+      "h1": "Artificial Grass Installationin Sandton",
+      "noindex": false,
+      "og_title": "Artificial Grass Sandton | Premium Installation | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Sandton. Luxury synthetic turf for estates, villas & commercial properties. 6-year warranty. Free consultation.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [
+        {
+          "@type": "Service"
+        }
+      ],
+      "internal_links": [
+        "/",
+        "/page-sandton.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-silver-lakes.html",
+      "url_path": "/page-silver-lakes.html",
+      "title": "Artificial Grass Silver Lakes | Pretoria East Estate Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Silver Lakes, Silverlakes Golf Estate and surrounds. Expert HOA submissions, 6-year warranty. Free site consultation. Call 076 804 8868.",
+      "canonical": "https://www.primeturf.co.za/page-silver-lakes.html",
+      "h1": "Artificial Grass Installationin Silver Lakes",
+      "noindex": false,
+      "og_title": "Artificial Grass Silver Lakes | Pretoria East Estate Specialists | PrimeTurf",
+      "og_description": "Premium artificial grass installation in Silver Lakes, Silverlakes Golf Estate and surrounds. Expert HOA submissions, 6-year warranty. Free site consultation. Call 076 804 8868.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/page-silver-lakes.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-steyn-city.html",
+      "url_path": "/page-steyn-city.html",
+      "title": "Artificial Grass Steyn City | Luxury Estate Specialists | PrimeTurf",
+      "meta_description": "Luxury synthetic lawn installation in Steyn City Estate, including Steyn City Golf Estate and The Manor. PrimeTurf delivers premium artificial grass for Johannesburg",
+      "canonical": "https://www.primeturf.co.za/page-steyn-city.html",
+      "h1": "Luxury Synthetic Lawn Installationin Steyn City Estate",
+      "noindex": false,
+      "og_title": "Luxury Synthetic Lawn Installation in Steyn City Estate | PrimeTurf",
+      "og_description": "Premium artificial grass for Steyn City Golf Estate and The Manor. Zero irrigation, 6-year warranty. Free consultation.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [
+        {
+          "@type": "Service"
+        }
+      ],
+      "internal_links": [
+        "/",
+        "/page-steyn-city.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "page-waterfall-city.html",
+      "url_path": "/page-waterfall-city.html",
+      "title": "Artificial Grass Waterfall City | Luxury Estate Specialists | PrimeTurf",
+      "meta_description": "Premium artificial grass installation in Waterfall City, Waterfall Estate and Waterfall Hills. PrimeTurf delivers luxury synthetic turf for Midrand",
+      "canonical": "https://www.primeturf.co.za/page-waterfall-city.html",
+      "h1": "Artificial Grass Installationin Waterfall City",
+      "noindex": false,
+      "og_title": "Artificial Grass Waterfall City | PrimeTurf",
+      "og_description": "Premium artificial grass for Waterfall City, Waterfall Estate and Waterfall Hills. Zero irrigation, 6-year warranty. Free consultation.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [
+        {
+          "@type": "Service"
+        }
+      ],
+      "internal_links": [
+        "/",
+        "/page-waterfall-city.html",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "primeturf-vs-easigrass.html",
+      "url_path": "/primeturf-vs-easigrass.html",
+      "title": "PrimeTurf vs Easigrass SA | Compare Gauteng Artificial Grass Installers",
+      "meta_description": "Comparing PrimeTurf and Easigrass SA on warranty length and HOA/ARC submission support for Gauteng luxury estate installations \u2014 the two factors estate homeowners ask about most.",
+      "canonical": "https://www.primeturf.co.za/primeturf-vs-easigrass.html",
+      "h1": "Choosing an Artificial GrassInstaller in Gauteng",
+      "noindex": false,
+      "og_title": "PrimeTurf vs Easigrass SA | Compare Gauteng Artificial Grass Installers",
+      "og_description": "6-year warranty and HOA/ARC submission management included as standard \u2014 see how PrimeTurf compares for Gauteng luxury estate installations.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [
+        {
+          "@type": "Service"
+        }
+      ],
+      "internal_links": [
+        "/",
+        "/primeturf-vs-easigrass.html"
+      ]
+    },
+    {
+      "file": "primeturfaudit (1).html",
+      "url_path": "/primeturfaudit (1).html",
+      "title": "PrimeTurf Digital Engagement \u2014 Independent Reconciliation",
+      "meta_description": null,
+      "canonical": null,
+      "h1": "The PrimeTurf Digital Engagement",
+      "noindex": false,
+      "og_title": null,
+      "og_description": null,
+      "og_image": null,
+      "schemas": [],
+      "internal_links": []
+    },
+    {
+      "file": "privacy-policy.html",
+      "url_path": "/privacy-policy.html",
+      "title": "Privacy Policy | PrimeTurf",
+      "meta_description": "PrimeTurf Privacy Policy. How we collect, use, and protect your personal information in accordance with South Africa",
+      "canonical": "https://www.primeturf.co.za/privacy-policy.html",
+      "h1": "Privacy Policy",
+      "noindex": true,
+      "og_title": null,
+      "og_description": null,
+      "og_image": null,
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/privacy-policy.html"
+      ]
+    },
+    {
+      "file": "quote/index.html",
+      "url_path": "/quote/",
+      "title": "Instant Artificial Grass Quote | PrimeTurf SA",
+      "meta_description": "Build an instant artificial grass installation quote for your property \u2014 choose turf spec, dimensions and add-ons and get a live price estimate. PrimeTurf SA, Gauteng.",
+      "canonical": "https://www.primeturf.co.za/quote/",
+      "h1": null,
+      "noindex": false,
+      "og_title": "Instant Artificial Grass Quote | PrimeTurf SA",
+      "og_description": "Choose your turf, dimensions and add-ons and get a live installation price estimate in seconds.",
+      "og_image": "https://www.primeturf.co.za/images/ad-banner.jpg",
+      "schemas": [],
+      "internal_links": [
+        "/quote/"
+      ]
+    },
+    {
+      "file": "quote-calculator.html",
+      "url_path": "/quote-calculator.html",
+      "title": "Artificial Grass Quote Calculator South Africa | PrimeTurf",
+      "meta_description": "Get an instant artificial grass price estimate for your South African property. Select surface type, area, location, and grade \u2014 free site consultation to confirm.",
+      "canonical": "https://www.primeturf.co.za/quote-calculator.html",
+      "h1": "Artificial GrassQuote Calculator",
+      "noindex": false,
+      "og_title": null,
+      "og_description": null,
+      "og_image": null,
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/artificial-grass-johannesburg.html",
+        "/contact.html",
+        "/favicon.svg",
+        "/privacy-policy.html",
+        "/quote-calculator.html"
+      ]
+    },
+    {
+      "file": "seomigrated.html",
+      "url_path": "/seomigrated.html",
+      "title": "PrimeTurf/seomigration.html at main \u00b7 911duplessis/PrimeTurf",
+      "meta_description": "\ud83c\udf3f PrimeTurf transforms outdoor spaces into premium lifestyle environments for modern Pretoria East living. We are architects of outdoor life \u2014 crafting environments that extend the home, elevate the estate, and define a way of living. - PrimeTurf/seomigration.html at main \u00b7 911duplessis/PrimeTurf",
+      "canonical": null,
+      "h1": "Search code, repositories, users, issues, pull requests...",
+      "noindex": false,
+      "og_title": "PrimeTurf/seomigration.html at main \u00b7 911duplessis/PrimeTurf",
+      "og_description": "\ud83c\udf3f PrimeTurf transforms outdoor spaces into premium lifestyle environments for modern Pretoria East living. We are architects of outdoor life \u2014 crafting environments that extend the home, elevate th...",
+      "og_image": "https://opengraph.githubassets.com/136af04f20bd9cb2b3ca7ab18e3ad1a64cda55c7a485d78afd0db5e1885b018e/911duplessis/PrimeTurf",
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/911duplessis",
+        "/911duplessis/PrimeTurf",
+        "/911duplessis/PrimeTurf/actions",
+        "/911duplessis/PrimeTurf/agents",
+        "/911duplessis/PrimeTurf/commits/main/seomigration.html",
+        "/911duplessis/PrimeTurf/edit/main/seomigration.html",
+        "/911duplessis/PrimeTurf/issues",
+        "/911duplessis/PrimeTurf/projects",
+        "/911duplessis/PrimeTurf/pulls",
+        "/911duplessis/PrimeTurf/pulse",
+        "/911duplessis/PrimeTurf/security",
+        "/911duplessis/PrimeTurf/settings",
+        "/911duplessis/PrimeTurf/tree/main",
+        "/911duplessis/PrimeTurf/wiki",
+        "/assets-cdn/worker/service-worker-b66f922ca63253f4.js",
+        "/assets-cdn/worker/socket-worker-89f8a0e9fe180a48.js",
+        "/codespaces/new/911duplessis/PrimeTurf/tree/main",
+        "/copilot",
+        "/issues",
+        "/manifest.json",
+        "/notifications",
+        "/opensearch.xml",
+        "/pulls",
+        "/repos",
+        "/sessions/sudo_modal"
+      ]
+    },
+    {
+      "file": "seomigration.html",
+      "url_path": "/seomigration.html",
+      "title": "PrimeTurf \u2014 Rebuild Effort Review",
+      "meta_description": "Try out Artifacts created by Claude users",
+      "canonical": null,
+      "h1": null,
+      "noindex": true,
+      "og_title": "Claude Artifact",
+      "og_description": "Try out Artifacts created by Claude users",
+      "og_image": "https://claude.ai/images/claude_ogimage.png",
+      "schemas": [],
+      "internal_links": []
+    },
+    {
+      "file": "terms-of-service.html",
+      "url_path": "/terms-of-service.html",
+      "title": "Terms of Service | PrimeTurf",
+      "meta_description": "PrimeTurf Terms of Service. Terms governing the use of www.primeturf.co.za and PrimeTurf",
+      "canonical": "https://www.primeturf.co.za/terms-of-service.html",
+      "h1": "Terms of Service",
+      "noindex": true,
+      "og_title": null,
+      "og_description": null,
+      "og_image": null,
+      "schemas": [],
+      "internal_links": [
+        "/",
+        "/terms-of-service.html"
+      ]
+    },
+    {
+      "file": "wa.html",
+      "url_path": "/wa.html",
+      "title": "Chat with PrimeTurf on WhatsApp",
+      "meta_description": null,
+      "canonical": "https://primeturf.co.za/wa.html",
+      "h1": "Opening WhatsApp\u2026",
+      "noindex": true,
+      "og_title": "Chat with PrimeTurf on WhatsApp \u2014 Free Quote",
+      "og_description": "Tap to open WhatsApp and request your free site consultation. Premium artificial grass \u00b7 6-year warranty \u00b7 Serving all of Gauteng.",
+      "og_image": "https://primeturf.co.za/images/after-lg.jpg",
+      "schemas": [],
+      "internal_links": []
+    }
+  ]
+}
