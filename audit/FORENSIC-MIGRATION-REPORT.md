@@ -19,11 +19,11 @@ The gap is a **content gap**, not a redirect problem — domain-level redirects 
 |--------|-------|
 | GitHub public pages | 27 |
 | Wix static pages | 15 |
-| Wix pages with custom SEO | 4 |
+| Wix pages with custom SEO | 12 (was 4 on 2026-08-16) |
 | Missing suburb/city pages | 13 |
 | Google-indexed 404s (confirmed) | 4 |
 | 301 redirects needed | 22 |
-| Wix pages needing SEO improvement | 11 |
+| Wix pages needing SEO improvement | 0 (was 11; all fixed by owner) |
 
 ---
 
@@ -327,3 +327,39 @@ Four automation scripts are provided in `automation/`:
 | `automation/sitemap-comparator.py` | Sitemap comparison script |
 | `automation/redirect-validator.py` | Redirect validation script |
 | `automation/seo-health-monitor.py` | Ongoing SEO health monitor |
+| `audit/wix-seo-current-state.json` | Full Wix SEO snapshot as of 2026-08-17 |
+| `audit/SEO-PROGRESS-REPORT.md` | Delta report: what changed since initial audit |
+
+---
+
+## 13. Progress Update (2026-08-17)
+
+### Owner Browser Work Completed
+
+Between the initial audit (2026-08-16) and this update (2026-08-17), the site owner completed significant SEO improvements via the Wix Editor:
+
+**Custom SEO coverage: 4/15 pages → 12/15 pages**
+
+| Page | Previous Title | Current Title | Status |
+|------|---------------|---------------|--------|
+| Home | Home \| Prime Turf SA | PrimeTurf \| Premium Artificial Grass Solutions | FIXED |
+| Services | Services (List) \| Prime Turf SA | Our Services \| PrimeTurf Artificial Grass Installation | FIXED |
+| Quote | Get a Quote \| Prime Turf SA | Instant Artificial Grass Quote \| PrimeTurf SA | FIXED |
+| Blog | Blog \| Prime Turf SA | Artificial Grass Blog & Guides -- South Africa | FIXED |
+| About Us | About Us \| Prime Turf SA | About Us \| PrimeTurf Artificial Grass Specialists | FIXED |
+| Product Catalogue | **Poduct** Catalogue \| Prime Turf SA | Product Catalogue \| PrimeTurf Artificial Grass Ranges | TYPO FIXED |
+| Portfolio | Portfolio \| Prime Turf SA | Portfolio \| PrimeTurf Artificial Grass Projects | FIXED |
+| Contact | Contact \| Prime Turf SA | PrimeTurf \| Request a Free Quote -- Gauteng | FIXED |
+
+All 4 existing suburb pages (Sandton, Johannesburg, Hyde Park, Edenvale) were also enhanced with updated titles (added "\| PrimeTurf" branding suffix) and expanded descriptions.
+
+### Remaining Work
+
+| Category | Items | Blocker |
+|----------|-------|---------|
+| Missing suburb pages | 13 pages | Must be created manually in Wix Editor |
+| 301 redirects | 22 redirects | Wix URL Redirect Manager (dashboard only) |
+| JSON-LD structured data | 6+ pages | Wix Velo or code injection |
+| Google-indexed 404s | 4 URLs | Depends on page creation + redirects |
+
+See `audit/SEO-PROGRESS-REPORT.md` for full details.

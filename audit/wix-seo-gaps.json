@@ -1,21 +1,32 @@
 {
-  "audit_date": "2026-08-16",
+  "audit_date": "2026-08-17",
+  "previous_audit_date": "2026-08-16",
   "site_id": "9e5c1b74-f699-4def-ae95-5a8a8664880d",
   "site_name": "Prime Turf SA",
   "domain": "www.primeturf.co.za",
   "summary": {
     "total_wix_pages": 15,
-    "pages_with_custom_seo": 4,
-    "pages_missing_custom_seo": 11,
+    "pages_with_custom_seo": 12,
+    "pages_without_custom_seo": 3,
     "missing_suburb_pages": 13,
     "total_github_pages": 27,
     "google_indexed_404s": 4,
-    "redirects_needed": 22
+    "redirects_needed": 22,
+    "redirects_configured": 0,
+    "json_ld_schemas_added": 0
+  },
+  "progress_since_initial_audit": {
+    "pages_with_custom_seo_before": 4,
+    "pages_with_custom_seo_after": 12,
+    "pages_fixed_by_owner": 8,
+    "typo_fixed": true,
+    "homepage_seo_fixed": true
   },
   "critical_issues": [
     {
       "severity": "CRITICAL",
       "issue": "Google-indexed URLs returning 404",
+      "status": "OPEN",
       "affected_urls": [
         "/artificial-grass-cape-town.html",
         "/artificial-grass-johannesburg.html",
@@ -27,17 +38,18 @@
     },
     {
       "severity": "CRITICAL",
-      "issue": "Homepage has no custom SEO metadata",
+      "issue": "Homepage had no custom SEO metadata",
+      "status": "RESOLVED",
+      "resolved_date": "2026-08-17",
       "page_id": "bqvuq",
-      "current_title": "Home | Prime Turf SA",
-      "recommended_title": "PrimeTurf | Premium Artificial Grass Solutions in South Africa",
-      "current_description": null,
-      "recommended_description": "Professional artificial grass installation across Gauteng & Cape Town. 6-year warranty, free quotes, premium 40mm turf. Serving Sandton, Centurion, Fourways & more.",
-      "impact": "Homepage ranking with generic title instead of keyword-rich original"
+      "previous_title": "Home | Prime Turf SA",
+      "current_title": "PrimeTurf | Premium Artificial Grass Solutions",
+      "current_description": "Premium artificial grass installation across Gauteng & Cape Town. 6-year warranty, water-wise turf, free site consultation. Get an instant quote today."
     },
     {
       "severity": "HIGH",
       "issue": "13 suburb/city pages missing from Wix",
+      "status": "OPEN",
       "missing_pages": [
         "/artificial-grass-cape-town",
         "/artificial-grass-pretoria-east",
@@ -55,28 +67,47 @@
         "/artificial-grass-silver-lakes",
         "/artificial-grass-waterfall-city"
       ],
-      "impact": "These pages drove location-specific organic traffic; content gap is the primary cause of lost indexed pages"
+      "impact": "These pages drove location-specific organic traffic; content gap is the primary cause of lost indexed pages",
+      "fix": "Create pages on Wix using content from migration/content/*.md files"
     },
     {
       "severity": "HIGH",
-      "issue": "Site name contains double space",
-      "current": "Prime Turf  SA",
-      "recommended": "Prime Turf SA",
-      "impact": "Appears in default title tags across all pages without custom titles"
-    },
-    {
-      "severity": "MEDIUM",
-      "issue": "Product Catalogue page has typo in title",
-      "page_id": "ggwix",
-      "current_title": "Poduct Catalogue",
-      "correct_title": "Product Catalogue",
-      "url": "/services-5"
-    },
-    {
-      "severity": "MEDIUM",
       "issue": "No 301 redirects configured for any old .html URLs",
+      "status": "OPEN",
       "count": 22,
-      "impact": "All old GitHub Pages URLs that Google still indexes lead to 404 or wrong content"
+      "impact": "All old GitHub Pages URLs that Google still indexes lead to 404 or wrong content",
+      "fix": "Configure via Wix URL Redirect Manager (dashboard only, no REST API)"
+    },
+    {
+      "severity": "HIGH",
+      "issue": "No JSON-LD structured data on any page",
+      "status": "OPEN",
+      "impact": "Missing rich results eligibility for LocalBusiness, Service, FAQ, BreadcrumbList",
+      "fix": "Add via Wix Velo or custom code injection in Editor"
+    },
+    {
+      "severity": "MEDIUM",
+      "issue": "Product Catalogue page had typo in title",
+      "status": "RESOLVED",
+      "resolved_date": "2026-08-17",
+      "page_id": "ggwix",
+      "previous_title": "Poduct Catalogue",
+      "current_title": "Product Catalogue | PrimeTurf Artificial Grass Ranges"
+    },
+    {
+      "severity": "LOW",
+      "issue": "All pages share the same default OG image",
+      "status": "OPEN",
+      "impact": "Social sharing shows same generic image for every page",
+      "fix": "Set page-specific OG images via Wix SEO settings"
+    },
+    {
+      "severity": "LOW",
+      "issue": "Preparation page (/about-6) has no custom SEO",
+      "status": "OPEN",
+      "page_id": "uay3e",
+      "impact": "Low priority - Wix-only page with no GitHub equivalent",
+      "fix": "Add custom title and description if page receives organic traffic"
     }
   ],
   "pages": [
@@ -84,28 +115,25 @@
       "page_id": "bqvuq",
       "title": "Home",
       "url": "/",
-      "has_custom_title": false,
-      "has_custom_description": false,
-      "has_custom_og": false,
+      "has_custom_title": true,
+      "has_custom_description": true,
+      "current_title": "PrimeTurf | Premium Artificial Grass Solutions",
+      "current_description": "Premium artificial grass installation across Gauteng & Cape Town. 6-year warranty, water-wise turf, free site consultation. Get an instant quote today.",
       "has_schema": false,
-      "github_equivalent": "/",
-      "github_title": "PrimeTurf | Premium Artificial Grass Solutions",
-      "seo_action": "IMPROVE",
-      "recommended_title": "PrimeTurf | Premium Artificial Grass Solutions in South Africa",
-      "recommended_description": "PrimeTurf installs premium artificial grass systems for estates, schools, restaurants, and commercial properties across Gauteng.",
-      "github_meta_description": "PrimeTurf installs premium artificial grass systems for estates, schools, restaurants, and commercial properties across Gauteng."
+      "seo_status": "IMPROVED",
+      "remaining_actions": ["ADD_SCHEMA (LocalBusiness + FAQPage)"]
     },
     {
       "page_id": "fw9ji",
       "title": "About Us",
       "url": "/about-us",
-      "has_custom_title": false,
-      "has_custom_description": false,
-      "has_custom_og": false,
+      "has_custom_title": true,
+      "has_custom_description": true,
+      "current_title": "About Us | PrimeTurf Artificial Grass Specialists",
+      "current_description": "Learn about PrimeTurf, South Africa's trusted artificial grass installer, and our commitment to quality, water-wise landscaping, and expert craftsmanship.",
       "has_schema": false,
-      "github_equivalent": null,
-      "seo_action": "IMPROVE",
-      "recommended_description": "Learn about PrimeTurf, Gauteng and Cape Town's trusted artificial grass installer. Professional team, quality materials, and a 6-year installation warranty."
+      "seo_status": "IMPROVED",
+      "remaining_actions": []
     },
     {
       "page_id": "uay3e",
@@ -113,92 +141,82 @@
       "url": "/about-6",
       "has_custom_title": false,
       "has_custom_description": false,
-      "has_custom_og": false,
+      "current_title": "Preparation | Prime Turf SA",
       "has_schema": false,
-      "github_equivalent": null,
-      "seo_action": "NEEDS_DECISION",
-      "notes": "Titled 'Preparation' on live site - not a duplicate of /about-us. Needs human review before any action."
+      "seo_status": "NEEDS_DECISION",
+      "remaining_actions": ["DECIDE: add custom SEO or leave as-is"]
     },
     {
       "page_id": "cjh26",
-      "title": "Services (List)",
+      "title": "Services",
       "url": "/services",
-      "has_custom_title": false,
-      "has_custom_description": false,
-      "has_custom_og": false,
+      "has_custom_title": true,
+      "has_custom_description": true,
+      "current_title": "Our Services | PrimeTurf Artificial Grass Installation",
+      "current_description": "Explore PrimeTurf's full range of artificial grass services, from residential lawns to golf estates and commercial landscaping across South Africa.",
       "has_schema": false,
-      "github_equivalent": null,
-      "seo_action": "IMPROVE",
-      "recommended_description": "PrimeTurf artificial grass services: residential lawns, commercial installations, putting greens, pet-friendly turf, and play areas across Gauteng and Cape Town."
+      "seo_status": "IMPROVED",
+      "remaining_actions": []
     },
     {
       "page_id": "ggwix",
-      "title": "Poduct Catalogue",
+      "title": "Product Catalogue",
       "url": "/services-5",
-      "has_custom_title": false,
-      "has_custom_description": false,
-      "has_custom_og": false,
+      "has_custom_title": true,
+      "has_custom_description": true,
+      "current_title": "Product Catalogue | PrimeTurf Artificial Grass Ranges",
+      "current_description": "Browse PrimeTurf's range of premium artificial grass products, engineered for South African climates with lasting durability and natural looks.",
       "has_schema": false,
-      "github_equivalent": null,
-      "seo_action": "FIX_TYPO + IMPROVE",
-      "notes": "Title has typo: 'Poduct' should be 'Product'",
-      "recommended_title": "Product Catalogue | PrimeTurf Artificial Grass Range",
-      "recommended_description": "Browse PrimeTurf's artificial grass product range. Premium 40mm turf options for residential lawns, commercial spaces, and sports facilities."
+      "seo_status": "FIXED + IMPROVED",
+      "remaining_actions": []
     },
     {
       "page_id": "evnw7",
       "title": "Get a Quote",
       "url": "/quote",
-      "has_custom_title": false,
-      "has_custom_description": false,
-      "has_custom_og": false,
+      "has_custom_title": true,
+      "has_custom_description": true,
+      "current_title": "Instant Artificial Grass Quote | PrimeTurf SA",
+      "current_description": "Get an instant, no-obligation quote for artificial grass installation anywhere in Gauteng or Cape Town. Fast quotes, transparent pricing, free consultations.",
       "has_schema": false,
-      "github_equivalent": "/quote-calculator.html",
-      "github_title": "Artificial Grass Quote Calculator South Africa",
-      "seo_action": "IMPROVE",
-      "recommended_title": "Artificial Grass Quote Calculator | PrimeTurf South Africa",
-      "recommended_description": "Get an instant artificial grass quote. Calculate costs per m2 for your lawn, garden, or commercial project. Free on-site estimates across Gauteng and Cape Town."
+      "seo_status": "IMPROVED",
+      "remaining_actions": []
     },
     {
       "page_id": "l7zij",
       "title": "Portfolio",
       "url": "/gallery",
-      "has_custom_title": false,
-      "has_custom_description": false,
-      "has_custom_og": false,
+      "has_custom_title": true,
+      "has_custom_description": true,
+      "current_title": "Portfolio | PrimeTurf Artificial Grass Projects",
+      "current_description": "Browse PrimeTurf's gallery of completed artificial grass installations across Gauteng and Cape Town, showcasing premium residential and estate projects.",
       "has_schema": false,
-      "github_equivalent": null,
-      "seo_action": "IMPROVE",
-      "recommended_description": "View PrimeTurf's completed artificial grass installations across Gauteng. Residential lawns, gardens, pet areas, and commercial projects."
+      "seo_status": "IMPROVED",
+      "remaining_actions": []
     },
     {
       "page_id": "m80pg",
       "title": "Contact",
       "url": "/contact",
-      "has_custom_title": false,
-      "has_custom_description": false,
-      "has_custom_og": false,
+      "has_custom_title": true,
+      "has_custom_description": true,
+      "current_title": "PrimeTurf | Request a Free Quote — Gauteng",
+      "current_description": "Contact PrimeTurf for a free artificial grass quote in Gauteng. Fast response, on-site consultation, and expert installation across Johannesburg & Pretoria.",
       "has_schema": false,
-      "github_equivalent": "/contact.html",
-      "github_title": "PrimeTurf | Request a Free Quote — Gauteng",
-      "seo_action": "IMPROVE",
-      "recommended_title": "Contact PrimeTurf | Free Artificial Grass Quote - Gauteng & Cape Town",
-      "recommended_description": "Request a free artificial grass quote from PrimeTurf. Call, WhatsApp, or fill in our form. Serving Johannesburg, Pretoria, Sandton, Centurion, and Cape Town.",
-      "notes": "Page is live and functional (verified 2026-07-28)"
+      "seo_status": "IMPROVED",
+      "remaining_actions": []
     },
     {
       "page_id": "fuh2w",
       "title": "Blog",
       "url": "/blog",
-      "has_custom_title": false,
-      "has_custom_description": false,
-      "has_custom_og": false,
+      "has_custom_title": true,
+      "has_custom_description": true,
+      "current_title": "Artificial Grass Blog & Guides — South Africa",
+      "current_description": "Expert tips, cost guides, and installation advice for artificial grass in South Africa. Explore PrimeTurf's blog for the latest turf trends and guides.",
       "has_schema": false,
-      "github_equivalent": "/blog/",
-      "github_title": "Artificial Grass Blog & Guides — South Africa",
-      "seo_action": "IMPROVE",
-      "recommended_title": "Artificial Grass Blog & Guides | PrimeTurf South Africa",
-      "recommended_description": "Expert guides on artificial grass costs, installation, maintenance, and water-saving benefits in South Africa. By PrimeTurf's installation team."
+      "seo_status": "IMPROVED",
+      "remaining_actions": ["ADD_SCHEMA (Blog)"]
     },
     {
       "page_id": "avhi7",
@@ -206,12 +224,11 @@
       "url": "/artificial-grass-sandton",
       "has_custom_title": true,
       "has_custom_description": true,
-      "has_custom_og": false,
+      "current_title": "Artificial Grass Sandton | Premium Installation | PrimeTurf",
+      "current_description": "Premium artificial grass installation in Sandton, Bryanston, Fourways & surrounds. PrimeTurf delivers luxury synthetic turf with a 6-year warranty and free site consultation. Call 076 804 8868.",
       "has_schema": false,
-      "github_equivalent": "/page-sandton.html",
-      "github_title": "Artificial Grass Sandton | Premium Installation",
-      "seo_action": "PROTECT + ADD_SCHEMA",
-      "notes": "Custom SEO already set. Add JSON-LD Service + LocalBusiness schema. Verify description matches GitHub original."
+      "seo_status": "PROTECTED + ENHANCED",
+      "remaining_actions": ["ADD_SCHEMA (Service + LocalBusiness)"]
     },
     {
       "page_id": "jhk27",
@@ -219,12 +236,11 @@
       "url": "/artificial-grass-johannesburg",
       "has_custom_title": true,
       "has_custom_description": true,
-      "has_custom_og": false,
+      "current_title": "Artificial Grass Johannesburg | 6-Year Warranty | PrimeTurf",
+      "current_description": "Premium artificial grass installation across Johannesburg — Sandton, Midrand, Fourways, Bryanston & beyond. 6-year warranty, free site consultation, quote within 24 hours. Call PrimeTurf today.",
       "has_schema": false,
-      "github_equivalent": "/artificial-grass-johannesburg.html",
-      "github_title": "Artificial Grass Johannesburg | 6-Year Warranty",
-      "seo_action": "PROTECT + ADD_SCHEMA",
-      "notes": "Custom SEO already set. Add JSON-LD LocalBusiness + FAQ schema. Verify description matches GitHub original."
+      "seo_status": "PROTECTED + ENHANCED",
+      "remaining_actions": ["ADD_SCHEMA (LocalBusiness + FAQPage)"]
     },
     {
       "page_id": "kgiig",
@@ -232,11 +248,11 @@
       "url": "/artificial-grass-hyde-park",
       "has_custom_title": true,
       "has_custom_description": true,
-      "has_custom_og": false,
+      "current_title": "Artificial Grass Hyde Park | Ultra-Luxury Estate Specialists | PrimeTurf",
+      "current_description": "Premium artificial grass installation in Hyde Park, Sandhurst and Atholl. Ultra-luxury synthetic turf for Johannesburg's most exclusive residential estates. Call 076 804 8868.",
       "has_schema": false,
-      "github_equivalent": "/page-hyde-park.html",
-      "github_title": "Artificial Grass Hyde Park | Ultra-Luxury Estate",
-      "seo_action": "PROTECT + ADD_SCHEMA"
+      "seo_status": "PROTECTED + ENHANCED",
+      "remaining_actions": ["ADD_SCHEMA (Service + LocalBusiness)"]
     },
     {
       "page_id": "q46e6",
@@ -244,11 +260,11 @@
       "url": "/artificial-grass-edenvale",
       "has_custom_title": true,
       "has_custom_description": true,
-      "has_custom_og": false,
+      "current_title": "Artificial Grass Edenvale | East Rand Specialists | PrimeTurf",
+      "current_description": "Premium artificial grass installation in Edenvale, Bedfordview, Modderfontein and surrounds. Expert synthetic turf for the East Rand with a 6-year warranty and free site consultation. Call 076 804 8868.",
       "has_schema": false,
-      "github_equivalent": "/page-edenvale.html",
-      "github_title": "Artificial Grass Edenvale | East Rand Specialists",
-      "seo_action": "PROTECT + ADD_SCHEMA"
+      "seo_status": "PROTECTED + ENHANCED",
+      "remaining_actions": ["ADD_SCHEMA (Service + LocalBusiness)"]
     },
     {
       "page_id": "ll72v",
@@ -256,11 +272,9 @@
       "url": "/accessibility-statement",
       "has_custom_title": false,
       "has_custom_description": false,
-      "has_custom_og": false,
       "has_schema": false,
-      "github_equivalent": null,
-      "seo_action": "NONE",
-      "notes": "Wix default accessibility page - no SEO action needed"
+      "seo_status": "NO_ACTION_NEEDED",
+      "remaining_actions": []
     },
     {
       "page_id": "uuztp",
@@ -268,11 +282,9 @@
       "url": "/english-privacy-policy",
       "has_custom_title": false,
       "has_custom_description": false,
-      "has_custom_og": false,
       "has_schema": false,
-      "github_equivalent": "/privacy-policy.html",
-      "seo_action": "REDIRECT_ONLY",
-      "notes": "Target already live on Wix. Just configure 301 from /privacy-policy.html to /english-privacy-policy."
+      "seo_status": "REDIRECT_ONLY",
+      "remaining_actions": ["REDIRECT /privacy-policy.html -> /english-privacy-policy"]
     }
   ]
 }
