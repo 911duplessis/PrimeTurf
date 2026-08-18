@@ -62,27 +62,27 @@ Custom SEO coverage went from **4 of 15 pages** to **12 of 15 pages**. The site 
 
 **Action required**: Create missing pages, then configure 301 redirects via Wix URL Redirect Manager (dashboard only).
 
-### HIGH: 13 Missing Suburb/City Pages
+### HIGH: 15 Missing Suburb/City Pages (1 city + 14 suburbs)
 
-These pages existed on the original GitHub site and drove location-specific organic traffic. Content files are ready in `migration/content/*.md`.
+These pages existed on the original GitHub site and drove location-specific organic traffic. Content files are ready in `migration/content/*.md`. An additional legal page (terms-of-service) is also missing, bringing the total to 16.
 
 | Priority | Page | Wix Slug | Content File |
 |----------|------|----------|-------------|
-| P0 | Cape Town | `/artificial-grass-cape-town` | `migration/content/cape-town.md` |
-| P0 | Pretoria East | `/artificial-grass-pretoria-east` | `migration/content/pretoria-east.md` |
-| P1 | Centurion | `/artificial-grass-centurion` | `migration/content/centurion.md` |
-| P1 | Steyn City | `/artificial-grass-steyn-city` | `migration/content/steyn-city.md` |
-| P1 | Midrand | `/artificial-grass-midrand` | `migration/content/midrand.md` |
-| P1 | Fourways | `/artificial-grass-fourways` | `migration/content/fourways.md` |
-| P1 | Bryanston | `/artificial-grass-bryanston` | `migration/content/bryanston.md` |
-| P1 | Boksburg | `/artificial-grass-boksburg` | `migration/content/boksburg.md` |
-| P2 | Bedfordview | `/artificial-grass-bedfordview` | `migration/content/bedfordview.md` |
-| P2 | Houghton | `/artificial-grass-houghton` | `migration/content/houghton.md` |
-| P2 | Mooikloof | `/artificial-grass-mooikloof` | `migration/content/mooikloof.md` |
-| P2 | Randburg | `/artificial-grass-randburg` | `migration/content/randburg.md` |
-| P2 | Roodepoort | `/artificial-grass-roodepoort` | `migration/content/roodepoort.md` |
-| P2 | Silver Lakes | `/artificial-grass-silver-lakes` | `migration/content/silver-lakes.md` |
-| P2 | Waterfall City | `/artificial-grass-waterfall-city` | `migration/content/waterfall-city.md` |
+| P0 | Cape Town | `/artificial-grass-cape-town` | `migration/content/artificial-grass-cape-town.md` |
+| P0 | Pretoria East | `/artificial-grass-pretoria-east` | `migration/content/artificial-grass-pretoria-east.md` |
+| P1 | Centurion | `/artificial-grass-centurion` | `migration/content/artificial-grass-centurion.md` |
+| P1 | Steyn City | `/artificial-grass-steyn-city` | `migration/content/artificial-grass-steyn-city.md` |
+| P1 | Midrand | `/artificial-grass-midrand` | `migration/content/artificial-grass-midrand.md` |
+| P1 | Fourways | `/artificial-grass-fourways` | `migration/content/artificial-grass-fourways.md` |
+| P1 | Bryanston | `/artificial-grass-bryanston` | `migration/content/artificial-grass-bryanston.md` |
+| P1 | Boksburg | `/artificial-grass-boksburg` | `migration/content/artificial-grass-boksburg.md` |
+| P2 | Bedfordview | `/artificial-grass-bedfordview` | `migration/content/artificial-grass-bedfordview.md` |
+| P2 | Houghton | `/artificial-grass-houghton` | `migration/content/artificial-grass-houghton.md` |
+| P2 | Mooikloof | `/artificial-grass-mooikloof` | `migration/content/artificial-grass-mooikloof.md` |
+| P2 | Randburg | `/artificial-grass-randburg` | `migration/content/artificial-grass-randburg.md` |
+| P2 | Roodepoort | `/artificial-grass-roodepoort` | `migration/content/artificial-grass-roodepoort.md` |
+| P2 | Silver Lakes | `/artificial-grass-silver-lakes` | `migration/content/artificial-grass-silver-lakes.md` |
+| P2 | Waterfall City | `/artificial-grass-waterfall-city` | `migration/content/artificial-grass-waterfall-city.md` |
 
 **Action required**: Create these pages in Wix Editor (Classic Editor does not support page creation via API). SEO metadata specs are in `audit/missing-pages-spec.json`.
 
@@ -122,7 +122,7 @@ Every page uses the same default Wix site OG image. Page-specific images would i
 |----------|-----------------|----------------|--------|
 | Pages with custom title | 4 / 15 | **12 / 15** | 12 / 15 |
 | Pages with meta description | 4 / 15 | **12 / 15** | 12 / 15 |
-| Suburb pages on Wix | 4 / 17 | 4 / 17 | **17 / 17** |
+| Location pages on Wix (city+suburb) | 4 / 19 | 4 / 19 | **19 / 19** |
 | 301 redirects configured | 0 / 22 | 0 / 22 | **22 / 22** |
 | Pages with JSON-LD schema | 0 / 15 | 0 / 15 | **6+ / 15** |
 | Google-indexed 404s | 4 | 4 | **0** |

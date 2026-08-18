@@ -8,7 +8,7 @@
     "total_wix_pages": 15,
     "pages_with_custom_seo": 12,
     "pages_without_custom_seo": 3,
-    "missing_suburb_pages": 13,
+    "missing_suburb_pages": 14,
     "total_github_pages": 27,
     "google_indexed_404s": 4,
     "redirects_needed": 22,
@@ -48,7 +48,7 @@
     },
     {
       "severity": "HIGH",
-      "issue": "13 suburb/city pages missing from Wix",
+      "issue": "15 suburb/city pages missing from Wix (1 city + 14 suburbs)",
       "status": "OPEN",
       "missing_pages": [
         "/artificial-grass-cape-town",
