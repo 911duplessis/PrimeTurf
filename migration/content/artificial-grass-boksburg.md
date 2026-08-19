@@ -46,3 +46,9 @@ East Rand homeowners are choosing artificial grass at a growing rate as Rand Wat
 Installation in Boksburg ranges from R200 to R600+ per square metre fully installed, depending on turf grade and site requirements. Contact PrimeTurf for a free itemised quotation. 
 #### Does artificial grass work in Boksburg's climate? 
 Yes. PrimeTurf's product range is specifically UV-stabilised for South Africa's Highveld climate — intense summer sun, high temperatures, and heavy seasonal storms. Every installation includes full drainage engineering to handle Boksburg's summer rainfall intensity.
+
+## CTA Band
+
+**Get a Free Quote**
+WhatsApp or call us. We respond within 2 hours.
+CTAs: WhatsApp Now / Call 076 804 8868

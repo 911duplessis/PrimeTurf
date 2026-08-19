@@ -46,3 +46,9 @@ Clay soil is common throughout Pretoria East and requires specific sub-base prep
 Most Pretoria East estates and HOAs approve artificial grass. PrimeTurf can provide specification sheets and sample materials to assist with your HOA approval process. We have installed in Waterkloof Ridge, Silverlakes, Mooikloof and Woodhill estates successfully. 
 #### How much does installation cost in Pretoria East? 
 Pricing depends on area size, turf grade, and site preparation required. Most Pretoria East residential projects range from R18,000 to R60,000+ fully installed. Contact PrimeTurf for a free, itemised quotation for your specific property.
+
+## CTA Band
+
+**Request a Free Consultation in Pretoria East**
+We respond within 2 hours. Same-day site visits available across Pretoria East.
+CTAs: WhatsApp Us Now / Call 076 804 8868

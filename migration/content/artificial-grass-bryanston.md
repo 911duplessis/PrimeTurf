@@ -46,3 +46,9 @@ Bryanston homeowners choose PrimeTurf because our finish is indistinguishable fr
 Bryanston installations typically range from R200 to R600+ per square metre fully installed, depending on product grade and site preparation. A standard 100m² garden runs R25,000–R55,000. Contact PrimeTurf for a precise itemised quote. 
 #### How long does installation take in Bryanston? 
 Most Bryanston residential projects complete within 1–2 days. Larger estate or commercial projects may take 3–5 days. We work efficiently and cleanly to minimise disruption to your household.
+
+## CTA Band
+
+**Get a Free Quote**
+WhatsApp or call us. We respond within 2 hours.
+CTAs: WhatsApp Now / Call 076 804 8868
