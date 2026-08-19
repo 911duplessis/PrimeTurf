@@ -45,3 +45,9 @@ Our team understands the specific drainage requirements of Waterfall City's clay
 Installation in Waterfall City ranges from R200 to R600+ per square metre fully installed, depending on turf grade and site preparation. Contact PrimeTurf for a free, itemised quotation for your specific property. 
 #### Is PrimeTurf HOA-approved for Waterfall Estate? 
 PrimeTurf manages the ARC submission process on your behalf as standard — the only installer in Gauteng that does. We provide all specification documentation required by Waterfall City's architectural review committees.
+
+## CTA Band
+
+**Get a Free Quote for Waterfall City**
+WhatsApp or call us. We respond within 2 hours.
+CTAs: WhatsApp Now / Call 076 804 8868

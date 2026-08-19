@@ -46,3 +46,9 @@ Silver Lakes Golf Estate's HOA requires strict adherence to aesthetic and produc
 Most residential installations in Silver Lakes range from R200 to R600+ per square metre fully installed. A typical 100m² estate garden costs R25,000–R55,000. Contact PrimeTurf for a free, itemised quote for your specific property. 
 #### Does Silver Lakes Golf Estate HOA allow artificial grass? 
 Silver Lakes Golf Estate generally approves artificial grass installations that meet their aesthetic and drainage standards. PrimeTurf manages your ARC submission and provides all required documentation. We have installed successfully within Silver Lakes and surrounding estates.
+
+## CTA Band
+
+**Get a Free Quote**
+WhatsApp or call us. We respond within 2 hours.
+CTAs: WhatsApp Now / Call 076 804 8868

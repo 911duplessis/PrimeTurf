@@ -46,3 +46,9 @@ West Johannesburg homeowners are choosing PrimeTurf because our product and proc
 Installation in Roodepoort ranges from R200 to R600+ per square metre fully installed. Contact PrimeTurf for a free site assessment and itemised quotation. 
 #### How long does installation take in Roodepoort? 
 Most residential Roodepoort projects complete within 1–2 days. Complex or larger commercial installations may take 3–5 days. We schedule to minimise disruption to your home or business.
+
+## CTA Band
+
+**Get a Free Quote**
+WhatsApp or call us. We respond within 2 hours.
+CTAs: WhatsApp Now / Call 076 804 8868

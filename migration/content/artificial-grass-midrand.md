@@ -46,3 +46,9 @@ Our 6-year warranty and 24-month workmanship guarantee mean your investment is p
 Installation in Midrand typically ranges from R200 to R600+ per square metre, fully installed including site preparation and drainage layer. Contact PrimeTurf for a free, itemised quotation specific to your property. 
 #### How long does installation take? 
 Most residential jobs in Midrand take 1 to 3 days. Larger commercial or estate projects may take 4 to 7 days. We plan and schedule to minimise disruption to your household or business.
+
+## CTA Band
+
+**Get a Free Quote for Midrand**
+WhatsApp or call us. We respond within 2 hours.
+CTAs: WhatsApp Now / Call 076 804 8868

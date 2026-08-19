@@ -46,3 +46,9 @@ Mooikloof's estates demand more than a standard turf installer. PrimeTurf has th
 Mooikloof estate installations are typically larger in scale and can range from R200 to R600+ per square metre. Many Mooikloof projects exceed 300m² — contact PrimeTurf for a free site assessment and itemised quotation. 
 #### Does Mooikloof Country Estate HOA approve artificial grass? 
 Mooikloof Country Estate and Mooikloof Equestrian Estate generally approve artificial grass with the correct product specification and drainage engineering. PrimeTurf manages the full ARC submission on your behalf. We have completed successful installations within Mooikloof.
+
+## CTA Band
+
+**Get a Free Quote**
+WhatsApp or call us. We respond within 2 hours.
+CTAs: WhatsApp Now / Call 076 804 8868

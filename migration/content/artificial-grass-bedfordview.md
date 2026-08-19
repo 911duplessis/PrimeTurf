@@ -46,3 +46,9 @@ Bedfordview homeowners choose PrimeTurf because we bring the same estate-grade s
 Bedfordview installations typically range from R200 to R600+ per square metre fully installed. A standard residential garden runs R20,000–R55,000. Contact PrimeTurf for a precise itemised quotation. 
 #### How long does installation take in Bedfordview? 
 Most Bedfordview residential projects complete within 1–2 days. Larger properties or complex projects may take 3–5 days. We work efficiently with minimal disruption to your household.
+
+## CTA Band
+
+**Get a Free Quote**
+WhatsApp or call us. We respond within 2 hours.
+CTAs: WhatsApp Now / Call 076 804 8868

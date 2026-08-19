@@ -46,3 +46,9 @@ Houghton homeowners choose PrimeTurf because we understand that artificial grass
 Houghton residential installations typically range from R200 to R600+ per square metre fully installed. Contact PrimeTurf for a free, precise itemised quotation for your specific property and vision. 
 #### How does PrimeTurf handle Houghton's established garden trees and features? 
 Our team works around existing garden features, trees, and heritage elements. We custom-cut turf to preserve trees and root zones, install drainage around existing features, and deliver a seamless finish that integrates with your garden's existing character.
+
+## CTA Band
+
+**Get a Free Quote**
+WhatsApp or call us. We respond within 2 hours.
+CTAs: WhatsApp Now / Call 076 804 8868
