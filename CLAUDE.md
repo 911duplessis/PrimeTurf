@@ -31,7 +31,7 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 | Metric | Count |
 |--------|-------|
 | Wix pages live | 15 |
-| Pages with custom SEO | 12 / 15 |
+| Pages with custom SEO | 14 / 15 |
 | Missing location pages | 15 (1 city + 14 suburbs) |
 | Missing legal pages | 1 (terms-of-service) |
 | 301 redirects configured | 10 / 27 |
