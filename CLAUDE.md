@@ -19,14 +19,14 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 - **Phone**: 076 804 8868
 - `/primeturf-vs-easigrass.html`: DO NOT republish -- redirect to homepage (stakeholder decision)
 - **Wix Editor type**: Classic Editor (not Studio) -- no API for page creation
-- **Redirects method**: Wix URL Redirect Manager (dashboard only, no REST API)
+- **Redirects method**: Wix SEO Redirects REST API (bulk create confirmed working 2026-08-18)
 
 ## Open Decisions (ASK the user)
 
 - `/about-6` ("Preparation" page on Wix): keep as-is, merge into another page, or remove? No decision made yet.
 - Site name shows "Prime Turf  SA" (double space) in Wix -- has this been corrected?
 
-## Current State (as of 2026-08-18)
+## Current State (as of 2026-08-20)
 
 | Metric | Count |
 |--------|-------|
@@ -34,7 +34,7 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 | Pages with custom SEO | 12 / 15 |
 | Missing location pages | 15 (1 city + 14 suburbs) |
 | Missing legal pages | 1 (terms-of-service) |
-| 301 redirects configured | 0 / 22+ |
+| 301 redirects configured | 10 / 27 |
 | JSON-LD schemas added | 0 |
 | Google-indexed 404s | 4 |
 
@@ -57,7 +57,7 @@ The 4 existing location pages on Wix (Johannesburg, Sandton, Hyde Park, Edenvale
 
 1. **Create 15 missing location pages** in Wix Editor using content from `migration/content/artificial-grass-*.md` and SEO specs from `audit/missing-pages-spec.json`. Build order: Cape Town (P0) -> Pretoria East, Centurion, Fourways, Bryanston, Boksburg (batch 2) -> remaining 9 suburbs (batch 3)
 2. **Create terms-of-service page** on Wix (noindex OK)
-3. **Configure 22+ 301 redirects** in Wix URL Redirect Manager (dashboard only)
+3. **Configure remaining 17 301 redirects** via Wix SEO Redirects API (blocked until pages created)
 4. **Add JSON-LD structured data** (LocalBusiness, Service, FAQ, BreadcrumbList) via Wix Velo or code injection
 5. **Submit updated sitemap** to Google Search Console
 6. **Request indexing** for new pages in GSC
