@@ -5,11 +5,9 @@
   "domain": "www.primeturf.co.za",
   "summary": {
     "total_wix_pages": 15,
-    "pages_with_custom_seo": 14,
-    "pages_without_custom_seo": 1,
-    "pages_without_custom_seo_ids": [
-      "uay3e"
-    ],
+    "pages_with_custom_seo": 15,
+    "pages_without_custom_seo": 0,
+    "pages_without_custom_seo_ids": [],
     "missing_suburb_pages": 13,
     "redirects_configured": 10,
     "json_ld_schemas": 0
@@ -213,13 +211,15 @@
       "page_id": "uay3e",
       "page_name": "Preparation",
       "url": "/about-6",
-      "has_custom_seo": false,
-      "title": "Preparation | Prime Turf SA",
-      "description": null,
+      "has_custom_seo": true,
+      "title": "Site Preparation | PrimeTurf",
+      "description": "Learn about PrimeTurf's professional site preparation process for artificial grass installation. Proper ground prep ensures a flawless, long-lasting synthetic lawn.",
       "canonical": "https://www.primeturf.co.za/about-6",
       "has_schema": false,
       "github_equivalent": null,
-      "notes": "Wix-only page with no GitHub equivalent. Low SEO priority. Consider adding a description if this page receives organic traffic."
+      "notes": "Wix-only page with no GitHub equivalent. Low SEO priority. Consider adding a description if this page receives organic traffic.",
+      "og_title": "Site Preparation | PrimeTurf",
+      "og_description": "Learn about PrimeTurf's professional site preparation process for artificial grass installation. Proper ground prep ensures a flawless, long-lasting synthetic lawn."
     },
     {
       "page_id": "uuztp",

@@ -20,10 +20,10 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 - `/primeturf-vs-easigrass.html`: DO NOT republish -- redirect to homepage (stakeholder decision)
 - **Wix Editor type**: Classic Editor (not Studio) -- no API for page creation
 - **Redirects method**: Wix SEO Redirects REST API (bulk create confirmed working 2026-08-18)
+- `/about-6` page: **Keep** and rename to "Site Preparation" (owner decision 2026-08-20)
 
 ## Open Decisions (ASK the user)
 
-- `/about-6` ("Preparation" page on Wix): keep as-is, merge into another page, or remove? No decision made yet.
 - Site name shows "Prime Turf  SA" (double space) in Wix -- has this been corrected?
 
 ## Current State (as of 2026-08-20)
@@ -31,7 +31,7 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 | Metric | Count |
 |--------|-------|
 | Wix pages live | 15 |
-| Pages with custom SEO | 14 / 15 |
+| Pages with custom SEO | 15 / 15 |
 | Missing location pages | 15 (1 city + 14 suburbs) |
 | Missing legal pages | 1 (terms-of-service) |
 | 301 redirects configured | 10 / 27 |
