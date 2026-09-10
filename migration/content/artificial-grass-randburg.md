@@ -46,3 +46,9 @@ Randburg homeowners choosing PrimeTurf benefit from the same estate-grade produc
 Installation in Randburg ranges from R200 to R600+ per square metre fully installed. A standard 80m² residential garden typically runs R18,000–R45,000. Contact PrimeTurf for a free itemised quotation. 
 #### How long does installation take in Randburg? 
 Most Randburg residential projects complete within 1–2 days. Larger townhouse complex or commercial installations may take 3–5 days depending on scope and site preparation required.
+
+## CTA Band
+
+**Get a Free Quote**
+WhatsApp or call us. We respond within 2 hours.
+CTAs: WhatsApp Now / Call 076 804 8868
