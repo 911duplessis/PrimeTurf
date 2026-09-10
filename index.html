@@ -1,528 +1,1203 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<script>document.documentElement.classList.add('js');</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z5G37WW47"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3Z5G37WW47');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PrimeTurf | Premium Artificial Grass Solutions</title>
-<meta name="description" content="PrimeTurf installs premium artificial grass systems for estates, schools, restaurants, and commercial properties across Gauteng.">
+<title>Luxury Artificial Grass Gauteng | PrimeTurf SA Premium Installation</title>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PrimeTurf SA">
+<meta property="og:title" content="Luxury Artificial Grass Gauteng | PrimeTurf SA Premium Installation">
+<meta property="og:description" content="Gauteng's premier full-service luxury artificial grass specialist. 6-year warranty, SANS 10400 stormwater compliant, and full HOA/ARC submission management included. Request a free assessment today.">
+<meta property="og:url" content="https://www.primeturf.co.za/">
+<meta property="og:image" content="https://www.primeturf.co.za/images/ad-banner.jpg">
+<meta property="og:image:width" content="1536">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:alt" content="PrimeTurf SA — Luxury Artificial Grass Gauteng">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.primeturf.co.za/images/ad-banner.jpg">
+<meta name="description" content="Gauteng's premier full-service luxury artificial grass specialist. 6-year warranty, SANS 10400 stormwater compliant, and full HOA/ARC submission management included. Request a free assessment today.">
+<link rel="canonical" href="https://www.primeturf.co.za/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="128x128" href="/assets/icons/pt-icon-128.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --forest:#1e5b3f;       /* lightened per instruction — was near-black */
-    --forest-deep:#153f2c;
-    --gold:#c7a24d;
-    --gold-light:#e5c97f;
-    --sand:#f6f3ea;         /* replaces salmon background */
-    --white:#ffffff;
-    --ink:#1a241d;
-    --muted:#666d64;
-    --line:rgba(199,162,77,.3);
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0;font-family:"Lato",sans-serif;color:var(--ink);background:var(--white);overflow-x:hidden;}
-  img{display:block;max-width:100%;}
-  a{text-decoration:none;color:inherit;}
-  .serif{font-family:"Cormorant Garamond",serif;}
-  .shell{max-width:1160px;margin:0 auto;padding-inline:28px;}
-  .eyebrow{text-transform:uppercase;letter-spacing:.26em;font-size:11px;font-weight:700;color:var(--gold);}
+:root{
+  --F:#0B3D2E; --F2:#14543E; --Au:#C9A44A; --AuL:#E8C96E; --AuD:#8A6B20;
+  --Dk:#070E09; --Iv:#FAF8F2; --Cr:#F5F0E8; --W:#FFFFFF;
+  --Mu:#7A7670; --Bd:rgba(11,61,46,0.10);
+  --sr:'Cormorant Garamond',Georgia,serif;
+  --ss:'Montserrat',system-ui,sans-serif;
+  --ease:cubic-bezier(0.25,0.1,0.25,1); --t:0.26s;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{font-family:var(--ss);background:var(--Iv);color:var(--Dk);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
 
-  /* NAV */
-  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-  .nav{display:flex;align-items:center;gap:14px;padding:14px 28px;max-width:1160px;margin:0 auto;}
-  .nav img{height:44px;width:auto;}
-  .brandname{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:22px;color:var(--forest);}
-  .navlinks{display:flex;gap:24px;margin-left:auto;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);}
-  .navlinks a{opacity:.8;transition:opacity .2s;}
-  .navlinks a:hover{opacity:1;color:var(--forest);}
-  .navcta{background:var(--gold);color:var(--forest-deep);padding:11px 20px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;margin-left:16px;}
+/* ── STRIP ── */
+.strip{background:var(--F);height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;position:relative;z-index:1000;overflow:hidden;width:100%}
+.strip-l{display:flex;align-items:center;gap:9px;font-family:var(--ss);font-size:11px;color:rgba(255,255,255,.50);letter-spacing:.03em}
+.pulse{width:6px;height:6px;border-radius:50%;background:#4ADE80;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}}
+.strip-r{display:flex;align-items:center;gap:18px}
+.strip-link{font-size:10px;color:rgba(255,255,255,.44);letter-spacing:.06em;transition:color var(--t)}
+.strip-link:hover{color:var(--AuL)}
+.strip-btn{background:var(--Au);color:var(--F);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:1px;transition:background var(--t);white-space:nowrap}
+.strip-btn:hover{background:var(--AuL)}
 
-  /* MOBILE NAV DRAWER */
-  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:30px;height:30px;cursor:pointer;background:none;border:0;padding:0;margin-left:auto;}
-  .hamburger span{display:block;height:2px;width:100%;background:var(--forest);border-radius:2px;transition:transform .25s ease,opacity .25s ease;}
-  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-  .hamburger.open span:nth-child(2){opacity:0;}
-  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-  .nav-overlay{display:none;position:fixed;inset:0;background:rgba(21,63,44,.45);z-index:90;}
-  .nav-overlay.open{display:block;}
-  .mobile-nav{position:fixed;top:0;right:0;bottom:0;width:76%;max-width:320px;background:var(--white);z-index:95;box-shadow:-12px 0 40px rgba(0,0,0,.22);padding:100px 30px 30px;display:flex;flex-direction:column;gap:24px;transform:translateX(100%);transition:transform .32s ease;}
-  .mobile-nav.open{transform:translateX(0);}
-  .mobile-nav a{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--forest);font-weight:700;}
-  .mobile-nav .navcta{margin-top:6px;text-align:center;justify-content:center;margin-left:0;}
-  @media (max-width:860px){.navlinks{display:none;}.nav .navcta{display:none;}.hamburger{display:flex;}}
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:900;background:rgba(250,248,242,0.96);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid rgba(11,61,46,.09);box-shadow:0 1px 0 rgba(201,164,74,.14),0 4px 20px rgba(0,0,0,.04);transition:box-shadow var(--t)}
+header.scrolled{box-shadow:0 1px 0 rgba(201,164,74,.20),0 8px 36px rgba(0,0,0,.09)}
+.hdr{max-width:1440px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px;transition:all 0.28s var(--ease)}
 
-  /* HERO */
-  .hero{background:var(--sand);padding:70px 0 64px;text-align:center;}
-  .hero img.mark{height:190px;margin:0 auto 20px;}
-  @media (max-width:600px){.hero img.mark{height:140px;}}
-  .hero h1{font-size:44px;line-height:1.08;margin:0 0 8px;font-weight:600;color:var(--forest);}
-  .hero .sub{font-size:13px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:28px;}
-  .tag-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:640px;margin:0 auto 32px;}
-  .tag-chip{border:1px solid var(--line);padding:8px 16px;font-size:12px;color:var(--forest);background:var(--white);}
-  .hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;border:1px solid transparent;transition:transform .2s,box-shadow .2s;cursor:pointer;}
-  .btn-gold{background:var(--gold);color:var(--forest-deep);}
-  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.18);}
-  .btn-outline{border-color:var(--forest);color:var(--forest);}
-  .btn-outline:hover{background:rgba(30,91,63,.06);}
+/* Single header logo */
+.hdr-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:pointer;text-decoration:none}
+.hdr-logo-img{height:54px;width:auto;mix-blend-mode:multiply;transition:all 0.28s var(--ease)}
+.hdr-logo:hover .hdr-logo-img{transform:scale(1.02)}
+.hdr-logo-text{border-left:1px solid rgba(11,61,46,.14);padding-left:10px;display:flex;flex-direction:column;gap:1px}
+.hdr-wm{font-family:var(--sr);font-size:19px;font-weight:500;line-height:1;letter-spacing:.01em;color:var(--F)}
+.hdr-wm .p{color:#1A7A28}.hdr-wm .t{color:var(--AuD)}
+.hdr-sub{display:none} /* tagline removed */
 
-  /* FEATURE STRIP */
-  .feature-strip{background:var(--forest);color:#fff;padding:22px 0;}
-  .feature-strip .shell{display:flex;flex-wrap:wrap;justify-content:center;gap:0;}
-  .fitem{padding:8px 26px;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border-right:1px solid rgba(255,255,255,.2);}
-  .fitem:last-child{border-right:none;}
-  @media (max-width:760px){.fitem{border-right:none;padding:6px 16px;}}
+/* Desktop navigation */
+nav.desk{display:flex;align-items:center;flex:1;justify-content:center}
+.nl{font-size:10px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:var(--F);padding:0 15px;height:78px;display:flex;align-items:center;position:relative;white-space:nowrap;transition:all 0.28s var(--ease)}
+.nl::after{content:'';position:absolute;bottom:0;left:15px;right:15px;height:2px;background:var(--Au);transform:scaleX(0);transform-origin:left;transition:transform var(--t) var(--ease)}
+.nl:hover::after,.nl.on::after{transform:scaleX(1)}
+.nl:hover{color:var(--AuD)}
+.hd{position:relative}
+.hd>.nl::before{content:' ▾';font-size:7px;opacity:.45}
+.drop{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-6px);background:var(--W);border:1px solid rgba(11,61,46,.07);border-top:2px solid var(--Au);box-shadow:0 20px 56px rgba(0,0,0,.10);min-width:215px;opacity:0;pointer-events:none;transition:opacity var(--t),transform var(--t);z-index:200}
+.hd:hover .drop{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.dl{display:block;padding:11px 18px;font-size:11px;font-weight:500;letter-spacing:.04em;color:var(--F);border-bottom:1px solid rgba(11,61,46,.05);transition:background var(--t),padding-left var(--t),color var(--t)}
+.dl:last-child{border-bottom:none}
+.dl:hover{background:var(--Cr);padding-left:24px;color:var(--AuD)}
+.dl small{display:block;font-size:9px;color:var(--Mu);margin-top:1px;font-weight:400}
 
-  /* SECTION */
-  .section{padding:76px 0;}
-  .section-head{max-width:680px;margin:0 auto 46px;text-align:center;}
-  .section-head h2{font-size:34px;font-weight:600;color:var(--forest);margin:12px 0 12px;}
-  .section-head p{color:var(--muted);font-size:15px;line-height:1.7;margin:0;}
+/* Header right actions */
+.hdr-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.hdr-ph{font-size:12px;font-weight:600;color:var(--F);letter-spacing:.02em;white-space:nowrap;transition:all 0.28s var(--ease)}
+.hdr-quote{background:var(--F);color:var(--W);font-size:9px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;padding:11px 22px;border-radius:1px;border:2px solid var(--F);transition:all 0.28s var(--ease);white-space:nowrap}
+.hdr-quote:hover{background:transparent;color:var(--F)}
 
-  .signature-line{text-align:center;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;color:var(--forest);padding:50px 28px;background:var(--sand);}
+/* Hamburger + mobile nav */
+.ham{display:none;flex-direction:column;gap:5px;width:36px;height:36px;align-items:center;justify-content:center;flex-shrink:0}
+.ham span{display:block;width:22px;height:1.5px;background:var(--F);border-radius:2px;transition:all var(--t)}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-nav{display:none;position:fixed;top:0;right:0;bottom:0;width:min(300px,90vw);background:var(--W);z-index:1000;box-shadow:-8px 0 40px rgba(0,0,0,.13);flex-direction:column;padding:72px 28px 28px;transition:transform .32s var(--ease);overflow-y:auto;transform:translateX(100%)}
+.mob-nav.open{transform:translateX(0)}
+.mob-nav a{font-size:13px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--F);padding:14px 0;border-bottom:1px solid var(--Bd);display:block;transition:color var(--t)}
+.mob-nav a:hover{color:var(--AuD)}
+.mob-nav .mob-cta{background:var(--F);color:var(--W);text-align:center;padding:14px;margin-top:14px;border-radius:1px;border:none}
+.mob-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.40);z-index:999}
+.mob-ov.open{display:block}
+/* ── HERO ──
+   Background: cinematic golden-hour estate (WA0040)
+   NO logo in hero — removed entirely
+   Content: eyebrow + h1 + subtext + two CTAs
+   Trust strip at base
+── */
+.hero{position:relative;height:100svh;min-height:620px;max-height:960px;display:flex;flex-direction:column;overflow:hidden;background:#0A1408}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 55%;background-repeat:no-repeat}
+.hero-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.28) 55%,rgba(7,14,9,0.82) 75%,rgba(7,14,9,0.95) 100%)}
+/* Gold horizon glow at the turf line */
+.hero-bg::after{content:'';position:absolute;top:0;left:0;right:0;height:60%;background:linear-gradient(to bottom,rgba(201,164,74,0.06) 0%,transparent 60%);pointer-events:none}
+.hero-body{position:relative;z-index:2;flex:1;display:flex;align-items:flex-end;max-width:1440px;margin:0 auto;width:100%;padding:0 64px 92px}
+.hero-content{max-width:600px}
+.hero-ey{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.hero-ey-line{display:block;width:40px;height:1px;background:linear-gradient(90deg,var(--Au),transparent)}
+.hero-ey-txt{font-family:var(--ss);font-size:10px;font-weight:600;letter-spacing:.30em;text-transform:uppercase;color:var(--Au)}
+.hero-h1{font-family:var(--sr);font-size:clamp(40px,5.8vw,76px);font-weight:300;line-height:1.06;color:var(--W);letter-spacing:-.02em;margin-bottom:20px;text-shadow:0 2px 32px rgba(0,0,0,0.6)}
+.hero-h1 em{font-style:italic;color:var(--AuL);display:block}
+.hero-sub{font-family:var(--sr);font-size:clamp(16px,1.8vw,20px);font-weight:300;font-style:italic;color:rgba(255,255,255,.60);line-height:1.60;max-width:520px;margin-bottom:44px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+/* TWO CTAs: gold (free assessment) + green (WhatsApp) */
+.hero-ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.cta-gold{background:var(--Au);color:var(--F);font-family:var(--ss);font-size:9px;font-weight:700;letter-spacing:.20em;text-transform:uppercase;padding:16px 32px;border-radius:1px;border:2px solid var(--Au);transition:all var(--t);display:inline-block}
+.cta-gold:hover{background:transparent;color:var(--Au)}
+.cta-wa{background:#1A9E4A;color:var(--W);font-family:var(--ss);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:16px 28px;border-radius:1px;display:inline-block;transition:background var(--t)}
+.cta-wa:hover{background:#15823C}
+.cta-outline{color:rgba(255,255,255,.68);font-family:var(--ss);font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:16px 0;display:inline-flex;align-items:center;gap:10px;transition:color var(--t)}
+.cta-outline::after{content:'';display:block;width:32px;height:1px;background:rgba(255,255,255,.36);transition:width var(--t),background var(--t)}
+.cta-outline:hover{color:var(--AuL)}
+.cta-outline:hover::after{width:48px;background:var(--Au)}
+/* Trust strip */
+.hero-trust{position:relative;z-index:2;background:rgba(7,14,9,0.82);backdrop-filter:blur(16px);border-top:1px solid rgba(201,164,74,.18);display:grid;grid-template-columns:repeat(4,1fr)}
+.ht{padding:18px 16px;text-align:center;border-right:1px solid rgba(201,164,74,.10)}
+.ht:last-child{border-right:none}
+.ht-icon{display:block;width:22px;height:22px;margin:0 auto 7px}
+.ht-n{font-family:var(--sr);font-size:clamp(16px,3vw,26px);font-weight:400;color:var(--Au);display:block;line-height:1}
+.ht-l{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.36);display:block;margin-top:4px}
+/* Scroll cue */
+.scroll-cue{position:absolute;bottom:84px;right:64px;z-index:2;display:flex;align-items:center;gap:12px;animation:drift 2.5s ease-in-out infinite}
+@keyframes drift{0%,100%{opacity:.35;transform:translateY(0)}50%{opacity:.72;transform:translateY(5px)}}
+.sc-line{width:44px;height:1px;background:linear-gradient(90deg,transparent,var(--Au))}
+.sc-txt{font-size:8px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.28)}
 
-  /* SERVICES GRID */
-  .services{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
-  .svc{background:var(--white);padding:26px 22px;}
-  .svc h3{font-family:"Cormorant Garamond",serif;font-size:19px;color:var(--forest);margin:0;font-weight:700;}
-  @media (max-width:860px){.services{grid-template-columns:repeat(2,1fr);}}
-  @media (max-width:520px){.services{grid-template-columns:1fr;}}
+/* ── MARQUEE ── */
+.mq{background:var(--F);overflow:hidden;padding:12px 0;border-top:1px solid rgba(201,164,74,.14);border-bottom:1px solid rgba(201,164,74,.14)}
+.mq-t{display:flex;white-space:nowrap;animation:mq 30s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mqi{font-family:var(--ss);font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--Au);padding:0 26px;display:inline-flex;align-items:center;gap:11px}
+.mqd{width:3px;height:3px;border-radius:50%;background:var(--Au);opacity:.30;flex-shrink:0}
 
-  /* PROCESS */
-  .process-wrap{background:var(--forest);color:#fff;padding:76px 0;}
-  .process-wrap .section-head{max-width:760px;}
-  .process-wrap .section-head h2{color:#fff;}
-  .process-wrap .section-head p{color:#d7e4dc;}
-  .process7{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:center;max-width:1080px;margin:0 auto;}
-  .process7-img{width:100%;border:1px solid rgba(255,255,255,.18);box-shadow:0 20px 44px rgba(0,0,0,.28);}
-  .process7-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;}
-  .process7-list li{display:flex;gap:16px;align-items:flex-start;}
-  .p7-n{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--gold);color:var(--forest-deep);font-weight:700;font-size:16px;display:grid;place-items:center;font-family:"Cormorant Garamond",serif;}
-  .process7-list h4{margin:0 0 4px;font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.03em;color:#fff;}
-  .process7-list p{margin:0;font-size:13px;color:#d7e4dc;line-height:1.6;}
-  @media (max-width:800px){.process7{grid-template-columns:1fr;}.process7-img{max-width:420px;margin:0 auto;}}
+/* ── QUICK NAV ── */
+.qnav{background:var(--W);border-bottom:1px solid var(--Bd)}
+.qnav-g{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.qn{padding:22px 14px;text-align:center;border-right:1px solid var(--Bd);cursor:pointer;transition:background var(--t);position:relative;display:block}
+.qn::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:var(--Au);transition:left var(--t) var(--ease),right var(--t) var(--ease)}
+.qn:hover::after{left:0;right:0}
+.qn:last-child{border-right:none}
+.qn:hover{background:var(--Cr)}
+.qn-ic{width:22px;height:22px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:var(--Au)}
+.qn-ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.qn-lb{font-size:11px;font-weight:600;color:var(--F);display:block}
+.qn-sb{font-size:9px;color:var(--Mu);margin-top:2px;display:block}
 
-  /* GALLERY GRID */
-  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-  .g-tile{position:relative;overflow:hidden;border:1px solid var(--line);}
-  .g-tile img{width:100%;height:230px;object-fit:cover;display:block;transition:transform .5s;}
-  .g-tile:hover img{transform:scale(1.07);}
-  .g-tile .g-cap{position:absolute;left:0;right:0;bottom:0;padding:10px 14px;background:linear-gradient(to top,rgba(21,63,44,.9),transparent);color:#fff;font-size:12px;font-weight:700;letter-spacing:.02em;}
-  @media (max-width:860px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
-  @media (max-width:520px){.gallery-grid{grid-template-columns:1fr;}.g-tile img{height:220px;}}
+/* ── SECTION UTILITIES ── */
+.sec{padding:100px 48px}
+.sec-in{max-width:1440px;margin:0 auto}
+.ey{font-size:9px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--Au);display:block;margin-bottom:14px}
+.h2{font-family:var(--sr);font-size:clamp(28px,3.6vw,48px);font-weight:300;line-height:1.10;margin-bottom:20px;letter-spacing:-.01em}
+.h2 em{font-style:italic}
+.bp{font-size:14px;color:var(--Mu);line-height:1.88;margin-bottom:14px}
+.bp strong{color:#2A2E28;font-weight:600}
+.btn-f{display:inline-block;background:var(--F);color:var(--W);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:13px 28px;border-radius:1px;border:2px solid var(--F);transition:all var(--t)}
+.btn-f:hover{background:transparent;color:var(--F)}
+.btn-og{display:inline-block;color:var(--Au);border:1.5px solid rgba(201,164,74,.38);font-size:9px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;padding:13px 24px;border-radius:1px;transition:all var(--t)}
+.btn-og:hover{border-color:var(--Au);background:rgba(201,164,74,.06)}
 
-  /* CLIP VIDEOS */
-  .clip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:980px;margin:36px auto 0;}
-  .clip-tile{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:#000;aspect-ratio:1/1;box-shadow:0 16px 34px rgba(0,0,0,.3);transition:transform .4s ease,box-shadow .4s ease;}
-  .clip-tile:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(0,0,0,.4);}
-  .clip-tile video{width:100%;height:100%;object-fit:cover;display:block;}
-  .clip-tile .clip-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(to top,rgba(0,0,0,.78),transparent);color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.02em;}
-  .clip-mute{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.45);display:grid;place-items:center;cursor:pointer;color:#fff;border:1px solid rgba(255,255,255,.35);}
-  @media (max-width:760px){.clip-grid{grid-template-columns:1fr 1fr;max-width:420px;}}
-  @media (max-width:520px){.clip-grid{grid-template-columns:1fr;max-width:280px;}}
+/* ── OUR STORY ── */
+.story{background:var(--Dk);padding:108px 48px;position:relative;overflow:hidden}
+.story::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(201,164,74,0.05) 0%,transparent 60%)}
+.story-in{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+.story-left{}
+.story-ey{font-size:9px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--Au);display:block;margin-bottom:24px}
+.story-h2{font-family:var(--sr);font-size:clamp(32px,4vw,54px);font-weight:300;line-height:1.08;color:var(--W);letter-spacing:-.01em;margin-bottom:36px}
+.story-h2 em{font-style:italic;color:var(--AuL)}
+/* The narrative — no images, text only */
+.story-pull{border-left:2px solid var(--Au);padding:0 0 0 28px;margin-bottom:36px}
+.story-pull-title{font-family:var(--sr);font-size:clamp(18px,2vw,24px);font-style:italic;font-weight:400;color:var(--AuL);line-height:1.3;margin-bottom:16px;letter-spacing:.01em}
+.story-p{font-family:var(--sr);font-size:clamp(15px,1.6vw,18px);font-weight:300;font-style:italic;color:rgba(255,255,255,.55);line-height:1.85;margin-bottom:18px}
+.story-p:last-child{margin-bottom:0}
+.story-right{}
+/* Pillars — right column, still text only */
+.story-pillars{display:flex;flex-direction:column;gap:0}
+.sp{padding:24px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:20px}
+.sp:first-child{padding-top:0}
+.sp:last-child{border-bottom:none}
+.sp-num{font-family:var(--sr);font-size:38px;font-weight:300;color:rgba(201,164,74,.20);line-height:1;flex-shrink:0;width:52px}
+.sp-body{}
+.sp-title{font-family:var(--sr);font-size:20px;font-weight:400;color:var(--W);margin-bottom:8px;line-height:1.2}
+.sp-desc{font-size:13px;color:rgba(255,255,255,.40);line-height:1.75}
+/* Gold rule divider */
+.story-rule{display:flex;align-items:center;gap:16px;margin:36px 0}
+.story-rule-line{flex:1;height:1px;background:linear-gradient(90deg,var(--Au),transparent)}
+.story-rule-mark{font-family:var(--sr);font-size:14px;font-style:italic;color:rgba(201,164,74,.5);white-space:nowrap}
 
-  /* FOLLOW ON FACEBOOK */
-  .fb-follow{display:flex;align-items:center;gap:20px;max-width:740px;margin:56px auto 0;padding:24px 28px;border:1px solid var(--line);background:var(--sand);border-radius:14px;flex-wrap:wrap;justify-content:center;text-align:center;}
-  .fb-follow svg{flex-shrink:0;color:#1877F2;}
-  .fb-follow strong{display:block;color:var(--forest);font-size:15.5px;font-family:"Cormorant Garamond",serif;font-weight:700;}
-  .fb-follow p{margin:6px 0 0;color:var(--muted);font-size:13.5px;line-height:1.6;max-width:440px;}
-  .fb-follow .btn{flex-shrink:0;}
+/* ── WHY ── */
+.why{background:var(--F);padding:88px 48px}
+.why-in{max-width:1440px;margin:0 auto}
+.why-hd{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:32px;border-bottom:1px solid rgba(201,164,74,.12);flex-wrap:wrap;gap:12px}
+.why-h2{font-family:var(--sr);font-size:clamp(26px,3.5vw,44px);font-weight:300;color:var(--W);line-height:1.10}
+.why-h2 em{color:var(--AuL);font-style:italic}
+.why-more{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--Au);display:flex;align-items:center;gap:9px;transition:gap var(--t)}
+.why-more::after{content:'→'}
+.why-more:hover{gap:13px}
+.why-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.05)}
+.wc{background:rgba(255,255,255,.016);padding:38px 26px;border-top:3px solid transparent;transition:background var(--t)}
+.wc.acc{border-top-color:var(--Au)}
+.wc:hover{background:rgba(201,164,74,.055)}
+.wnum{font-family:var(--sr);font-size:11px;color:rgba(201,164,74,.28);letter-spacing:.11em;display:block;margin-bottom:14px}
+.wtitle{font-family:var(--sr);font-size:21px;font-weight:400;color:var(--W);margin-bottom:10px;line-height:1.2}
+.wdesc{font-size:12px;color:rgba(255,255,255,.36);line-height:1.80}
 
-  /* SCROLL REVEAL — safe by default; only hides content once JS confirms it can reveal it again */
-  .reveal{opacity:1;transform:none;}
-  html.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
-  html.js .reveal.in{opacity:1;transform:translateY(0);}
-  @media (prefers-reduced-motion:reduce){html.js .reveal{opacity:1;transform:none;transition:none;}}
+/* ── ABOUT ── */
+.about{background:var(--Iv)}
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.pils{list-style:none;display:flex;flex-direction:column;margin-bottom:32px}
+.pil{display:flex;align-items:flex-start;gap:14px;padding:15px 0;border-bottom:1px solid var(--Bd)}
+.pil:last-child{border-bottom:none}
+.pi-ic{width:32px;height:32px;flex-shrink:0;border:1px solid rgba(201,164,74,.28);display:flex;align-items:center;justify-content:center;color:var(--Au);background:rgba(201,164,74,.04);border-radius:1px;margin-top:2px}
+.pi-ic svg{width:14px;height:14px;fill:currentColor}
+.pi-tt{font-size:12px;font-weight:700;color:var(--F);margin-bottom:2px}
+.pi-ds{font-size:12px;color:var(--Mu);line-height:1.60}
+.avis{position:relative}
+.aimg-wrap{width:100%;aspect-ratio:4/3;position:relative;border-radius:1px;overflow:hidden}
+.aimg{width:100%;height:100%;object-fit:cover;display:block}
+.abadge{position:absolute;bottom:-20px;left:-18px;background:var(--F);border:1.5px solid var(--Au);padding:16px 20px}
+.abn{font-family:var(--sr);font-size:30px;color:var(--Au);line-height:1}
+.abl{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.44);margin-top:4px;line-height:1.5}
+.arib{position:absolute;top:24px;right:-13px;background:var(--Au);color:var(--F);font-size:8px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;padding:8px 11px;writing-mode:vertical-rl;transform:rotate(180deg)}
 
-  /* SLIDER */
-  .slider-wrap{max-width:900px;margin:50px auto 0;}
-  .compare{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);cursor:ew-resize;touch-action:none;user-select:none;}
-  .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-  .compare-after{clip-path:inset(0 50% 0 0);}
-  .compare-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-50%);z-index:5;}
-  .compare-handle{position:absolute;top:50%;left:50%;width:50px;height:50px;transform:translate(-50%,-50%);border-radius:50%;background:var(--gold);display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.25);color:var(--forest-deep);}
-  .compare-label{position:absolute;top:16px;z-index:4;background:rgba(21,63,44,.85);color:#fff;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.18em;padding:7px 12px;}
-  .compare-label.before{left:16px;}
-  .compare-label.after{right:16px;}
+/* ── SERVICES ── */
+.svcs{background:var(--Cr)}
+.svcs-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:14px}
+.svc-more{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--F);display:flex;align-items:center;gap:9px;transition:gap var(--t)}
+.svc-more::after{content:'→';color:var(--Au)}
+.svc-more:hover{gap:13px}
+.svc-mag{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:3px}
+.sc{position:relative;overflow:hidden;background:var(--Dk);cursor:pointer}
+.sc.lg{grid-row:1/3}
+.sc img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s var(--ease)}
+.sc.lg img{min-height:520px}
+.sc:not(.lg) img{min-height:252px}
+.sc:hover img{transform:scale(1.05)}
+.sc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,14,9,.92) 0%,rgba(7,14,9,.35) 44%,transparent 72%);transition:background var(--t)}
+.sc:hover .sc-ov{background:linear-gradient(to top,rgba(7,14,9,.96) 0%,rgba(11,61,46,.42) 100%)}
+.sc-body{position:absolute;bottom:0;left:0;right:0;padding:24px 22px}
+.sc-cat{font-size:8px;font-weight:700;letter-spacing:.23em;text-transform:uppercase;color:var(--Au);margin-bottom:6px;display:block}
+.sc-name{font-family:var(--sr);font-weight:300;color:var(--W);margin-bottom:7px;line-height:1.2}
+.sc.lg .sc-name{font-size:30px}
+.sc:not(.lg) .sc-name{font-size:19px}
+.sc-desc{font-size:12px;color:rgba(255,255,255,.70);line-height:1.60;margin-bottom:12px;opacity:0;transform:translateY(6px);transition:all var(--t) var(--ease)}
+.sc:hover .sc-desc{opacity:1;transform:translateY(0)}
+.sc-lk{font-size:8px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--Au);display:inline-flex;align-items:center;gap:8px;opacity:0;transform:translateY(5px);transition:all var(--t) var(--ease)}
+.sc-lk::after{content:'';display:block;width:18px;height:1px;background:var(--Au);transition:width var(--t)}
+.sc:hover .sc-lk{opacity:1;transform:translateY(0)}
+.svc-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:3px}
+.sm{background:var(--F);padding:22px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:background var(--t);text-decoration:none}
+.sm:hover{background:var(--F2)}
+.sm-ic{width:30px;height:30px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.sm-ic svg{width:20px;height:20px;fill:none;stroke:var(--Au);stroke-width:1.4}
+.sm-nm{font-family:var(--sr);font-size:16px;font-weight:400;color:var(--W)}
+.sm-ds{font-size:10px;color:rgba(255,255,255,.36);margin-top:2px}
 
-  /* CONTACT */
-  .contact{background:var(--sand);padding:80px 0;}
-  .contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start;}
-  .contact-list{margin-top:24px;}
-  .crow{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;font-weight:700;color:var(--forest);}
-  .crow svg{flex-shrink:0;color:var(--gold);}
-  .form-panel{background:var(--white);border:1px solid var(--line);padding:32px;}
-  .form-panel h3{margin:0 0 6px;color:var(--forest);font-size:24px;}
-  .form-panel .fnote{font-size:13px;color:var(--muted);margin:0 0 22px;}
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
-  .form-field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--forest);margin-bottom:6px;}
-  .form-field input,.form-field textarea{width:100%;border:1px solid var(--line);padding:11px 12px;background:var(--white);font:inherit;font-size:14px;}
-  .checklist{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 18px;}
-  .check-item{display:flex;align-items:center;gap:8px;font-size:13px;}
-  .check-item input{width:16px;height:16px;accent-color:var(--forest);}
-  @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}.form-row,.checklist{grid-template-columns:1fr;}}
+/* ── BEFORE/AFTER ── */
+.ba{background:var(--Iv)}
+.ba-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;flex-wrap:wrap;gap:12px}
+.ba-lk{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--F);display:flex;align-items:center;gap:8px;transition:gap var(--t)}
+.ba-lk::after{content:'→';color:var(--Au)}
+.ba-lk:hover{gap:12px}
+.sl-wrap{position:relative;width:100%;aspect-ratio:16/7;overflow:hidden;border-radius:1px;user-select:none;cursor:ew-resize;background:var(--Dk)}
+.sl-bef,.sl-aft{position:absolute;inset:0;background-size:cover;background-position:center}
+.sl-aft{clip-path:inset(0 50% 0 0)}
+.sl-div{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:2px;background:var(--W);box-shadow:0 0 12px rgba(0,0,0,.50);pointer-events:none}
+.sl-hdl{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--W);box-shadow:0 2px 16px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;pointer-events:none;gap:4px}
+.sl-hdl svg{width:8px;height:14px;fill:var(--F)}
+.sl-label{position:absolute;top:16px;font-size:9px;font-weight:700;letter-spacing:.20em;text-transform:uppercase;padding:5px 13px;backdrop-filter:blur(8px);border-radius:1px}
+.sl-label.bef{left:16px;background:rgba(0,0,0,.60);color:var(--W)}
+.sl-label.aft{right:16px;background:rgba(11,61,46,.90);color:var(--Au)}
+.ba-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:3px}
+.bs{background:var(--F);padding:22px 16px;text-align:center}
+.bs-n{font-family:var(--sr);font-size:28px;color:var(--Au);display:block;line-height:1}
+.bs-l{font-size:8px;text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.34);display:block;margin-top:4px}
 
-  footer{background:var(--forest-deep);color:#a9bcae;padding:36px 0;text-align:center;font-size:12px;}
-  footer .fmark{height:46px;margin:0 auto 12px;}
-  footer a{color:var(--gold-light);}
+/* ── GALLERY ── */
+.gal{background:var(--Dk)}
+.gal-hd{max-width:1440px;margin:0 auto;padding:60px 48px 32px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.gal-h2{font-family:var(--sr);font-size:clamp(24px,3vw,40px);font-weight:300;color:var(--W);line-height:1.10}
+.gal-h2 em{font-style:italic;color:var(--Au)}
+.gal-more{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--Au);display:flex;align-items:center;gap:8px}
+.gal-more::after{content:'→'}
+.gal-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px}
+.gi{aspect-ratio:4/3;position:relative;overflow:hidden;cursor:pointer}
+.gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s var(--ease),filter .35s;filter:saturate(.80) brightness(.84)}
+.gi:hover img{transform:scale(1.06);filter:saturate(1.05) brightness(.92)}
+.gi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,61,46,.80),transparent 50%);opacity:0;transition:opacity var(--t)}
+.gi:hover .gi-ov{opacity:1}
+.gi-lb{position:absolute;bottom:12px;left:12px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--Au);opacity:0;transform:translateY(5px);transition:all var(--t)}
+.gi:hover .gi-lb{opacity:1;transform:translateY(0)}
+.gal-ft{text-align:center;padding:28px;border-top:1px solid rgba(201,164,74,.10)}
 
-  .floating-wa{position:fixed;bottom:22px;right:22px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25);animation:wa-pulse 2.6s infinite;}
-  .floating-wa:hover{animation:none;}
-  @keyframes wa-pulse{
-    0%{box-shadow:0 10px 24px rgba(0,0,0,.25),0 0 0 0 rgba(37,211,102,.55);}
-    70%{box-shadow:0 10px 24px rgba(0,0,0,.25),0 0 0 14px rgba(37,211,102,0);}
-    100%{box-shadow:0 10px 24px rgba(0,0,0,.25),0 0 0 0 rgba(37,211,102,0);}
-  }
+/* ── REVIEWS ── */
+.reviews{background:var(--W)}
+.rev-in{max-width:1440px;margin:0 auto}
+.rev-hd{text-align:center;margin-bottom:48px}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(11,61,46,.06)}
+.rv{background:var(--W);padding:44px 32px;display:flex;flex-direction:column;align-items:center;gap:14px;min-height:260px;justify-content:center}
+.g-logo{display:flex;align-items:center;gap:8px}
+.g-logo-txt{font-size:16px;font-weight:300;color:rgba(11,61,46,.35);font-family:var(--ss)}
+.rv-msg{font-family:var(--sr);font-style:italic;font-size:14px;color:rgba(11,61,46,.28);text-align:center;line-height:1.6;max-width:220px}
+.rv-sub{font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(201,164,74,.50)}
+
+/* ── AREAS ── */
+.areas{background:var(--F);padding:64px 48px;text-align:center}
+.areas-in{max-width:1440px;margin:0 auto}
+.areas-h2{font-family:var(--sr);font-size:clamp(22px,3vw,38px);font-weight:300;color:var(--W);margin:12px 0 30px;line-height:1.1}
+.areas-h2 em{font-style:italic;color:var(--Au)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.chip{background:rgba(255,255,255,.05);border:1px solid rgba(201,164,74,.16);color:rgba(255,255,255,.54);font-size:10px;font-weight:500;padding:7px 16px;transition:all var(--t);cursor:pointer;border-radius:1px;text-decoration:none}
+.chip:hover{background:rgba(201,164,74,.10);border-color:var(--Au);color:var(--W)}
+
+/* ── SEO + FAQ ── */
+.seo-sec{background:var(--Cr)}
+.seo-g{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.seo-h3{font-family:var(--sr);font-size:clamp(22px,3vw,38px);font-weight:300;color:var(--F);line-height:1.14;margin-bottom:16px}
+.seo-h3 em{font-style:italic}
+.faq-lbl{font-size:9px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--Au);margin-bottom:20px;display:block}
+.fi{border-bottom:1px solid var(--Bd)}
+.fq{font-family:var(--sr);font-size:16px;font-weight:400;color:var(--F);padding:16px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;user-select:none;transition:color var(--t)}
+.fq:hover{color:var(--AuD)}
+.fqic{color:var(--Au);font-size:20px;font-family:var(--ss);font-weight:300;flex-shrink:0;transition:transform var(--t);line-height:1;width:20px;text-align:center}
+.fa{font-size:13px;color:var(--Mu);line-height:1.80;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+.fi.open .fa{max-height:220px;padding-bottom:14px}
+.fi.open .fqic{transform:rotate(45deg)}
+.atags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.atag{font-size:10px;font-weight:500;padding:5px 10px;border:1px solid rgba(11,61,46,.13);color:var(--F);background:var(--W);transition:all var(--t);display:inline-block;border-radius:1px;text-decoration:none}
+.atag:hover{background:rgba(201,164,74,.10);border-color:var(--Au)}
+
+/* ── FINAL CTA ── */
+.ctaf{position:relative;overflow:hidden;padding:108px 48px;background:var(--Dk);text-align:center}
+.ctaf::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 130% at 50% 0%,rgba(201,164,74,.07),transparent 55%)}
+.ctaf-in{max-width:620px;margin:0 auto;position:relative}
+.ctaf-h2{font-family:var(--sr);font-size:clamp(32px,5vw,58px);font-weight:300;color:var(--W);line-height:1.10;margin:16px 0 12px}
+.ctaf-h2 em{font-style:italic;color:var(--AuL)}
+.ctaf-sub{font-family:var(--sr);font-style:italic;font-size:16px;color:rgba(255,255,255,.36);margin-bottom:40px}
+.ctaf-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{background:#050C07}
+.ft-top{max-width:1440px;margin:0 auto;padding:68px 48px 52px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:52px;border-bottom:1px solid rgba(255,255,255,.05)}
+/* Footer logo: white bg PNG → brightness(0) invert(1) → white logo on dark footer */
+.ft-logo-img{height:56px;width:auto;filter:brightness(0) invert(1);margin-bottom:14px;display:block;opacity:0.85}
+.ft-desc{font-size:12px;color:rgba(255,255,255,.27);line-height:1.75;max-width:230px;margin-bottom:18px}
+.ft-c{display:flex;flex-direction:column;gap:8px}
+.ft-cl{font-size:12px;color:rgba(255,255,255,.36);transition:color var(--t);display:block}
+.ft-cl:hover{color:rgba(255,255,255,.76)}
+.ft-soc{display:flex;gap:7px;margin-top:20px}
+.fsb{width:34px;height:34px;border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:12px;color:rgba(255,255,255,.26);transition:all var(--t);border-radius:1px;text-decoration:none}
+.fsb:hover{border-color:var(--Au);color:var(--Au)}
+.ft-col h4{font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--Au);margin-bottom:16px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col ul li a{font-size:12px;color:rgba(255,255,255,.30);transition:color var(--t),padding-left var(--t);display:block}
+.ft-col ul li a:hover{color:rgba(255,255,255,.76);padding-left:4px}
+.ft-bot{max-width:1440px;margin:0 auto;padding:22px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.ft-copy{font-size:10px;color:rgba(255,255,255,.17)}
+.ft-leg{display:flex;gap:18px}
+.ft-leg a{font-size:10px;color:rgba(255,255,255,.17);transition:color var(--t)}
+.ft-leg a:hover{color:rgba(255,255,255,.55)}
+
+/* SINGLE floating WA */
+.wa-fl{position:fixed;bottom:26px;right:26px;z-index:999;width:54px;height:54px;border-radius:50%;background:#1A9E4A;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(26,158,74,.42);transition:transform var(--t),box-shadow var(--t)}
+.wa-fl:hover{transform:scale(1.10);box-shadow:0 10px 32px rgba(26,158,74,.55)}
+.wa-fl svg{width:26px;height:26px;fill:white}
+
+/* ── RESPONSIVE ── */
+@media(min-width:901px){.ham{display:none}}
+@media(max-width:900px){
+  .hdr{padding:0 20px;height:68px}
+  nav.desk,.hdr-ph,.hdr-quote{display:none}
+  .hdr-logo-img{height:42px}
+  .ham{display:flex}
+  .mob-nav{display:flex}
+  .hero-body{padding:0 20px 60px}
+  .hero-trust{grid-template-columns:repeat(2,1fr)}
+  .story-in{grid-template-columns:1fr}
+  .about-g{grid-template-columns:1fr}
+  .arib{display:none}
+  .why-g{grid-template-columns:1fr 1fr}
+  .svc-mag{grid-template-columns:1fr}
+  .sc.lg img{min-height:320px}
+  .svc-mini{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:repeat(3,1fr)}
+  .rev-grid{grid-template-columns:1fr}
+  .seo-g{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr 1fr;gap:32px;padding:48px 20px}
+  .ft-top>div:first-child{grid-column:1/-1}
+  .qnav-g{grid-template-columns:repeat(3,1fr)}
+  .sec{padding:64px 20px}
+  .why,.areas,.ctaf,.story{padding:64px 20px}
+  .gal-hd{padding:48px 20px 24px}
+  .ft-bot{padding:20px}
+  .strip{padding:0 16px}
+  .sl-wrap{aspect-ratio:4/3}
+  .story-p{color:rgba(255,255,255,.78)}
+  .story-pull-title{font-size:17px}
+  .sec{padding:60px 20px}
+}
+@media(max-width:600px){
+  .why-g{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr}
+  .qnav-g{grid-template-columns:1fr 1fr}
+  .hero-h1{font-size:34px}
+  .strip-link{display:none}
+  .hero-trust{grid-template-columns:repeat(2,1fr)}
+  .ht:nth-child(3),.ht:nth-child(4){display:none}
+  .ba-stats{grid-template-columns:repeat(3,1fr)}
+  .hero-sub{color:rgba(255,255,255,.85);font-size:15px}
+  .hero-h1{line-height:1.10}
+  .hero-ey-txt{letter-spacing:.18em}
+}
+
+/* ── PROCESS GRID ── */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.proc-card{padding:32px 24px;display:flex;flex-direction:column;gap:12px}
+.proc-num{font-family:var(--sr);font-size:44px;color:rgba(201,164,74,.28);line-height:1;font-weight:300}
+
+/* ── CONTACT FORM ── */
+.cf-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:80px;align-items:start}
+.cf-detail{font-size:13px;font-weight:600;color:var(--F);display:flex;align-items:center;gap:10px;transition:color var(--t)}
+.cf-detail:hover{color:var(--AuD)}
+.cf-form{display:flex;flex-direction:column;gap:16px}
+.cf-field{display:flex;flex-direction:column;gap:5px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cf-label{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--F)}
+.cf-input{border:1px solid rgba(11,61,46,.15);padding:11px 14px;font-size:13px;font-family:var(--ss);background:var(--W);outline:none;width:100%;transition:border-color .2s;border-radius:0;-webkit-appearance:none}
+.cf-input:focus{border-color:var(--Au)}
+select.cf-input{cursor:pointer}
+
+@media(max-width:900px){
+  .cf-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .process-grid{grid-template-columns:1fr}
+  .cf-row{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="nav">
-    <img src="assets/logo/pt-logo-transparent-cropped.png" alt="PrimeTurf logo">
-    <span class="brandname">PrimeTurf</span>
-    <nav class="navlinks">
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-      <span></span><span></span><span></span>
-    </button>
-    <a class="navcta" href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%27d%20like%20to%20enquire." target="_blank" rel="noopener">Get a Quote</a>
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-l">
+    <div class="pulse"></div>
+    <span>Gauteng Level 1 water restrictions active — artificial turf is zero-irrigation and fully compliant</span>
   </div>
-</header>
-
-<div class="nav-overlay" id="navOverlay"></div>
-<nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
-  <a href="#services">Services</a>
-  <a href="#process">Process</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#contact">Contact</a>
-  <a class="navcta" href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%27d%20like%20to%20enquire." target="_blank" rel="noopener">Get a Quote</a>
-</nav>
-
-<section class="hero">
-  <img class="mark" src="assets/logo/pt-logo-transparent-cropped.png" alt="PrimeTurf — Premium Artificial Grass Solutions">
-  <p class="eyebrow">Serving Gauteng</p>
-  <h1 class="serif">Premium Artificial<br>Grass Solutions</h1>
-  <p class="sub">Signature Turf Systems for Residential and Commercial Use</p>
-  <div class="tag-row">
-    <span class="tag-chip">Estate Lawns</span>
-    <span class="tag-chip">School Grounds</span>
-    <span class="tag-chip">Play Areas</span>
-    <span class="tag-chip">Restaurant Play Areas</span>
-    <span class="tag-chip">Residential</span>
-    <span class="tag-chip">Commercial</span>
-    <span class="tag-chip">Patios</span>
-    <span class="tag-chip">Putting Greens</span>
-  </div>
-  <div class="hero-buttons">
-    <a class="btn btn-gold" href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%27d%20like%20a%20quote." target="_blank" rel="noopener">Get a Quote</a>
-    <a class="btn btn-outline" href="#gallery">See Our Work</a>
-  </div>
-</section>
-
-<div class="feature-strip">
-  <div class="shell">
-    <span class="fitem">Low Maintenance</span>
-    <span class="fitem">Water Saving</span>
-    <span class="fitem">Pet Friendly</span>
-    <span class="fitem">Non-Toxic</span>
-    <span class="fitem">Built to Last</span>
+  <div class="strip-r">
+    <a href="tel:0768048868" class="strip-link">076 804 8868</a>
+    <a href="mailto:social@primeturf.co.za" class="strip-link">social@primeturf.co.za</a>
+    <a href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%20would%20like%20to%20request%20a%20free%20site%20consultation." class="strip-btn">WhatsApp</a>
   </div>
 </div>
 
-<section class="section" id="services">
-  <div class="shell">
-    <div class="section-head reveal">
-      <p class="eyebrow">What We Install</p>
-      <h2 class="serif">Premium turf systems, every space.</h2>
-      <p>From private gardens to school grounds and commercial complexes — professionally installed, built to specification.</p>
+<!-- HEADER — ONE logo, left. Nav: Home About Services Gallery Contact. CTA: Get a Quote. -->
+<header id="site-header">
+  <div class="hdr">
+
+    <a href="/" class="hdr-logo" aria-label="PrimeTurf SA — Luxury Artificial Grass">
+      <img src="assets/logo/primeturf-header-logo.png" alt="PrimeTurf SA" class="hdr-logo-img">
+    </a>
+
+    <nav class="desk" aria-label="Primary Navigation">
+      <a href="/" class="nl on">Home</a>
+      <div class="hd">
+        <a href="#our-story" class="nl">About Us</a>
+        <div class="drop">
+          <a href="#our-story" class="dl">Our Story<small>Who PrimeTurf is</small></a>
+          <a href="#why" class="dl">Why PrimeTurf<small>The premium difference</small></a>
+          <a href="quote-calculator.html" class="dl">Our Turf Range<small>9 premium SKUs</small></a>
+          <a href="primeturf-vs-easigrass.html" class="dl">PrimeTurf vs Easigrass<small>See the full comparison</small></a>
+          <a href="#our-story" class="dl">Sustainability<small>Zero water. Zero waste.</small></a>
+        </div>
+      </div>
+      <div class="hd">
+        <a href="#services" class="nl">Services</a>
+        <div class="drop">
+          <a href="#services" class="dl">Estate Gardens<small>Luxury residential lawns</small></a>
+          <a href="#services" class="dl">Poolside Design<small>Heat-resistant pool surrounds</small></a>
+          <a href="#services" class="dl">Putting Greens<small>Tournament-grade greens</small></a>
+          <a href="#services" class="dl">Commercial Spaces<small>Offices and corporate</small></a>
+          <a href="#services" class="dl">Rooftop Terraces<small>Balcony systems</small></a>
+          <a href="#services" class="dl">Safe Play Areas<small>Child-safe surfaces</small></a>
+          <a href="#services" class="dl">HOA Installations<small>ARC submission included</small></a>
+          <a href="#services" class="dl">Architect Specification<small>B2B design integration</small></a>
+        </div>
+      </div>
+      <div class="hd">
+        <a href="#gallery" class="nl">Gallery</a>
+        <div class="drop">
+          <a href="#gallery" class="dl">Estate Gardens</a>
+          <a href="#gallery" class="dl">Poolside Installations</a>
+          <a href="#gallery" class="dl">Commercial Projects</a>
+          <a href="#gallery" class="dl">Before and After</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nl">Contact</a>
+    </nav>
+
+    <div class="hdr-right">
+      <a href="tel:0768048868" class="hdr-ph">076 804 8868</a>
+      <a href="quote/" class="hdr-quote">Get a Quote</a>
+      <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="services reveal">
-      <div class="svc"><h3>School Grounds</h3></div>
-      <div class="svc"><h3>Play Areas</h3></div>
-      <div class="svc"><h3>Restaurant Play Areas</h3></div>
-      <div class="svc"><h3>Residential</h3></div>
-      <div class="svc"><h3>Commercial</h3></div>
-      <div class="svc"><h3>Patios</h3></div>
-      <div class="svc"><h3>Putting Greens</h3></div>
-      <div class="svc"><h3>Custom Installs</h3></div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mob-ov" id="mob-ov" onclick="closeNav()"></div>
+<nav class="mob-nav" id="mob-nav" aria-label="Mobile navigation">
+  <button class="mob-close" onclick="closeNav()" aria-label="Close">x</button>
+  <a href="/" onclick="closeNav()">Home</a>
+  <a href="#our-story" onclick="closeNav()">About Us</a>
+  <a href="#services" onclick="closeNav()">Services</a>
+  <a href="#gallery" onclick="closeNav()">Gallery</a>
+  <a href="#areas" onclick="closeNav()">Areas We Serve</a>
+  <a href="blog/index.html" onclick="closeNav()">Insights</a>
+  <a href="contact.html" onclick="closeNav()">Contact</a>
+  <a href="quote/" class="mob-cta" onclick="closeNav()">Get a Quote</a>
+</nav>
+
+<!-- HERO — background photo only. Zero logos in hero. -->
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="hero-bg" style="background-image:url('images/image(17).jpg')" role="img" aria-label="Cinematic golden-hour estate with premium artificial turf — Gauteng"></div>
+  <div class="hero-body">
+    <div class="hero-content">
+      <div class="hero-ey">
+        <span class="hero-ey-line"></span>
+        <span class="hero-ey-txt">Precision Crafted. Luxury Installed.</span>
+      </div>
+      <h1 class="hero-h1" id="hero-h1">
+        Elevate Your<br>Outdoor<br><em>Lifestyle.</em>
+      </h1>
+      <p class="hero-sub">
+        Precision-engineered lawns and landscapes designed for elegance, built for enduring beauty.
+      </p>
+      <div class="hero-ctas">
+        <a href="quote-calculator.html" class="cta-gold">Request Free Assessment</a>
+        <a href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%20would%20like%20to%20request%20a%20free%20site%20consultation." class="cta-wa" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a href="#services" class="cta-outline">Explore Services</a>
+      </div>
     </div>
+  </div>
+  <div class="hero-trust">
+    <div class="ht">
+      <svg class="ht-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,164,74,.65)" stroke-width="1.4"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+      <span class="ht-n">6yr</span><span class="ht-l">Durability Warranty</span>
+    </div>
+    <div class="ht">
+      <svg class="ht-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,164,74,.65)" stroke-width="1.4"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span class="ht-n">0L</span><span class="ht-l">Water Required</span>
+    </div>
+    <div class="ht">
+      <svg class="ht-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,164,74,.65)" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span class="ht-n">48h</span><span class="ht-l">Typical Install</span>
+    </div>
+    <div class="ht">
+      <svg class="ht-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,164,74,.65)" stroke-width="1.4"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span class="ht-n">5-Star</span><span class="ht-l">Google Rated</span>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">
+    <span class="sc-line"></span>
+    <span class="sc-txt">Scroll</span>
   </div>
 </section>
 
-<div class="signature-line">Quality you can see, service you can trust.</div>
+<!-- MARQUEE -->
+<div class="mq" aria-hidden="true"><div class="mq-t">
+  <span class="mqi"><span class="mqd"></span>Luxury Living</span>
+  <span class="mqi"><span class="mqd"></span>Lifestyle Enhancement</span>
+  <span class="mqi"><span class="mqd"></span>Crafted. Elevated. Defined.</span>
+  <span class="mqi"><span class="mqd"></span>Precision Installed. Built to Last.</span>
+  <span class="mqi"><span class="mqd"></span>6-Year Durability. Zero Compromise.</span>
+  <span class="mqi"><span class="mqd"></span>Gauteng's Premier Turf Specialist</span>
+  <span class="mqi"><span class="mqd"></span>Water Restriction Compliant</span>
+  <span class="mqi"><span class="mqd"></span>HOA and ARC Approved</span>
+  <span class="mqi"><span class="mqd"></span>Luxury Living</span>
+  <span class="mqi"><span class="mqd"></span>Lifestyle Enhancement</span>
+  <span class="mqi"><span class="mqd"></span>Crafted. Elevated. Defined.</span>
+  <span class="mqi"><span class="mqd"></span>Precision Installed. Built to Last.</span>
+  <span class="mqi"><span class="mqd"></span>6-Year Durability. Zero Compromise.</span>
+  <span class="mqi"><span class="mqd"></span>Gauteng's Premier Turf Specialist</span>
+  <span class="mqi"><span class="mqd"></span>Water Restriction Compliant</span>
+  <span class="mqi"><span class="mqd"></span>HOA and ARC Approved</span>
+</div></div>
 
-<section class="process-wrap" id="process">
-  <div class="shell">
-    <div class="section-head reveal">
-      <p class="eyebrow" style="color:var(--gold-light);">Our Process</p>
-      <h2 class="serif">The secret to a long-lasting lawn starts beneath the surface.</h2>
-      <p>Our professional 7-step sub-base process ensures exceptional drainage, durability, weed prevention, and a natural look and feel that lasts for years.</p>
-    </div>
-    <div class="process7">
-      <img class="process7-img reveal" src="images/process-7-step-prep.jpg" alt="PrimeTurf 7-step sub-base preparation cross-section: Jeyes fluid and salt, G5 soil, crusher dust, cement layer, cement edges, turf installation, silica sand">
-      <ol class="process7-list reveal">
-        <li><span class="p7-n">1</span><div><h4>Jeyes Fluid &amp; Coarse Salt Mix</h4><p>Helps keep weeds and bugs away.</p></div></li>
-        <li><span class="p7-n">2</span><div><h4>G5 Soil</h4><p>Expertly levelled for a stable foundation.</p></div></li>
-        <li><span class="p7-n">3</span><div><h4>Crusher Dust</h4><p>Provides excellent drainage and strength.</p></div></li>
-        <li><span class="p7-n">4</span><div><h4>Thin Dust Cement Layer</h4><p>Binds the base together.</p></div></li>
-        <li><span class="p7-n">5</span><div><h4>Cement Edges</h4><p>Creates the perfect surface for high-quality glue adhesion.</p></div></li>
-        <li><span class="p7-n">6</span><div><h4>Professional Artificial Turf Installation</h4><p>Precision installed for a flawless finish.</p></div></li>
-        <li><span class="p7-n">7</span><div><h4>Silica Sand</h4><p>Improves durability, drainage, temperature control and delivers a realistic feel.</p></div></li>
-      </ol>
-    </div>
-  </div>
-</section>
+<!-- QUICK NAV -->
+<div class="qnav"><div class="qnav-g">
+  <a href="#services" class="qn">
+    <div class="qn-ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+    <span class="qn-lb">Our Services</span><span class="qn-sb">Estate · Poolside · Sport</span>
+  </a>
+  <a href="quote-calculator.html" class="qn">
+    <div class="qn-ic"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+    <span class="qn-lb">Our Turf Range</span><span class="qn-sb">9 Premium SKUs</span>
+  </a>
+  <a href="#gallery" class="qn">
+    <div class="qn-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+    <span class="qn-lb">Photo Gallery</span><span class="qn-sb">Real Installations</span>
+  </a>
+  <a href="#why" class="qn">
+    <div class="qn-ic"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <span class="qn-lb">Why PrimeTurf</span><span class="qn-sb">The Premium Difference</span>
+  </a>
+  <a href="contact.html" class="qn">
+    <div class="qn-ic"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+    <span class="qn-lb">Free Assessment</span><span class="qn-sb">No Obligation</span>
+  </a>
+</div></div>
 
-<section class="section" id="gallery">
-  <div class="shell">
-    <div class="section-head reveal">
-      <p class="eyebrow">Our Work</p>
-      <h2 class="serif">Real installations across Gauteng.</h2>
-      <p>Tennis courts, school playgrounds, putting greens, and commercial spaces — completed PrimeTurf projects, done by our own team.</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="g-tile reveal"><img src="images/gallery-tree-courtyard-lawn.jpg" alt="PrimeTurf courtyard lawn installation around a mature tree"><span class="g-cap">Courtyard Lawn</span></div>
-      <div class="g-tile reveal"><img src="images/gallery-playground-swings.jpg" alt="PrimeTurf school playground with swings and shade sail"><span class="g-cap">School Playground</span></div>
-      <div class="g-tile reveal"><img src="images/gallery-playground-hopscotch.jpg" alt="PrimeTurf custom hopscotch and activity turf markings"><span class="g-cap">Custom Play Markings</span></div>
-      <div class="g-tile reveal"><img src="images/gallery-poolside-firepit.jpg" alt="PrimeTurf poolside lawn with firepit lounge area"><span class="g-cap">Poolside Firepit Lounge</span></div>
-      <div class="g-tile reveal"><img src="images/gallery-paver-garden.jpg" alt="PrimeTurf paver and lawn garden design"><span class="g-cap">Paver &amp; Lawn Garden</span></div>
-      <div class="g-tile reveal"><img src="images/gallery-giant-chessboard.jpg" alt="PrimeTurf giant chessboard play feature on artificial grass"><span class="g-cap">Giant Chessboard Feature</span></div>
-      <div class="g-tile reveal"><img src="images/gallery-tennis-court-estate.jpg" alt="PrimeTurf private tennis court installation"><span class="g-cap">Private Tennis Court</span></div>
-      <div class="g-tile reveal"><img src="images/gallery-install-team.jpg" alt="The PrimeTurf installation team on a completed tennis court"><span class="g-cap">Meet Our Install Team</span></div>
+<!-- OUR STORY — narrative text only, no brand kit, no van imagery -->
+<section class="story" id="our-story" aria-labelledby="story-h2">
+  <div class="story-in">
+    <div class="story-left">
+      <span class="story-ey">Our Story</span>
+      <h2 class="story-h2" id="story-h2">
+        The Call of Craft.<br><em>The Purpose of Precision.</em>
+      </h2>
+
+      <div class="story-pull">
+        <div class="story-pull-title">
+          PrimeTurf was not built by chance.
+        </div>
+        <p class="story-p">
+          It was shaped by transition, as if the ground itself demanded a new standard. What began as change became conviction; what began as work became intention.
+        </p>
+        <p class="story-p">
+          Every installation is carried out as though it were the only purpose — to elevate estates, to define prestige, to set a mark of excellence in this industry.
+        </p>
+      </div>
+
+      <div class="story-rule">
+        <span class="story-rule-line"></span>
+        <span class="story-rule-mark">Imagination Made Visible</span>
+        <span class="story-rule-line" style="background:linear-gradient(90deg,transparent,var(--Au))"></span>
+      </div>
+
+      <p class="story-p" style="color:rgba(255,255,255,.42);font-size:16px;line-height:1.9;font-family:var(--sr);font-style:italic">
+        PrimeTurf is more than service. It is imagination made visible, a legacy written in landscapes. Luxury living, lifestyle enhancement — not as slogans, but as outcomes you can see, touch, and trust.
+      </p>
     </div>
 
-    <div class="slider-wrap reveal">
-      <p class="eyebrow" style="display:block;text-align:center;margin-bottom:16px;">Drag to Compare — Courtyard Transformation</p>
-      <div id="comparison" class="compare" role="slider" tabindex="0" aria-label="Before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-        <img src="images/before.jpg" alt="Site before PrimeTurf installation">
-        <img id="after-image" class="compare-after" src="images/after.jpg" alt="Site after PrimeTurf installation">
-        <span class="compare-label before">Before</span>
-        <span class="compare-label after">After</span>
-        <div id="compare-divider" class="compare-divider">
-          <div class="compare-handle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+    <div class="story-right">
+      <div class="story-pillars">
+        <div class="sp">
+          <span class="sp-num">01</span>
+          <div class="sp-body">
+            <div class="sp-title">Shaped by Transition</div>
+            <div class="sp-desc">PrimeTurf emerged from a conviction that the industry demanded a higher standard. Not incremental improvement — a complete reimagining of what luxury outdoor surfaces could be.</div>
+          </div>
+        </div>
+        <div class="sp">
+          <span class="sp-num">02</span>
+          <div class="sp-body">
+            <div class="sp-title">Driven by Intention</div>
+            <div class="sp-desc">Every site visit, every installation, every decision is deliberate. We do not cut corners because our clients do not accept compromise. Prestige is earned at the detail level.</div>
+          </div>
+        </div>
+        <div class="sp">
+          <span class="sp-num">03</span>
+          <div class="sp-body">
+            <div class="sp-title">A Legacy Written in Landscapes</div>
+            <div class="sp-desc">The estates and properties we transform are not projects. They are permanences — places families live in, entertain in, and return to for years. We build accordingly.</div>
+          </div>
+        </div>
+        <div class="sp">
+          <span class="sp-num">04</span>
+          <div class="sp-body">
+            <div class="sp-title">Outcomes You Can Trust</div>
+            <div class="sp-desc">Luxury living and lifestyle enhancement are not slogans at PrimeTurf. They are measurable outcomes: zero irrigation, 6-year durability, HOA-approved installations, and a finish that speaks for itself.</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <p class="eyebrow reveal" style="display:block;text-align:center;margin:56px 0 16px;">See It In Action</p>
-    <div class="clip-grid">
-      <div class="clip-tile reveal">
-        <video src="videos/gallery-clip-1.mp4" autoplay muted loop playsinline preload="metadata"></video>
-        <button class="clip-mute" aria-label="Toggle sound" title="Toggle sound">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-        </button>
-        <span class="clip-cap">Step 1 In Action — Prepping The Base</span>
-      </div>
-      <div class="clip-tile reveal">
-        <video src="videos/gallery-clip-2.mp4" autoplay muted loop playsinline preload="metadata"></video>
-        <button class="clip-mute" aria-label="Toggle sound" title="Toggle sound">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-        </button>
-        <span class="clip-cap">Soft Enough For Dogs</span>
-      </div>
-      <div class="clip-tile reveal">
-        <video src="videos/gallery-clip-3.mp4" autoplay muted loop playsinline preload="metadata"></video>
-        <button class="clip-mute" aria-label="Toggle sound" title="Toggle sound">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-        </button>
-        <span class="clip-cap">Modern Spaces Deserve Modern Grass</span>
-      </div>
+<!-- WHY PRIMETURF -->
+<section class="why" id="why" aria-labelledby="why-h2">
+  <div class="why-in">
+    <div class="why-hd">
+      <h2 class="why-h2" id="why-h2">Why Choose <em>PrimeTurf</em></h2>
+      <a href="primeturf-vs-easigrass.html" class="why-more">Full Comparison</a>
     </div>
-
-    <div class="fb-follow reveal">
-      <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
-      <div>
-        <strong>Join the PrimeTurf family on Facebook</strong>
-        <p>We're a proud local, family-run business — follow along for new transformations, behind-the-scenes install days, and the odd dog nap on fresh turf.</p>
-      </div>
-      <a class="btn btn-outline" href="https://www.facebook.com/share/1Hke5uvkcZ/" target="_blank" rel="noopener">Follow Us</a>
+    <div class="why-g">
+      <div class="wc acc"><span class="wnum">01</span><div class="wtitle">Zero Water Use</div><p class="wdesc">Fully compliant with Rand Water Level 1 restrictions — future-proof as Gauteng restrictions escalate province-wide.</p></div>
+      <div class="wc"><span class="wnum">02</span><div class="wtitle">Estate-Level Finish</div><p class="wdesc">Dense, vibrant fibre with precision edging. Indistinguishable from natural lawn on first inspection and every day after.</p></div>
+      <div class="wc"><span class="wnum">03</span><div class="wtitle">6-Year Warranty</div><p class="wdesc">UV-stabilised fibre warranted for 6 years. Sub-base prepared to NBR drainage standards on every installation.</p></div>
+      <div class="wc"><span class="wnum">04</span><div class="wtitle">HOA Compliant</div><p class="wdesc">We manage the ARC submission on your behalf. The only turf installer in Gauteng that does this as standard.</p></div>
     </div>
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="shell">
-    <div class="contact-grid">
+<!-- ABOUT — project photos, no brand kit -->
+<section class="about sec" aria-labelledby="about-h2">
+  <div class="sec-in"><div class="about-g">
+    <div>
+      <span class="ey">Who We Are</span>
+      <h2 class="h2" id="about-h2" style="color:var(--F)">Gauteng's First <em>Full-Service Luxury</em> Turf Specialist</h2>
+      <p class="bp">PrimeTurf SA was founded on a single conviction: that artificial grass installed at the highest level of craft becomes invisible. You see a flawless lawn. You feel the quality underfoot. You never think about maintenance again.</p>
+      <ul class="pils">
+        <li class="pil"><div class="pi-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="pi-tt">Estate-Grade Product Only</div><div class="pi-ds">UV-stabilised premium fibre with permeable backing — SANS 10400 stormwater compliant on every installation.</div></div></li>
+        <li class="pil"><div class="pi-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div><div class="pi-tt">Full-Service Installation</div><div class="pi-ds">Site assessment, sub-base preparation, precision edging, and post-installation inspection — end to end.</div></div></li>
+        <li class="pil"><div class="pi-ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div><div class="pi-tt">HOA and ARC Navigation</div><div class="pi-ds">We manage Architectural Review Committee submissions on your behalf — the only installer in Gauteng that does.</div></div></li>
+      </ul>
+      <a href="#our-story" class="btn-f">Read Our Full Story</a>
+    </div>
+    <div class="avis">
+      <div class="aimg-wrap">
+        <img src="images/image(11).jpg" alt="PrimeTurf luxury artificial grass estate installation — Steyn City Gauteng" class="aimg" loading="lazy">
+      </div>
+      <div class="abadge"><div class="abn">100%</div><div class="abl">Water Restriction<br>Compliant</div></div>
+      <div class="arib">Luxury Landscaping</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- SERVICES -->
+<section class="svcs sec" id="services" aria-labelledby="svcs-h2">
+  <div class="sec-in">
+    <div class="svcs-hd">
+      <div><span class="ey">What We Install</span><h2 class="h2" id="svcs-h2" style="color:#2A2E28">Every Surface.<br><em>Every Estate.</em></h2></div>
+      <a href="#services" class="svc-more">Explore All Services</a>
+    </div>
+    <div class="svc-mag">
+      <div class="sc lg"><img src="images/service-estate-gardens.jpg" alt="PrimeTurf estate garden installation with pool — luxury Gauteng estate" loading="lazy"><div class="sc-ov"></div><div class="sc-body"><span class="sc-cat">Residential — Featured</span><div class="sc-name">Estate Gardens</div><p class="sc-desc">Full garden installations for luxury estates and gated communities across Gauteng. Precision edged, HOA-approved, premium grade throughout.</p><a href="#services" class="sc-lk">Explore Service</a></div></div>
+      <div class="sc"><img src="images/service-corporate-spaces.jpg" alt="PrimeTurf commercial artificial grass — corporate courtyard installation" loading="lazy"><div class="sc-ov"></div><div class="sc-body"><span class="sc-cat">Commercial</span><div class="sc-name">Corporate Spaces</div><p class="sc-desc">Office courtyards and corporate green spaces — zero maintenance, permanent premium aesthetic.</p><a href="#services" class="sc-lk">Explore</a></div></div>
+      <div class="sc"><img src="images/service-putting-greens.jpg" alt="PrimeTurf tournament-grade putting green installation" loading="lazy"><div class="sc-ov"></div><div class="sc-body"><span class="sc-cat">Lifestyle</span><div class="sc-name">Putting Greens</div><p class="sc-desc">Tournament-grade private putting greens, precision-built for a true, consistent roll.</p><a href="#services" class="sc-lk">Explore</a></div></div>
+      <div class="sc"><img src="images/service-safe-play-areas.jpg" alt="PrimeTurf child-safe certified play area surfacing" loading="lazy"><div class="sc-ov"></div><div class="sc-body"><span class="sc-cat">Family</span><div class="sc-name">Safe Play Areas</div><p class="sc-desc">Child-safe certified surfaces for play areas — soft, durable and impact-absorbing.</p><a href="#services" class="sc-lk">Explore</a></div></div>
+      <div class="sc"><img src="images/service-rooftop-terraces.jpg" alt="PrimeTurf rooftop terrace artificial grass installation with skyline view" loading="lazy"><div class="sc-ov"></div><div class="sc-body"><span class="sc-cat">Lifestyle</span><div class="sc-name">Rooftop Terraces</div><p class="sc-desc">Balcony and elevated systems built for wind, drainage and year-round colour.</p><a href="#services" class="sc-lk">Explore</a></div></div>
+    </div>
+    <div class="svc-mini">
+      <a href="#services" class="sm"><div class="sm-ic"><svg viewBox="0 0 24 24"><path d="M2 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div><div><div class="sm-nm">Poolside Design</div><div class="sm-ds">Heat-resistant pool surrounds</div></div></a>
+      <a href="#services" class="sm"><div class="sm-ic"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 3h6v2H9z"/><path d="M9 12l2 2 4-4"/></svg></div><div><div class="sm-nm">HOA Installations</div><div class="sm-ds">ARC submission included</div></div></a>
+      <a href="#services" class="sm"><div class="sm-ic"><svg viewBox="0 0 24 24"><path d="M3 21l9-9M14 4l6 6-9 9-6-6z"/></svg></div><div><div class="sm-nm">Architect Specification</div><div class="sm-ds">B2B design integration</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE/AFTER SLIDER -->
+<section class="ba sec" id="gallery" aria-labelledby="ba-h2">
+  <div class="sec-in">
+    <div class="ba-hd">
+      <div><span class="ey">Real Transformations</span><h2 class="h2" id="ba-h2" style="color:#2A2E28">Before and After.<br><em>Real Results.</em></h2></div>
+      <a href="#gallery" class="ba-lk">Full Gallery</a>
+    </div>
+    <div class="sl-wrap" id="ba-slider" role="img" aria-label="Drag to compare before and after artificial grass transformation">
+      <div class="sl-bef" id="sl-bef" style="background-image:url('images/before.webp')"></div>
+      <div class="sl-aft" id="sl-aft" style="background-image:url('images/after.webp')"></div>
+      <div class="sl-div" id="sl-div"></div>
+      <div class="sl-hdl" id="sl-hdl">
+        <svg viewBox="0 0 8 14"><path d="M7 1L1 7l6 6" stroke="var(--F)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" stroke="var(--F)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </div>
+      <span class="sl-label bef">Before</span>
+      <span class="sl-label aft">After — PrimeTurf</span>
+    </div>
+    <div class="ba-stats">
+      <div class="bs"><span class="bs-n">70%</span><span class="bs-l">Water bill reduction</span></div>
+      <div class="bs"><span class="bs-n">48h</span><span class="bs-l">Average installation</span></div>
+      <div class="bs"><span class="bs-n">R0</span><span class="bs-l">Ongoing maintenance</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gal">
+  <div class="gal-hd">
+    <div><span class="ey">Project Gallery</span><h2 class="gal-h2">Our Work. <em>Your Inspiration.</em></h2></div>
+    <a href="#gallery" class="gal-more">View All Projects</a>
+  </div>
+  <div class="gal-grid">
+    <div class="gi"><img src="images/gallery-design-consultation.jpg" alt="PrimeTurf on-site design consultation with homeowners — garden transformation plan" loading="lazy"><div class="gi-ov"></div><span class="gi-lb">Design Consultation</span></div>
+    <div class="gi"><img src="images/gallery-site-preparation.jpg" alt="PrimeTurf sub-base groundwork and drainage preparation before turf laying" loading="lazy"><div class="gi-ov"></div><span class="gi-lb">Site Preparation</span></div>
+    <div class="gi"><img src="images/gallery-installation-day.jpg" alt="PrimeTurf artificial turf installation — rolling premium synthetic grass" loading="lazy"><div class="gi-ov"></div><span class="gi-lb">Installation Day</span></div>
+    <div class="gi"><img src="images/gallery-estate-project.jpg" alt="PrimeTurf large-scale estate installation in progress — putting green and play area" loading="lazy"><div class="gi-ov"></div><span class="gi-lb">Estate Project</span></div>
+    <div class="gi"><img src="images/gallery-finishing-aftercare.jpg" alt="PrimeTurf turf finishing and maintenance — brushing and infill top-up" loading="lazy"><div class="gi-ov"></div><span class="gi-lb">Finishing &amp; Aftercare</span></div>
+  </div>
+  <div class="gal-ft"><a href="#gallery" class="btn-og">View Full Gallery</a></div>
+</div>
+
+<!-- GOOGLE REVIEWS PLACEHOLDER -->
+<section class="reviews sec" id="reviews" aria-labelledby="rev-h2">
+  <div class="sec-in rev-in">
+    <div class="rev-hd">
+      <span class="ey">Client Feedback</span>
+      <h2 class="h2" id="rev-h2" style="color:var(--F)">What Our Clients <em>Say</em></h2>
+      <p class="bp" style="text-align:center;max-width:540px;margin:0 auto">Real Google reviews only. Connect your verified Google Business Profile to display authentic client feedback here. No fabricated testimonials.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rv">
+        <div class="g-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <span class="g-logo-txt">Google Reviews</span>
+        </div>
+        <p class="rv-msg">Connect your Google Business Profile to display verified client reviews here.</p>
+        <p class="rv-sub">Real reviews only</p>
+      </div>
+      <div class="rv">
+        <div class="g-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <span class="g-logo-txt">Google Reviews</span>
+        </div>
+        <p class="rv-msg">Verify your Google Business Profile at google.com/business</p>
+        <p class="rv-sub">No fabricated testimonials</p>
+      </div>
+      <div class="rv">
+        <div class="g-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <span class="g-logo-txt">Google Reviews</span>
+        </div>
+        <p class="rv-msg">Request review links after each installation for genuine client feedback</p>
+        <p class="rv-sub">Each real review improves local SEO</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas" id="areas" aria-labelledby="areas-h2">
+  <div class="areas-in">
+    <span class="ey">Proudly Serving</span>
+    <h2 class="areas-h2" id="areas-h2">Luxury Estates Across <em>Gauteng</em></h2>
+    <div class="chips">
+      <a href="page-sandton.html" class="chip">Sandton</a>
+      <a href="page-waterfall-city.html" class="chip">Waterfall City</a>
+      <a href="page-steyn-city.html" class="chip">Steyn City</a>
+      <a href="page-midrand.html" class="chip">Midrand</a>
+      <a href="page-silver-lakes.html" class="chip">Silver Lakes</a>
+      <a href="page-centurion.html" class="chip">Centurion</a>
+      <a href="page-fourways.html" class="chip">Fourways</a>
+      <a href="page-pretoria-east.html" class="chip">Pretoria East</a>
+      <a href="page-bryanston.html" class="chip">Bryanston</a>
+      <a href="page-mooikloof.html" class="chip">Mooikloof</a>
+      <a href="page-houghton.html" class="chip">Houghton</a>
+      <a href="page-hyde-park.html" class="chip">Hyde Park</a>
+      <a href="page-edenvale.html" class="chip">Edenvale</a>
+      <a href="page-boksburg.html" class="chip">Boksburg</a>
+      <a href="page-randburg.html" class="chip">Randburg</a>
+      <a href="page-roodepoort.html" class="chip">Roodepoort</a>
+      <a href="page-bedfordview.html" class="chip">Bedfordview</a>
+    </div>
+  </div>
+</section>
+
+<!-- SEO + FAQ -->
+<section class="seo-sec sec" aria-labelledby="seo-h2">
+  <div class="sec-in"><div class="seo-g">
+    <div>
+      <h2 class="seo-h3" id="seo-h2">Artificial Grass in <em>Gauteng</em> — The PrimeTurf Standard</h2>
+      <p class="bp">PrimeTurf SA is Gauteng's specialist for <strong>luxury artificial grass installation</strong> across Johannesburg, Pretoria, Sandton, Midrand, and the province's finest estates.</p>
+      <p class="bp">We install exclusively <strong>estate-grade, UV-stabilised artificial turf</strong> with fully permeable backing — compliant with <strong>SANS 10400 stormwater requirements</strong>. Every installation carries a <strong>6-year durability warranty</strong>.</p>
+      <div style="margin-top:20px"><span class="ey">Areas We Serve</span>
+        <div class="atags">
+          <a href="page-sandton.html" class="atag">Sandton</a>
+          <a href="page-midrand.html" class="atag">Midrand</a>
+          <a href="page-waterfall-city.html" class="atag">Waterfall City</a>
+          <a href="page-steyn-city.html" class="atag">Steyn City</a>
+          <a href="page-silver-lakes.html" class="atag">Silver Lakes</a>
+          <a href="page-centurion.html" class="atag">Centurion</a>
+          <a href="page-fourways.html" class="atag">Fourways</a>
+          <a href="page-pretoria-east.html" class="atag">Pretoria East</a>
+          <a href="page-bryanston.html" class="atag">Bryanston</a>
+          <a href="page-mooikloof.html" class="atag">Mooikloof</a>
+          <a href="page-houghton.html" class="atag">Houghton</a>
+          <a href="page-hyde-park.html" class="atag">Hyde Park</a>
+          <a href="page-edenvale.html" class="atag">Edenvale</a>
+          <a href="page-boksburg.html" class="atag">Boksburg</a>
+          <a href="page-randburg.html" class="atag">Randburg</a>
+          <a href="page-roodepoort.html" class="atag">Roodepoort</a>
+          <a href="page-bedfordview.html" class="atag">Bedfordview</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="faq-lbl">Frequently Asked Questions</span>
+      <div class="fi"><div class="fq" onclick="faq(this)">Is artificial grass allowed under Gauteng water restrictions?<span class="fqic">+</span></div><div class="fa">Yes. Artificial turf requires zero irrigation and is fully compliant with Rand Water, Johannesburg, and Tshwane Level 1 restrictions.</div></div>
+      <div class="fi"><div class="fq" onclick="faq(this)">Do I need HOA or ARC approval?<span class="fqic">+</span></div><div class="fa">Most Gauteng gated estates require ARC approval for exterior landscaping. PrimeTurf manages this submission on your behalf as standard — the only installer in Gauteng that does so.</div></div>
+      <div class="fi"><div class="fq" onclick="faq(this)">How long does installation take?<span class="fqic">+</span></div><div class="fa">Most 50 to 150 square metre residential installations complete within one to two days. Larger estate projects typically within 48 hours.</div></div>
+      <div class="fi"><div class="fq" onclick="faq(this)">What warranty does PrimeTurf offer?<span class="fqic">+</span></div><div class="fa">6-year UV stability and durability warranty on all turf, plus 24-month installation workmanship guarantee. All terms provided in writing before work begins.</div></div>
+      <div class="fi"><div class="fq" onclick="faq(this)">How much does installation cost in Gauteng?<span class="fqic">+</span></div><div class="fa">Pricing depends on area size, surface preparation, and product grade. We provide a detailed fixed written quote following a free site assessment.</div></div>
+      <div class="fi"><div class="fq" onclick="faq(this)">Does artificial grass drain properly in summer storms?<span class="fqic">+</span></div><div class="fa">Yes. All installations use fully permeable backing and a prepared sub-base meeting SANS 10400 stormwater requirements.</div></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="process" style="background:var(--W)">
+  <div class="sec-in">
+    <span class="ey">How It Works</span>
+    <h2 class="h2" style="color:#2A2E28;margin-bottom:12px">The PrimeTurf <em>Process</em></h2>
+    <p class="bp" style="margin-bottom:48px;max-width:540px">Every project follows a refined four-stage journey — from first consultation to final walkthrough.</p>
+    <div class="process-grid">
+      <div class="proc-card" style="background:var(--F)">
+        <div class="proc-num">1</div>
+        <div class="sm-nm" style="font-size:18px;margin-bottom:8px;color:var(--W)">Consultation</div>
+        <div class="sm-ds" style="line-height:1.70">We assess your space on-site, understand your vision, and define the project scope.</div>
+      </div>
+      <div class="proc-card" style="background:var(--F2)">
+        <div class="proc-num">2</div>
+        <div class="sm-nm" style="font-size:18px;margin-bottom:8px;color:var(--W)">Design &amp; Quote</div>
+        <div class="sm-ds" style="line-height:1.70">Our design team prepares a before/after visual mockup. You receive a transparent, itemised quotation.</div>
+      </div>
+      <div class="proc-card" style="background:var(--F)">
+        <div class="proc-num">3</div>
+        <div class="sm-nm" style="font-size:18px;margin-bottom:8px;color:var(--W)">Site Preparation</div>
+        <div class="sm-ds" style="line-height:1.70">Our team levels and prepares the site — surface preparation, drainage levelling and premium turf installation.</div>
+      </div>
+      <div class="proc-card" style="background:var(--F2)">
+        <div class="proc-num">4</div>
+        <div class="sm-nm" style="font-size:18px;margin-bottom:8px;color:var(--W)">Final Inspection</div>
+        <div class="sm-ds" style="line-height:1.70">Our team meets you on-site for a final walkthrough. Full warranty documentation provided. Your Outdoor Legacy Begins.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="sec" id="contact-form" style="background:var(--Cr)">
+  <div class="sec-in">
+    <div class="cf-grid">
+      <!-- Left: info -->
       <div>
-        <p class="eyebrow">Get In Touch</p>
-        <h2 class="serif" style="font-size:30px;color:var(--forest);margin:12px 0 12px;">Speak with our Operations Manager directly.</h2>
-        <p style="color:var(--muted);font-size:14.5px;line-height:1.7;margin:0;">Your consultation begins the moment you make contact. Complete the form and our Operations Manager will respond within 24 hours.</p>
-        <div class="contact-list">
-          <div class="crow">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="ey">Get In Touch</span>
+        <h2 class="h2" style="color:#2A2E28;margin-bottom:20px">Begin Your <em>Transformation</em></h2>
+        <p class="bp">Every project is handled with care by our dedicated team. Your consultation begins the moment you make contact. We respond within 24 hours.</p>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:28px">
+          <a href="tel:0768048868" class="cf-detail">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--Au)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.23 2 2 0 012 .05h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             076 804 8868
-          </div>
-          <div class="crow">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
-            leon@primeturf.co.za
-          </div>
-          <div class="crow">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Proudly Serving Gauteng
-          </div>
+          </a>
+          <a href="mailto:social@primeturf.co.za" class="cf-detail">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--Au)" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            social@primeturf.co.za
+          </a>
+          <span class="cf-detail" style="cursor:default;color:var(--Mu)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--Au)" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Serving all of Gauteng Province
+          </span>
         </div>
-        <p style="margin-top:26px;font-size:13px;color:var(--muted);">8 Year Manufacturers Warranty · 24 Month Installation Guarantee</p>
+        <a href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%20would%20like%20to%20book%20a%20free%20site%20consultation." class="cta-wa" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;padding:14px 24px" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us Directly
+        </a>
       </div>
-
-      <form class="form-panel reveal" onsubmit="return submitEnquiry(event)">
-        <h3 class="serif">Request a Quote</h3>
-        <p class="fnote">Tell us about your project — one or more services can be selected.</p>
-        <div class="form-row">
-          <div class="form-field"><label>Name</label><input type="text" id="f-name" required></div>
-          <div class="form-field"><label>Phone</label><input type="tel" id="f-phone" required></div>
-        </div>
-        <div class="form-field" style="margin-bottom:14px;"><label>Area / Suburb</label><input type="text" id="f-area"></div>
-        <label style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--forest);margin-bottom:10px;">Services (tick one or more)</label>
-        <div class="checklist">
-          <label class="check-item"><input type="checkbox" value="Luxury turf installation indoor or outdoor">Luxury turf installation indoor/outdoor</label>
-          <label class="check-item"><input type="checkbox" value="Paving or stonework">Paving or stonework</label>
-          <label class="check-item"><input type="checkbox" value="Playground">Playground</label>
-          <label class="check-item"><input type="checkbox" value="Putting green">Putting green</label>
-          <label class="check-item"><input type="checkbox" value="Restaurant play area">Restaurant play area</label>
-          <label class="check-item"><input type="checkbox" value="School indoor or outdoor area">School indoor/outdoor area</label>
-          <label class="check-item"><input type="checkbox" value="Custom installs">Custom installs</label>
-        </div>
-        <div class="form-field" style="margin-bottom:18px;"><label>Additional Details</label><textarea id="f-notes" rows="3" style="resize:vertical;"></textarea></div>
-        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Continue on WhatsApp</button>
-      </form>
+      <!-- Right: form -->
+      <div>
+        <h3 style="font-family:var(--sr);font-size:24px;font-weight:400;color:#2A2E28;margin-bottom:6px">Request a Free Quote</h3>
+        <p style="font-size:12px;color:var(--Mu);margin-bottom:24px">Complete the form and our team will respond within 2 hours.</p>
+        <form id="contactForm" class="cf-form">
+          <input type="hidden" name="access_key" value="9923a61d-593b-4551-bd12-ce9c1a3933b7">
+          <input type="hidden" name="subject" value="New PrimeTurf Enquiry — Website Lead">
+          <input type="hidden" name="from_name" value="PrimeTurf Website">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="cf-field">
+            <label class="cf-label">Full Name *</label>
+            <input type="text" name="full_name" placeholder="Your full name" required class="cf-input">
+          </div>
+          <div class="cf-row">
+            <div class="cf-field">
+              <label class="cf-label">Phone *</label>
+              <input type="tel" name="phone" placeholder="+27 XX XXX XXXX" required class="cf-input">
+            </div>
+            <div class="cf-field">
+              <label class="cf-label">Email *</label>
+              <input type="email" name="email" placeholder="your@email.com" required class="cf-input">
+            </div>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label">Estate / Area</label>
+            <input type="text" name="area" placeholder="e.g. Silverlakes, Sandton, Centurion…" class="cf-input">
+          </div>
+          <div class="cf-field">
+            <label class="cf-label">Project Type</label>
+            <select name="project_type" class="cf-input">
+              <option value="">Select a project type…</option>
+              <option value="Estate Lawn">Estate Lawn</option>
+              <option value="Residential">Residential</option>
+              <option value="Poolside">Poolside</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Putting Green">Putting Green</option>
+              <option value="Play Area">Play Area</option>
+              <option value="Rooftop Terrace">Rooftop Terrace</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label">Message / Project Details</label>
+            <textarea name="message" placeholder="Describe your space and vision…" rows="4" class="cf-input" style="resize:vertical"></textarea>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label">How did you hear about us? <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:.5">(optional)</span></label>
+            <input type="text" name="referral" placeholder="e.g. Google, referral, Instagram…" class="cf-input">
+          </div>
+          <button type="button" class="btn-f" id="cf-submit" onclick="handleSubmit(this)" style="width:100%;padding:14px;cursor:pointer">Send My Enquiry</button>
+          <p style="font-size:11px;color:var(--Mu);text-align:center;margin-top:10px">Prefer WhatsApp? <a href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%20would%20like%20to%20book%20a%20free%20site%20consultation." target="_blank" rel="noopener" style="color:var(--Au);font-weight:600">Chat with us →</a></p>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <img class="fmark" src="assets/logo/pt-logo-transparent-cropped.png" alt="PrimeTurf">
-  <div>© 2026 PrimeTurf. All rights reserved.</div>
-  <div style="margin-top:6px;"><a href="tel:+27768048868">076 804 8868</a> · <a href="mailto:leon@primeturf.co.za">leon@primeturf.co.za</a> · <a href="https://www.primeturf.co.za">primeturf.co.za</a></div>
+<!-- FINAL CTA -->
+<section class="ctaf" id="contact" aria-labelledby="cta-h2">
+  <div class="ctaf-in">
+    <span class="ey">Begin Your Transformation</span>
+    <h2 class="ctaf-h2" id="cta-h2">Your Outdoor <em>Legacy</em> Begins Here.</h2>
+    <p class="ctaf-sub">Free site assessment. Fixed written quote. No obligation.</p>
+    <div class="ctaf-btns">
+      <a href="quote-calculator.html" class="cta-gold">Request Free Assessment</a>
+      <a href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%20would%20like%20to%20request%20a%20free%20site%20consultation." class="cta-wa" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a href="quote-calculator.html" class="btn-og">Browse Our Range</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="ft-top">
+    <div>
+      <!-- Footer logo: brightness(0) invert(1) converts white-bg PNG to white mark on dark footer -->
+      <img src="assets/logo/primeturf-full-logo.png" alt="PrimeTurf SA" class="ft-logo-img" loading="lazy">
+      <p class="ft-desc">Gauteng's premier luxury artificial grass specialist. Estate-grade installations, zero irrigation, precision crafted for the finest properties.</p>
+      <div class="ft-c">
+        <a href="tel:0768048868" class="ft-cl">076 804 8868</a>
+        <a href="mailto:social@primeturf.co.za" class="ft-cl">social@primeturf.co.za</a>
+        <span class="ft-cl" style="cursor:default">Gauteng, South Africa</span>
+      </div>
+      <div class="ft-soc">
+        <a href="https://www.facebook.com/share/18eU3RrRu4/" class="fsb" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+        <a href="#" class="fsb" aria-label="Instagram">ig</a>
+        <a href="#" class="fsb" aria-label="YouTube">yt</a>
+        <a href="https://wa.me/27768048868" class="fsb" aria-label="WhatsApp">wa</a>
+      </div>
+    </div>
+    <div class="ft-col"><h4>Services</h4><ul>
+      <li><a href="#services">Estate Gardens</a></li>
+      <li><a href="#services">Poolside Design</a></li>
+      <li><a href="#services">Putting Greens</a></li>
+      <li><a href="#services">Commercial</a></li>
+      <li><a href="#services">Rooftop Terraces</a></li>
+      <li><a href="#services">Play Areas</a></li>
+      <li><a href="#services">HOA Installations</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Areas</h4><ul>
+      <li><a href="page-sandton.html">Sandton</a></li>
+      <li><a href="page-waterfall-city.html">Waterfall City</a></li>
+      <li><a href="page-midrand.html">Midrand</a></li>
+      <li><a href="page-silver-lakes.html">Silver Lakes</a></li>
+      <li><a href="page-fourways.html">Fourways</a></li>
+      <li><a href="page-pretoria-east.html">Pretoria East</a></li>
+      <li><a href="page-bryanston.html">Bryanston</a></li>
+      <li><a href="page-mooikloof.html">Mooikloof</a></li>
+      <li><a href="page-houghton.html">Houghton</a></li>
+      <li><a href="#areas">All Areas</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Company</h4><ul>
+      <li><a href="#our-story">About PrimeTurf</a></li>
+      <li><a href="quote-calculator.html">Our Turf Range</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#why">Why PrimeTurf</a></li>
+      <li><a href="#our-story">Sustainability</a></li>
+      <li><a href="blog/index.html">Blog and Insights</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Resources</h4><ul>
+      <li><a href="blog/drought-proof-garden-cape-town.html">Water Restriction Guide</a></li>
+      <li><a href="blog/index.html">HOA Approval Guide</a></li>
+      <li><a href="quote-calculator.html">Water Calculator</a></li>
+      <li><a href="blog/artificial-grass-cost-guide-south-africa.html">Cost Comparison</a></li>
+      <li><a href="quote-calculator.html">Free Assessment</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-copy">2026 PrimeTurf SA. All rights reserved. Gauteng, South Africa.</p>
+    <div class="ft-leg">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="/sitemap.xml">Sitemap</a>
+    </div>
+  </div>
 </footer>
 
-<a class="floating-wa" href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%27d%20like%20to%20enquire." target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.72.45 3.39 1.31 4.87L2 22l5.35-1.4a9.9 9.9 0 0 0 4.69 1.19h.01c5.46 0 9.9-4.45 9.9-9.91C22 6.45 17.5 2 12.04 2zm0 18.11h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.34c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.55-3.7 8.19-8.26 8.19zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.24-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.47-.01a.9.9 0 0 0-.65.31c-.22.24-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.73 2.64 4.19 3.7.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+<!-- SINGLE floating WhatsApp button — nowhere else on page -->
+<a href="https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%20would%20like%20to%20enquire%20about%20artificial%20grass%20for%20my%20property." class="wa-fl" aria-label="Chat with PrimeTurf on WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script>
-  // Mobile nav drawer
-  (function(){
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobileNav');
-    const overlay = document.getElementById('navOverlay');
-    function closeNav(){
-      mobileNav.classList.remove('open');
-      overlay.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    }
-    function openNav(){
-      mobileNav.classList.add('open');
-      overlay.classList.add('open');
-      hamburger.classList.add('open');
-      hamburger.setAttribute('aria-expanded', 'true');
-    }
-    hamburger.addEventListener('click', () => {
-      mobileNav.classList.contains('open') ? closeNav() : openNav();
-    });
-    overlay.addEventListener('click', closeNav);
-    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
-  })();
-
-  // Scroll reveal
-  (function(){
-    const els = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    els.forEach((el, i) => {
-      el.style.transitionDelay = Math.min(i % 4, 3) * 0.08 + 's';
-      io.observe(el);
-    });
-  })();
-
-  // Video clip mute toggle
-  (function(){
-    document.querySelectorAll('.clip-tile').forEach(tile => {
-      const video = tile.querySelector('video');
-      const btn = tile.querySelector('.clip-mute');
-      if (!video || !btn) return;
-      btn.addEventListener('click', () => {
-        video.muted = !video.muted;
-        btn.innerHTML = video.muted
-          ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>'
-          : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
-      });
-    });
-  })();
-
-  // Live before/after slider
-  (function(){
-    const comparison = document.getElementById('comparison');
-    const afterImage = document.getElementById('after-image');
-    const divider = document.getElementById('compare-divider');
-    let value = 50, dragging = false;
-
-    function setValue(v){
-      value = Math.max(0, Math.min(100, v));
-      afterImage.style.clipPath = `inset(0 ${100-value}% 0 0)`;
-      divider.style.left = value + '%';
-      comparison.setAttribute('aria-valuenow', String(Math.round(value)));
-    }
-    function fromPointer(e){
-      const r = comparison.getBoundingClientRect();
-      setValue(((e.clientX - r.left) / r.width) * 100);
-    }
-    comparison.addEventListener('pointerdown', e => { dragging = true; comparison.setPointerCapture(e.pointerId); fromPointer(e); });
-    comparison.addEventListener('pointermove', e => { if (dragging) fromPointer(e); });
-    comparison.addEventListener('pointerup', () => dragging = false);
-    comparison.addEventListener('pointercancel', () => dragging = false);
-    comparison.addEventListener('keydown', e => {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); setValue(value - 4); }
-      if (e.key === 'ArrowRight') { e.preventDefault(); setValue(value + 4); }
-    });
-  })();
-
-  function submitEnquiry(e){
-    e.preventDefault();
-    const name = document.getElementById('f-name').value;
-    const phone = document.getElementById('f-phone').value;
-    const area = document.getElementById('f-area').value;
-    const notes = document.getElementById('f-notes').value;
-    const services = Array.from(document.querySelectorAll('.check-item input:checked')).map(c => c.value).join(', ') || 'Not specified';
-
-    // Email the enquiry to PrimeTurf via Web3Forms
-    const formData = new FormData();
-    formData.append('access_key', '9923a61d-593b-4551-bd12-ce9c1a3933b7');
-    formData.append('subject', 'New PrimeTurf Enquiry — Website Lead');
-    formData.append('from_name', 'PrimeTurf Website');
-    formData.append('name', name);
-    formData.append('phone', phone);
-    formData.append('area', area);
-    formData.append('services', services);
-    formData.append('message', notes);
-    fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData }).catch(() => {});
-
-    const msg = [
-      'Hi PrimeTurf, I would like to request a quote.',
-      `Name: ${name}`,
-      `Phone: ${phone}`,
-      `Area: ${area}`,
-      `Services: ${services}`,
-      `Details: ${notes}`
-    ].join('\n');
-    window.open(`https://wa.me/27768048868?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
-    return false;
-  }
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","HomeAndConstructionBusiness"],"@id":"https://www.primeturf.co.za/#business","name":"PrimeTurf SA","description":"Gauteng premier luxury artificial grass installer for residential estates, poolside, putting greens and commercial spaces.","url":"https://www.primeturf.co.za","telephone":"+27768048868","email":"social@primeturf.co.za","priceRange":"R$$$","areaServed":["Sandton","Midrand","Waterfall City","Silver Lakes","Centurion","Fourways","Pretoria East","Bryanston","Mooikloof","Houghton","Johannesburg","Pretoria"],"address":{"@type":"PostalAddress","addressRegion":"Gauteng","addressCountry":"ZA"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is artificial grass allowed under Gauteng water restrictions?","acceptedAnswer":{"@type":"Answer","text":"Yes. Artificial turf requires zero irrigation and is fully compliant with Rand Water Level 1 restrictions."}},{"@type":"Question","name":"Do I need HOA approval to install artificial grass?","acceptedAnswer":{"@type":"Answer","text":"Most Gauteng estates require ARC approval. PrimeTurf manages this submission as standard."}},{"@type":"Question","name":"How long does artificial grass installation take?","acceptedAnswer":{"@type":"Answer","text":"Most 50-150m2 residential installations complete within 1-2 days."}}]}]}
 </script>
 
+<script>
+(function(){
+  /* ── CONTACT FORM HANDLER ── */
+  const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+  window.handleSubmit = async function(btn) {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+    var fullName = (form.full_name||{value:''}).value.trim();
+    var phone = (form.phone||{value:''}).value.trim();
+    var email = (form.email||{value:''}).value.trim();
+    if (!fullName || !phone || !email) {
+      alert('Please complete your name, phone number and email address.');
+      return;
+    }
+    var originalText = btn.textContent;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    btn.style.opacity = '.7';
+    try {
+      var res = await fetch(FORM_ENDPOINT, {
+        method:'POST',
+        headers:{'Accept':'application/json'},
+        body: new FormData(form)
+      });
+      var data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || 'Submission failed');
+      btn.textContent = '✓ Thank you — our team will contact you within 24 hours.';
+      btn.style.background = 'var(--F2)';
+      btn.style.opacity = '1';
+      form.reset();
+      setTimeout(function(){
+        window.open('https://wa.me/27768048868?text=Hi%20PrimeTurf%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website.%20Please%20assist%20me.','_blank');
+      }, 1500);
+    } catch(e) {
+      btn.textContent = originalText;
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      alert('Submission failed. Please WhatsApp or email us directly.');
+    }
+  };
+
+  /* Before/After slider */
+  var bef = document.getElementById('sl-bef');
+  var aft = document.getElementById('sl-aft');
+  var div = document.getElementById('sl-div');
+  var hdl = document.getElementById('sl-hdl');
+  var wrp = document.getElementById('ba-slider');
+  bef.style.backgroundSize = 'cover'; bef.style.backgroundPosition = 'center';
+  aft.style.backgroundSize = 'cover'; aft.style.backgroundPosition = 'center';
+  function setPct(p){p=Math.max(2,Math.min(98,p));aft.style.clipPath='inset(0 '+(100-p)+'% 0 0)';div.style.left=p+'%';hdl.style.left=p+'%'}
+  setPct(50);
+  var drag=false;
+  function getX(e){return e.touches?e.touches[0].clientX:e.clientX}
+  wrp.addEventListener('mousedown',function(){drag=true},{passive:true});
+  wrp.addEventListener('touchstart',function(){drag=true},{passive:true});
+  window.addEventListener('mouseup',function(){drag=false});
+  window.addEventListener('touchend',function(){drag=false});
+  function onMove(e){if(e.type==='mousemove'&&!drag)return;var r=wrp.getBoundingClientRect();setPct(((getX(e)-r.left)/r.width)*100)}
+  wrp.addEventListener('mousemove',onMove);
+  wrp.addEventListener('touchmove',onMove,{passive:true});
+  wrp.addEventListener('click',function(e){var r=wrp.getBoundingClientRect();setPct(((e.clientX-r.left)/r.width)*100)});
+
+  /* Sticky header */
+  var hdr=document.getElementById('site-header');
+  var strip=document.querySelector('.strip');
+  if(strip&&hdr)hdr.style.top=strip.offsetHeight+'px';
+  window.addEventListener('scroll',function(){hdr.classList.toggle('scrolled',window.scrollY>10)},{passive:true});
+
+  /* Mobile nav */
+  var ham=document.getElementById('ham');
+  var mn=document.getElementById('mob-nav');
+  var mov=document.getElementById('mob-ov');
+  function openNav(){ham.classList.add('open');mn.classList.add('open');mov.classList.add('open');document.body.style.overflow='hidden';ham.setAttribute('aria-expanded','true')}
+  function closeNav(){ham.classList.remove('open');mn.classList.remove('open');mov.classList.remove('open');document.body.style.overflow='';ham.setAttribute('aria-expanded','false')}
+  window.closeNav=closeNav;
+  ham.addEventListener('click',function(){mn.classList.contains('open')?closeNav():openNav()});
+
+  /* FAQ */
+  window.faq=function(el){el.parentElement.classList.toggle('open')};
+})();
+</script>
 </body>
 </html>
