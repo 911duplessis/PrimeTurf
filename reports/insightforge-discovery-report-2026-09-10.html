@@ -1,0 +1,256 @@
+<title>PrimeTurf Discovery Report</title>
+<style>
+  :root{
+    --ink:#0B1220; --ink-soft:#1c2536; --paper:#F7F5F1; --paper-raised:#ffffff;
+    --amber:#B9791F; --amber-soft:#F1E0C4; --teal:#1F7A73; --teal-soft:#DCEEEA;
+    --rule:#D9D3C6; --text:#1B1F27; --text-mute:#5B5F6B; --text-faint:#8A8D96;
+    --crit:#A23B32; --crit-soft:#F5DEDA; --high:#B9791F; --high-soft:#F1E0C4;
+    --med:#8A7A2E; --med-soft:#EDE6C9; --ok:#1F7A73; --ok-soft:#DCEEEA;
+    --font-display:'Space Grotesk',system-ui,sans-serif;
+    --font-body:'Inter',system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EDEFF5; --ink-soft:#C7CCDA; --paper:#0E131C; --paper-raised:#161D2A;
+      --amber:#E0A855; --amber-soft:#3A2E17; --teal:#5FC2B8; --teal-soft:#123632;
+      --rule:#2A3242; --text:#E7E9EF; --text-mute:#A3A8B6; --text-faint:#6E7484;
+      --crit:#E4796A; --crit-soft:#3B2320; --high:#E0A855; --high-soft:#3A2E17;
+      --med:#D5C066; --med-soft:#332D18; --ok:#5FC2B8; --ok-soft:#123632;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#EDEFF5; --ink-soft:#C7CCDA; --paper:#0E131C; --paper-raised:#161D2A;
+    --amber:#E0A855; --amber-soft:#3A2E17; --teal:#5FC2B8; --teal-soft:#123632;
+    --rule:#2A3242; --text:#E7E9EF; --text-mute:#A3A8B6; --text-faint:#6E7484;
+    --crit:#E4796A; --crit-soft:#3B2320; --high:#E0A855; --high-soft:#3A2E17;
+    --med:#D5C066; --med-soft:#332D18; --ok:#5FC2B8; --ok-soft:#123632;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--paper); color:var(--text); font-family:var(--font-body);
+    padding-inline:20px; max-width:920px; margin-inline:auto; line-height:1.6;
+    font-size:16px;
+  }
+  h1,h2,h3{font-family:var(--font-display); color:var(--ink); text-wrap:balance; margin:0}
+  .mono{font-family:var(--font-mono)}
+  .tabular{font-variant-numeric:tabular-nums}
+
+  /* ---- masthead ---- */
+  header.doc{padding-block:40px 28px; border-bottom:2px solid var(--ink); display:flex; flex-direction:column; gap:18px}
+  .brandrow{display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:space-between}
+  .mark{display:flex; align-items:center; gap:10px}
+  .mark svg{flex:none}
+  .wordmark{font-family:var(--font-display); font-weight:600; font-size:1.15rem; letter-spacing:0.02em; color:var(--ink)}
+  .wordmark sup{font-size:0.5em; font-weight:500}
+  .tagline{font-size:0.78rem; color:var(--text-mute); font-style:italic}
+  .doctype{font-size:0.72rem; letter-spacing:0.11em; text-transform:uppercase; color:var(--amber); font-weight:600}
+  .doc h1{font-size:clamp(1.6rem,4vw,2.3rem); margin-top:6px}
+  .meta{display:flex; flex-wrap:wrap; gap:6px 22px; font-size:0.85rem; color:var(--text-mute)}
+  .meta b{color:var(--text); font-weight:600}
+
+  /* ---- stat strip ---- */
+  .stats{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:1px;
+    background:var(--rule); border:1px solid var(--rule); margin-block:26px;
+  }
+  .stat{background:var(--paper-raised); padding:16px 14px; display:flex; flex-direction:column; gap:4px}
+  .stat .n{font-family:var(--font-display); font-size:1.7rem; font-weight:600; color:var(--ink)}
+  .stat .n.flag{color:var(--crit)}
+  .stat .l{font-size:0.72rem; color:var(--text-mute); line-height:1.3}
+
+  /* ---- phase sections ---- */
+  section.phase{padding-block:30px; border-bottom:1px solid var(--rule)}
+  section.phase:last-of-type{border-bottom:none}
+  .phase-head{display:flex; align-items:baseline; gap:14px; margin-bottom:16px}
+  .phase-tick{
+    font-family:var(--font-mono); font-size:0.78rem; color:var(--paper);
+    background:var(--ink); border-radius:3px; padding:3px 8px; letter-spacing:0.04em; flex:none;
+  }
+  .phase-head h2{font-size:1.35rem}
+  .phase-sub{font-size:0.85rem; color:var(--text-mute); margin:-10px 0 18px 0}
+  p{margin:0 0 14px 0; max-width:66ch}
+  .callout{
+    background:var(--paper-raised); border-left:3px solid var(--amber); padding:14px 18px;
+    margin-block:18px; font-size:0.95rem; max-width:66ch;
+  }
+  .callout b{color:var(--ink)}
+
+  /* ---- issue list ---- */
+  .issues{display:flex; flex-direction:column; gap:10px; margin-block:16px}
+  .issue{
+    display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start;
+    background:var(--paper-raised); border:1px solid var(--rule); border-radius:4px; padding:12px 14px;
+  }
+  .sev{
+    font-size:0.68rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    padding:3px 8px; border-radius:20px; white-space:nowrap; align-self:start;
+  }
+  .sev.crit{background:var(--crit-soft); color:var(--crit)}
+  .sev.high{background:var(--high-soft); color:var(--high)}
+  .sev.med{background:var(--med-soft); color:var(--med)}
+  .issue .body b{display:block; color:var(--ink); font-size:0.95rem; margin-bottom:2px}
+  .issue .body span{font-size:0.85rem; color:var(--text-mute)}
+  .issue .body code{font-family:var(--font-mono); font-size:0.8rem; background:var(--paper); padding:1px 5px; border-radius:3px}
+
+  /* ---- tables ---- */
+  .tablewrap{overflow-x:auto; margin-block:18px; border:1px solid var(--rule); border-radius:4px}
+  table{border-collapse:collapse; width:100%; font-size:0.87rem; min-width:560px}
+  th,td{padding:9px 12px; text-align:left; border-bottom:1px solid var(--rule)}
+  th{
+    font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--text-mute); background:var(--paper); font-weight:600;
+  }
+  td.num{font-family:var(--font-mono); text-align:right}
+  tr:last-child td{border-bottom:none}
+  .pill{font-size:0.7rem; font-weight:600; padding:2px 8px; border-radius:20px; white-space:nowrap}
+  .pill.gap{background:var(--crit-soft); color:var(--crit)}
+  .pill.live{background:var(--ok-soft); color:var(--ok)}
+  .pill.watch{background:var(--med-soft); color:var(--med)}
+
+  /* ---- verified data badge ---- */
+  .verified{
+    display:inline-flex; align-items:center; gap:5px; font-size:0.72rem; color:var(--teal);
+    font-family:var(--font-mono); border:1px solid var(--teal); border-radius:20px; padding:2px 9px;
+    margin-bottom:10px;
+  }
+  .verified::before{content:'●'; font-size:0.6rem}
+
+  /* ---- recommendation / milestones ---- */
+  .milestones{display:flex; flex-direction:column; gap:0; margin-block:18px; max-width:66ch}
+  .ms{display:grid; grid-template-columns:28px 1fr; gap:14px; padding-block:12px; position:relative}
+  .ms:not(:last-child)::after{
+    content:''; position:absolute; left:13px; top:34px; bottom:-4px; width:1px; background:var(--rule);
+  }
+  .ms .num{
+    width:28px; height:28px; border-radius:50%; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:0.8rem; z-index:1;
+  }
+  .ms h3{font-size:1rem; margin-bottom:3px}
+  .ms p{margin-bottom:4px; font-size:0.9rem}
+  .ms .tag{font-size:0.72rem; color:var(--amber); font-family:var(--font-mono)}
+
+  footer.doc{padding-block:28px 50px; font-size:0.78rem; color:var(--text-faint); display:flex; flex-direction:column; gap:6px}
+  footer.doc a{color:var(--text-faint)}
+
+  @media (max-width:480px){
+    .doc h1{font-size:1.5rem}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<header class="doc">
+  <div class="brandrow">
+    <div class="mark">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 24 L14 6 L18 6 L10 24 Z" fill="currentColor" style="color:var(--ink)"/>
+        <path d="M14 24 L22 6 L26 6 L26 10 L20 10 L17.5 15.5 L24 15.5 L24 19.5 L15.7 19.5 L14 24 Z" fill="currentColor" style="color:var(--amber)"/>
+      </svg>
+      <div>
+        <div class="wordmark">INSIGHTFORGE<sup>™</sup></div>
+        <div class="tagline">Where Insights Become Impact.</div>
+      </div>
+    </div>
+    <div class="doctype">Discovery Report — FORGE Framework</div>
+  </div>
+  <h1>PrimeTurf: Post-Migration SEO &amp; Market Reality</h1>
+  <div class="meta">
+    <span><b>Client</b> PrimeTurf (Pty) Ltd</span>
+    <span><b>Domain</b> www.primeturf.co.za</span>
+    <span><b>Prepared</b> 10 Sep 2026</span>
+    <span><b>Baseline event</b> GitHub Pages → Wix migration, 17 Jul 2026</span>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat"><span class="n flag tabular">1</span><span class="l">organic keyword still ranking (ZA)</span></div>
+  <div class="stat"><span class="n flag tabular">0</span><span class="l">est. monthly organic traffic (ZA)</span></div>
+  <div class="stat"><span class="n flag tabular">4</span><span class="l">Google-indexed URLs returning 404</span></div>
+  <div class="stat"><span class="n tabular">12<span style="font-size:0.9rem;color:var(--text-faint)">/15</span></span><span class="l">live pages with custom SEO</span></div>
+  <div class="stat"><span class="n flag tabular">0<span style="font-size:0.9rem;color:var(--text-faint)">/22+</span></span><span class="l">301 redirects configured</span></div>
+  <div class="stat"><span class="n flag tabular">0</span><span class="l">JSON-LD schemas live</span></div>
+</div>
+
+<section class="phase">
+  <div class="phase-head"><span class="phase-tick">F · 1/5</span><h2>Find Reality</h2></div>
+  <div class="phase-sub">Uncovering the true state of the business beneath the surface</div>
+
+  <p>On 17 Jul 2026, primeturf.co.za moved from a 27-page GitHub Pages site to a 15-page Wix Classic Editor site. No redirect layer survived the move. Google still has the old URLs indexed. That is the entire technical story — but the market-intelligence layer underneath it is worse than the page count alone suggests.</p>
+
+  <span class="verified">Semrush · ZA database · pulled live</span>
+  <p>Searched against Semrush's South Africa index, <span class="mono">primeturf.co.za</span> currently returns a Semrush Rank of <b>0</b>, <b>1</b> ranking organic keyword, and an estimated <b>0</b> monthly organic visits. Running the same domain through Semrush's automated organic-competitor discovery returns <b>zero rows</b> — the remaining footprint is now too thin for the tool to even name who PrimeTurf is competing against. That is not a ranking problem; it is closer to a disappearance.</p>
+
+  <div class="callout">
+    The single keyword still holding a position is <b class="mono">artificial grass installation cape town</b> — position <b>34</b> (page 4), 260 searches/month — and it currently points to <code>/artificial-grass-cape-town.html</code>, the exact URL confirmed 404 on Wix. PrimeTurf's last unit of surviving organic equity is actively pointed at a dead page.
+  </div>
+
+  <p><b>Confirmed critical issues</b> (from PrimeTurf's own migration audit, cross-checked against live search data):</p>
+  <div class="issues">
+    <div class="issue"><span class="sev crit">Critical</span><div class="body"><b>4 Google-indexed URLs 404</b><span><code>/artificial-grass-cape-town.html</code>, <code>/artificial-grass-johannesburg.html</code>, <code>/quote-calculator.html</code>, <code>/page-boksburg.html</code> — three of these have a live, enhanced Wix replacement already; only the redirect is missing.</span></div></div>
+    <div class="issue"><span class="sev high">High</span><div class="body"><b>15 location pages missing (1 city + 14 suburbs)</b><span>These were the site's commercial/money pages pre-migration — not the informational pages, which migrated cleanly.</span></div></div>
+    <div class="issue"><span class="sev high">High</span><div class="body"><b>Zero of 22+ redirects configured</b><span>Wix URL Redirect Manager is dashboard-only — requires owner action, not an API fix.</span></div></div>
+    <div class="issue"><span class="sev med">Medium</span><div class="body"><b>Zero JSON-LD schema on any page</b><span>No LocalBusiness, Service, FAQ, or BreadcrumbList markup anywhere on the live site.</span></div></div>
+  </div>
+</section>
+
+<section class="phase">
+  <div class="phase-head"><span class="phase-tick">O · 2/5</span><h2>Observe Patterns</h2></div>
+  <div class="phase-sub">Hidden patterns in what recovered and what didn't</div>
+
+  <p><b>Pattern 1 — metadata alone didn't bring rankings back.</b> Four location pages were already rebuilt on Wix with materially better titles and descriptions than the originals (Sandton, Johannesburg, Hyde Park, Edenvale — internally marked "PROTECTED + ENHANCED"). None of the four appears anywhere in Semrush's current ZA keyword data for this domain. Good on-page copy without redirects, schema, and preserved link equity hasn't been enough on its own.</p>
+
+  <p><b>Pattern 2 — the migration favoured brochure pages over money pages.</b> Every general/informational page (About, Services, Blog, Portfolio, Contact) has custom SEO on Wix today. The pages most likely to have driven commercial, bottom-of-funnel search traffic — the suburb/location pages — are the ones still missing. The content that was easiest to rebuild got rebuilt first; the content that earns revenue didn't.</p>
+
+  <p><b>Pattern 3 — this is a "stopped showing up" problem, not a "can't win this market" problem.</b> Every missing location keyword below carries a Keyword Difficulty of 11 or under (out of 100) in Semrush's ZA index. The one page still holding a position (Cape Town, KD 11) is on page 4 for a term this easy — with real content and a working URL, page 4 is not the ceiling.</p>
+</section>
+
+<section class="phase">
+  <div class="phase-head"><span class="phase-tick">R · 3/5</span><h2>Reveal Opportunities</h2></div>
+  <div class="phase-sub">Where the highest-value, lowest-friction recovery sits</div>
+
+  <span class="verified">Semrush · ZA database · pulled live</span>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Target keyword</th><th class="num">Volume/mo</th><th class="num">Difficulty</th><th>Current status</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">artificial grass cape town</td><td class="num tabular">720</td><td class="num tabular">11</td><td><span class="pill gap">Page missing — P0</span></td></tr>
+        <tr><td class="mono">artificial grass installation</td><td class="num tabular">210</td><td class="num tabular">20</td><td><span class="pill watch">Live page, not ranking</span></td></tr>
+        <tr><td class="mono">artificial grass pretoria</td><td class="num tabular">170</td><td class="num tabular">8</td><td><span class="pill gap">Page missing — batch 2</span></td></tr>
+        <tr><td class="mono">artificial grass johannesburg</td><td class="num tabular">140</td><td class="num tabular">10</td><td><span class="pill watch">Live + enhanced, not ranking</span></td></tr>
+        <tr><td class="mono">artificial grass installers near me</td><td class="num tabular">140</td><td class="num tabular">6</td><td><span class="pill gap">No owning page — new gap</span></td></tr>
+        <tr><td class="mono">artificial grass centurion</td><td class="num tabular">20</td><td class="num tabular">—</td><td><span class="pill gap">Page missing — batch 2</span></td></tr>
+        <tr><td class="mono">artificial grass fourways</td><td class="num tabular">20</td><td class="num tabular">—</td><td><span class="pill gap">Page missing — batch 2</span></td></tr>
+        <tr><td class="mono">artificial grass sandton</td><td class="num tabular">20</td><td class="num tabular">—</td><td><span class="pill live">Live + enhanced, not ranking</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><b>The one gap the existing recovery plan doesn't cover:</b> <span class="mono">artificial grass installers near me</span> (140/mo, KD 6 — the easiest term on this table) has no dedicated page in either the 15 live pages or the 15-page missing-content spec already prepared. Recommend folding this phrasing into the Homepage and Services copy rather than opening a seventeenth page.</p>
+</section>
+
+<section class="phase">
+  <div class="phase-head"><span class="phase-tick">G · 4/5</span><h2>Generate Solutions</h2></div>
+  <div class="phase-sub">What to do, in the order the evidence supports</div>
+
+  <p>Every recommendation below works within PrimeTurf's standing constraints: no unapproved edits to the live Wix site, no redirects without sign-off, and an ADD + CONNECT + OPTIMIZE approach — not a rebuild.</p>
+
+  <div class="milestones">
+    <div class="ms"><span class="num">1</span><div><h3>Configure the redirect layer first</h3><span class="tag">Owner approval required · Wix dashboard only</span><p>Pattern 1 shows enhanced metadata hasn't recovered rankings without it. This is the lowest-cost, highest-leverage fix available and unblocks every page below it — recommend sequencing it before any new page build, not after.</p></div></div>
+    <div class="ms"><span class="num">2</span><div><h3>Rebuild the Cape Town page (P0)</h3><span class="tag">720/mo · KD 11 · content already drafted</span><p>The single largest, easiest opportunity on the board — and the exact keyword still holding a position today. Pair with LocalBusiness + Service schema at build time, not as a later pass.</p></div></div>
+    <div class="ms"><span class="num">3</span><div><h3>Batch 2: Pretoria East, Centurion, Fourways, Bryanston, Boksburg</h3><span class="tag">Pretoria leads this batch at 170/mo, KD 8</span><p>Matches the sequencing already set in the migration plan; the keyword data confirms Pretoria East as the standout by volume within this batch.</p></div></div>
+    <div class="ms"><span class="num">4</span><div><h3>Add "near me" intent to existing copy</h3><span class="tag">Homepage + Services + Quote page</span><p>Covers the one keyword gap (140/mo, KD 6) the current missing-pages spec doesn't address, without opening a new page.</p></div></div>
+    <div class="ms"><span class="num">5</span><div><h3>Batch 3 + sitemap resubmission + GSC re-indexing</h3><span class="tag">Remaining 9 suburb pages</span><p>Close with the lowest-volume, longest-tail pages, then resubmit the sitemap and request indexing for everything shipped above.</p></div></div>
+  </div>
+</section>
+
+<section class="phase">
+  <div class="phase-head"><span class="phase-tick">E · 5/5</span><h2>Execute &amp; Evolve</h2></div>
+  <div class="phase-sub">Measuring recovery against this report as the baseline</div>
+  <p>This report's numbers — 1 keyword, an estimated 0 monthly organic visits, 4 confirmed 404s — are the dated baseline PrimeTurf is recovering from, not a permanent verdict. Recommend a re-Discovery pass 90 days after the redirect layer goes live, measured against these exact figures, and a second one at 90 days after Batch 2 ships. Google Search Console (already verified on this domain) should be pulled alongside Semrush at that point — GSC reports actual clicks and impressions, where the numbers above are Semrush's modeled estimate.</p>
+</section>
+
+<footer class="doc">
+  <span>Data sources: PrimeTurf internal migration audit (<span class="mono">audit/wix-seo-current-state.json</span>, <span class="mono">wix-seo-gaps.json</span>, dated 17–18 Aug 2026) and live Semrush South Africa (za) database queries run 10 Sep 2026. Ahrefs was unavailable on the connected account's current plan for this pass. No changes were made to the live Wix site in preparing this report.</span>
+  <span>InsightForge™ — Strategic Intelligence &amp; Execution Ecosystem</span>
+</footer>
