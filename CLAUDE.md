@@ -42,10 +42,24 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 | Service Areas landing page | 1 (to create) |
 | Missing legal pages | 1 (terms-of-service) |
 | 301 redirects configured | 10 / 27 |
-| JSON-LD schemas added | 0 |
+| JSON-LD schemas added | 3 (LocalBusiness, BreadcrumbList, Service) via Velo |
+| Contact form upgraded | Yes -- "Request a Quote" (8 fields, 2 dropdowns) |
 | Google-indexed 404s | 4 |
 
 The 4 existing location pages on Wix (Johannesburg, Sandton, Hyde Park, Edenvale) have custom SEO with enhanced titles and descriptions.
+
+### Completed via API (2026-09-12)
+
+- **Contact form upgraded** to "Request a Quote" (form ID: `e04a7a22-2e2d-4c5e-b1a9-1cf20b99f79a`, revision 2)
+  - Fields: First Name, Last Name, Email, WhatsApp/Phone, Suburb/Area (required), Service Interest (dropdown, 10 options), Approximate Project Size (dropdown, 6 options), Message
+  - Submit button: "Request a Quote"
+  - Thank-you message updated with WhatsApp number
+  - Contact mapping: First Name → FIRST_NAME, Last Name → LAST_NAME, Email → EMAIL, Phone → PHONE
+- **JSON-LD structured data** added via Velo in `masterPage.js` (my-site-4 repo)
+  - LocalBusiness schema on all pages
+  - BreadcrumbList with dynamic breadcrumbs
+  - Service schema on location pages (artificial-grass-* URLs)
+- **FLAG**: Verify notification email is set to leon@primeturf.co.za in Wix Dashboard → Settings → Notifications
 
 ## Implementation Files (2026-09-12)
 
@@ -86,12 +100,14 @@ Production-ready content and specs for the full migration. Pages must be created
 
 1. **Create 11 new pages in Wix Editor** using content from `implementation/pages/*.md` and SEO from `implementation/specs/seo-specification.md`. Follow `implementation/guide/wix-editor-guide.md`. Build order: Service Areas landing → Pretoria East → Centurion & Midrand → Silver Lakes → Waterkloof → Mooikloof → Moreleta Park → Faerie Glen → Lynnwood → Garsfontein → Western Cape
 2. **Configure navigation** per `implementation/specs/navigation.md` — Service Areas dropdown with Gauteng/Western Cape grouping
-3. **Upgrade contact form** per `implementation/specs/contact-form.md` — verify notification email set to leon@primeturf.co.za
-4. **Create terms-of-service page** on Wix (noindex OK)
-5. **Configure remaining 17 301 redirects** via Wix SEO Redirects API (blocked until pages created)
-6. **Add JSON-LD structured data** (LocalBusiness, Service, FAQ, BreadcrumbList) via Wix Velo or code injection
-7. **Submit updated sitemap** to Google Search Console
-8. **Request indexing** for new pages in GSC
+3. ~~Upgrade contact form~~ **DONE** — "Request a Quote" form live (8 fields, 2 dropdowns, revision 2)
+4. **Verify notification email** is set to leon@primeturf.co.za in Wix Dashboard → Settings → Notifications
+5. **Sync Velo code** — run `wix dev` in `/my-site-4` to push JSON-LD structured data to live site
+6. **Create terms-of-service page** on Wix (noindex OK)
+7. **Configure remaining 17 301 redirects** via Wix SEO Redirects API (blocked until pages created)
+8. ~~Add JSON-LD structured data~~ **DONE** — LocalBusiness, BreadcrumbList, Service schemas in masterPage.js
+9. **Submit updated sitemap** to Google Search Console
+10. **Request indexing** for new pages in GSC
 
 ## Business Details
 
