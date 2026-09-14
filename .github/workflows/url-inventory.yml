@@ -1,0 +1,106 @@
+name: 🔍 PrimeTurf URL Inventory Automation
+
+# Trigger: Manual (on-demand) or nightly
+on:
+  workflow_dispatch:
+    inputs:
+      wix_site_id:
+        description: 'Wix Site ID (9e5c1b74-f699-4def-ae95-5a8a8664880d)'
+        required: false
+        default: '9e5c1b74-f699-4def-ae95-5a8a8664880d'
+      gsc_property_url:
+        description: 'Google Search Console property URL (https://www.primeturf.co.za)'
+        required: false
+        default: 'https://www.primeturf.co.za'
+  schedule:
+    # Run weekly on Mondays at 02:00 UTC
+    - cron: '0 2 * * 1'
+
+jobs:
+  url-inventory:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Checkout PrimeTurf repo
+      - name: 📥 Checkout PrimeTurf
+        uses: actions/checkout@v4
+        with:
+          repository: 911duplessis/PrimeTurf
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Step 2: Checkout my-site-4 repo (for historical page inventory)
+      - name: 📥 Checkout my-site-4 (historical source)
+        uses: actions/checkout@v4
+        with:
+          repository: 911duplessis/my-site-4
+          path: ./my-site-4
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Step 3: Setup Node.js
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      # Step 4: Install dependencies
+      - name: 📦 Install dependencies
+        run: npm install csv-writer axios dotenv
+      
+      # Step 5: Parse my-site-4 for historical pages
+      - name: 🔎 Inventory my-site-4 historical pages
+        run: node scripts/inventory-my-site-4.js
+        env:
+          MY_SITE_4_PATH: ./my-site-4
+      
+      # Step 6: Fetch current Wix URLs
+      - name: 🌐 Fetch current Wix site URLs
+        run: node scripts/inventory-wix-api.js
+        env:
+          WIX_SITE_ID: ${{ inputs.wix_site_id || '9e5c1b74-f699-4def-ae95-5a8a8664880d' }}
+          WIX_API_KEY: ${{ secrets.WIX_API_KEY }}
+      
+      # Step 7: Fetch Google-indexed URLs
+      - name: 🔗 Fetch Google Search Console indexed URLs
+        run: node scripts/inventory-gsc.js
+        env:
+          GSC_PROPERTY_URL: ${{ inputs.gsc_property_url || 'https://www.primeturf.co.za' }}
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+      
+      # Step 8: Generate URL Gap Matrix
+      - name: 🔄 Generate URL Gap Matrix
+        run: node scripts/generate-url-matrix.js
+        env:
+          TIMESTAMP: ${{ github.event.head_commit.timestamp || github.event.repository.pushed_at }}
+      
+      # Step 9: Upload reports artifact
+      - name: 📊 Upload URL inventory reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: url-inventory-reports
+          path: reports/
+          retention-days: 30
+      
+      # Step 10: Commit results back to branch
+      - name: 📝 Commit inventory results
+        run: |
+          git config user.name "PrimeTurf Automation"
+          git config user.email "automation@primeturf.co.za"
+          git add data/ reports/
+          git commit -m "🤖 Auto-generated: URL inventory & Gap Matrix - $(date -u +'%Y-%m-%d %H:%M:%S UTC')" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Step 11: Create summary
+      - name: 📋 Workflow summary
+        run: |
+          echo "## ✅ URL Inventory Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Generated Files:" >> $GITHUB_STEP_SUMMARY
+          echo "- \`data/historical-pages.json\` - Pages from my-site-4" >> $GITHUB_STEP_SUMMARY
+          echo "- \`data/current-wix-pages.json\` - Current Wix published URLs" >> $GITHUB_STEP_SUMMARY
+          echo "- \`data/google-indexed.json\` - Google Search Console indexed URLs" >> $GITHUB_STEP_SUMMARY
+          echo "- \`reports/URL_GAP_MATRIX_*.csv\` - Complete classification matrix" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Next Step:** Download the CSV, classify each URL, then commit back to trigger Phase 2." >> $GITHUB_STEP_SUMMARY
