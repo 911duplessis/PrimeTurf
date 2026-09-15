@@ -26,7 +26,7 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 
 - Site name shows "Prime Turf  SA" (double space) in Wix -- has this been corrected?
 
-## Current State (as of 2026-08-20)
+## Current State (as of 2026-09-15)
 
 | Metric | Count |
 |--------|-------|
@@ -36,9 +36,12 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 | Missing legal pages | 1 (terms-of-service) |
 | 301 redirects configured | 10 / 27 |
 | JSON-LD schemas added | 0 |
+| Custom embeds (CSS) | 1 (layout fix) |
 | Google-indexed 404s | 4 |
 
 The 4 existing location pages on Wix (Johannesburg, Sandton, Hyde Park, Edenvale) have custom SEO with enhanced titles and descriptions.
+
+**Layout fix deployed 2026-09-15**: Custom Embed `24fc0b9c-96fe-4550-a8c2-8e9be1a997ba` injects CSS to widen site from 980px to 1200px with responsive gutters.
 
 ## Key Files
 
