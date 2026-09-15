@@ -35,13 +35,20 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 | Missing location pages | 15 (1 city + 14 suburbs) |
 | Missing legal pages | 1 (terms-of-service) |
 | 301 redirects configured | 10 / 27 |
-| JSON-LD schemas added | 0 |
+| JSON-LD schemas added | 5 pages (13 schemas) |
 | Custom embeds (CSS) | 1 (layout fix) |
 | Google-indexed 404s | 4 |
 
 The 4 existing location pages on Wix (Johannesburg, Sandton, Hyde Park, Edenvale) have custom SEO with enhanced titles and descriptions.
 
 **Layout fix deployed 2026-09-15**: Custom Embed `24fc0b9c-96fe-4550-a8c2-8e9be1a997ba` injects CSS to widen site from 980px to 1200px with responsive gutters.
+
+**JSON-LD structured data deployed 2026-09-15**: 13 schemas across 5 pages:
+- Homepage (bqvuq): LocalBusiness
+- Johannesburg (jhk27): LocalBusiness + FAQPage (5 Q&A) + BreadcrumbList
+- Sandton (avhi7): LocalBusiness + FAQPage (5 Q&A) + BreadcrumbList
+- Hyde Park (kgiig): LocalBusiness + FAQPage (5 Q&A) + BreadcrumbList
+- Edenvale (q46e6): LocalBusiness + FAQPage (5 Q&A) + BreadcrumbList
 
 ## Key Files
 
