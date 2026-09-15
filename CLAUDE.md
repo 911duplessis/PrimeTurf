@@ -26,24 +26,52 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 
 - Site name shows "Prime Turf  SA" (double space) in Wix -- has this been corrected?
 
-## Current State (as of 2026-09-15)
+## Current State (as of 2026-09-15, updated)
 
 | Metric | Count |
 |--------|-------|
-| Wix pages live | 15 |
-| Pages with custom SEO | 15 / 15 |
-| Missing location pages | 15 (1 city + 14 suburbs) |
-| Missing legal pages | 1 (terms-of-service) |
+| Wix pages live | 30 (15 original + 13 new location + 2 utility) |
+| Pages with custom SEO | 28 / 30 |
+| Pages without custom SEO | 2 (o6srm /blank-3, tiwvv /service-area) |
+| Missing from original spec | 8 (Fourways, Bryanston, Steyn City, Bedfordview, Houghton, Randburg, Waterfall City, terms-of-service) |
+| Deleted ghost pages | 2 (zqx03 + xtajx, both Roodepoort) |
 | 301 redirects configured | 10 / 27 |
+| 301 redirects ready (need approval) | 7 |
+| 301 redirects still blocked | 10 |
 | JSON-LD schemas added | 5 pages (13 schemas) |
-| Custom embeds (CSS) | 1 (layout fix) |
-| Google-indexed 404s | 4 |
+| Custom embeds (CSS) | 1 (layout fix, rev 2) |
 
-The 4 existing location pages on Wix (Johannesburg, Sandton, Hyde Park, Edenvale) have custom SEO with enhanced titles and descriptions.
+### New pages created by owner (13 location + 2 utility)
 
-**Layout fix deployed 2026-09-15**: Custom Embed `24fc0b9c-96fe-4550-a8c2-8e9be1a997ba` injects CSS to widen site from 980px to 1200px with responsive gutters.
+| Page ID | URL | SEO Status |
+|---------|-----|------------|
+| u6lo4 | /artificial-grass-cape-town | Enhanced (matches spec) |
+| y43rr | /artificial-grass-pretoria-east | Enhanced 2026-09-15 |
+| d9iwr | /artificial-grass-centurion | Enhanced 2026-09-15 |
+| qquc7 | /artificial-grass-midrand | Enhanced 2026-09-15 |
+| weuso | /artificial-grass-boksburg | Enhanced (matches spec) |
+| nqcvo | /artificial-grass-mooikloof | Enhanced 2026-09-15 |
+| ju2o2 | /artificial-grass-silver-lakes | Enhanced 2026-09-15 |
+| fkibf | /artificial-grass-garsfontein | Fixed 2026-09-15 (had wrong desc) |
+| gykvx | /artificial-grass-faerie-glen | Enhanced 2026-09-15 |
+| helb4 | /artificial-grass-lynnwood | Enhanced 2026-09-15 |
+| kqqlm | /artificial-grass-waterkloof | Enhanced 2026-09-15 |
+| wcv50 | /artificial-grass-moreleta-park | Enhanced 2026-09-15 |
+| nz9gr | /artificial-grass-western-cape | Enhanced 2026-09-15 |
+| tdhd8 | /service-areas | Hub page (has SEO) |
+| tiwvv | /service-area | Unconfigured list page |
 
-**JSON-LD structured data deployed 2026-09-15**: 13 schemas across 5 pages:
+### Layout fix (CSS Custom Embed)
+
+Embed `24fc0b9c-96fe-4550-a8c2-8e9be1a997ba` (rev 2):
+- Widens site from 980px to 1200px with responsive gutters
+- Constrains hero strip height to 500px max
+- Tightens hero padding (60px top, 40px bottom)
+- Header z-index fix
+
+### JSON-LD structured data (deployed 2026-09-15)
+
+13 schemas across 5 pages:
 - Homepage (bqvuq): LocalBusiness
 - Johannesburg (jhk27): LocalBusiness + FAQPage (5 Q&A) + BreadcrumbList
 - Sandton (avhi7): LocalBusiness + FAQPage (5 Q&A) + BreadcrumbList
@@ -65,12 +93,15 @@ The 4 existing location pages on Wix (Johannesburg, Sandton, Hyde Park, Edenvale
 
 ## Remaining Work (priority order)
 
-1. **Create 15 missing location pages** in Wix Editor using content from `migration/content/artificial-grass-*.md` and SEO specs from `audit/missing-pages-spec.json`. Build order: Cape Town (P0) -> Pretoria East, Centurion, Fourways, Bryanston, Boksburg (batch 2) -> remaining 9 suburbs (batch 3)
-2. **Create terms-of-service page** on Wix (noindex OK)
-3. **Configure remaining 17 301 redirects** via Wix SEO Redirects API (blocked until pages created)
-4. **Add JSON-LD structured data** (LocalBusiness, Service, FAQ, BreadcrumbList) via Wix Velo or code injection
-5. **Submit updated sitemap** to Google Search Console
-6. **Request indexing** for new pages in GSC
+1. **Populate content on 13 new location pages** in Wix Editor -- pages exist but are empty. Content specs in artifact and `migration/content/` files. Requires manual Wix Editor work (Classic Editor has no API for visual content).
+2. **Create 7 remaining location pages** still missing from original spec: Fourways, Bryanston, Steyn City, Bedfordview, Houghton, Randburg, Waterfall City. Also re-create Roodepoort (was deleted).
+3. **Create terms-of-service page** on Wix (noindex OK)
+4. **Configure 7 ready 301 redirects** (Cape Town, Pretoria East, Centurion, Midrand, Boksburg, Mooikloof, Silver Lakes) -- pages exist, needs owner approval
+5. **Configure remaining 10 blocked redirects** -- waiting for pages to be created
+6. **Add JSON-LD structured data** for new location pages (Service, LocalBusiness, BreadcrumbList)
+7. **Submit updated sitemap** to Google Search Console
+8. **Request indexing** for new pages in GSC
+9. **Clean up** blank page (o6srm /blank-3) and unconfigured list page (tiwvv /service-area)
 
 ## Business Details
 
