@@ -32,20 +32,20 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 
 - Site name shows "Prime Turf  SA" (double space) in Wix -- has this been corrected?
 
-## Current State (as of 2026-09-13)
+## Current State (as of 2026-09-16)
 
 | Metric | Count |
 |--------|-------|
 | Wix pages published | 17 |
 | Pages in editor (draft/unpublished) | ~13 |
-| Pages with custom SEO | 15 / 17 |
+| Pages with custom SEO | 26 / 33 (7 pages have no override) |
 | Missing legal pages | 1 (terms-of-service) |
 | 301 redirects configured | 10 / 27 |
 | JSON-LD schemas added | 3 (LocalBusiness, BreadcrumbList, Service) via Velo (not yet synced) |
 | Contact form upgraded | Yes -- "Request a Quote" (8 fields, 2 dropdowns) |
 | Google-indexed 404s | 4 |
-| Site businessName | "Service Map" (should be "PrimeTurf") |
-| Site displayName | "Prime Turf SA" (verify double-space) |
+| Site businessName | ~~"Service Map"~~ **"PrimeTurf"** (fixed 2026-09-16) |
+| Site displayName | **"PrimeTurf SA"** (fixed 2026-09-16, single space) |
 
 ### Published pages (in sitemap as of 2026-09-13)
 
@@ -59,8 +59,9 @@ All new location pages are built in Wix Editor but not yet published. Includes: 
 
 ### Known SEO issues
 
-- **Garsfontein**: Meta description contains Boksburg/East Rand content instead of Garsfontein (copy-paste error)
-- **Boksburg, Cape Town**: Need custom SEO titles/descriptions set (currently default)
+- ~~**Garsfontein**: Meta description contains Boksburg/East Rand content instead of Garsfontein~~ **FIXED** (2026-09-16, API)
+- ~~**Boksburg, Cape Town**: Need custom SEO titles/descriptions set~~ **Already set** (confirmed 2026-09-16)
+- **7 pages have no SEO override**: ll72v, mkag8, o6srm, tiwvv, uay3e, uuztp, xtajx, zqx03 — likely accessibility, privacy, gallery, and other utility pages
 
 ### Completed via API (2026-09-12)
 
@@ -116,12 +117,12 @@ Production-ready content and specs for the full migration. Pages must be created
 2. **Publish all draft pages** — ~13 pages need to be published in Wix Editor
 3. **Add content to pages** using `implementation/pages/*.md` files and `implementation/guide/wix-editor-guide.md`
 4. **Set SEO metadata on new pages** via Wix SEO API (I'll do this after pages are published)
-5. **Fix Garsfontein meta description** — currently shows Boksburg content (API fix)
+5. ~~Fix Garsfontein meta description~~ **DONE** — corrected to Garsfontein content (2026-09-16)
 6. **Configure remaining 17 301 redirects** via Wix SEO Redirects API (2 ready now, 5 after publishing, 8 redirect to nearest, 1 needs terms page)
 7. **Configure navigation** per `implementation/specs/navigation.md` — rename "Locations" to "Service Areas", optionally group by region
 8. ~~Upgrade contact form~~ **DONE** — "Request a Quote" form live (8 fields, 2 dropdowns, revision 2)
 9. **Verify notification email** is set to leon@primeturf.co.za in Wix Dashboard → Settings → Notifications
-10. **Fix business name** — currently "Service Map", should be "PrimeTurf" (Dashboard → Settings → Business Info)
+10. ~~Fix business name~~ **DONE** — set to "PrimeTurf" / "PrimeTurf SA" (2026-09-16, API)
 11. **Sync Velo code** — run `wix dev` in `/my-site-4` to push JSON-LD structured data to live site
 12. **Create terms-of-service page** on Wix (noindex OK)
 13. ~~Add JSON-LD structured data~~ **DONE** — LocalBusiness, BreadcrumbList, Service schemas in masterPage.js
