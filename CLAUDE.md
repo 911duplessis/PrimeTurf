@@ -69,14 +69,23 @@ Embed `24fc0b9c-96fe-4550-a8c2-8e9be1a997ba` (rev 2):
 - Tightens hero padding (60px top, 40px bottom)
 - Header z-index fix
 
-### JSON-LD structured data (deployed 2026-09-15)
+### JSON-LD structured data (deployed via Velo 2026-09-16)
 
-13 schemas across 5 pages:
-- Homepage (bqvuq): LocalBusiness
-- Johannesburg (jhk27): LocalBusiness + FAQPage (5 Q&A) + BreadcrumbList
-- Sandton (avhi7): LocalBusiness + FAQPage (5 Q&A) + BreadcrumbList
-- Hyde Park (kgiig): LocalBusiness + FAQPage (5 Q&A) + BreadcrumbList
-- Edenvale (q46e6): LocalBusiness + FAQPage (5 Q&A) + BreadcrumbList
+All location pages now have page-specific structured data via Wix Velo code:
+- Each location page: LocalBusiness + BreadcrumbList + Service + FAQPage (real Q&A)
+- Homepage (bqvuq): LocalBusiness + WebSite
+- Contact (m80pg): ContactPage
+- Get a Quote (evnw7): WebPage
+- masterPage.js: Site-wide fallback schemas (LocalBusiness, WebSite, BreadcrumbList, Service)
+
+### Wix Velo Architecture (PrimeTurf-Wix repo)
+
+Branch: `claude/velo-page-content-setup` on `911duplessis/PrimeTurf-Wix`
+- `src/public/siteConfig.js` -- Business constants (phone, email, warranty, URLs)
+- `src/public/schemas.js` -- JSON-LD schema builders (buildLocationSchemas, buildServiceAreaSchemas)
+- `src/public/pageSetup.js` -- Element binding (bindContent) and CTA wiring (setupCTAs)
+- Each page file: imports shared modules, defines PAGE config + content, sets structured data, binds elements
+- Element IDs convention: `#heroTitle`, `#heroSubtitle`, `#heroDesc`, `#introTitle`, `#introText`, `#areasTitle`, `#areasText`, `#ctaTitle`, `#ctaDesc`, `#ctaWhatsapp`, `#ctaCall`, `#heroQuoteBtn`, `#ctaQuote`
 
 ## Key Files
 
@@ -93,12 +102,12 @@ Embed `24fc0b9c-96fe-4550-a8c2-8e9be1a997ba` (rev 2):
 
 ## Remaining Work (priority order)
 
-1. **Populate content on 13 new location pages** in Wix Editor -- pages exist but are empty. Content specs in artifact and `migration/content/` files. Requires manual Wix Editor work (Classic Editor has no API for visual content).
-2. **Create 7 remaining location pages** still missing from original spec: Fourways, Bryanston, Steyn City, Bedfordview, Houghton, Randburg, Waterfall City. Also re-create Roodepoort (was deleted).
-3. **Create terms-of-service page** on Wix (noindex OK)
-4. **Configure 7 ready 301 redirects** (Cape Town, Pretoria East, Centurion, Midrand, Boksburg, Mooikloof, Silver Lakes) -- pages exist, needs owner approval
-5. **Configure remaining 10 blocked redirects** -- waiting for pages to be created
-6. **Add JSON-LD structured data** for new location pages (Service, LocalBusiness, BreadcrumbList)
+1. **Merge Velo branch** -- `claude/velo-page-content-setup` on PrimeTurf-Wix. Adds structured data + content binding to all pages. Owner should review and merge to main.
+2. **Build visual content in Wix Editor** -- 13 new location pages have Velo code but need visual elements added in Classic Editor. Use element IDs from the Velo convention (see architecture above) so content auto-populates.
+3. **Create 7 remaining location pages** still missing from original spec: Fourways, Bryanston, Steyn City, Bedfordview, Houghton, Randburg, Waterfall City. Also re-create Roodepoort (was deleted).
+4. **Create terms-of-service page** on Wix (noindex OK)
+5. **Configure 7 ready 301 redirects** (Cape Town, Pretoria East, Centurion, Midrand, Boksburg, Mooikloof, Silver Lakes) -- pages exist, needs owner approval
+6. **Configure remaining 10 blocked redirects** -- waiting for pages to be created
 7. **Submit updated sitemap** to Google Search Console
 8. **Request indexing** for new pages in GSC
 9. **Clean up** blank page (o6srm /blank-3) and unconfigured list page (tiwvv /service-area)
