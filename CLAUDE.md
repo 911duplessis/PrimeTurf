@@ -32,20 +32,49 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 
 - Site name shows "Prime Turf  SA" (double space) in Wix -- has this been corrected?
 
-## Current State (as of 2026-09-12)
+## Current State (as of 2026-09-16)
 
 | Metric | Count |
 |--------|-------|
-| Wix pages live | 15 |
-| Pages with custom SEO | 15 / 15 |
-| New location pages to create | 10 (9 Gauteng + 1 Western Cape) |
-| Service Areas landing page | 1 (to create) |
+| Wix pages published | 17 |
+| Pages in editor (draft/unpublished) | ~13 |
+| Pages with custom SEO | 26 / 33 (7 pages have no override) |
 | Missing legal pages | 1 (terms-of-service) |
 | 301 redirects configured | 10 / 27 |
-| JSON-LD schemas added | 0 |
+| JSON-LD schemas added | 3 (LocalBusiness, BreadcrumbList, Service) via Velo (not yet synced) |
+| Contact form upgraded | Yes -- "Request a Quote" (8 fields, 2 dropdowns) |
 | Google-indexed 404s | 4 |
+| Site businessName | ~~"Service Map"~~ **"PrimeTurf"** (fixed 2026-09-16) |
+| Site displayName | **"PrimeTurf SA"** (fixed 2026-09-16, single space) |
 
-The 4 existing location pages on Wix (Johannesburg, Sandton, Hyde Park, Edenvale) have custom SEO with enhanced titles and descriptions.
+### Published pages (in sitemap as of 2026-09-13)
+
+/, /services, /services-5, /about-us, /about-6, /blog, /contact, /quote, /gallery, /accessibility-statement, /english-privacy-policy, /artificial-grass-johannesburg, /artificial-grass-sandton, /artificial-grass-hyde-park, /artificial-grass-edenvale, /artificial-grass-boksburg, /artificial-grass-cape-town
+
+### Draft pages (created in editor, NOT published)
+
+All new location pages are built in Wix Editor but not yet published. Includes: Pretoria East, Moreleta Park, Silver Lakes, Faerie Glen, Waterkloof, Mooikloof, Lynnwood, Garsfontein, Centurion (separate), Midrand (separate), Western Cape, Artificial Turf Gauteng, Service Areas landing.
+
+**Note**: The spec had Centurion & Midrand as one combined page (`/artificial-grass-centurion-midrand`). Owner created them as two separate pages. Boksburg and Artificial Turf Gauteng were added beyond the original approved list.
+
+### Known SEO issues
+
+- ~~**Garsfontein**: Meta description contains Boksburg/East Rand content instead of Garsfontein~~ **FIXED** (2026-09-16, API)
+- ~~**Boksburg, Cape Town**: Need custom SEO titles/descriptions set~~ **Already set** (confirmed 2026-09-16)
+- **7 pages have no SEO override**: ll72v, mkag8, o6srm, tiwvv, uay3e, uuztp, xtajx, zqx03 — likely accessibility, privacy, gallery, and other utility pages
+
+### Completed via API (2026-09-12)
+
+- **Contact form upgraded** to "Request a Quote" (form ID: `e04a7a22-2e2d-4c5e-b1a9-1cf20b99f79a`, revision 2)
+  - Fields: First Name, Last Name, Email, WhatsApp/Phone, Suburb/Area (required), Service Interest (dropdown, 10 options), Approximate Project Size (dropdown, 6 options), Message
+  - Submit button: "Request a Quote"
+  - Thank-you message updated with WhatsApp number
+  - Contact mapping: First Name → FIRST_NAME, Last Name → LAST_NAME, Email → EMAIL, Phone → PHONE
+- **JSON-LD structured data** added via Velo in `masterPage.js` (my-site-4 repo)
+  - LocalBusiness schema on all pages
+  - BreadcrumbList with dynamic breadcrumbs
+  - Service schema on location pages (artificial-grass-* URLs)
+- **FLAG**: Verify notification email is set to leon@primeturf.co.za in Wix Dashboard → Settings → Notifications
 
 ## Implementation Files (2026-09-12)
 
@@ -82,16 +111,23 @@ Production-ready content and specs for the full migration. Pages must be created
 | `migration/content/*.md` | Original migration content files |
 | `prompts/wix-page-builder.md` | Prompt for Claude browser extension in Wix Editor |
 
-## Remaining Work (priority order)
+## Remaining Work (priority order, updated 2026-09-13)
 
-1. **Create 11 new pages in Wix Editor** using content from `implementation/pages/*.md` and SEO from `implementation/specs/seo-specification.md`. Follow `implementation/guide/wix-editor-guide.md`. Build order: Service Areas landing → Pretoria East → Centurion & Midrand → Silver Lakes → Waterkloof → Mooikloof → Moreleta Park → Faerie Glen → Lynnwood → Garsfontein → Western Cape
-2. **Configure navigation** per `implementation/specs/navigation.md` — Service Areas dropdown with Gauteng/Western Cape grouping
-3. **Upgrade contact form** per `implementation/specs/contact-form.md` — verify notification email set to leon@primeturf.co.za
-4. **Create terms-of-service page** on Wix (noindex OK)
-5. **Configure remaining 17 301 redirects** via Wix SEO Redirects API (blocked until pages created)
-6. **Add JSON-LD structured data** (LocalBusiness, Service, FAQ, BreadcrumbList) via Wix Velo or code injection
-7. **Submit updated sitemap** to Google Search Console
-8. **Request indexing** for new pages in GSC
+1. ~~Create new pages in Wix Editor~~ **DONE** — all location pages created in editor (not yet published)
+2. **Publish all draft pages** — ~13 pages need to be published in Wix Editor
+3. **Add content to pages** using `implementation/pages/*.md` files and `implementation/guide/wix-editor-guide.md`
+4. **Set SEO metadata on new pages** via Wix SEO API (I'll do this after pages are published)
+5. ~~Fix Garsfontein meta description~~ **DONE** — corrected to Garsfontein content (2026-09-16)
+6. **Configure remaining 17 301 redirects** via Wix SEO Redirects API (2 ready now, 5 after publishing, 8 redirect to nearest, 1 needs terms page)
+7. **Configure navigation** per `implementation/specs/navigation.md` — rename "Locations" to "Service Areas", optionally group by region
+8. ~~Upgrade contact form~~ **DONE** — "Request a Quote" form live (8 fields, 2 dropdowns, revision 2)
+9. **Verify notification email** is set to leon@primeturf.co.za in Wix Dashboard → Settings → Notifications
+10. ~~Fix business name~~ **DONE** — set to "PrimeTurf" / "PrimeTurf SA" (2026-09-16, API)
+11. **Sync Velo code** — run `wix dev` in `/my-site-4` to push JSON-LD structured data to live site
+12. **Create terms-of-service page** on Wix (noindex OK)
+13. ~~Add JSON-LD structured data~~ **DONE** — LocalBusiness, BreadcrumbList, Service schemas in masterPage.js
+14. **Submit updated sitemap** to Google Search Console
+15. **Request indexing** for new pages in GSC
 
 ## Business Details
 
