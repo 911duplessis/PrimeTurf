@@ -26,7 +26,7 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 
 - Site name shows "Prime Turf  SA" (double space) in Wix -- has this been corrected?
 
-## Current State (as of 2026-09-15, updated)
+## Current State (as of 2026-09-16, updated)
 
 | Metric | Count |
 |--------|-------|
@@ -35,11 +35,11 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 | Pages without custom SEO | 2 (o6srm /blank-3, tiwvv /service-area) |
 | Missing from original spec | 8 (Fourways, Bryanston, Steyn City, Bedfordview, Houghton, Randburg, Waterfall City, terms-of-service) |
 | Deleted ghost pages | 2 (zqx03 + xtajx, both Roodepoort) |
-| 301 redirects configured | 10 / 27 |
-| 301 redirects ready (need approval) | 7 |
+| 301 redirects configured | 17 / 27 |
+| 301 redirects ready (need approval) | 0 |
 | 301 redirects still blocked | 10 |
 | JSON-LD schemas added | 5 pages (13 schemas) |
-| Custom embeds (CSS) | 1 (layout fix, rev 2) |
+| Custom embeds (CSS) | 1 (layout fix, rev 2) — verified active 2026-09-16 |
 
 ### New pages created by owner (13 location + 2 utility)
 
