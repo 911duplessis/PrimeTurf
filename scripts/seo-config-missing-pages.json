@@ -1,0 +1,115 @@
+{
+  "description": "SEO metadata for 8 missing pages. Apply via Wix Item SEO Tags API once pages are created and page IDs are known.",
+  "api_endpoint": "POST https://www.wixapis.com/promote/seo/v1/item-seo-tags/STATIC_PAGE/{pageId}",
+  "pages": [
+    {
+      "slug": "artificial-grass-fourways",
+      "page_name": "Artificial Grass Fourways",
+      "old_url": "/page-fourways.html",
+      "redirect_to": "/artificial-grass-fourways",
+      "seo": {
+        "title": "Artificial Grass Fourways | Dainfern · Lonehill · Broadacres | PrimeTurf",
+        "description": "Premium artificial grass installation in Fourways, Dainfern, Lonehill and surrounds. Professional synthetic turf for Fourways estates. Free consultation. Call 076 804 8868.",
+        "og_title": "Artificial Grass Fourways | Premium Installation | PrimeTurf",
+        "og_description": "Premium artificial grass installation in Fourways, Dainfern, Lonehill and surrounds. Professional synthetic turf for Fourways estates. Free consultation."
+      }
+    },
+    {
+      "slug": "artificial-grass-bryanston",
+      "page_name": "Artificial Grass Bryanston",
+      "old_url": "/page-bryanston.html",
+      "redirect_to": "/artificial-grass-bryanston",
+      "seo": {
+        "title": "Artificial Grass Bryanston | Luxury Residential Specialists | PrimeTurf",
+        "description": "Premium artificial grass installation in Bryanston, Craighall Park and surrounds. Luxury synthetic turf for Bryanston's finest estate properties. Free consultation. Call 076 804 8868.",
+        "og_title": "Artificial Grass Bryanston | Luxury Turf Installation | PrimeTurf",
+        "og_description": "Premium artificial grass installation in Bryanston, Craighall Park and surrounds. Luxury synthetic turf for Bryanston's finest estate properties."
+      }
+    },
+    {
+      "slug": "artificial-grass-steyn-city",
+      "page_name": "Artificial Grass Steyn City",
+      "old_url": "/page-steyn-city.html",
+      "redirect_to": "/artificial-grass-steyn-city",
+      "seo": {
+        "title": "Artificial Grass Steyn City | Estate-Grade Installation | PrimeTurf",
+        "description": "Premium artificial grass installation in Steyn City and Diepsloot surrounds. Estate-grade synthetic turf specialists. 6-year warranty. Free consultation. Call 076 804 8868.",
+        "og_title": "Artificial Grass Steyn City | Estate-Grade Turf | PrimeTurf",
+        "og_description": "Premium artificial grass installation in Steyn City. Estate-grade synthetic turf specialists. 6-year warranty. Free consultation."
+      }
+    },
+    {
+      "slug": "artificial-grass-bedfordview",
+      "page_name": "Artificial Grass Bedfordview",
+      "old_url": "/page-bedfordview.html",
+      "redirect_to": "/artificial-grass-bedfordview",
+      "seo": {
+        "title": "Artificial Grass Bedfordview | East Rand Installation | PrimeTurf",
+        "description": "Premium artificial grass installation in Bedfordview, Germiston and the East Rand. Professional synthetic turf for residential and estate properties. Free quote. Call 076 804 8868.",
+        "og_title": "Artificial Grass Bedfordview | Premium Installation | PrimeTurf",
+        "og_description": "Premium artificial grass installation in Bedfordview, Germiston and the East Rand. Professional synthetic turf for residential and estate properties."
+      }
+    },
+    {
+      "slug": "artificial-grass-houghton",
+      "page_name": "Artificial Grass Houghton",
+      "old_url": "/page-houghton.html",
+      "redirect_to": "/artificial-grass-houghton",
+      "seo": {
+        "title": "Artificial Grass Houghton | Luxury Estate Turf | PrimeTurf",
+        "description": "Premium artificial grass installation in Houghton Estate, Killarney and Saxonwold. Luxury synthetic turf for Johannesburg's finest addresses. Free consultation. Call 076 804 8868.",
+        "og_title": "Artificial Grass Houghton | Luxury Estate Turf | PrimeTurf",
+        "og_description": "Premium artificial grass installation in Houghton Estate, Killarney and Saxonwold. Luxury synthetic turf for Johannesburg's finest addresses."
+      }
+    },
+    {
+      "slug": "artificial-grass-randburg",
+      "page_name": "Artificial Grass Randburg",
+      "old_url": "/page-randburg.html",
+      "redirect_to": "/artificial-grass-randburg",
+      "seo": {
+        "title": "Artificial Grass Randburg | North Johannesburg Installation | PrimeTurf",
+        "description": "Premium artificial grass installation in Randburg, Ferndale, Northcliff and surrounds. Professional synthetic turf for residential and commercial properties. Free quote. Call 076 804 8868.",
+        "og_title": "Artificial Grass Randburg | Premium Installation | PrimeTurf",
+        "og_description": "Premium artificial grass installation in Randburg, Ferndale, Northcliff and surrounds. Professional synthetic turf for residential and commercial properties."
+      }
+    },
+    {
+      "slug": "artificial-grass-waterfall-city",
+      "page_name": "Artificial Grass Waterfall City",
+      "old_url": "/page-waterfall-city.html",
+      "redirect_to": "/artificial-grass-waterfall-city",
+      "seo": {
+        "title": "Artificial Grass Waterfall City | Premium Turf Installation | PrimeTurf",
+        "description": "Premium artificial grass installation in Waterfall City, Waterfall Estate and Jukskei Park. Modern synthetic turf for Waterfall's premium developments. Free consultation. Call 076 804 8868.",
+        "og_title": "Artificial Grass Waterfall City | Premium Turf | PrimeTurf",
+        "og_description": "Premium artificial grass installation in Waterfall City, Waterfall Estate and Jukskei Park. Modern synthetic turf for Waterfall's premium developments."
+      }
+    },
+    {
+      "slug": "artificial-grass-roodepoort",
+      "page_name": "Artificial Grass Roodepoort",
+      "old_url": "/page-roodepoort.html",
+      "redirect_to": "/artificial-grass-roodepoort",
+      "seo": {
+        "title": "Artificial Grass Roodepoort | West Rand Installation | PrimeTurf",
+        "description": "Premium artificial grass installation in Roodepoort, Florida and the West Rand. Professional synthetic turf for residential and commercial properties. Free quote. Call 076 804 8868.",
+        "og_title": "Artificial Grass Roodepoort | West Rand Turf | PrimeTurf",
+        "og_description": "Premium artificial grass installation in Roodepoort, Florida and the West Rand. Professional synthetic turf for residential and commercial properties."
+      }
+    }
+  ],
+  "redirects": {
+    "api_endpoint": "POST https://www.wixapis.com/seo-redirects-service/v1/bulk/redirects/create",
+    "entries": [
+      {"from": "/page-fourways.html", "to": "/artificial-grass-fourways", "code": 301},
+      {"from": "/page-bryanston.html", "to": "/artificial-grass-bryanston", "code": 301},
+      {"from": "/page-steyn-city.html", "to": "/artificial-grass-steyn-city", "code": 301},
+      {"from": "/page-bedfordview.html", "to": "/artificial-grass-bedfordview", "code": 301},
+      {"from": "/page-houghton.html", "to": "/artificial-grass-houghton", "code": 301},
+      {"from": "/page-randburg.html", "to": "/artificial-grass-randburg", "code": 301},
+      {"from": "/page-waterfall-city.html", "to": "/artificial-grass-waterfall-city", "code": 301},
+      {"from": "/page-roodepoort.html", "to": "/artificial-grass-roodepoort", "code": 301}
+    ]
+  }
+}

@@ -24,9 +24,9 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 
 ## Open Decisions (ASK the user)
 
-- Site name shows "Prime Turf  SA" (double space) in Wix -- has this been corrected?
+- ~~Site name shows "Prime Turf  SA" (double space) in Wix~~ -- **FIXED** 2026-09-16: Updated to "PrimeTurf" via Site Properties API
 
-## Current State (as of 2026-09-16, updated)
+## Current State (as of 2026-09-16, updated v2)
 
 | Metric | Count |
 |--------|-------|
@@ -99,15 +99,20 @@ Branch: `claude/velo-page-content-setup` on `911duplessis/PrimeTurf-Wix`
 | `audit/redirect-spec.csv` | Complete 301 redirect map |
 | `migration/content/*.md` | Ready-to-use content for all missing pages |
 | `prompts/wix-page-builder.md` | Prompt for Claude browser extension in Wix Editor |
+| `guides/create-8-missing-pages.md` | Step-by-step guide for creating 8 pages in Wix Editor |
+| `scripts/seo-config-missing-pages.json` | SEO metadata + redirect config for 8 missing pages |
 
 ## Remaining Work (priority order)
 
-1. **Merge Velo branch** -- `claude/velo-page-content-setup` on PrimeTurf-Wix. Adds structured data + content binding to all pages. Owner should review and merge to main.
-2. **Build visual content in Wix Editor** -- 13 new location pages have Velo code but need visual elements added in Classic Editor. Use element IDs from the Velo convention (see architecture above) so content auto-populates.
-3. **Create 7 remaining location pages** still missing from original spec: Fourways, Bryanston, Steyn City, Bedfordview, Houghton, Randburg, Waterfall City. Also re-create Roodepoort (was deleted).
-4. **Create terms-of-service page** on Wix (noindex OK)
-5. **Configure 7 ready 301 redirects** (Cape Town, Pretoria East, Centurion, Midrand, Boksburg, Mooikloof, Silver Lakes) -- pages exist, needs owner approval
-6. **Configure remaining 10 blocked redirects** -- waiting for pages to be created
+1. **CREATE 8 MISSING PAGES IN WIX EDITOR** (manual — no API exists for Classic Editor page creation):
+   Fourways, Bryanston, Steyn City, Bedfordview, Houghton, Randburg, Waterfall City, Roodepoort.
+   See `guides/create-8-missing-pages.md` for step-by-step instructions.
+   SEO config ready in `scripts/seo-config-missing-pages.json` — will be applied via API once pages exist.
+2. **Redo navigation menu** in Wix Editor — add "Service Areas" dropdown with all location pages (manual editor task)
+3. **Merge Velo branch** -- `claude/velo-page-content-setup` on PrimeTurf-Wix. Adds structured data + content binding to all pages.
+4. **Build visual content in Wix Editor** -- 13+ location pages have Velo code but need visual elements added in Classic Editor.
+5. **Create terms-of-service page** on Wix (noindex OK)
+6. **Configure 8 blocked redirects** -- waiting for the 8 missing pages to be created (+ 2 more: Roodepoort, terms-of-service)
 7. **Submit updated sitemap** to Google Search Console
 8. **Request indexing** for new pages in GSC
 9. **Clean up** blank page (o6srm /blank-3) and unconfigured list page (tiwvv /service-area)
