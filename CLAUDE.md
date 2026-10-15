@@ -40,7 +40,7 @@ PrimeTurf's website migrated from GitHub Pages to Wix (Classic Editor) around 20
 | Pages in editor (draft/unpublished) | ~13 |
 | Pages with custom SEO | 26 / 33 (7 pages have no override) |
 | Missing legal pages | 1 (terms-of-service) |
-| 301 redirects configured | 10 / 27 |
+| 301 redirects configured | 17 (5 point to unpublished pages → 404; see audit/SEO-INDEXING-REPORT-2026-09-24.md) |
 | JSON-LD schemas added | 3 (LocalBusiness, BreadcrumbList, Service) via Velo (not yet synced) |
 | Contact form upgraded | Yes -- "Request a Quote" (8 fields, 2 dropdowns) |
 | Google-indexed 404s | 4 |
